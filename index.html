@@ -8,7 +8,79 @@
   <link rel="stylesheet" href="css/styles.css" />
 </head>
 <body>
-  <div class="app-shell">
+  <section id="loginScreen" class="login-screen">
+    <div class="login-layout">
+      <article class="login-hero-card">
+        <div class="login-orb login-orb-one"></div>
+        <div class="login-orb login-orb-two"></div>
+
+        <div class="login-product">
+          <div class="brand-mark login-product-mark">L</div>
+          <div>
+            <h1>Lazarus</h1>
+            <p>Tracking Intelligence</p>
+          </div>
+        </div>
+
+        <div class="login-hero-copy">
+          <span>Dashboard privado</span>
+          <h2>Visibilidad logística clara, segura y ejecutiva.</h2>
+          <p>
+            Plataforma web para consultar indicadores, estados y detalle de envíos desde el archivo JSON publicado automáticamente.
+          </p>
+        </div>
+
+        <div class="login-metrics">
+          <div>
+            <strong>JSON</strong>
+            <span>Fuente única</span>
+          </div>
+          <div>
+            <strong>24/7</strong>
+            <span>Publicación web</span>
+          </div>
+          <div>
+            <strong>Read Only</strong>
+            <span>Consulta cliente</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="login-card">
+        <div class="login-card-header">
+          <div class="login-lock">◆</div>
+          <span>Acceso autorizado</span>
+        </div>
+
+        <div class="login-copy">
+          <h2>Iniciar sesión</h2>
+          <p>Ingresa tus credenciales para visualizar el dashboard Lazarus.</p>
+        </div>
+
+        <form id="loginForm" class="login-form">
+          <label>
+            <span>Usuario</span>
+            <input id="loginUser" type="text" placeholder="Ej: DHLUniformes" autocomplete="username" required />
+          </label>
+
+          <label>
+            <span>Contraseña</span>
+            <input id="loginPassword" type="password" placeholder="Ingresa tu contraseña" autocomplete="current-password" required />
+          </label>
+
+          <button type="submit" class="login-btn">Entrar al dashboard</button>
+          <small id="loginError" class="login-error"></small>
+        </form>
+
+        <div class="login-note">
+          <strong>Validación local</strong>
+          <span>El usuario no distingue mayúsculas/minúsculas. La contraseña debe coincidir exactamente.</span>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <div id="appShell" class="app-shell hidden">
     <aside class="sidebar">
       <div class="brand">
         <div class="brand-mark">L</div>
@@ -25,10 +97,14 @@
         <a href="#detail">Detalle</a>
       </nav>
 
-      <div class="data-card">
-        <span>Estado de datos</span>
-        <strong id="sourceStatus">Sin validar</strong>
-        <small id="sourceMeta">Esperando lectura...</small>
+      <div class="sidebar-footer">
+        <div class="data-card">
+          <span>Estado de datos</span>
+          <strong id="sourceStatus">Sin validar</strong>
+          <small id="sourceMeta">Esperando lectura...</small>
+        </div>
+
+        <button id="logoutBtn" class="logout-btn">Cerrar sesión</button>
       </div>
     </aside>
 
