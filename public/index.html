@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lazarus Dashboard</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="brand-mark">L</div>
+        <div>
+          <h1>Lazarus</h1>
+          <p>Dashboard</p>
+        </div>
+      </div>
+
+      <nav class="side-nav">
+        <a class="active" href="#overview">Resumen</a>
+        <a href="#charts">Gráficos</a>
+        <a href="#orders">Órdenes</a>
+        <a href="#detail">Detalle</a>
+      </nav>
+
+      <div class="data-card">
+        <span>Fuente JSON</span>
+        <strong id="sourceStatus">Sin validar</strong>
+        <small id="sourceMeta">Esperando lectura...</small>
+      </div>
+    </aside>
+
+    <main class="main-content">
+      <section class="hero" id="overview">
+        <div>
+          <p class="eyebrow">Lazarus Dashboard</p>
+          <h2>Visualización de órdenes</h2>
+          <p class="hero-copy">Panel diseñado para revisar el estado general, identificar casos pendientes y consultar el detalle de una orden específica.</p>
+        </div>
+        <div class="hero-actions">
+          <button id="reloadBtn" class="primary-btn">Actualizar datos</button>
+          <button id="clearFiltersBtn" class="ghost-btn">Limpiar filtros</button>
+        </div>
+      </section>
+
+      <section id="emptyState" class="empty-state hidden">
+        <div class="empty-icon">◇</div>
+        <h3>No hay datos cargados</h3>
+        <p>Coloca el archivo <strong>latest_tracking_client.json</strong> en <strong>public/data/</strong> y presiona “Actualizar datos”.</p>
+      </section>
+
+      <section class="kpi-grid" id="kpiGrid">
+        <article class="kpi-card"><span>Total envíos</span><strong id="kpiTotal">0</strong><small id="kpiGenerated">Sin fecha</small></article>
+        <article class="kpi-card success"><span>Entregados</span><strong id="kpiDelivered">0</strong><small id="kpiDeliveredRate">0%</small></article>
+        <article class="kpi-card info"><span>En tránsito</span><strong id="kpiTransit">0</strong><small>En movimiento</small></article>
+        <article class="kpi-card warning"><span>Pendientes</span><strong id="kpiPending">0</strong><small>Programados / reintentos</small></article>
+        <article class="kpi-card danger"><span>Casos críticos</span><strong id="kpiCritical">0</strong><small>Requieren revisión</small></article>
+        <article class="kpi-card dark"><span>Devoluciones</span><strong id="kpiReturns">0</strong><small>Retornos registrados</small></article>
+      </section>
+
+      <section class="charts-grid" id="charts">
+        <article class="panel large-panel">
+          <div class="panel-header">
+            <div><h3>Distribución por estado</h3><p>Comparación visual de los estados principales.</p></div>
+          </div>
+          <div id="statusBars" class="bar-chart empty-chart"></div>
+        </article>
+
+        <article class="panel">
+          <div class="panel-header"><div><h3>Salud del servicio</h3><p>Relación entre entregados y pendientes.</p></div></div>
+          <div class="donut-wrap">
+            <div id="donutChart" class="donut empty-donut" style="--value:0"><span>0%</span></div>
+            <div class="donut-legend"><span><i></i> Entregados</span><span><i class="muted"></i> Resto</span></div>
+          </div>
+        </article>
+
+        <article class="panel">
+          <div class="panel-header"><div><h3>Categorías</h3><p>Agrupación calculada </p></div></div>
+          <div id="categoryList" class="category-list empty-chart"></div>
+        </article>
+
+        <article class="panel large-panel">
+          <div class="panel-header"><div><h3>Casos a revisar</h3><p>Vista rápida de incidencias, direcciones y retornos.</p></div></div>
+          <div id="riskStrip" class="risk-strip empty-chart"></div>
+        </article>
+      </section>
+
+      <section class="workspace" id="orders">
+        <article class="panel table-panel">
+          <div class="panel-header table-header">
+            <div><h3>Listado de órdenes</h3><p>Selecciona una fila para ver el detalle.</p></div>
+            <div class="record-counter" id="recordCounter">0 registros</div>
+          </div>
+
+          <div class="filters">
+            <input id="searchInput" type="search" placeholder="Buscar orden o waybill..." />
+            <select id="statusFilter"><option value="">Todos los estados</option></select>
+            <select id="categoryFilter"><option value="">Todas las categorías</option></select>
+            <select id="dateFilter"><option value="">Todas las fechas</option></select>
+          </div>
+
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Orden</th><th>Waybill</th><th>Fecha</th><th>Estado</th><th>Categoría</th></tr></thead>
+              <tbody id="ordersTable"><tr><td colspan="5" class="table-empty">Sin datos para mostrar</td></tr></tbody>
+            </table>
+          </div>
+        </article>
+
+        <article class="panel detail-panel" id="detail">
+          <div class="panel-header"><div><h3>Detalle de orden</h3><p>Información precisa del registro seleccionado.</p></div></div>
+          <div id="orderDetail" class="detail-empty">
+            <div class="empty-icon small">◇</div>
+            <p>Selecciona una orden para ver su detalle.</p>
+          </div>
+        </article>
+      </section>
+    </main>
+  </div>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
