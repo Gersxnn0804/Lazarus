@@ -1,62 +1,29 @@
-# Lazarus Dashboard V2
+# Lazarus Dashboard
 
-Dashboard web alimentado por el archivo `latest_tracking_client.json`.
+Dashboard web estático alimentado por `data/latest_tracking_client.json`.
 
-## Objetivo
+## Uso local
 
-Mostrar información de envíos de forma gráfica y permitir que el cliente consulte una orden específica para revisar su detalle.
+Abre `index.html` directamente en el navegador o usa una extensión tipo Live Server.
 
-## Estructura
+## Publicación en GitHub Pages
 
-```txt
-Lazarus_Dashboard_V2/
-├─ server.js
-├─ package.json
-├─ README.md
-└─ public/
-   ├─ index.html
-   ├─ css/styles.css
-   ├─ js/app.js
-   └─ data/latest_tracking_client.json
-```
+1. Sube estos archivos al repositorio.
+2. En GitHub: Settings > Pages.
+3. Source: Deploy from a branch.
+4. Branch: main / root.
+5. Guarda los cambios.
 
-## Cómo ejecutar
+La URL quedará disponible como:
 
-```powershell
-cd "C:\Users\kuram\OneDrive\Desktop\Lazarus_Dashboard_V2"
-npm install
-npm start
-```
+`https://Gersxnn0804.github.io/Lazarus/`
 
-Abrir en el navegador:
+## Actualización de datos
 
-```txt
-http://localhost:3000
-```
+Reemplaza el archivo:
 
-## Cómo cambiar el JSON
+`data/latest_tracking_client.json`
 
-Reemplazar el archivo:
+Luego realiza commit y push.
 
-```txt
-public/data/latest_tracking_client.json
-```
-
-Luego presionar el botón **Actualizar datos** en la página o refrescar el navegador.
-
-## Comportamiento sin JSON
-
-Si el archivo JSON no existe o tiene errores de formato, el dashboard queda vacío automáticamente:
-
-- KPIs en cero.
-- Gráficos vacíos.
-- Tabla sin registros.
-- Panel de detalle sin selección.
-
-## Endpoint local
-
-```txt
-http://localhost:3000/api/lazarus-data
-```
-
-Ese endpoint valida si el JSON existe y entrega los datos al frontend.
+Si el JSON no existe o no se puede leer, el dashboard queda vacío automáticamente.
