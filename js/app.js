@@ -612,3 +612,4 @@ function initAuth() {
 }
 
 document.addEventListener("DOMContentLoaded", initAuth);
+
