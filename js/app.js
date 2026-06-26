@@ -42,6 +42,7 @@ const el = {
   dateFilter: $("dateFilter"),
   recordCounter: $("recordCounter"),
   pageInfo: $("pageInfo"),
+  pageNumbers: $("pageNumbers"),
   prevPageBtn: $("prevPageBtn"),
   nextPageBtn: $("nextPageBtn"),
   ordersTable: $("ordersTable"),
@@ -70,8 +71,11 @@ function formatNumber(value) {
 
 function formatDateTime(value) {
   if (!value) return "Sin fecha";
+
   const date = new Date(value);
+
   if (Number.isNaN(date.getTime())) return String(value);
+
   return date.toLocaleString("es-CL", {
     year: "numeric",
     month: "2-digit",
@@ -109,10 +113,14 @@ function percent(value, total) {
 
 function showToast(message) {
   if (!el.toast) return;
+
   el.toast.textContent = message;
   el.toast.classList.remove("hidden");
+
   window.clearTimeout(showToast.timer);
-  showToast.timer = window.setTimeout(() => el.toast.classList.add("hidden"), 3200);
+  showToast.timer = window.setTimeout(() => {
+    el.toast.classList.add("hidden");
+  }, 3200);
 }
 
 function setAuthenticatedView(isAuthenticated) {
@@ -160,8 +168,10 @@ function resetDashboard(message = "No se encontró información disponible.") {
 
   el.statusBars.className = "bar-chart empty-chart";
   el.statusBars.innerHTML = "";
+
   el.categoryList.className = "category-list empty-chart";
   el.categoryList.innerHTML = "";
+
   el.dateBars.className = "bar-chart empty-chart";
   el.dateBars.innerHTML = "";
 
@@ -170,11 +180,18 @@ function resetDashboard(message = "No se encontró información disponible.") {
   el.donutChart.innerHTML = "<span>0%</span>";
 
   clearFilterOptions();
+
   el.recordCounter.textContent = "0 registros";
   el.pageInfo.textContent = "Página 1 de 1";
   el.prevPageBtn.disabled = true;
   el.nextPageBtn.disabled = true;
+
+  if (el.pageNumbers) {
+    el.pageNumbers.innerHTML = "";
+  }
+
   el.ordersTable.innerHTML = '<tr><td colspan="5" class="table-empty">Sin datos para mostrar</td></tr>';
+
   renderEmptyDetail();
 }
 
@@ -184,8 +201,8 @@ function buildCandidatePaths() {
   const repoName = pathname.split("/").filter(Boolean)[0] || "Lazarus";
 
   return [
-    `data/${DATA_FILE}?${cacheBuster}`,
     `./data/${DATA_FILE}?${cacheBuster}`,
+    `data/${DATA_FILE}?${cacheBuster}`,
     `${window.location.origin}/${repoName}/data/${DATA_FILE}?${cacheBuster}`,
     `/Lazarus/data/${DATA_FILE}?${cacheBuster}`
   ];
@@ -198,9 +215,14 @@ async function fetchJsonFromAvailablePaths() {
   for (const path of candidatePaths) {
     try {
       const response = await fetch(path, { cache: "no-store" });
+
       if (response.ok) {
-        return { data: await response.json(), path };
+        return {
+          data: await response.json(),
+          path
+        };
       }
+
       lastError = new Error(`HTTP ${response.status} leyendo ${path}`);
     } catch (error) {
       lastError = error;
@@ -260,7 +282,9 @@ function renderFilters() {
 
   const statuses = Object.keys(countBy(state.shipments, "status")).sort();
   const categories = Object.keys(countBy(state.shipments, "category")).sort();
-  const dates = [...new Set(state.shipments.map(item => item.lastEventDate).filter(Boolean))].sort().reverse();
+  const dates = [...new Set(state.shipments.map(item => item.lastEventDate).filter(Boolean))]
+    .sort()
+    .reverse();
 
   statuses.forEach(status => {
     el.statusFilter.insertAdjacentHTML("beforeend", `<option value="${escapeHtml(status)}">${escapeHtml(status)}</option>`);
@@ -313,14 +337,18 @@ function renderBars(container, items, total) {
         return `
           <div class="bar-row">
             <div class="bar-label">${escapeHtml(label)}</div>
-            <div class="bar-track"><div class="bar-fill" style="width:${width}%"></div></div>
+            <div class="bar-track">
+              <div class="bar-fill" style="width:${width}%"></div>
+            </div>
             <div class="bar-value">${formatNumber(value)}</div>
           </div>
         `;
       }).join("")
     : "";
 
-  if (!filteredItems.length) container.className = "bar-chart empty-chart";
+  if (!filteredItems.length) {
+    container.className = "bar-chart empty-chart";
+  }
 }
 
 function renderCharts() {
@@ -338,6 +366,7 @@ function renderCharts() {
   ], total);
 
   const categoryCounts = Object.entries(countBy(state.shipments, "category")).sort((a, b) => b[1] - a[1]);
+
   el.categoryList.className = "category-list";
   el.categoryList.innerHTML = categoryCounts.length
     ? categoryCounts.map(([category, value]) => `
@@ -347,13 +376,18 @@ function renderCharts() {
         </div>
       `).join("")
     : "";
-  if (!categoryCounts.length) el.categoryList.className = "category-list empty-chart";
+
+  if (!categoryCounts.length) {
+    el.categoryList.className = "category-list empty-chart";
+  }
 
   const dateCounts = Object.entries(countBy(state.shipments, "lastEventDate"))
     .filter(([date]) => date !== "Sin información")
     .sort((a, b) => b[1] - a[1])
     .slice(0, 10);
+
   const maxDateValue = Math.max(...dateCounts.map(([, value]) => value), 0);
+
   renderBars(el.dateBars, dateCounts, maxDateValue || 1);
 }
 
@@ -399,6 +433,51 @@ function sortFiltered(toggleDirection = true) {
   });
 }
 
+function getVisiblePages(currentPage, totalPages) {
+  if (totalPages <= 5) {
+    return Array.from({ length: totalPages }, (_, index) => index + 1);
+  }
+
+  if (currentPage <= 3) {
+    return [1, 2, 3, "...", totalPages];
+  }
+
+  if (currentPage >= totalPages - 2) {
+    return [1, "...", totalPages - 2, totalPages - 1, totalPages];
+  }
+
+  return [1, "...", currentPage, "...", totalPages];
+}
+
+function renderPagination(totalPages) {
+  el.pageInfo.textContent = `Página ${state.page} de ${totalPages}`;
+  el.prevPageBtn.disabled = state.page <= 1;
+  el.nextPageBtn.disabled = state.page >= totalPages;
+
+  if (!el.pageNumbers) return;
+
+  const pages = getVisiblePages(state.page, totalPages);
+
+  el.pageNumbers.innerHTML = pages.map(page => {
+    if (page === "...") {
+      return `<span class="page-ellipsis">...</span>`;
+    }
+
+    return `
+      <button class="page-number-btn ${page === state.page ? "active" : ""}" data-page="${page}">
+        ${page}
+      </button>
+    `;
+  }).join("");
+
+  el.pageNumbers.querySelectorAll(".page-number-btn").forEach(button => {
+    button.addEventListener("click", () => {
+      state.page = Number(button.dataset.page);
+      renderTable();
+    });
+  });
+}
+
 function renderTable() {
   el.recordCounter.textContent = `${formatNumber(state.filtered.length)} registros`;
 
@@ -406,21 +485,26 @@ function renderTable() {
     el.pageInfo.textContent = "Página 1 de 1";
     el.prevPageBtn.disabled = true;
     el.nextPageBtn.disabled = true;
+
+    if (el.pageNumbers) {
+      el.pageNumbers.innerHTML = "";
+    }
+
     el.ordersTable.innerHTML = '<tr><td colspan="5" class="table-empty">No hay registros que coincidan con los filtros</td></tr>';
     return;
   }
 
   const totalPages = Math.max(Math.ceil(state.filtered.length / PAGE_SIZE), 1);
   state.page = Math.min(Math.max(state.page, 1), totalPages);
+
+  renderPagination(totalPages);
+
   const start = (state.page - 1) * PAGE_SIZE;
   const visibleRows = state.filtered.slice(start, start + PAGE_SIZE);
 
-  el.pageInfo.textContent = `Página ${state.page} de ${totalPages}`;
-  el.prevPageBtn.disabled = state.page <= 1;
-  el.nextPageBtn.disabled = state.page >= totalPages;
-
   el.ordersTable.innerHTML = visibleRows.map(item => {
     const selected = state.selectedOrder === item.order ? "selected" : "";
+
     return `
       <tr class="${selected}" data-order="${escapeHtml(item.order)}">
         <td>${escapeHtml(item.order)}</td>
@@ -435,6 +519,7 @@ function renderTable() {
 
 function renderDetail(orderId) {
   const item = state.shipments.find(row => String(row.order) === String(orderId));
+
   if (!item) {
     renderEmptyDetail();
     return;
@@ -471,7 +556,9 @@ function clearFilters() {
   el.statusFilter.value = "";
   el.categoryFilter.value = "";
   el.dateFilter.value = "";
+
   state.selectedOrder = null;
+
   applyFilters();
   renderEmptyDetail();
 }
@@ -482,17 +569,32 @@ function exportCsv() {
     return;
   }
 
-  const headers = ["order", "waybill", "lastEventDate", "status", "category", "lastEventLabel", "lastEventDescription"];
-  const rows = state.filtered.map(item => headers.map(header => `"${String(item[header] ?? "").replaceAll('"', '""')}"`).join(","));
+  const headers = [
+    "order",
+    "waybill",
+    "lastEventDate",
+    "status",
+    "category",
+    "lastEventLabel",
+    "lastEventDescription"
+  ];
+
+  const rows = state.filtered.map(item =>
+    headers.map(header => `"${String(item[header] ?? "").replaceAll('"', '""')}"`).join(",")
+  );
+
   const csv = [headers.join(","), ...rows].join("\n");
   const blob = new Blob([csv], { type: "text/csv;charset=utf-8;" });
   const url = URL.createObjectURL(blob);
   const link = document.createElement("a");
+
   link.href = url;
   link.download = `lazarus_tracking_${new Date().toISOString().slice(0, 10)}.csv`;
+
   document.body.appendChild(link);
   link.click();
   document.body.removeChild(link);
+
   URL.revokeObjectURL(url);
 }
 
@@ -500,6 +602,7 @@ function bindDashboardEvents() {
   el.reloadBtn.addEventListener("click", () => loadData());
   el.exportBtn.addEventListener("click", exportCsv);
   el.clearFiltersBtn.addEventListener("click", clearFilters);
+
   el.searchInput.addEventListener("input", applyFilters);
   el.statusFilter.addEventListener("change", applyFilters);
   el.categoryFilter.addEventListener("change", applyFilters);
@@ -518,6 +621,7 @@ function bindDashboardEvents() {
   document.querySelectorAll(".sort-btn").forEach(button => {
     button.addEventListener("click", () => {
       const key = button.dataset.sort;
+
       if (state.sortKey !== key) {
         state.sortKey = key;
         state.sortDirection = "asc";
@@ -527,6 +631,7 @@ function bindDashboardEvents() {
         renderTable();
         return;
       }
+
       sortFiltered(false);
       state.page = 1;
       renderTable();
@@ -549,9 +654,13 @@ function startDashboard() {
   loadData();
 
   window.clearInterval(state.autoRefreshTimer);
+
   state.autoRefreshTimer = window.setInterval(() => {
-    if (localStorage.getItem(AUTH_KEY)) loadData({ silent: true });
+    if (localStorage.getItem(AUTH_KEY)) {
+      loadData({ silent: true });
+    }
   }, AUTO_REFRESH_MS);
+
   el.autoRefreshStatus.textContent = "Activo · 60s";
 }
 
@@ -596,6 +705,7 @@ function initAuth() {
 
     el.loginError.textContent = "";
     el.loginPassword.value = "";
+
     setAuthenticatedView(true);
     startDashboard();
   });
@@ -604,6 +714,7 @@ function initAuth() {
     localStorage.removeItem(AUTH_KEY);
     stopDashboard();
     setAuthenticatedView(false);
+
     el.loginUser.value = "";
     el.loginPassword.value = "";
     el.loginError.textContent = "";
