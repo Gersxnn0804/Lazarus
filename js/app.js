@@ -2,6 +2,83 @@ const DATA_URL = 'data/latest_tracking_client.json';
 const AUTO_REFRESH_MS = 60000;
 const PAGE_SIZE = 50;
 
+const AUTH_USERS = [
+  {
+    username: "DHLUniformes",
+    password: "Elmejoranalista.",
+    role: "DHL"
+  },
+  {
+    username: "LATAMUniformes",
+    password: "Latam_Uniformes2026",
+    role: "LATAM"
+  }
+];
+
+const AUTH_KEY = "lazarus_auth_session";
+
+function initAuth() {
+  const loginScreen = document.getElementById("loginScreen");
+  const appShell = document.getElementById("appShell");
+  const loginForm = document.getElementById("loginForm");
+  const loginUser = document.getElementById("loginUser");
+  const loginPassword = document.getElementById("loginPassword");
+  const loginError = document.getElementById("loginError");
+  const logoutBtn = document.getElementById("logoutBtn");
+
+  const currentSession = localStorage.getItem(AUTH_KEY);
+
+  if (currentSession) {
+    loginScreen.classList.add("hidden");
+    appShell.classList.remove("hidden");
+    return;
+  }
+
+  loginScreen.classList.remove("hidden");
+  appShell.classList.add("hidden");
+
+  loginForm.addEventListener("submit", (event) => {
+    event.preventDefault();
+
+    const username = loginUser.value.trim();
+    const password = loginPassword.value;
+
+    const validUser = AUTH_USERS.find(
+      (user) => user.username === username && user.password === password
+    );
+
+    if (!validUser) {
+      loginError.textContent = "Usuario o contraseña incorrectos.";
+      loginPassword.value = "";
+      return;
+    }
+
+    localStorage.setItem(
+      AUTH_KEY,
+      JSON.stringify({
+        username: validUser.username,
+        role: validUser.role,
+        loginAt: new Date().toISOString()
+      })
+    );
+
+    loginError.textContent = "";
+    loginScreen.classList.add("hidden");
+    appShell.classList.remove("hidden");
+
+    if (typeof loadTrackingData === "function") {
+      loadTrackingData();
+    }
+  });
+
+  logoutBtn.addEventListener("click", () => {
+    localStorage.removeItem(AUTH_KEY);
+    window.location.reload();
+  });
+}
+
+document.addEventListener("DOMContentLoaded", initAuth);
+
 const state = {
   raw: null,
   shipments: [],
