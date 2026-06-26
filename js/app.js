@@ -134,24 +134,52 @@ function renderEmptyDetail() {
   `;
 }
 
+async function fetchJsonFromAvailablePaths() {
+  const cacheBuster = `v=${Date.now()}`;
+
+  const candidatePaths = [
+    `data/latest_tracking_client.json?${cacheBuster}`,
+    `./data/latest_tracking_client.json?${cacheBuster}`,
+    `/Lazarus/data/latest_tracking_client.json?${cacheBuster}`
+  ];
+
+  let lastError = null;
+
+  for (const path of candidatePaths) {
+    try {
+      const response = await fetch(path, { cache: "no-store" });
+
+      if (response.ok) {
+        return {
+          data: await response.json(),
+          path
+        };
+      }
+
+      lastError = new Error(`HTTP ${response.status} leyendo ${path}`);
+    } catch (error) {
+      lastError = error;
+    }
+  }
+
+  throw lastError || new Error("No fue posible leer el JSON.");
+}
+
 async function loadData() {
   try {
     el.sourceStatus.textContent = "Leyendo JSON";
     el.sourceMeta.textContent = "Consultando data/latest_tracking_client.json...";
 
-    const response = await fetch(`data/latest_tracking_client.json?v=${Date.now()}`, {
-      cache: "no-store"
-    });
-
-    if (!response.ok) {
-      resetDashboard("No se encontró el archivo data/latest_tracking_client.json.");
+    if (window.location.protocol === "file:") {
+      resetDashboard("Estás abriendo el HTML directo desde Windows. Para leer JSON usa GitHub Pages, Live Server o un servidor local.");
       return;
     }
 
-    const data = await response.json();
+    const result = await fetchJsonFromAvailablePaths();
+    const data = result.data;
 
     if (!data || !Array.isArray(data.shipments)) {
-      resetDashboard("El JSON no contiene un arreglo válido de envíos.");
+      resetDashboard("El JSON existe, pero no contiene un arreglo válido en la propiedad shipments.");
       return;
     }
 
@@ -162,7 +190,7 @@ async function loadData() {
 
     el.emptyState.classList.add("hidden");
     el.sourceStatus.textContent = "Datos cargados";
-    el.sourceMeta.textContent = `${formatNumber(state.shipments.length)} registros · ${data.generatedAt || "sin fecha de generación"}`;
+    el.sourceMeta.textContent = `${formatNumber(state.shipments.length)} registros · ${data.generatedAt || "sin fecha de generación"} · ${result.path.split("?")[0]}`;
 
     renderFilters();
     applyFilters();
@@ -170,7 +198,7 @@ async function loadData() {
     renderCharts();
     renderEmptyDetail();
   } catch (error) {
-    resetDashboard("No fue posible leer el archivo JSON. Verifica que exista en data/latest_tracking_client.json.");
+    resetDashboard("No fue posible leer el JSON. Verifica que exista data/latest_tracking_client.json y que estés ejecutando la página desde GitHub Pages o Live Server.");
     console.error(error);
   }
 }
@@ -452,10 +480,10 @@ function initAuth() {
   el.loginForm.addEventListener("submit", event => {
     event.preventDefault();
 
-    const username = el.loginUser.value.trim();
+    const username = el.loginUser.value.trim().toLowerCase();
     const password = el.loginPassword.value;
 
-    const user = AUTH_USERS.find(item => item.username === username && item.password === password);
+    const user = AUTH_USERS.find(item => item.username.toLowerCase() === username && item.password === password);
 
     if (!user) {
       el.loginError.textContent = "Usuario o contraseña incorrectos.";
