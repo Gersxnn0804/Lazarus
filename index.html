@@ -7,6 +7,40 @@
   <link rel="stylesheet" href="css/styles.css" />
 </head>
 <body>
+  <section id="loginScreen" class="login-screen">
+    <div class="login-card">
+      <div class="login-glow"></div>
+
+      <div class="login-brand">
+        <div class="brand-mark">L</div>
+        <div>
+          <h1>Lazarus</h1>
+          <p>Secure Dashboard Access</p>
+        </div>
+      </div>
+
+      <div class="login-copy">
+        <h2>Bienvenido</h2>
+        <p>Ingresa tus credenciales para visualizar el dashboard de tracking.</p>
+      </div>
+
+      <form id="loginForm" class="login-form">
+        <label>
+          Usuario
+          <input id="loginUser" type="text" autocomplete="username" required />
+        </label>
+
+        <label>
+          Contraseña
+          <input id="loginPassword" type="password" autocomplete="current-password" required />
+        </label>
+
+        <button type="submit" class="login-btn">Ingresar a Lazarus</button>
+        <small id="loginError" class="login-error"></small>
+      </form>
+    </div>
+  </section>
+
   <div id="appShell" class="app-shell hidden">
     <aside class="sidebar">
       <div class="brand">
@@ -24,12 +58,15 @@
         <a href="#detail">Detalle</a>
       </nav>
 
-      <div class="data-card">
-        <span>Fuente JSON</span>
-        <strong id="sourceStatus">Sin validar</strong>
-        <small id="sourceMeta">Esperando lectura...</small>
+      <div class="sidebar-footer">
+        <div class="data-card">
+          <span>Fuente JSON</span>
+          <strong id="sourceStatus">Sin validar</strong>
+          <small id="sourceMeta">Esperando lectura...</small>
+        </div>
+
+        <button id="logoutBtn" class="logout-btn">Cerrar sesión</button>
       </div>
-      <button id="logoutBtn" class="logout-btn">Cerrar sesión</button>
     </aside>
 
     <main class="main-content">
@@ -37,7 +74,9 @@
         <div>
           <p class="eyebrow">Lazarus Dashboard</p>
           <h2>Visualización de envíos alimentada por JSON</h2>
-          <p class="hero-copy">Panel diseñado para revisar el estado general, identificar casos pendientes y consultar el detalle de una orden específica.</p>
+          <p class="hero-copy">
+            Panel diseñado para revisar el estado general, identificar casos pendientes y consultar el detalle de una orden específica.
+          </p>
         </div>
         <div class="hero-actions">
           <button id="reloadBtn" class="primary-btn">Actualizar datos</button>
@@ -48,41 +87,95 @@
       <section id="emptyState" class="empty-state hidden">
         <div class="empty-icon">◇</div>
         <h3>No hay datos cargados</h3>
-        <p>Coloca el archivo <strong>latest_tracking_client.json</strong> en <strong>data/</strong> y presiona “Actualizar datos”.</p>
+        <p>
+          Coloca el archivo <strong>latest_tracking_client.json</strong> en <strong>data/</strong> y presiona “Actualizar datos”.
+        </p>
       </section>
 
       <section class="kpi-grid" id="kpiGrid">
-        <article class="kpi-card"><span>Total envíos</span><strong id="kpiTotal">0</strong><small id="kpiGenerated">Sin fecha</small></article>
-        <article class="kpi-card success"><span>Entregados</span><strong id="kpiDelivered">0</strong><small id="kpiDeliveredRate">0%</small></article>
-        <article class="kpi-card info"><span>En tránsito</span><strong id="kpiTransit">0</strong><small>En movimiento</small></article>
-        <article class="kpi-card warning"><span>Pendientes</span><strong id="kpiPending">0</strong><small>Programados / reintentos</small></article>
-        <article class="kpi-card danger"><span>Casos críticos</span><strong id="kpiCritical">0</strong><small>Requieren revisión</small></article>
-        <article class="kpi-card dark"><span>Devoluciones</span><strong id="kpiReturns">0</strong><small>Retornos registrados</small></article>
+        <article class="kpi-card">
+          <span>Total envíos</span>
+          <strong id="kpiTotal">0</strong>
+          <small id="kpiGenerated">Sin fecha</small>
+        </article>
+
+        <article class="kpi-card success">
+          <span>Entregados</span>
+          <strong id="kpiDelivered">0</strong>
+          <small id="kpiDeliveredRate">0%</small>
+        </article>
+
+        <article class="kpi-card info">
+          <span>En tránsito</span>
+          <strong id="kpiTransit">0</strong>
+          <small>En movimiento</small>
+        </article>
+
+        <article class="kpi-card warning">
+          <span>Pendientes</span>
+          <strong id="kpiPending">0</strong>
+          <small>Programados / reintentos</small>
+        </article>
+
+        <article class="kpi-card danger">
+          <span>Casos críticos</span>
+          <strong id="kpiCritical">0</strong>
+          <small>Requieren revisión</small>
+        </article>
+
+        <article class="kpi-card dark">
+          <span>Devoluciones</span>
+          <strong id="kpiReturns">0</strong>
+          <small>Retornos registrados</small>
+        </article>
       </section>
 
       <section class="charts-grid" id="charts">
         <article class="panel large-panel">
           <div class="panel-header">
-            <div><h3>Distribución por estado</h3><p>Comparación visual de los estados principales.</p></div>
+            <div>
+              <h3>Distribución por estado</h3>
+              <p>Comparación visual de los estados principales.</p>
+            </div>
           </div>
           <div id="statusBars" class="bar-chart empty-chart"></div>
         </article>
 
         <article class="panel">
-          <div class="panel-header"><div><h3>Salud del servicio</h3><p>Relación entre entregados y pendientes.</p></div></div>
+          <div class="panel-header">
+            <div>
+              <h3>Salud del servicio</h3>
+              <p>Relación entre entregados y pendientes.</p>
+            </div>
+          </div>
           <div class="donut-wrap">
-            <div id="donutChart" class="donut empty-donut" style="--value:0"><span>0%</span></div>
-            <div class="donut-legend"><span><i></i> Entregados</span><span><i class="muted"></i> Resto</span></div>
+            <div id="donutChart" class="donut empty-donut" style="--value:0">
+              <span>0%</span>
+            </div>
+            <div class="donut-legend">
+              <span><i></i> Entregados</span>
+              <span><i class="muted"></i> Resto</span>
+            </div>
           </div>
         </article>
 
         <article class="panel">
-          <div class="panel-header"><div><h3>Categorías</h3><p>Agrupación calculada desde el JSON.</p></div></div>
+          <div class="panel-header">
+            <div>
+              <h3>Categorías</h3>
+              <p>Agrupación calculada desde el JSON.</p>
+            </div>
+          </div>
           <div id="categoryList" class="category-list empty-chart"></div>
         </article>
 
         <article class="panel large-panel">
-          <div class="panel-header"><div><h3>Casos a revisar</h3><p>Vista rápida de incidencias, direcciones y retornos.</p></div></div>
+          <div class="panel-header">
+            <div>
+              <h3>Casos a revisar</h3>
+              <p>Vista rápida de incidencias, direcciones y retornos.</p>
+            </div>
+          </div>
           <div id="riskStrip" class="risk-strip empty-chart"></div>
         </article>
       </section>
@@ -90,27 +183,53 @@
       <section class="workspace" id="orders">
         <article class="panel table-panel">
           <div class="panel-header table-header">
-            <div><h3>Listado de órdenes</h3><p>Selecciona una fila para ver el detalle.</p></div>
+            <div>
+              <h3>Listado de órdenes</h3>
+              <p>Selecciona una fila para ver el detalle.</p>
+            </div>
             <div class="record-counter" id="recordCounter">0 registros</div>
           </div>
 
           <div class="filters">
             <input id="searchInput" type="search" placeholder="Buscar orden o waybill..." />
-            <select id="statusFilter"><option value="">Todos los estados</option></select>
-            <select id="categoryFilter"><option value="">Todas las categorías</option></select>
-            <select id="dateFilter"><option value="">Todas las fechas</option></select>
+            <select id="statusFilter">
+              <option value="">Todos los estados</option>
+            </select>
+            <select id="categoryFilter">
+              <option value="">Todas las categorías</option>
+            </select>
+            <select id="dateFilter">
+              <option value="">Todas las fechas</option>
+            </select>
           </div>
 
           <div class="table-wrap">
             <table>
-              <thead><tr><th>Orden</th><th>Waybill</th><th>Fecha</th><th>Estado</th><th>Categoría</th></tr></thead>
-              <tbody id="ordersTable"><tr><td colspan="5" class="table-empty">Sin datos para mostrar</td></tr></tbody>
+              <thead>
+                <tr>
+                  <th>Orden</th>
+                  <th>Waybill</th>
+                  <th>Fecha</th>
+                  <th>Estado</th>
+                  <th>Categoría</th>
+                </tr>
+              </thead>
+              <tbody id="ordersTable">
+                <tr>
+                  <td colspan="5" class="table-empty">Sin datos para mostrar</td>
+                </tr>
+              </tbody>
             </table>
           </div>
         </article>
 
         <article class="panel detail-panel" id="detail">
-          <div class="panel-header"><div><h3>Detalle de orden</h3><p>Información precisa del registro seleccionado.</p></div></div>
+          <div class="panel-header">
+            <div>
+              <h3>Detalle de orden</h3>
+              <p>Información precisa del registro seleccionado.</p>
+            </div>
+          </div>
           <div id="orderDetail" class="detail-empty">
             <div class="empty-icon small">◇</div>
             <p>Selecciona una orden para ver su detalle.</p>
@@ -122,18 +241,4 @@
 
   <script src="js/app.js"></script>
 </body>
-  <section id="loginScreen" class="login-screen">
-    <div class="login-card">
-      <div class="brand-mark login-logo">L</div>
-      <h1>Lazarus</h1>
-      <p>Acceso privado al dashboard</p>
-  
-      <form id="loginForm">
-        <input id="loginUser" type="text" placeholder="Usuario" autocomplete="username" required />
-        <input id="loginPassword" type="password" placeholder="Contraseña" autocomplete="current-password" required />
-        <button type="submit" class="primary-btn">Ingresar</button>
-        <small id="loginError" class="login-error"></small>
-      </form>
-    </div>
-  </section>
 </html>
