@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="css/styles.css" />
 </head>
 <body>
-  <div class="app-shell">
+  <div id="appShell" class="app-shell hidden">
     <aside class="sidebar">
       <div class="brand">
         <div class="brand-mark">L</div>
@@ -29,6 +29,7 @@
         <strong id="sourceStatus">Sin validar</strong>
         <small id="sourceMeta">Esperando lectura...</small>
       </div>
+      <button id="logoutBtn" class="logout-btn">Cerrar sesión</button>
     </aside>
 
     <main class="main-content">
@@ -121,4 +122,18 @@
 
   <script src="js/app.js"></script>
 </body>
+  <section id="loginScreen" class="login-screen">
+    <div class="login-card">
+      <div class="brand-mark login-logo">L</div>
+      <h1>Lazarus</h1>
+      <p>Acceso privado al dashboard</p>
+  
+      <form id="loginForm">
+        <input id="loginUser" type="text" placeholder="Usuario" autocomplete="username" required />
+        <input id="loginPassword" type="password" placeholder="Contraseña" autocomplete="current-password" required />
+        <button type="submit" class="primary-btn">Ingresar</button>
+        <small id="loginError" class="login-error"></small>
+      </form>
+    </div>
+  </section>
 </html>
