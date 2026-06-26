@@ -113,7 +113,9 @@
         <div>
           <p class="eyebrow">Dashboard web mediante JSON</p>
           <h2>Visibilidad logística para seguimiento cliente</h2>
-          <p class="hero-copy">Lazarus transforma el archivo <strong>latest_tracking_client.json</strong> en indicadores, filtros y detalle operacional para consulta rápida.</p>
+          <p class="hero-copy">
+            Lazarus transforma el archivo <strong>latest_tracking_client.json</strong> en indicadores, filtros y detalle operacional para consulta rápida.
+          </p>
         </div>
         <div class="hero-actions">
           <button id="reloadBtn" class="primary-btn">Actualizar datos</button>
@@ -171,7 +173,10 @@
       <section class="workspace" id="orders">
         <article class="panel table-panel">
           <div class="panel-header table-header">
-            <div><h3>Listado de envíos</h3><p>Busca, filtra, ordena y selecciona un registro.</p></div>
+            <div>
+              <h3>Listado de envíos</h3>
+              <p>Busca, filtra, ordena y selecciona un registro.</p>
+            </div>
             <div class="record-counter" id="recordCounter">0 registros</div>
           </div>
 
@@ -182,11 +187,13 @@
             <select id="dateFilter"><option value="">Todas las fechas</option></select>
           </div>
 
-          <div class="table-toolbar">
-            <span id="pageInfo">Página 1 de 1</span>
-            <div>
-              <button id="prevPageBtn" class="mini-btn">Anterior</button>
-              <button id="nextPageBtn" class="mini-btn">Siguiente</button>
+          <div class="pagination-bar">
+            <div class="page-title" id="pageInfo">Página 1 de 1</div>
+
+            <div class="pagination-actions">
+              <button id="prevPageBtn" class="page-btn page-btn-muted">‹ Anterior</button>
+              <div id="pageNumbers" class="page-numbers"></div>
+              <button id="nextPageBtn" class="page-btn page-btn-primary">Siguiente ›</button>
             </div>
           </div>
 
@@ -194,11 +201,11 @@
             <table>
               <thead>
                 <tr>
-                  <th><button class="sort-btn" data-sort="order">Orden</button></th>
-                  <th><button class="sort-btn" data-sort="waybill">Waybill</button></th>
-                  <th><button class="sort-btn" data-sort="lastEventDate">Fecha</button></th>
-                  <th><button class="sort-btn" data-sort="status">Estado</button></th>
-                  <th><button class="sort-btn" data-sort="category">Categoría</button></th>
+                  <th><button class="sort-btn" data-sort="order">Orden <span>↕</span></button></th>
+                  <th><button class="sort-btn" data-sort="waybill">Waybill <span>↕</span></button></th>
+                  <th><button class="sort-btn" data-sort="lastEventDate">Fecha <span>↕</span></button></th>
+                  <th><button class="sort-btn" data-sort="status">Estado <span>↕</span></button></th>
+                  <th><button class="sort-btn" data-sort="category">Categoría <span>↕</span></button></th>
                 </tr>
               </thead>
               <tbody id="ordersTable"><tr><td colspan="5" class="table-empty">Sin datos para mostrar</td></tr></tbody>
