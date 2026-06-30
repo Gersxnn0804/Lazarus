@@ -376,6 +376,8 @@ function getFirstArray(...candidates) {
 
 function getStockoutSource() {
   return getFirstArray(
+    state.raw?.inventoryThermometer?.topCriticalItems,
+    state.raw?.inventoryThermometer?.items,
     state.raw?.stockBreaks,
     state.raw?.stockBreakItems,
     state.raw?.stockBreaksByItem,
@@ -402,6 +404,7 @@ function getStockoutSource() {
 
 function normalizeStockoutValue(item) {
   const rawValue = item.stockoutIndex
+    ?? item.severity
     ?? item.indiceQuiebre
     ?? item.indice_quiebre
     ?? item.breakIndex
@@ -457,7 +460,7 @@ function normalizeStockoutItems() {
       const unit = item.unit
         || item.unitLabel
         || item.unidad
-        || (item.missingUnits || item.unidadesFaltantes ? "unid." : "");
+        || ("severity" in item ? "%" : "");
 
       return {
         label: safeText(label),
