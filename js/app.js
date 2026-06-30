@@ -74,6 +74,7 @@ function formatNumber(value) {
 
 function formatPercent(value) {
   const numeric = Number(value || 0);
+
   return numeric.toLocaleString("es-CL", {
     minimumFractionDigits: numeric % 1 === 0 ? 0 : 1,
     maximumFractionDigits: 1
@@ -159,6 +160,8 @@ function renderEmptyDetail() {
 }
 
 function renderEmptyStockout() {
+  if (!el.stockoutThermometer || !el.stockoutList) return;
+
   el.stockoutThermometer.style.setProperty("--level", 0);
   el.stockoutList.className = "stockout-list empty-stockout";
   el.stockoutList.innerHTML = `
@@ -193,8 +196,8 @@ function resetDashboard(message = "No se encontró información disponible.") {
   el.donutChart.style.setProperty("--value", 0);
   el.donutChart.innerHTML = "<span>0%<small>Entregados</small></span>";
   el.donutLegend.innerHTML = "";
-  renderEmptyStockout();
 
+  renderEmptyStockout();
   clearFilterOptions();
 
   el.searchInput.value = "";
@@ -227,9 +230,14 @@ async function fetchJsonFromAvailablePaths() {
   for (const path of candidatePaths) {
     try {
       const response = await fetch(path, { cache: "no-store" });
+
       if (response.ok) {
-        return { data: await response.json(), path };
+        return {
+          data: await response.json(),
+          path
+        };
       }
+
       lastError = new Error(`HTTP ${response.status} leyendo ${path}`);
     } catch (error) {
       lastError = error;
@@ -478,7 +486,7 @@ function normalizeStockoutItems() {
         affectedOrders: Number(item.affectedOrders || item.ordenesAfectadas || 0),
         missingUnits: Number(item.missingUnits || item.unidadesFaltantes || 0),
         requiredUnits: Number(item.requiredUnits || item.unidadesRequeridas || 0),
-        availableUnits: Number(item.availableUnits || item.unidadesDisponibles || 0),
+        availableUnits: Number(item.availableUnits ?? item.unidadesDisponibles ?? 0),
         orderTypes: Array.isArray(item.orderTypes) ? item.orderTypes : []
       };
     })
@@ -522,28 +530,6 @@ function normalizeStockoutItems() {
     orderTypes: []
   }));
 }
-  const itemKeyCandidates = ["item", "sku", "itemCode", "productCode", "material", "codigo", "code"];
-  const detectedKey = itemKeyCandidates.find(key => state.shipments.some(row => row[key]));
-  if (!detectedKey) return [];
-
-  const criticalWords = /quiebre|stock|sin stock|no stock|no fill|nofill|agotado|insuficiente/i;
-  const criticalShipments = state.shipments.filter(row => criticalWords.test([
-    row.status,
-    row.category,
-    row.lastEventLabel,
-    row.lastEventDescription,
-    row.observation,
-    row.observacion,
-    row.notes
-  ].join(" ")));
-
-  const counts = Object.entries(countBy(criticalShipments, detectedKey))
-    .filter(([label]) => label !== "Sin información")
-    .sort((a, b) => b[1] - a[1])
-    .slice(0, 5);
-
-  return counts.map(([label, value]) => ({ label, value, unit: "casos" }));
-}
 
 function renderStockoutThermometer() {
   const items = normalizeStockoutItems();
@@ -562,7 +548,15 @@ function renderStockoutThermometer() {
   el.stockoutList.innerHTML = items.map((item, index) => {
     const width = maxValue <= 100 ? item.value : percent(item.value, maxValue);
     const score = Number.isInteger(item.value) ? formatNumber(item.value) : formatPercent(item.value);
-    const suffix = item.unit ? ` ${escapeHtml(item.unit)}` : (maxValue <= 100 ? "%" : "");
+
+    const suffix = item.unit === "%"
+      ? "%"
+      : item.unit
+        ? ` ${escapeHtml(item.unit)}`
+        : maxValue <= 100
+          ? "%"
+          : "";
+
     const detailParts = [];
 
     if (item.level && item.level !== "Sin información") detailParts.push(item.level);
@@ -776,8 +770,20 @@ function exportCsv() {
     return;
   }
 
-  const headers = ["order", "waybill", "lastEventDate", "status", "category", "lastEventLabel", "lastEventDescription"];
-  const rows = state.filtered.map(item => headers.map(header => `"${String(item[header] ?? "").replaceAll('"', '""')}"`).join(","));
+  const headers = [
+    "order",
+    "waybill",
+    "lastEventDate",
+    "status",
+    "category",
+    "lastEventLabel",
+    "lastEventDescription"
+  ];
+
+  const rows = state.filtered.map(item => {
+    return headers.map(header => `"${String(item[header] ?? "").replaceAll('"', '""')}"`).join(",");
+  });
+
   const csv = [headers.join(","), ...rows].join("\n");
   const blob = new Blob([csv], { type: "text/csv;charset=utf-8;" });
   const url = URL.createObjectURL(blob);
