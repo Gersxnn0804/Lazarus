@@ -1,7 +1,6 @@
-
 {
-  "schemaVersion": "1.0.0",
-  "generatedAt": "2026-06-25T22:16:01",
+  "schemaVersion": "1.1.0",
+  "generatedAt": "2026-06-30T12:23:11",
   "source": {
     "platform": "Polaris",
     "module": "Tracking",
@@ -17,6 +16,164 @@
     "returns": 14,
     "incidents": 12,
     "critical": 14
+  },
+  "inventoryHealth": {
+    "available": true,
+    "overallScore": 32,
+    "level": "CRITICAL",
+    "criticalItems": 1,
+    "highItems": 1,
+    "mediumItems": 6,
+    "lowItems": 5,
+    "totalShortageItems": 13,
+    "missingUnits": 56,
+    "affectedOrders": 26
+  },
+  "inventoryThermometer": {
+    "available": true,
+    "generatedAt": "2026-06-30T12:23:11",
+    "topCriticalItems": [
+      {
+        "item": "10075752",
+        "description": "",
+        "affectedOrders": 6,
+        "missingUnits": 8,
+        "requiredUnits": 8,
+        "availableUnits": 0,
+        "orderTypes": [
+          "B2C"
+        ],
+        "severity": 100.0,
+        "level": "CRITICAL",
+        "trend": "NEW"
+      },
+      {
+        "item": "10075178",
+        "description": "",
+        "affectedOrders": 5,
+        "missingUnits": 5,
+        "requiredUnits": 10,
+        "availableUnits": 5,
+        "orderTypes": [
+          "B2C"
+        ],
+        "severity": 76.04,
+        "level": "HIGH",
+        "trend": "NEW"
+      },
+      {
+        "item": "100000000200031336",
+        "description": "",
+        "affectedOrders": 2,
+        "missingUnits": 7,
+        "requiredUnits": 7,
+        "availableUnits": 0,
+        "orderTypes": [
+          "B2C"
+        ],
+        "severity": 52.29,
+        "level": "MEDIUM",
+        "trend": "NEW"
+      },
+      {
+        "item": "10075355",
+        "description": "",
+        "affectedOrders": 3,
+        "missingUnits": 4,
+        "requiredUnits": 4,
+        "availableUnits": 0,
+        "orderTypes": [
+          "B2C"
+        ],
+        "severity": 50.0,
+        "level": "MEDIUM",
+        "trend": "NEW"
+      },
+      {
+        "item": "100000000200004742",
+        "description": "",
+        "affectedOrders": 2,
+        "missingUnits": 6,
+        "requiredUnits": 6,
+        "availableUnits": 0,
+        "orderTypes": [
+          "B2C"
+        ],
+        "severity": 47.92,
+        "level": "MEDIUM",
+        "trend": "NEW"
+      },
+      {
+        "item": "100000000200004738",
+        "description": "",
+        "affectedOrders": 2,
+        "missingUnits": 6,
+        "requiredUnits": 6,
+        "availableUnits": 0,
+        "orderTypes": [
+          "B2C"
+        ],
+        "severity": 47.92,
+        "level": "MEDIUM",
+        "trend": "NEW"
+      },
+      {
+        "item": "100000000200004759",
+        "description": "",
+        "affectedOrders": 2,
+        "missingUnits": 6,
+        "requiredUnits": 6,
+        "availableUnits": 0,
+        "orderTypes": [
+          "B2C"
+        ],
+        "severity": 47.92,
+        "level": "MEDIUM",
+        "trend": "NEW"
+      },
+      {
+        "item": "10075758",
+        "description": "",
+        "affectedOrders": 3,
+        "missingUnits": 3,
+        "requiredUnits": 3,
+        "availableUnits": 0,
+        "orderTypes": [
+          "B2C"
+        ],
+        "severity": 45.62,
+        "level": "MEDIUM",
+        "trend": "NEW"
+      },
+      {
+        "item": "100000000200002967",
+        "description": "",
+        "affectedOrders": 2,
+        "missingUnits": 2,
+        "requiredUnits": 2,
+        "availableUnits": 0,
+        "orderTypes": [
+          "B2C"
+        ],
+        "severity": 30.42,
+        "level": "LOW",
+        "trend": "NEW"
+      },
+      {
+        "item": "100000000200004745",
+        "description": "",
+        "affectedOrders": 1,
+        "missingUnits": 3,
+        "requiredUnits": 3,
+        "availableUnits": 0,
+        "orderTypes": [
+          "B2C"
+        ],
+        "severity": 23.96,
+        "level": "LOW",
+        "trend": "NEW"
+      }
+    ]
   },
   "shipments": [
     {
