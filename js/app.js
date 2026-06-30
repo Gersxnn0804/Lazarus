@@ -378,6 +378,9 @@ function getStockoutSource() {
   return getFirstArray(
     state.raw?.inventoryThermometer?.topCriticalItems,
     state.raw?.inventoryThermometer?.items,
+    state.raw?.inventoryThermometer?.criticalItems,
+    state.raw?.inventoryThermometer?.data,
+
     state.raw?.stockBreaks,
     state.raw?.stockBreakItems,
     state.raw?.stockBreaksByItem,
@@ -387,12 +390,14 @@ function getStockoutSource() {
     state.raw?.quiebresStock,
     state.raw?.itemsQuiebreStock,
     state.raw?.itemsConQuiebre,
+
     state.raw?.analytics?.stockBreaks,
     state.raw?.analytics?.stockBreakItems,
     state.raw?.analytics?.stockBreaksByItem,
     state.raw?.analytics?.stockoutItems,
     state.raw?.analytics?.stockouts,
     state.raw?.analytics?.quiebresStock,
+
     state.raw?.summary?.stockBreaks,
     state.raw?.summary?.stockBreakItems,
     state.raw?.summary?.stockBreaksByItem,
@@ -430,6 +435,7 @@ function normalizeStockoutValue(item) {
     "percentage" in item ||
     "percent" in item ||
     "stockoutIndex" in item ||
+    "severity" in item ||
     "indiceQuiebre" in item ||
     "indice_quiebre" in item
   )) {
@@ -464,8 +470,16 @@ function normalizeStockoutItems() {
 
       return {
         label: safeText(label),
+        description: safeText(item.description || item.descripcion || ""),
         value,
-        unit
+        unit,
+        level: safeText(item.level || item.nivel || ""),
+        trend: safeText(item.trend || item.tendencia || ""),
+        affectedOrders: Number(item.affectedOrders || item.ordenesAfectadas || 0),
+        missingUnits: Number(item.missingUnits || item.unidadesFaltantes || 0),
+        requiredUnits: Number(item.requiredUnits || item.unidadesRequeridas || 0),
+        availableUnits: Number(item.availableUnits || item.unidadesDisponibles || 0),
+        orderTypes: Array.isArray(item.orderTypes) ? item.orderTypes : []
       };
     })
       .filter(item => item.label !== "Sin información" && item.value > 0)
@@ -473,6 +487,41 @@ function normalizeStockoutItems() {
       .slice(0, 5);
   }
 
+  const itemKeyCandidates = ["item", "sku", "itemCode", "productCode", "material", "codigo", "code"];
+  const detectedKey = itemKeyCandidates.find(key => state.shipments.some(row => row[key]));
+
+  if (!detectedKey) return [];
+
+  const criticalWords = /quiebre|stock|sin stock|no stock|no fill|nofill|agotado|insuficiente/i;
+  const criticalShipments = state.shipments.filter(row => criticalWords.test([
+    row.status,
+    row.category,
+    row.lastEventLabel,
+    row.lastEventDescription,
+    row.observation,
+    row.observacion,
+    row.notes
+  ].join(" ")));
+
+  const counts = Object.entries(countBy(criticalShipments, detectedKey))
+    .filter(([label]) => label !== "Sin información")
+    .sort((a, b) => b[1] - a[1])
+    .slice(0, 5);
+
+  return counts.map(([label, value]) => ({
+    label,
+    description: "",
+    value,
+    unit: "casos",
+    level: "",
+    trend: "",
+    affectedOrders: 0,
+    missingUnits: 0,
+    requiredUnits: 0,
+    availableUnits: 0,
+    orderTypes: []
+  }));
+}
   const itemKeyCandidates = ["item", "sku", "itemCode", "productCode", "material", "codigo", "code"];
   const detectedKey = itemKeyCandidates.find(key => state.shipments.some(row => row[key]));
   if (!detectedKey) return [];
@@ -514,11 +563,21 @@ function renderStockoutThermometer() {
     const width = maxValue <= 100 ? item.value : percent(item.value, maxValue);
     const score = Number.isInteger(item.value) ? formatNumber(item.value) : formatPercent(item.value);
     const suffix = item.unit ? ` ${escapeHtml(item.unit)}` : (maxValue <= 100 ? "%" : "");
+    const detailParts = [];
+
+    if (item.level && item.level !== "Sin información") detailParts.push(item.level);
+    if (item.affectedOrders) detailParts.push(`${formatNumber(item.affectedOrders)} órdenes`);
+    if (item.missingUnits) detailParts.push(`${formatNumber(item.missingUnits)} unid. faltantes`);
+    if (item.requiredUnits) detailParts.push(`${formatNumber(item.requiredUnits)} unid. requeridas`);
+    if (item.availableUnits || item.availableUnits === 0) detailParts.push(`${formatNumber(item.availableUnits)} stock disponible`);
+    if (item.orderTypes.length) detailParts.push(item.orderTypes.join(" / "));
+
+    const detailText = detailParts.length ? detailParts.join(" · ") : "Sin detalle adicional";
 
     return `
       <div class="stockout-row risk-${index + 1}">
         <span class="rank">${index + 1}</span>
-        <span class="stockout-name" title="${escapeHtml(item.label)}">${escapeHtml(item.label)}</span>
+        <span class="stockout-name" title="${escapeHtml(detailText)}">${escapeHtml(item.label)}</span>
         <div class="stockout-track">
           <div class="stockout-fill" style="width:${Math.max(Math.min(width, 100), 3)}%"></div>
         </div>
