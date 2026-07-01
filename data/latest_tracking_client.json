@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.1.0",
-  "generatedAt": "2026-07-01T11:23:53",
+  "generatedAt": "2026-07-01T12:07:33",
   "source": {
     "platform": "Polaris",
     "module": "Tracking",
@@ -25,142 +25,174 @@
     "healthPercentage": 72.8,
     "level": "ATTENTION"
   },
-  "stockImpact": {
+  "inventoryThermometer": {
     "available": true,
-    "generatedAt": "2026-07-01T11:23:53",
+    "generatedAt": "2026-07-01T12:07:33",
+    "totalAuditOrders": 125,
     "totalNoFillOrders": 34,
-    "topItems": [
+    "metric": "affected_orders_over_total_audit_orders",
+    "topCriticalItems": [
       {
         "item": "100000000200004751",
         "description": "",
+        "stockoutIndex": 5.6,
+        "value": 5.6,
+        "unit": "%",
         "affectedOrders": 7,
-        "affectedPercentage": 20.59,
+        "totalAuditOrders": 125,
+        "affectedRatio": "7/125",
         "missingUnits": 20,
         "requiredUnits": 20,
         "availableUnits": 0,
         "orderTypes": [
           "B2BDOR",
           "B2C"
-        ],
-        "metric": "affectedOrders"
+        ]
       },
       {
         "item": "10075752",
         "description": "",
+        "stockoutIndex": 4.8,
+        "value": 4.8,
+        "unit": "%",
         "affectedOrders": 6,
-        "affectedPercentage": 17.65,
+        "totalAuditOrders": 125,
+        "affectedRatio": "6/125",
         "missingUnits": 8,
         "requiredUnits": 8,
         "availableUnits": 0,
         "orderTypes": [
           "B2C"
-        ],
-        "metric": "affectedOrders"
+        ]
       },
       {
         "item": "100000000200004759",
         "description": "",
+        "stockoutIndex": 4.0,
+        "value": 4.0,
+        "unit": "%",
         "affectedOrders": 5,
-        "affectedPercentage": 14.71,
+        "totalAuditOrders": 125,
+        "affectedRatio": "5/125",
         "missingUnits": 15,
         "requiredUnits": 15,
         "availableUnits": 0,
         "orderTypes": [
           "B2BDOR",
           "B2C"
-        ],
-        "metric": "affectedOrders"
+        ]
       },
       {
         "item": "10075178",
         "description": "",
+        "stockoutIndex": 4.0,
+        "value": 4.0,
+        "unit": "%",
         "affectedOrders": 5,
-        "affectedPercentage": 14.71,
+        "totalAuditOrders": 125,
+        "affectedRatio": "5/125",
         "missingUnits": 5,
         "requiredUnits": 10,
         "availableUnits": 5,
         "orderTypes": [
           "B2C"
-        ],
-        "metric": "affectedOrders"
+        ]
       },
       {
         "item": "10075355",
         "description": "",
+        "stockoutIndex": 2.4,
+        "value": 2.4,
+        "unit": "%",
         "affectedOrders": 3,
-        "affectedPercentage": 8.82,
+        "totalAuditOrders": 125,
+        "affectedRatio": "3/125",
         "missingUnits": 4,
         "requiredUnits": 4,
         "availableUnits": 0,
         "orderTypes": [
           "B2C"
-        ],
-        "metric": "affectedOrders"
+        ]
       },
       {
         "item": "10075758",
         "description": "",
+        "stockoutIndex": 2.4,
+        "value": 2.4,
+        "unit": "%",
         "affectedOrders": 3,
-        "affectedPercentage": 8.82,
+        "totalAuditOrders": 125,
+        "affectedRatio": "3/125",
         "missingUnits": 3,
         "requiredUnits": 3,
         "availableUnits": 0,
         "orderTypes": [
           "B2C"
-        ],
-        "metric": "affectedOrders"
+        ]
       },
       {
         "item": "100000000200031336",
         "description": "",
+        "stockoutIndex": 1.6,
+        "value": 1.6,
+        "unit": "%",
         "affectedOrders": 2,
-        "affectedPercentage": 5.88,
+        "totalAuditOrders": 125,
+        "affectedRatio": "2/125",
         "missingUnits": 7,
         "requiredUnits": 7,
         "availableUnits": 0,
         "orderTypes": [
           "B2C"
-        ],
-        "metric": "affectedOrders"
+        ]
       },
       {
         "item": "100000000200004742",
         "description": "",
+        "stockoutIndex": 1.6,
+        "value": 1.6,
+        "unit": "%",
         "affectedOrders": 2,
-        "affectedPercentage": 5.88,
+        "totalAuditOrders": 125,
+        "affectedRatio": "2/125",
         "missingUnits": 6,
         "requiredUnits": 6,
         "availableUnits": 0,
         "orderTypes": [
           "B2C"
-        ],
-        "metric": "affectedOrders"
+        ]
       },
       {
         "item": "100000000200002967",
         "description": "",
+        "stockoutIndex": 1.6,
+        "value": 1.6,
+        "unit": "%",
         "affectedOrders": 2,
-        "affectedPercentage": 5.88,
+        "totalAuditOrders": 125,
+        "affectedRatio": "2/125",
         "missingUnits": 2,
         "requiredUnits": 2,
         "availableUnits": 0,
         "orderTypes": [
           "B2C"
-        ],
-        "metric": "affectedOrders"
+        ]
       },
       {
         "item": "100000000200004806",
         "description": "",
+        "stockoutIndex": 0.8,
+        "value": 0.8,
+        "unit": "%",
         "affectedOrders": 1,
-        "affectedPercentage": 2.94,
+        "totalAuditOrders": 125,
+        "affectedRatio": "1/125",
         "missingUnits": 3,
         "requiredUnits": 3,
         "availableUnits": 0,
         "orderTypes": [
           "B2BDOR"
-        ],
-        "metric": "affectedOrders"
+        ]
       }
     ]
   },
