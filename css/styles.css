@@ -1459,3 +1459,32 @@ tbody tr.selected {
     flex: 1;
   }
 }
+
+
+/* Thermometer dynamic scale + full stockout list */
+.stockout-panel .stockout-layout {
+  align-items: start;
+}
+
+.stockout-panel .stockout-list {
+  max-height: 220px;
+  overflow-y: auto;
+  padding-right: 8px;
+}
+
+.stockout-panel .stockout-list::-webkit-scrollbar {
+  width: 8px;
+}
+
+.stockout-panel .stockout-list::-webkit-scrollbar-thumb {
+  border-radius: 999px;
+  background: rgba(56, 189, 248, .28);
+}
+
+.stockout-row {
+  grid-template-columns: 28px minmax(140px, 210px) minmax(160px, 1fr) minmax(110px, auto);
+}
+
+.stockout-row strong {
+  white-space: nowrap;
+}
