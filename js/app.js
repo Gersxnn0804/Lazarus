@@ -239,6 +239,44 @@ async function fetchJsonFromAvailablePaths() {
   throw lastError || new Error("No fue posible leer el JSON.");
 }
 
+function getCurrentViewState() {
+  return {
+    search: el.searchInput?.value || "",
+    status: el.statusFilter?.value || "",
+    category: el.categoryFilter?.value || "",
+    date: el.dateFilter?.value || "",
+    selectedShipmentId: state.selectedShipmentId,
+    page: state.page
+  };
+}
+
+function setSelectValueIfExists(selectElement, value) {
+  if (!selectElement || !value) return false;
+
+  const exists = [...selectElement.options].some(option => option.value === value);
+
+  if (exists) {
+    selectElement.value = value;
+    return true;
+  }
+
+  selectElement.value = "";
+  return false;
+}
+
+function restoreCurrentViewState(viewState) {
+  if (!viewState) return;
+
+  el.searchInput.value = viewState.search || "";
+
+  setSelectValueIfExists(el.statusFilter, viewState.status);
+  setSelectValueIfExists(el.categoryFilter, viewState.category);
+  setSelectValueIfExists(el.dateFilter, viewState.date);
+
+  state.selectedShipmentId = viewState.selectedShipmentId || null;
+  state.page = viewState.page || 1;
+}
+
 async function loadData({ silent = false } = {}) {
   try {
     if (!silent) {
@@ -259,23 +297,43 @@ async function loadData({ silent = false } = {}) {
       return;
     }
 
-    state.raw = data;
-    state.shipments = data.shipments;
-    state.filtered = [...state.shipments];
+const viewState = getCurrentViewState();
+const shouldPreserveView = Boolean(state.raw);
+  
+  state.raw = data;
+  state.shipments = data.shipments;
+  state.filtered = [...state.shipments];
+  
+  if (!shouldPreserveView) {
     state.selectedShipmentId = null;
     state.page = 1;
-
-    el.emptyState.classList.add("hidden");
-    el.sourceStatus.textContent = "Datos cargados";
-    el.sourceMeta.textContent = `${formatNumber(state.shipments.length)} registros · Generado ${formatDateTime(data.generatedAt)} · Auto refresh 60s`;
-
-    renderFilters();
-    applyFilters();
-    renderSummary();
-    renderAnalytics();
+  }
+  
+  el.emptyState.classList.add("hidden");
+  el.sourceStatus.textContent = "Datos cargados";
+  el.sourceMeta.textContent = `${formatNumber(state.shipments.length)} registros · Generado ${formatDateTime(data.generatedAt)} · Auto refresh 60s`;
+  
+  renderFilters();
+  
+  if (shouldPreserveView) {
+    restoreCurrentViewState(viewState);
+  }
+  
+  applyFilters({ preservePage: shouldPreserveView });
+  renderSummary();
+  renderAnalytics();
+  
+  const selectedStillExists = state.selectedShipmentId
+    && state.shipments.some(item => getShipmentId(item) === state.selectedShipmentId);
+  
+  if (selectedStillExists) {
+    renderDetail(state.selectedShipmentId);
+  } else {
+    state.selectedShipmentId = null;
     renderEmptyDetail();
-
-    if (!silent) showToast("JSON cargado correctamente.");
+  }
+  
+  if (!silent) showToast("JSON cargado correctamente.");
   } catch (error) {
     resetDashboard(`No fue posible leer data/${DATA_FILE}. Verifica que el archivo exista y que la página esté publicada o ejecutada con Live Server.`);
     console.error(error);
@@ -654,6 +712,45 @@ function renderStockoutThermometer() {
 function renderAnalytics() {
   renderCompliance();
   renderStockoutThermometer();
+}
+
+function applyFilters({ preservePage = false } = {}) {
+  const previousPage = state.page;
+
+  const search = el.searchInput.value.trim().toLowerCase();
+  const status = el.statusFilter.value;
+  const category = el.categoryFilter.value;
+  const date = el.dateFilter.value;
+
+  state.filtered = state.shipments.filter(item => {
+    const matchesSearch = !search || [
+      item.order,
+      item.waybill,
+      item.status,
+      item.category,
+      item.lastEventLabel,
+      item.lastEventDescription,
+      item.customer,
+      item.client,
+      item.destination,
+      item.destino
+    ].some(value => String(value || "").toLowerCase().includes(search));
+
+    return matchesSearch
+      && (!status || item.status === status)
+      && (!category || item.category === category)
+      && (!date || item.lastEventDate === date);
+  });
+
+  sortFiltered(false);
+
+  if (preservePage) {
+    state.page = previousPage;
+  } else {
+    state.page = 1;
+  }
+
+  renderTable();
 }
 
 function applyFilters() {
