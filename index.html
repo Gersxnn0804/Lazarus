@@ -1,3 +1,235 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#07111f" />
+  <title>Lazarus | Tracking Intelligence</title>
+  <link rel="stylesheet" href="css/styles.css?v=branding-lazarus-20260702" />
+</head>
+<body>
+  <section id="loginScreen" class="login-screen">
+    <div class="login-layout">
+      <article class="login-hero-card">
+        <div class="login-orb login-orb-one"></div>
+        <div class="login-orb login-orb-two"></div>
+
+        <div class="login-product">
+          <div class="brand-logo login-product-mark">
+            <img src="assets/branding/lazarus.png" alt="Lazarus icon" />
+          </div>
+
+          <div class="brand-text">
+            <h1>Lazarus</h1>
+            <p>Tracking Intelligence</p>
+          </div>
+        </div>
+
+        <div class="login-hero-copy">
+          <span>Dashboard privado</span>
+          <h2>Visibilidad logística clara, segura y ejecutiva.</h2>
+          <p>
+            Plataforma web para consultar indicadores, estados y detalle de envíos desde el archivo JSON publicado automáticamente.
+          </p>
+        </div>
+
+        <div class="login-metrics">
+          <div>
+            <strong>JSON</strong>
+            <span>Fuente única</span>
+          </div>
+          <div>
+            <strong>24/7</strong>
+            <span>Publicación web</span>
+          </div>
+          <div>
+            <strong>Read Only</strong>
+            <span>Consulta cliente</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="login-card">
+        <div class="login-card-header">
+          <div class="login-lock">◆</div>
+          <span>Acceso autorizado</span>
+        </div>
+
+        <div class="login-copy">
+          <h2>Iniciar sesión</h2>
+          <p>Ingresa tus credenciales para visualizar el dashboard Lazarus.</p>
+        </div>
+
+        <form id="loginForm" class="login-form">
+          <label>
+            <span>Usuario</span>
+            <input id="loginUser" type="text" placeholder="Ej: DHLUniformes" autocomplete="username" required />
+          </label>
+
+          <label>
+            <span>Contraseña</span>
+            <input id="loginPassword" type="password" placeholder="Ingresa tu contraseña" autocomplete="current-password" required />
+          </label>
+
+          <button type="submit" class="login-btn">Entrar al dashboard</button>
+          <small id="loginError" class="login-error"></small>
+        </form>
+
+        <div class="login-note">
+          <strong>Validación local</strong>
+          <span>El usuario no distingue mayúsculas/minúsculas. La contraseña debe coincidir exactamente.</span>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <div id="appShell" class="app-shell hidden">
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="brand-logo">
+          <img src="assets/branding/lazarus.png" alt="Lazarus icon" />
+        </div>
+
+        <div class="brand-text">
+          <h1>Lazarus</h1>
+          <p>Tracking Intelligence</p>
+        </div>
+      </div>
+
+      <nav class="side-nav" aria-label="Navegación principal">
+        <a class="active" href="#overview"><span>▦</span>Resumen Ejecutivo</a>
+        <a href="#analytics"><span>⌁</span>Analítica</a>
+        <a href="#orders"><span>▱</span>Envíos</a>
+        <a href="#detail"><span>☷</span>Detalle</a>
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="data-card">
+          <div class="data-card-title">
+            <span class="data-icon">◉</span>
+            <div>
+              <span>Estado de datos</span>
+              <strong id="sourceStatus">Sin validar</strong>
+            </div>
+          </div>
+          <small id="sourceMeta">Esperando lectura...</small>
+        </div>
+
+        <button id="logoutBtn" class="logout-btn"><span>↩</span>Cerrar sesión</button>
+      </div>
+    </aside>
+
+    <main class="main-content" id="overview">
+      <section class="kpi-grid kpi-topbar" id="kpiGrid" aria-label="Indicadores principales">
+        <article class="kpi-card kpi-total">
+          <div class="kpi-card-header"><span>Total envíos</span><i>◇</i></div>
+          <strong id="kpiTotal">0</strong>
+          <small id="kpiGenerated">Todos los envíos</small>
+        </article>
+
+        <article class="kpi-card success">
+          <div class="kpi-card-header"><span>Entregados</span><i>✓</i></div>
+          <strong id="kpiDelivered">0</strong>
+          <small id="kpiDeliveredRate">0% del total</small>
+        </article>
+
+        <article class="kpi-card info">
+          <div class="kpi-card-header"><span>En tránsito</span><i>↗</i></div>
+          <strong id="kpiTransit">0</strong>
+          <small>En movimiento</small>
+        </article>
+
+        <article class="kpi-card warning">
+          <div class="kpi-card-header"><span>Pendientes</span><i>◷</i></div>
+          <strong id="kpiPending">0</strong>
+          <small>Programados / reintentos</small>
+        </article>
+
+        <article class="kpi-card danger">
+          <div class="kpi-card-header"><span>Casos críticos</span><i>!</i></div>
+          <strong id="kpiCritical">0</strong>
+          <small>Requieren revisión</small>
+        </article>
+
+        <article class="kpi-card dark">
+          <div class="kpi-card-header"><span>Devoluciones</span><i>↩</i></div>
+          <strong id="kpiReturns">0</strong>
+          <small>Retornos registrados</small>
+        </article>
+      </section>
+
+      <section class="dashboard-actions" aria-label="Acciones del dashboard">
+        <button id="reloadBtn" class="primary-btn"><span>↻</span>Actualizar datos</button>
+        <button id="exportBtn" class="ghost-btn"><span>⇩</span>Exportar CSV</button>
+        <button id="clearFiltersBtn" class="ghost-btn"><span>⌫</span>Limpiar filtros</button>
+      </section>
+
+      <section id="emptyState" class="empty-state hidden">
+        <div class="empty-icon">◇</div>
+        <h3>No hay datos cargados</h3>
+        <p>El dashboard queda vacío hasta que exista <strong>data/latest_tracking_client.json</strong> con un arreglo válido de envíos.</p>
+      </section>
+
+      <section class="charts-grid analytics-grid" id="analytics">
+        <article class="panel compliance-panel">
+          <div class="panel-header">
+            <div>
+              <h3>Cumplimiento</h3>
+              <p>Porcentaje de envíos entregados sobre el total operativo.</p>
+            </div>
+          </div>
+
+          <div class="donut-layout">
+            <div id="donutChart" class="donut empty-donut" style="--value:0">
+              <span>0%<small>Entregados</small></span>
+            </div>
+            <div id="donutLegend" class="donut-legend advanced-legend"></div>
+          </div>
+        </article>
+
+        <article class="panel stockout-panel">
+          <div class="panel-header">
+            <div>
+              <h3>Termómetro de quiebres de stock</h3>
+              <p>Top de ítems con mayor índice de quiebre informado por el JSON.</p>
+            </div>
+          </div>
+
+          <div class="stockout-layout">
+            <div class="thermometer-wrap" aria-hidden="true">
+              <div class="thermo-scale">
+                <span>100</span>
+                <span>75</span>
+                <span>50</span>
+                <span>25</span>
+                <span>0</span>
+              </div>
+
+              <div id="stockoutThermometer" class="thermometer" style="--level:0">
+                <div class="thermo-tube">
+                  <div class="thermo-fill"></div>
+                </div>
+                <div class="thermo-bulb"></div>
+              </div>
+            </div>
+
+            <div class="stockout-content">
+              <h4>Top 5 ítems críticos</h4>
+              <div id="stockoutList" class="stockout-list empty-stockout"></div>
+            </div>
+          </div>
+        </article>
+      </section>
+
+      <section class="workspace" id="orders">
+        <article class="panel table-panel">
+          <div class="panel-header table-header">
+            <div>
+              <h3>Listado de envíos</h3>
+              <p>Busca, filtra, ordena y selecciona un registro.</p>
+            </div>
+            <div class="record-counter" id="recordCounter">0 registros</div>
+          </div>
 
           <div class="filters">
             <label class="filter-control search-control">
@@ -72,7 +304,6 @@
     </main>
   </div>
 
-  
   <div id="toast" class="toast hidden" role="status" aria-live="polite"></div>
   <script src="js/app.js?v=20260701-thermometer"></script>
 </body>
