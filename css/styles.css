@@ -1692,8 +1692,8 @@ tbody tr.selected {
 
 @media (max-width: 640px) {
   .login-product-logo {
-    width: 350px;
-    height: 350px;
+    width: 150px;
+    height: 150px;
   }
 
   .login-hero-copy-clean span {
