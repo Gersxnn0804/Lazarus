@@ -1685,8 +1685,17 @@ tbody tr.selected {
   }
 
   .login-product-logo {
-    width: 190px;
-    height: 190px;
+    width: 320px;
+    height: 320px;
+    object-fit: contain;
+    display: block;
+    background: transparent;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+    filter:
+      drop-shadow(0 0 28px rgba(34, 211, 238, .38))
+      drop-shadow(0 0 68px rgba(56, 189, 248, .24));
   }
 }
 
