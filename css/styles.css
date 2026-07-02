@@ -1685,15 +1685,15 @@ tbody tr.selected {
   }
 
   .login-product-logo {
-    width: 590px;
-    height: 590px;
+    width: 190px;
+    height: 190px;
   }
 }
 
 @media (max-width: 640px) {
   .login-product-logo {
-    width: 150px;
-    height: 150px;
+    width: 350px;
+    height: 350px;
   }
 
   .login-hero-copy-clean span {
