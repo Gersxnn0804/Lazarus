@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.1.0",
-  "generatedAt": "2026-07-03T15:55:48",
+  "generatedAt": "2026-07-03T15:58:12",
   "source": {
     "platform": "Polaris",
     "module": "Tracking",
@@ -27,7 +27,7 @@
   },
   "inventoryThermometer": {
     "available": true,
-    "generatedAt": "2026-07-03T15:55:48",
+    "generatedAt": "2026-07-03T15:58:12",
     "totalAuditOrders": 125,
     "totalNoFillOrders": 34,
     "metric": "affected_orders_over_total_audit_orders",
