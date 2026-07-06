@@ -376,6 +376,80 @@ function countStatusByWords(words) {
     return words.some(word => text.includes(word));
   }).length;
 }
+function normalizeSearchText(value) {
+  return String(value || "")
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toLowerCase();
+}
+
+function isDeliveredShipment(item) {
+  const text = normalizeSearchText([
+    item.status,
+    item.category,
+    item.lastEventLabel,
+    item.lastEventDescription
+  ].join(" "));
+
+  return text.includes("entregado") || text.includes("finalizado");
+}
+
+function isThirdPartyShipment(item) {
+  const text = normalizeSearchText(Object.values(item || {}).join(" "));
+
+  return [
+    "tercerizado",
+    "tercerizada",
+    "tercerizados",
+    "tercero",
+    "terceros",
+    "subcontratista",
+    "subcontratado",
+    "subcontratada",
+    "outsourcing",
+    "externalizado",
+    "externalizada"
+  ].some(word => text.includes(word));
+}
+
+function getThirdPartyTotal() {
+  const summary = state.raw?.summary || {};
+
+  const summaryValue = pickFirst(
+    summary.thirdParty,
+    summary.thirdparty,
+    summary.thirdPartyShipments,
+    summary.thirdPartyDeliveries,
+    summary.tercerizados,
+    summary.tercerizado,
+    summary.outsourced,
+    summary.subcontracted
+  );
+
+  if (summaryValue !== "") {
+    return Number(summaryValue) || 0;
+  }
+
+  return state.shipments.filter(isThirdPartyShipment).length;
+}
+
+function getSignedByValue(item) {
+  const signedBy = pickFirst(
+    item.signedBy,
+    item.signed_by,
+    item.signedby,
+    item["signed by"],
+    item["Signed by"],
+    item["Signed By"],
+    item["SIGNED BY"],
+    item.o,
+    item.O
+  );
+
+  if (signedBy) return signedBy;
+
+  return isDeliveredShipment(item) ? "Entregado" : "";
+}
 
 function renderSummary() {
   const total = getSummaryValue("totalShipments") || state.shipments.length;
@@ -383,7 +457,7 @@ function renderSummary() {
   const inTransit = getSummaryValue("inTransit") || countStatusByWords(["tránsito", "transito", "ruta", "proceso"]);
   const scheduled = getSummaryValue("scheduled") || countStatusByWords(["programado", "agendado"]);
   const retry = getSummaryValue("retry") || countStatusByWords(["reintento", "retry"]);
-  const critical = getSummaryValue("critical") || countStatusByWords(["crítico", "critico", "incidencia", "error", "fallido", "dirección incorrecta", "direccion incorrecta"]);
+  const thirdParty = getThirdPartyTotal();
   const returns = getSummaryValue("returns") || countStatusByWords(["devolución", "devolucion", "retorno", "return"]);
   const deliveredRate = percent(delivered, total);
 
@@ -392,7 +466,7 @@ function renderSummary() {
   el.kpiDeliveredRate.textContent = `${formatPercent(deliveredRate)}% del total`;
   el.kpiTransit.textContent = formatNumber(inTransit);
   el.kpiPending.textContent = formatNumber(scheduled + retry);
-  el.kpiCritical.textContent = formatNumber(critical);
+  el.kpiCritical.textContent = formatNumber(thirdParty);
   el.kpiReturns.textContent = formatNumber(returns);
   el.kpiGenerated.textContent = state.raw?.generatedAt ? `Generado ${formatDateTime(state.raw.generatedAt)}` : "Todos los envíos";
 }
@@ -412,8 +486,7 @@ function renderCompliance() {
   const inTransit = getSummaryValue("inTransit") || countStatusByWords(["tránsito", "transito", "ruta", "proceso"]);
   const pending = (getSummaryValue("scheduled") || countStatusByWords(["programado", "agendado"])) + (getSummaryValue("retry") || countStatusByWords(["reintento", "retry"]));
   const returns = getSummaryValue("returns") || countStatusByWords(["devolución", "devolucion", "retorno", "return"]);
-  const critical = getSummaryValue("critical") || countStatusByWords(["crítico", "critico", "incidencia", "error", "fallido"]);
-  const deliveredRate = percent(delivered, total);
+  const thirdParty = getThirdPartyTotal();  const deliveredRate = percent(delivered, total);
 
   el.donutChart.className = "donut";
   el.donutChart.style.setProperty("--value", deliveredRate);
@@ -424,8 +497,7 @@ function renderCompliance() {
     { label: "En tránsito", value: inTransit, rate: percent(inTransit, total), className: "blue" },
     { label: "Pendientes", value: pending, rate: percent(pending, total), className: "amber" },
     { label: "Devoluciones", value: returns, rate: percent(returns, total), className: "violet" },
-    { label: "Casos críticos", value: critical, rate: percent(critical, total), className: "red" }
-  ]);
+    { label: "Tercerizados", value: thirdParty, rate: percent(thirdParty, total), className: "red" }  ]);
 }
 
 function getFirstArray(...candidates) {
@@ -867,6 +939,7 @@ function renderDetail(shipmentId) {
   const statusClass = getStatusClass(item.status);
   const destination = pickFirst(item.destination, item.destino, item.city, item.comuna, item.region, item.address);
   const customer = pickFirst(item.customer, item.client, item.cliente, state.raw?.source?.company);
+  const signedBy = getSignedByValue(item);
   const observation = pickFirst(item.lastEventDescription, item.observation, item.observacion, item.notes, "Sin observaciones registradas.");
 
   el.orderDetail.className = "enterprise-detail";
@@ -910,6 +983,10 @@ function renderDetail(shipmentId) {
       <div class="detail-row">
         <span>Destino</span>
         <strong>${escapeHtml(destination || "Sin información")}</strong>
+      </div>
+      <div class="detail-row">
+        <span>Signed by</span>
+        <strong>${signedBy ? escapeHtml(signedBy) : ""}</strong>
       </div>
     </div>
 
