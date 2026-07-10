@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#07111f" />
   <title>Lazarus | Tracking Intelligence</title>
   <link rel="icon" type="image/png" href="assets/branding/lazarus.png" />
-  <link rel="stylesheet" href="css/styles.css?v=wms-dashboard-20260706" />
+  <link rel="stylesheet" href="css/styles.css?v=wms-stockbreaks-20260710" />
 </head>
 <body>
   <section id="loginScreen" class="login-screen">
@@ -74,6 +74,7 @@
         <a class="active" href="#overview"><span>▦</span>Resumen Ejecutivo</a>
         <a href="#analytics"><span>⌁</span>Analítica</a>
         <a href="#orders"><span>▱</span>Envíos</a>
+        <a href="#stock-breaks"><span>▤</span>Quiebres de stock</a>
         <a href="#detail"><span>☷</span>Detalle</a>
       </nav>
 
@@ -205,6 +206,76 @@
         </article>
       </section>
 
+      <section class="panel stock-breaks-section" id="stock-breaks">
+        <div class="panel-header stock-breaks-header">
+          <div>
+            <h3>Quiebres de stock</h3>
+            <p>Detalle operativo de órdenes, SKU y unidades faltantes publicado desde Supply Audit.</p>
+          </div>
+          <button id="exportStockBreaksBtn" class="mini-btn stock-export-btn"><span>⇩</span>Exportar quiebres</button>
+        </div>
+
+        <div class="stock-breaks-kpis" aria-label="Indicadores de quiebres de stock">
+          <article>
+            <span>Líneas con quiebre</span>
+            <strong id="stockBreakLinesKpi">0</strong>
+          </article>
+          <article>
+            <span>Órdenes afectadas</span>
+            <strong id="stockBreakOrdersKpi">0</strong>
+          </article>
+          <article>
+            <span>Unidades faltantes</span>
+            <strong id="stockBreakMissingKpi">0</strong>
+          </article>
+          <article>
+            <span>Tipo dominante</span>
+            <strong id="stockBreakDominantTypeKpi">-</strong>
+          </article>
+        </div>
+
+        <div class="stock-breaks-filters">
+          <label class="filter-control search-control">
+            <span>Buscar quiebre</span>
+            <input id="stockBreakSearch" type="search" placeholder="Buscar por orden, cliente, SKU o descripción..." />
+          </label>
+
+          <label class="filter-control">
+            <span>Tipo orden</span>
+            <select id="stockBreakTypeFilter">
+              <option value="">B2C + B2B</option>
+              <option value="B2C">B2C</option>
+              <option value="B2B">B2B</option>
+            </select>
+          </label>
+        </div>
+
+        <div class="stock-breaks-table-wrap">
+          <table class="stock-breaks-table">
+            <thead>
+              <tr>
+                <th>Orden</th>
+                <th>Cliente</th>
+                <th>Tipo</th>
+                <th>SKU</th>
+                <th>Descripción</th>
+                <th>Solicitado</th>
+                <th>Disponible</th>
+                <th>Faltante</th>
+              </tr>
+            </thead>
+            <tbody id="stockBreaksTable">
+              <tr><td colspan="8" class="table-empty">Sin quiebres de stock para mostrar</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="stock-breaks-footer">
+          <span id="stockBreaksCounter">0 líneas</span>
+          <span id="stockBreaksMeta">Esperando información de Supply Audit.</span>
+        </div>
+      </section>
+
       <section class="workspace" id="orders">
         <article class="panel table-panel">
           <div class="panel-header table-header">
@@ -236,6 +307,15 @@
             </label>
 
             <label class="filter-control">
+              <span>Tipo orden</span>
+              <select id="channelFilter">
+                <option value="">B2C + B2B</option>
+                <option value="B2C">B2C</option>
+                <option value="B2B">B2B</option>
+              </select>
+            </label>
+
+            <label class="filter-control">
               <span>Fecha</span>
               <select id="dateFilter">
                 <option value="">Todas las fechas</option>
@@ -251,11 +331,12 @@
                   <th><button class="sort-btn" data-sort="waybill">Waybill</button></th>
                   <th><button class="sort-btn" data-sort="lastEventDate">Fecha</button></th>
                   <th><button class="sort-btn" data-sort="status">Estado</button></th>
+                  <th><button class="sort-btn" data-sort="orderSegment">Tipo</button></th>
                   <th><button class="sort-btn" data-sort="category">Categoría</button></th>
                 </tr>
               </thead>
               <tbody id="ordersTable">
-                <tr><td colspan="5" class="table-empty">Sin datos para mostrar</td></tr>
+                <tr><td colspan="6" class="table-empty">Sin datos para mostrar</td></tr>
               </tbody>
             </table>
           </div>
@@ -289,6 +370,6 @@
   </div>
 
   <div id="toast" class="toast hidden" role="status" aria-live="polite"></div>
-  <script src="js/app.js?v=wms-dashboard-20260706"></script>
+  <script src="js/app.js?v=wms-stockbreaks-20260710"></script>
 </body>
 </html>

@@ -12,6 +12,8 @@ const state = {
   raw: null,
   shipments: [],
   filtered: [],
+  stockBreakLines: [],
+  stockBreakFiltered: [],
   selectedShipmentId: null,
   started: false,
   page: 1,
@@ -42,7 +44,19 @@ const el = {
   searchInput: $("searchInput"),
   statusFilter: $("statusFilter"),
   categoryFilter: $("categoryFilter"),
+  channelFilter: $("channelFilter"),
   dateFilter: $("dateFilter"),
+
+  stockBreakLinesKpi: $("stockBreakLinesKpi"),
+  stockBreakOrdersKpi: $("stockBreakOrdersKpi"),
+  stockBreakMissingKpi: $("stockBreakMissingKpi"),
+  stockBreakDominantTypeKpi: $("stockBreakDominantTypeKpi"),
+  stockBreakSearch: $("stockBreakSearch"),
+  stockBreakTypeFilter: $("stockBreakTypeFilter"),
+  exportStockBreaksBtn: $("exportStockBreaksBtn"),
+  stockBreaksTable: $("stockBreaksTable"),
+  stockBreaksCounter: $("stockBreaksCounter"),
+  stockBreaksMeta: $("stockBreaksMeta"),
 
   recordCounter: $("recordCounter"),
   pageInfo: $("pageInfo"),
@@ -109,6 +123,36 @@ function escapeHtml(value) {
     .replaceAll("'", "&#039;");
 }
 
+function normalizeKey(value) {
+  return normalizeSearchText(String(value || "")).replace(/[^a-z0-9]/g, "");
+}
+
+function getByKeyVariants(object, variants = []) {
+  if (!object || typeof object !== "object") return "";
+
+  for (const key of variants) {
+    if (object[key] !== undefined && object[key] !== null && object[key] !== "") return object[key];
+  }
+
+  const normalizedVariants = variants.map(normalizeKey);
+  const foundKey = Object.keys(object).find(key => normalizedVariants.includes(normalizeKey(key)));
+
+  return foundKey ? object[foundKey] : "";
+}
+
+function toNumber(value) {
+  if (value === undefined || value === null || value === "") return 0;
+  if (typeof value === "number") return Number.isFinite(value) ? value : 0;
+
+  const normalized = String(value)
+    .replace(/\./g, "")
+    .replace(",", ".")
+    .replace(/[^0-9.-]/g, "");
+
+  const number = Number(normalized);
+  return Number.isFinite(number) ? number : 0;
+}
+
 function countBy(items, key) {
   return items.reduce((acc, item) => {
     const value = safeText(item[key]);
@@ -147,6 +191,7 @@ function clearFilterOptions() {
   el.statusFilter.innerHTML = '<option value="">Todos los estados</option>';
   el.categoryFilter.innerHTML = '<option value="">Todas las categorías</option>';
   el.dateFilter.innerHTML = '<option value="">Todas las fechas</option>';
+  if (el.channelFilter) el.channelFilter.value = "";
 }
 
 function renderEmptyDetail() {
@@ -174,6 +219,8 @@ function resetDashboard(message = "No se encontró información disponible.") {
   state.raw = null;
   state.shipments = [];
   state.filtered = [];
+  state.stockBreakLines = [];
+  state.stockBreakFiltered = [];
   state.selectedShipmentId = null;
   state.page = 1;
 
@@ -195,6 +242,7 @@ function resetDashboard(message = "No se encontró información disponible.") {
   el.donutChart.innerHTML = "<span>0%<small>Entregados</small></span>";
   el.donutLegend.innerHTML = "";
   renderEmptyStockout();
+  renderStockBreaks();
 
   clearFilterOptions();
 
@@ -203,7 +251,7 @@ function resetDashboard(message = "No se encontró información disponible.") {
   el.pageInfo.textContent = "Página 1 de 1";
   el.prevPageBtn.disabled = true;
   el.nextPageBtn.disabled = true;
-  el.ordersTable.innerHTML = '<tr><td colspan="5" class="table-empty">Sin datos para mostrar</td></tr>';
+  el.ordersTable.innerHTML = '<tr><td colspan="6" class="table-empty">Sin datos para mostrar</td></tr>';
 
   renderEmptyDetail();
 }
@@ -245,7 +293,10 @@ function getCurrentViewState() {
     search: el.searchInput?.value || "",
     status: el.statusFilter?.value || "",
     category: el.categoryFilter?.value || "",
+    channel: el.channelFilter?.value || "",
     date: el.dateFilter?.value || "",
+    stockBreakSearch: el.stockBreakSearch?.value || "",
+    stockBreakType: el.stockBreakTypeFilter?.value || "",
     selectedShipmentId: state.selectedShipmentId,
     page: state.page
   };
@@ -271,7 +322,11 @@ function restoreCurrentViewState(viewState) {
   el.searchInput.value = viewState.search || "";
   setSelectValueIfExists(el.statusFilter, viewState.status);
   setSelectValueIfExists(el.categoryFilter, viewState.category);
+  setSelectValueIfExists(el.channelFilter, viewState.channel);
   setSelectValueIfExists(el.dateFilter, viewState.date);
+
+  if (el.stockBreakSearch) el.stockBreakSearch.value = viewState.stockBreakSearch || "";
+  setSelectValueIfExists(el.stockBreakTypeFilter, viewState.stockBreakType);
 
   state.selectedShipmentId = viewState.selectedShipmentId || null;
   state.page = viewState.page || 1;
@@ -302,7 +357,9 @@ async function loadData({ silent = false } = {}) {
 
     state.raw = data;
     state.shipments = data.shipments;
+    state.stockBreakLines = normalizeStockBreakLines(data);
     state.filtered = [...state.shipments];
+    state.stockBreakFiltered = [...state.stockBreakLines];
 
     if (!shouldPreserveView) {
       state.selectedShipmentId = null;
@@ -320,6 +377,7 @@ async function loadData({ silent = false } = {}) {
     }
 
     applyFilters({ preservePage: shouldPreserveView });
+    renderStockBreaks();
     renderSummary();
     renderAnalytics();
 
@@ -354,7 +412,36 @@ function getRawStatus(item) {
 }
 
 function getRawCategory(item) {
-  return pickFirst(item?.category, item?.categoria, item?.group, item?.statusGroup, "Sin categoría");
+  return pickFirst(item?.category, item?.categoria, item?.group, item?.statusGroup, item?.channel, item?.canal, "Sin categoría");
+}
+
+function getOrderType(item) {
+  return pickFirst(
+    item?.orderType,
+    item?.order_type,
+    item?.OrderType,
+    item?.["Order Type"],
+    item?.["order type"],
+    item?.tipoOrden,
+    item?.tipo_orden,
+    item?.tipoOperacion,
+    item?.tipo_operacion,
+    getByKeyVariants(item, ["orderType", "order_type", "Order Type", "Tipo Orden", "Tipo de Orden"])
+  );
+}
+
+function getOrderSegment(item) {
+  const type = normalizeSearchText(getOrderType(item));
+  return type.includes("b2c") ? "B2C" : "B2B";
+}
+
+function filterByOrderSegment(items, segment) {
+  if (!segment) return [...items];
+  return items.filter(item => getOrderSegment(item) === segment);
+}
+
+function getOperationalScope() {
+  return filterByOrderSegment(state.shipments, el.channelFilter?.value || "");
 }
 
 function renderFilters() {
@@ -433,7 +520,8 @@ function isThirdPartyShipment(item) {
   ].some(word => text.includes(word));
 }
 
-function getThirdPartyTotal() {
+function getThirdPartyTotal(items = getOperationalScope()) {
+  const segmentActive = Boolean(el.channelFilter?.value);
   const summary = state.raw?.summary || {};
   const summaryValue = pickFirst(
     summary.thirdParty,
@@ -447,9 +535,9 @@ function getThirdPartyTotal() {
     summary.critical
   );
 
-  if (summaryValue !== "") return Number(summaryValue) || 0;
+  if (!segmentActive && summaryValue !== "") return Number(summaryValue) || 0;
 
-  return state.shipments.filter(isThirdPartyShipment).length;
+  return items.filter(isThirdPartyShipment).length;
 }
 
 function getSignedByValue(item) {
@@ -470,21 +558,43 @@ function getSignedByValue(item) {
     item?.columnO,
     item?.colO,
     item?.o,
-    item?.O
+    item?.O,
+    getByKeyVariants(item, [
+      "signedBy", "signed_by", "signed by", "Signed By", "SIGNED BY",
+      "receivedBy", "received_by", "received by", "Recibido por", "recibido por",
+      "receiver", "recipient", "columnO", "colO", "o", "O"
+    ])
   );
 
   if (signedBy) return signedBy;
   return isDeliveredShipment(item) ? "Entregado" : "";
 }
 
+function countStatusByWordsInItems(items, words) {
+  const normalizedWords = words.map(normalizeSearchText);
+
+  return items.filter(item => {
+    const text = normalizeSearchText([
+      getRawStatus(item),
+      getRawCategory(item),
+      item.lastEventLabel,
+      item.lastEventDescription
+    ].join(" "));
+
+    return normalizedWords.some(word => text.includes(word));
+  }).length;
+}
+
 function renderSummary() {
-  const total = getSummaryValue("totalShipments") || state.shipments.length;
-  const delivered = getSummaryValue("delivered") || countStatusByWords(["entregado", "finalizado", "delivered"]);
-  const inTransit = getSummaryValue("inTransit") || countStatusByWords(["tránsito", "transito", "ruta", "proceso", "in transit"]);
-  const scheduled = getSummaryValue("scheduled") || countStatusByWords(["programado", "agendado", "scheduled"]);
-  const retry = getSummaryValue("retry") || countStatusByWords(["reintento", "retry"]);
-  const thirdParty = getThirdPartyTotal();
-  const returns = getSummaryValue("returns") || countStatusByWords(["devolución", "devolucion", "retorno", "return"]);
+  const items = getOperationalScope();
+  const segmentActive = Boolean(el.channelFilter?.value);
+  const total = !segmentActive && getSummaryValue("totalShipments") ? getSummaryValue("totalShipments") : items.length;
+  const delivered = !segmentActive && getSummaryValue("delivered") ? getSummaryValue("delivered") : countStatusByWordsInItems(items, ["entregado", "finalizado", "delivered"]);
+  const inTransit = !segmentActive && getSummaryValue("inTransit") ? getSummaryValue("inTransit") : countStatusByWordsInItems(items, ["tránsito", "transito", "ruta", "proceso", "in transit"]);
+  const scheduled = !segmentActive && getSummaryValue("scheduled") ? getSummaryValue("scheduled") : countStatusByWordsInItems(items, ["programado", "agendado", "scheduled"]);
+  const retry = !segmentActive && getSummaryValue("retry") ? getSummaryValue("retry") : countStatusByWordsInItems(items, ["reintento", "retry"]);
+  const thirdParty = getThirdPartyTotal(items);
+  const returns = !segmentActive && getSummaryValue("returns") ? getSummaryValue("returns") : countStatusByWordsInItems(items, ["devolución", "devolucion", "retorno", "return"]);
   const deliveredRate = percent(delivered, total);
 
   el.kpiTotal.textContent = formatNumber(total);
@@ -494,7 +604,8 @@ function renderSummary() {
   el.kpiPending.textContent = formatNumber(scheduled + retry);
   el.kpiCritical.textContent = formatNumber(thirdParty);
   el.kpiReturns.textContent = formatNumber(returns);
-  el.kpiGenerated.textContent = state.raw?.generatedAt ? `Generado ${formatDateTime(state.raw.generatedAt)}` : "Todos los envíos";
+  const segmentLabel = el.channelFilter?.value ? `Segmento ${el.channelFilter.value}` : "Todos los envíos";
+  el.kpiGenerated.textContent = state.raw?.generatedAt ? `${segmentLabel} · Generado ${formatDateTime(state.raw.generatedAt)}` : segmentLabel;
 }
 
 function renderDonutLegend(items) {
@@ -507,17 +618,19 @@ function renderDonutLegend(items) {
 }
 
 function renderCompliance() {
-  const total = getSummaryValue("totalShipments") || state.shipments.length;
-  const delivered = getSummaryValue("delivered") || countStatusByWords(["entregado", "finalizado", "delivered"]);
-  const inTransit = getSummaryValue("inTransit") || countStatusByWords(["tránsito", "transito", "ruta", "proceso", "in transit"]);
-  const pending = (getSummaryValue("scheduled") || countStatusByWords(["programado", "agendado", "scheduled"])) + (getSummaryValue("retry") || countStatusByWords(["reintento", "retry"]));
-  const returns = getSummaryValue("returns") || countStatusByWords(["devolución", "devolucion", "retorno", "return"]);
-  const thirdParty = getThirdPartyTotal();
+  const items = getOperationalScope();
+  const segmentActive = Boolean(el.channelFilter?.value);
+  const total = !segmentActive && getSummaryValue("totalShipments") ? getSummaryValue("totalShipments") : items.length;
+  const delivered = !segmentActive && getSummaryValue("delivered") ? getSummaryValue("delivered") : countStatusByWordsInItems(items, ["entregado", "finalizado", "delivered"]);
+  const inTransit = !segmentActive && getSummaryValue("inTransit") ? getSummaryValue("inTransit") : countStatusByWordsInItems(items, ["tránsito", "transito", "ruta", "proceso", "in transit"]);
+  const pending = (!segmentActive && getSummaryValue("scheduled") ? getSummaryValue("scheduled") : countStatusByWordsInItems(items, ["programado", "agendado", "scheduled"])) + (!segmentActive && getSummaryValue("retry") ? getSummaryValue("retry") : countStatusByWordsInItems(items, ["reintento", "retry"]));
+  const returns = !segmentActive && getSummaryValue("returns") ? getSummaryValue("returns") : countStatusByWordsInItems(items, ["devolución", "devolucion", "retorno", "return"]);
+  const thirdParty = getThirdPartyTotal(items);
   const deliveredRate = percent(delivered, total);
 
   el.donutChart.className = "donut";
   el.donutChart.style.setProperty("--value", deliveredRate);
-  el.donutChart.innerHTML = `<span>${formatPercent(deliveredRate)}%<small>Entregados</small></span>`;
+  el.donutChart.innerHTML = `<span>${formatPercent(deliveredRate)}%<small>${el.channelFilter?.value || "Entregados"}</small></span>`;
 
   renderDonutLegend([
     { label: "Entregados", value: delivered, rate: deliveredRate, className: "green" },
@@ -531,8 +644,9 @@ function renderCompliance() {
 function renderStatusDistribution() {
   if (!el.statusDistribution) return;
 
-  const total = state.shipments.length;
-  const entries = Object.entries(countBy(state.shipments.map(item => ({ status: getRawStatus(item) })), "status"))
+  const scopedItems = getOperationalScope();
+  const total = scopedItems.length;
+  const entries = Object.entries(countBy(scopedItems.map(item => ({ status: getRawStatus(item) })), "status"))
     .filter(([label]) => label && label !== "Sin información")
     .sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0], "es", { numeric: true }));
 
@@ -571,12 +685,74 @@ function getFirstArray(...candidates) {
   return candidates.find(Array.isArray) || [];
 }
 
+
+function getNestedStockBreakLines(data = state.raw) {
+  const sources = [
+    data?.supplyAudit?.stockBreaks?.lines,
+    data?.supplyAudit?.stockBreaks?.orders,
+    data?.stockBreaks?.lines,
+    data?.stockBreaks?.orders,
+    data?.supplyAudit?.orders,
+    data?.ordersWithStockBreaks,
+    data?.stockBreakLines
+  ].filter(Boolean);
+
+  return sources.flatMap(source => flattenStockBreakSource(source));
+}
+
+function aggregateStockBreakLinesForThermometer() {
+  const lines = state.stockBreakLines.length ? state.stockBreakLines : normalizeStockBreakLines(state.raw);
+  const grouped = new Map();
+
+  lines.forEach(line => {
+    const key = line.sku || line.description || "Sin SKU";
+    if (!grouped.has(key)) {
+      grouped.set(key, {
+        item: key,
+        description: line.description,
+        affectedOrderSet: new Set(),
+        missingUnits: 0,
+        requiredUnits: 0,
+        availableUnits: 0,
+        orderTypes: new Set()
+      });
+    }
+
+    const current = grouped.get(key);
+    if (line.order) current.affectedOrderSet.add(line.order);
+    current.missingUnits += Number(line.missingQty || 0);
+    current.requiredUnits += Number(line.requiredQty || 0);
+    current.availableUnits += Number(line.availableQty || 0);
+    current.orderTypes.add(line.segment || "B2B");
+  });
+
+  const totalOrders = new Set(lines.map(line => line.order).filter(Boolean)).size;
+
+  return [...grouped.values()].map(item => ({
+    item: item.item,
+    description: item.description,
+    stockoutIndex: totalOrders ? percent(item.affectedOrderSet.size, totalOrders) : 0,
+    affectedOrders: item.affectedOrderSet.size,
+    totalAuditOrders: totalOrders,
+    affectedRatio: totalOrders ? `${item.affectedOrderSet.size}/${totalOrders}` : "",
+    missingUnits: item.missingUnits,
+    requiredUnits: item.requiredUnits,
+    availableUnits: item.availableUnits,
+    orderTypes: [...item.orderTypes],
+    unit: "%"
+  }));
+}
+
 function getStockoutSource() {
   return getFirstArray(
     state.raw?.inventoryThermometer?.topCriticalItems,
     state.raw?.inventoryThermometer?.items,
     state.raw?.inventoryThermometer?.criticalItems,
     state.raw?.inventoryThermometer?.data,
+    state.raw?.supplyAudit?.stockBreaks?.items,
+    state.raw?.supplyAudit?.stockBreaks?.topCriticalItems,
+    state.raw?.stockBreaks?.items,
+    state.raw?.stockBreaks?.topCriticalItems,
     state.raw?.stockBreaks,
     state.raw?.stockBreakItems,
     state.raw?.stockBreaksByItem,
@@ -642,7 +818,7 @@ function normalizeStockoutValue(item) {
 function normalizeStockoutItems() {
   const explicitItems = getStockoutSource();
 
-  if (!explicitItems.length) return [];
+  if (!explicitItems.length) return aggregateStockBreakLinesForThermometer();
 
   return explicitItems.map((item) => {
     const label = item.item
@@ -741,10 +917,216 @@ function renderStockoutThermometer() {
   }).join("");
 }
 
+
+function flattenStockBreakSource(source, parent = {}) {
+  if (!source) return [];
+
+  if (Array.isArray(source)) {
+    return source.flatMap(item => flattenStockBreakSource(item, parent));
+  }
+
+  if (typeof source !== "object") return [];
+
+  const childLines = source.lines || source.items || source.products || source.skus || source.detail || source.details || source.detalle;
+
+  if (Array.isArray(childLines)) {
+    return childLines.flatMap(child => flattenStockBreakSource(child, { ...parent, ...source }));
+  }
+
+  return [{ ...parent, ...source }];
+}
+
+function normalizeStockBreakLines(data = state.raw) {
+  const rawLines = getNestedStockBreakLines(data);
+
+  return rawLines.map((line, index) => {
+    const order = pickFirst(
+      line.order,
+      line.orderId,
+      line.OrderId,
+      line.orden,
+      line.codigo_orden,
+      getByKeyVariants(line, ["order", "orderId", "Order ID", "Orden"])
+    );
+
+    const client = pickFirst(
+      line.client,
+      line.customer,
+      line.cliente,
+      line.account,
+      line.cuenta,
+      getByKeyVariants(line, ["client", "customer", "cliente", "account", "cuenta"])
+    );
+
+    const orderType = pickFirst(
+      line.orderType,
+      line.order_type,
+      line.OrderType,
+      line["Order Type"],
+      line.tipoOrden,
+      line.tipo_orden,
+      getByKeyVariants(line, ["orderType", "order_type", "Order Type", "tipoOrden", "tipo orden"])
+    );
+
+    const sku = pickFirst(
+      line.sku,
+      line.SKU,
+      line.item,
+      line.itemId,
+      line.ItemId,
+      line.productCode,
+      line.codigo,
+      getByKeyVariants(line, ["sku", "SKU", "item", "itemId", "Item ID", "productCode", "código", "codigo"])
+    );
+
+    const description = pickFirst(
+      line.description,
+      line.descripcion,
+      line.productDescription,
+      line.itemDescription,
+      line.desc,
+      getByKeyVariants(line, ["description", "descripción", "descripcion", "productDescription", "itemDescription"])
+    );
+
+    const requiredQty = toNumber(pickFirst(
+      line.requiredQty,
+      line.requestedQty,
+      line.requiredQuantity,
+      line.cantidadSolicitada,
+      line.qtySolicitada,
+      line.demanda,
+      getByKeyVariants(line, ["requiredQty", "requestedQty", "required quantity", "cantidad solicitada", "qty solicitada"])
+    ));
+
+    const availableQty = toNumber(pickFirst(
+      line.availableQty,
+      line.availableQuantity,
+      line.stockDisponible,
+      line.availableUnits,
+      line.stock,
+      getByKeyVariants(line, ["availableQty", "available quantity", "stock disponible", "available units", "stock"])
+    ));
+
+    const explicitMissing = pickFirst(
+      line.missingQty,
+      line.missingQuantity,
+      line.faltante,
+      line.shortageQty,
+      line.shortageUnits,
+      line.unidadesFaltantes,
+      getByKeyVariants(line, ["missingQty", "missing quantity", "faltante", "shortage", "unidades faltantes"])
+    );
+    const missingQty = explicitMissing !== "" ? toNumber(explicitMissing) : Math.max(requiredQty - availableQty, 0);
+    const normalizedType = normalizeSearchText(orderType);
+    const segment = normalizedType.includes("b2c") ? "B2C" : "B2B";
+
+    return {
+      id: `${order || "order"}-${sku || "sku"}-${index}`,
+      order: safeText(order),
+      client: safeText(client),
+      orderType: orderType || segment,
+      segment,
+      sku: safeText(sku),
+      description: safeText(description),
+      requiredQty,
+      availableQty,
+      missingQty
+    };
+  })
+    .filter(line => line.order !== "Sin información" || line.sku !== "Sin información" || line.missingQty > 0)
+    .sort((a, b) => b.missingQty - a.missingQty || a.order.localeCompare(b.order, "es", { numeric: true }));
+}
+
+function getStockBreakScope() {
+  const segment = el.stockBreakTypeFilter?.value || "";
+  const search = normalizeSearchText(el.stockBreakSearch?.value || "");
+
+  return state.stockBreakLines.filter(line => {
+    const matchesSegment = !segment || line.segment === segment;
+    const matchesSearch = !search || [line.order, line.client, line.orderType, line.segment, line.sku, line.description]
+      .some(value => normalizeSearchText(value).includes(search));
+
+    return matchesSegment && matchesSearch;
+  });
+}
+
+function renderStockBreaks() {
+  if (!el.stockBreaksTable) return;
+
+  const available = state.raw?.supplyAudit?.available !== false;
+  state.stockBreakFiltered = available ? getStockBreakScope() : [];
+
+  const lines = state.stockBreakFiltered;
+  const affectedOrders = new Set(lines.map(line => line.order).filter(order => order && order !== "Sin información"));
+  const missingUnits = lines.reduce((sum, line) => sum + Number(line.missingQty || 0), 0);
+  const byType = lines.reduce((acc, line) => {
+    acc[line.segment] = (acc[line.segment] || 0) + 1;
+    return acc;
+  }, {});
+  const dominantType = Object.entries(byType).sort((a, b) => b[1] - a[1])[0]?.[0] || "-";
+
+  if (el.stockBreakLinesKpi) el.stockBreakLinesKpi.textContent = formatNumber(lines.length);
+  if (el.stockBreakOrdersKpi) el.stockBreakOrdersKpi.textContent = formatNumber(affectedOrders.size);
+  if (el.stockBreakMissingKpi) el.stockBreakMissingKpi.textContent = formatNumber(missingUnits);
+  if (el.stockBreakDominantTypeKpi) el.stockBreakDominantTypeKpi.textContent = dominantType;
+  if (el.stockBreaksCounter) el.stockBreaksCounter.textContent = `${formatNumber(lines.length)} líneas · ${formatNumber(affectedOrders.size)} órdenes`;
+  if (el.stockBreaksMeta) {
+    el.stockBreaksMeta.textContent = state.raw?.supplyAudit?.available === false
+      ? "Supply Audit no disponible en la fuente operativa."
+      : "Información calculada desde Supply Audit / quiebres publicados.";
+  }
+
+  if (!lines.length) {
+    el.stockBreaksTable.innerHTML = `
+      <tr>
+        <td colspan="8" class="table-empty">Sin quiebres de stock para mostrar</td>
+      </tr>
+    `;
+    return;
+  }
+
+  el.stockBreaksTable.innerHTML = lines.map(line => `
+    <tr>
+      <td>${escapeHtml(line.order)}</td>
+      <td>${escapeHtml(line.client)}</td>
+      <td><span class="segment-pill ${line.segment.toLowerCase()}">${escapeHtml(line.segment)}</span></td>
+      <td><strong>${escapeHtml(line.sku)}</strong></td>
+      <td class="stock-break-description" title="${escapeHtml(line.description)}">${escapeHtml(line.description)}</td>
+      <td>${formatNumber(line.requiredQty)}</td>
+      <td>${formatNumber(line.availableQty)}</td>
+      <td><span class="missing-pill">${formatNumber(line.missingQty)}</span></td>
+    </tr>
+  `).join("");
+}
+
+function exportStockBreaks() {
+  const lines = state.stockBreakFiltered.length ? state.stockBreakFiltered : getStockBreakScope();
+
+  if (!lines.length) {
+    showToast("No hay quiebres para exportar.");
+    return;
+  }
+
+  const headers = ["order", "client", "orderType", "segment", "sku", "description", "requiredQty", "availableQty", "missingQty"];
+  const rows = lines.map(line => headers.map(header => `"${String(line[header] ?? "").replaceAll('"', '""')}"`).join(","));
+  const csv = [headers.join(","), ...rows].join("\n");
+  const blob = new Blob([csv], { type: "text/csv;charset=utf-8;" });
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement("a");
+
+  link.href = url;
+  link.download = `lazarus_quiebres_stock_${new Date().toISOString().slice(0, 10)}.csv`;
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+  URL.revokeObjectURL(url);
+}
+
 function renderAnalytics() {
   renderCompliance();
   renderStockoutThermometer();
   renderStatusDistribution();
+  renderStockBreaks();
 }
 
 function applyFilters({ preservePage = false } = {}) {
@@ -752,6 +1134,7 @@ function applyFilters({ preservePage = false } = {}) {
   const search = normalizeSearchText(el.searchInput.value);
   const status = el.statusFilter.value;
   const category = el.categoryFilter.value;
+  const channel = el.channelFilter?.value || "";
   const date = el.dateFilter.value;
 
   state.filtered = state.shipments.filter(item => {
@@ -776,6 +1159,7 @@ function applyFilters({ preservePage = false } = {}) {
     return matchesSearch
       && (!status || rawStatus === status)
       && (!category || rawCategory === category)
+      && (!channel || getOrderSegment(item) === channel)
       && (!date || item.lastEventDate === date);
   });
 
@@ -788,6 +1172,18 @@ function applyFilters({ preservePage = false } = {}) {
   }
 
   renderTable();
+  renderSummary();
+  renderCompliance();
+  renderStatusDistribution();
+}
+
+
+function getSortableValue(item, key) {
+  if (key === "status") return getRawStatus(item);
+  if (key === "category") return getRawCategory(item);
+  if (key === "orderSegment") return getOrderSegment(item);
+  if (key === "signedBy") return getSignedByValue(item);
+  return item?.[key] ?? "";
 }
 
 function sortFiltered(toggleDirection = true) {
@@ -799,8 +1195,8 @@ function sortFiltered(toggleDirection = true) {
   const key = state.sortKey;
 
   state.filtered.sort((a, b) => {
-    const valueA = String(a[key] || "").toLowerCase();
-    const valueB = String(b[key] || "").toLowerCase();
+    const valueA = String(getSortableValue(a, key)).toLowerCase();
+    const valueB = String(getSortableValue(b, key)).toLowerCase();
     return valueA.localeCompare(valueB, "es", { numeric: true }) * direction;
   });
 }
@@ -824,7 +1220,7 @@ function renderTable() {
     el.pageInfo.textContent = "Página 1 de 1";
     el.prevPageBtn.disabled = true;
     el.nextPageBtn.disabled = true;
-    el.ordersTable.innerHTML = '<tr><td colspan="5" class="table-empty">No hay registros que coincidan con los filtros</td></tr>';
+    el.ordersTable.innerHTML = '<tr><td colspan="6" class="table-empty">No hay registros que coincidan con los filtros</td></tr>';
     return;
   }
 
@@ -843,6 +1239,7 @@ function renderTable() {
     const selected = state.selectedShipmentId === shipmentId ? "selected" : "";
     const rawStatus = getRawStatus(item);
     const rawCategory = getRawCategory(item);
+    const orderSegment = getOrderSegment(item);
     const statusClass = getStatusClass(rawStatus);
 
     return `
@@ -851,6 +1248,7 @@ function renderTable() {
         <td>${escapeHtml(item.waybill)}</td>
         <td>${escapeHtml(item.lastEventDate)}</td>
         <td><span class="status-pill ${statusClass}">${escapeHtml(rawStatus)}</span></td>
+        <td><span class="segment-pill ${orderSegment.toLowerCase()}">${escapeHtml(orderSegment)}</span></td>
         <td>${escapeHtml(rawCategory)}</td>
       </tr>
     `;
@@ -874,6 +1272,7 @@ function renderDetail(shipmentId) {
 
   const rawStatus = getRawStatus(item);
   const rawCategory = getRawCategory(item);
+  const orderSegment = getOrderSegment(item);
   const statusClass = getStatusClass(rawStatus);
   const destination = pickFirst(item.destination, item.destino, item.city, item.comuna, item.region, item.address);
   const customer = pickFirst(item.customer, item.client, item.cliente, state.raw?.source?.company);
@@ -901,6 +1300,11 @@ function renderDetail(shipmentId) {
       <div class="detail-row">
         <span>Categoría</span>
         <strong>${escapeHtml(rawCategory)}</strong>
+      </div>
+
+      <div class="detail-row">
+        <span>Tipo orden</span>
+        <strong><em class="segment-pill ${orderSegment.toLowerCase()}">${escapeHtml(orderSegment)}</em></strong>
       </div>
 
       <div class="detail-row">
@@ -940,10 +1344,14 @@ function clearFilters() {
   el.searchInput.value = "";
   el.statusFilter.value = "";
   el.categoryFilter.value = "";
+  if (el.channelFilter) el.channelFilter.value = "";
   el.dateFilter.value = "";
+  if (el.stockBreakSearch) el.stockBreakSearch.value = "";
+  if (el.stockBreakTypeFilter) el.stockBreakTypeFilter.value = "";
   state.selectedShipmentId = null;
 
   applyFilters();
+  renderStockBreaks();
   renderEmptyDetail();
 }
 
@@ -953,13 +1361,15 @@ function exportCsv() {
     return;
   }
 
-  const headers = ["order", "waybill", "lastEventDate", "status", "category", "signedBy", "lastEventLabel", "lastEventDescription"];
+  const headers = ["order", "waybill", "lastEventDate", "status", "orderType", "segment", "category", "signedBy", "lastEventLabel", "lastEventDescription"];
   const rows = state.filtered.map(item => {
     const values = {
       order: item.order,
       waybill: item.waybill,
       lastEventDate: item.lastEventDate,
       status: getRawStatus(item),
+      orderType: getOrderType(item),
+      segment: getOrderSegment(item),
       category: getRawCategory(item),
       signedBy: getSignedByValue(item),
       lastEventLabel: item.lastEventLabel,
@@ -991,7 +1401,12 @@ function bindDashboardEvents() {
   el.searchInput.addEventListener("input", applyFilters);
   el.statusFilter.addEventListener("change", applyFilters);
   el.categoryFilter.addEventListener("change", applyFilters);
+  if (el.channelFilter) el.channelFilter.addEventListener("change", applyFilters);
   el.dateFilter.addEventListener("change", applyFilters);
+
+  if (el.stockBreakSearch) el.stockBreakSearch.addEventListener("input", renderStockBreaks);
+  if (el.stockBreakTypeFilter) el.stockBreakTypeFilter.addEventListener("change", renderStockBreaks);
+  if (el.exportStockBreaksBtn) el.exportStockBreaksBtn.addEventListener("click", exportStockBreaks);
 
   el.prevPageBtn.addEventListener("click", () => {
     state.page -= 1;
