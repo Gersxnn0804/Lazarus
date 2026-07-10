@@ -252,9 +252,7 @@ function resetDashboard(message = "No se encontró información disponible.") {
 
   el.searchInput.value = "";
   el.recordCounter.textContent = "0 registros";
-  el.pageInfo.textContent = "Página 1 de 1";
-  el.prevPageBtn.disabled = true;
-  el.nextPageBtn.disabled = true;
+  if (el.pageInfo) el.pageInfo.textContent = "Mostrando 0 envíos";
   el.ordersTable.innerHTML = '<tr><td colspan="6" class="table-empty">Sin datos para mostrar</td></tr>';
 
   renderEmptyDetail();
@@ -1459,22 +1457,16 @@ function renderTable() {
   el.recordCounter.textContent = `${formatNumber(state.filtered.length)} registros`;
 
   if (!state.filtered.length) {
-    el.pageInfo.textContent = "Página 1 de 1";
-    el.prevPageBtn.disabled = true;
-    el.nextPageBtn.disabled = true;
+    if (el.pageInfo) el.pageInfo.textContent = "Mostrando 0 envíos";
     el.ordersTable.innerHTML = '<tr><td colspan="6" class="table-empty">No hay registros que coincidan con los filtros</td></tr>';
     return;
   }
 
-  const totalPages = Math.max(Math.ceil(state.filtered.length / PAGE_SIZE), 1);
-  state.page = Math.min(Math.max(state.page, 1), totalPages);
+  const visibleRows = state.filtered;
 
-  const start = (state.page - 1) * PAGE_SIZE;
-  const visibleRows = state.filtered.slice(start, start + PAGE_SIZE);
-
-  el.pageInfo.textContent = `Mostrando ${formatNumber(start + 1)} a ${formatNumber(Math.min(start + PAGE_SIZE, state.filtered.length))} de ${formatNumber(state.filtered.length)} envíos · Página ${formatNumber(state.page)} de ${formatNumber(totalPages)}`;
-  el.prevPageBtn.disabled = state.page <= 1;
-  el.nextPageBtn.disabled = state.page >= totalPages;
+  if (el.pageInfo) {
+    el.pageInfo.textContent = `Mostrando ${formatNumber(visibleRows.length)} de ${formatNumber(state.shipments.length)} envíos · Scroll operativo`;
+  }
 
   el.ordersTable.innerHTML = visibleRows.map(item => {
     const shipmentId = getShipmentId(item);
@@ -1650,15 +1642,6 @@ function bindDashboardEvents() {
   if (el.stockBreakTypeFilter) el.stockBreakTypeFilter.addEventListener("change", renderStockBreaks);
   if (el.exportStockBreaksBtn) el.exportStockBreaksBtn.addEventListener("click", exportStockBreaks);
 
-  el.prevPageBtn.addEventListener("click", () => {
-    state.page -= 1;
-    renderTable();
-  });
-
-  el.nextPageBtn.addEventListener("click", () => {
-    state.page += 1;
-    renderTable();
-  });
 
   document.querySelectorAll(".sort-btn").forEach(button => {
     button.addEventListener("click", () => {

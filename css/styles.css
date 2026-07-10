@@ -1962,3 +1962,39 @@ tbody tr.selected {
     flex-direction: column;
   }
 }
+
+
+/* =========================================================
+   ORDERS TABLE - SCROLL MODE
+   Reemplaza paginación por scroll operativo
+========================================================= */
+.table-panel .table-wrap {
+  max-height: min(68vh, 760px);
+  overflow: auto;
+  scroll-behavior: smooth;
+}
+
+.table-toolbar-scroll {
+  justify-content: center;
+  min-height: 46px;
+  padding: 10px 16px 14px;
+}
+
+.table-toolbar-scroll span {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 7px 13px;
+  border-radius: 999px;
+  color: var(--cyan);
+  background: rgba(34, 211, 238, .08);
+  border: 1px solid rgba(34, 211, 238, .18);
+  font-size: 12px;
+  font-weight: 900;
+}
+
+@media (max-width: 820px) {
+  .table-panel .table-wrap {
+    max-height: 62vh;
+  }
+}
