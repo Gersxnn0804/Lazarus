@@ -564,8 +564,21 @@ function getOrderType(item) {
 }
 
 function getOrderSegment(item) {
-  const type = normalizeSearchText(getOrderType(item));
+  const rawType = getOrderType(item);
+  const type = normalizeSearchText(rawType);
+
+  if (!type) return "Sin tipo";
+
   return type.includes("b2c") || type.includes("business to consumer") || type.includes("consumer") ? "B2C" : "B2B";
+}
+
+function getSegmentClass(segment) {
+  const normalized = normalizeSearchText(segment);
+
+  if (normalized.includes("b2c")) return "b2c";
+  if (normalized.includes("b2b")) return "b2b";
+
+  return "unknown";
 }
 
 function filterByOrderSegment(items, segment) {
@@ -843,17 +856,25 @@ function getFirstArray(...candidates) {
 
 
 function getNestedStockBreakLines(data = state.raw) {
-  const sources = [
+  const explicitLineSources = [
     data?.supplyAudit?.stockBreaks?.lines,
-    data?.supplyAudit?.stockBreaks?.orders,
     data?.stockBreaks?.lines,
-    data?.stockBreaks?.orders,
-    data?.supplyAudit?.orders,
-    data?.ordersWithStockBreaks,
+    data?.supplyAudit?.stockBreakLines,
     data?.stockBreakLines
-  ].filter(Boolean);
+  ].filter(source => Array.isArray(source) && source.length);
 
-  return sources.flatMap(source => flattenStockBreakSource(source));
+  if (explicitLineSources.length) {
+    return explicitLineSources.flatMap(source => flattenStockBreakSource(source));
+  }
+
+  const orderSources = [
+    data?.supplyAudit?.stockBreaks?.orders,
+    data?.stockBreaks?.orders,
+    data?.ordersWithStockBreaks,
+    data?.supplyAudit?.orders
+  ].filter(source => Array.isArray(source) && source.length);
+
+  return orderSources.flatMap(source => flattenStockBreakSource(source));
 }
 
 function aggregateStockBreakLinesForThermometer() {
@@ -1137,7 +1158,7 @@ function normalizeStockBreakLines(data = state.raw) {
 
   state.stockBreakSourceMode = "lines";
 
-  return rawLines.map((line, index) => {
+  const normalizedLines = rawLines.map((line, index) => {
     const order = pickFirst(
       line.order,
       line.orderId,
@@ -1216,7 +1237,7 @@ function normalizeStockBreakLines(data = state.raw) {
     );
     const missingQty = explicitMissing !== "" ? toNumber(explicitMissing) : Math.max(requiredQty - availableQty, 0);
     const normalizedType = normalizeSearchText(orderType);
-    const segment = normalizedType.includes("b2c") ? "B2C" : "B2B";
+    const segment = !normalizedType ? "Sin tipo" : normalizedType.includes("b2c") ? "B2C" : "B2B";
 
     return {
       id: `${order || "order"}-${sku || "sku"}-${index}`,
@@ -1230,8 +1251,26 @@ function normalizeStockBreakLines(data = state.raw) {
       availableQty,
       missingQty
     };
-  })
-    .filter(line => Number(line.missingQty || 0) > 0)
+  }).filter(line => Number(line.missingQty || 0) > 0);
+
+  const deduped = new Map();
+
+  normalizedLines.forEach(line => {
+    const key = [
+      normalizeSearchText(line.order),
+      normalizeSearchText(line.sku),
+      normalizeSearchText(line.orderType),
+      Number(line.requiredQty || 0),
+      Number(line.availableQty || 0),
+      Number(line.missingQty || 0)
+    ].join("|");
+
+    if (!deduped.has(key)) {
+      deduped.set(key, line);
+    }
+  });
+
+  return [...deduped.values()]
     .sort((a, b) => b.missingQty - a.missingQty || a.order.localeCompare(b.order, "es", { numeric: true }));
 }
 
@@ -1292,7 +1331,7 @@ function renderStockBreaks() {
   el.stockBreaksTable.innerHTML = lines.map(line => `
     <tr>
       <td>${escapeHtml(line.order)}</td>
-      <td><span class="segment-pill ${line.segment.toLowerCase()}">${escapeHtml(line.segment)}</span></td>
+      <td><span class="segment-pill ${getSegmentClass(line.segment)}">${escapeHtml(line.segment)}</span></td>
       <td><strong>${escapeHtml(line.sku)}</strong></td>
       <td class="stock-break-description" title="${escapeHtml(line.description)}">${escapeHtml(line.description)}</td>
       <td>${formatNumber(line.requiredQty)}</td>
@@ -1451,7 +1490,7 @@ function renderTable() {
         <td>${escapeHtml(item.waybill)}</td>
         <td>${escapeHtml(item.lastEventDate)}</td>
         <td><span class="status-pill ${statusClass}">${escapeHtml(rawStatus)}</span></td>
-        <td><span class="segment-pill ${orderSegment.toLowerCase()}">${escapeHtml(orderSegment)}</span></td>
+        <td><span class="segment-pill ${getSegmentClass(orderSegment)}">${escapeHtml(orderSegment)}</span></td>
         <td>${escapeHtml(rawCategory)}</td>
       </tr>
     `;
@@ -1507,7 +1546,7 @@ function renderDetail(shipmentId) {
 
       <div class="detail-row">
         <span>Tipo orden</span>
-        <strong><em class="segment-pill ${orderSegment.toLowerCase()}">${escapeHtml(orderSegment)}</em></strong>
+        <strong><em class="segment-pill ${getSegmentClass(orderSegment)}">${escapeHtml(orderSegment)}</em></strong>
       </div>
 
       <div class="detail-row">
