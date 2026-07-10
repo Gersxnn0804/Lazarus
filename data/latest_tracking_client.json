@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.2.0",
-  "generatedAt": "2026-07-10T11:12:49",
+  "generatedAt": "2026-07-10T11:13:03",
   "source": {
     "platform": "Polaris",
     "module": "Tracking",
@@ -30,7 +30,7 @@
   },
   "inventoryThermometer": {
     "available": true,
-    "generatedAt": "2026-07-10T11:12:49",
+    "generatedAt": "2026-07-10T11:13:03",
     "totalAuditOrders": 25,
     "totalNoFillOrders": 7,
     "metric": "affected_orders_over_total_audit_orders",
@@ -77,7 +77,7 @@
   },
   "supplyAudit": {
     "available": true,
-    "generatedAt": "2026-07-10T11:12:49",
+    "generatedAt": "2026-07-10T11:13:03",
     "summary": {
       "totalOrders": 25,
       "fullFill": 18,
