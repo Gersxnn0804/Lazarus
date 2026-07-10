@@ -14,6 +14,8 @@ const state = {
   filtered: [],
   stockBreakLines: [],
   stockBreakFiltered: [],
+  orderTypeByOrder: new Map(),
+  stockBreakSourceMode: "none",
   selectedShipmentId: null,
   started: false,
   page: 1,
@@ -221,6 +223,8 @@ function resetDashboard(message = "No se encontró información disponible.") {
   state.filtered = [];
   state.stockBreakLines = [];
   state.stockBreakFiltered = [];
+  state.orderTypeByOrder = new Map();
+  state.stockBreakSourceMode = "none";
   state.selectedShipmentId = null;
   state.page = 1;
 
@@ -357,6 +361,7 @@ async function loadData({ silent = false } = {}) {
 
     state.raw = data;
     state.shipments = data.shipments;
+    state.orderTypeByOrder = buildOrderTypeIndex(data);
     state.stockBreakLines = normalizeStockBreakLines(data);
     state.filtered = [...state.shipments];
     state.stockBreakFiltered = [...state.stockBreakLines];
@@ -398,6 +403,129 @@ async function loadData({ silent = false } = {}) {
   }
 }
 
+
+function getIdentifierKeysFromAny(item) {
+  if (!item || typeof item !== "object") return [];
+
+  const candidates = [
+    item.order,
+    item.orderId,
+    item.OrderId,
+    item.OrderID,
+    item.orden,
+    item.codigo_orden,
+    item.orderNumber,
+    item.originalOrderId,
+    item.original_order_id,
+    item.waybill,
+    item.tracking,
+    item.trackingNumber,
+    item.shipmentId,
+    item.id,
+    getByKeyVariants(item, [
+      "order", "orderId", "Order ID", "OrderId", "OrderID", "Orden", "codigo orden",
+      "order number", "originalOrderId", "original order id", "waybill", "tracking",
+      "tracking number", "shipmentId", "shipment id"
+    ])
+  ];
+
+  return [...new Set(candidates
+    .map(value => safeText(value))
+    .filter(value => value && value !== "Sin información"))];
+}
+
+function getOrderKeyFromAny(item) {
+  return getIdentifierKeysFromAny(item)[0] || "";
+}
+
+function getOrderTypeFromAny(item) {
+  return pickFirst(
+    item?.orderType,
+    item?.order_type,
+    item?.OrderType,
+    item?.Ordertype,
+    item?.["Order Type"],
+    item?.["order type"],
+    item?.tipoOrden,
+    item?.tipo_orden,
+    item?.tipoDeOrden,
+    item?.tipo_de_orden,
+    item?.tipoOperacion,
+    item?.tipo_operacion,
+    item?.operationType,
+    item?.operation_type,
+    item?.orderClass,
+    item?.order_class,
+    item?.channel,
+    item?.canal,
+    item?.businessType,
+    item?.business_type,
+    item?.segment,
+    item?.segmento,
+    getByKeyVariants(item, [
+      "orderType", "order_type", "Order Type", "OrderType", "Tipo Orden", "Tipo de Orden",
+      "tipoOrden", "tipo_orden", "tipoOperacion", "tipo operacion", "operationType",
+      "operation type", "orderClass", "order class", "channel", "canal", "businessType",
+      "business type", "segment", "segmento"
+    ])
+  );
+}
+
+function collectObjectsDeep(source, output = [], depth = 0) {
+  if (!source || depth > 7) return output;
+
+  if (Array.isArray(source)) {
+    source.forEach(item => collectObjectsDeep(item, output, depth + 1));
+    return output;
+  }
+
+  if (typeof source !== "object") return output;
+
+  output.push(source);
+
+  Object.values(source).forEach(value => {
+    if (value && typeof value === "object") collectObjectsDeep(value, output, depth + 1);
+  });
+
+  return output;
+}
+
+function buildOrderTypeIndex(data = state.raw) {
+  const index = new Map();
+  const sources = [
+    data?.shipments,
+    data?.orders,
+    data?.supplyAudit?.orders,
+    data?.supplyAudit?.lines,
+    data?.supplyAudit?.stockBreakLines,
+    data?.supplyAudit?.stockBreaks?.orders,
+    data?.supplyAudit?.stockBreaks?.lines,
+    data?.stockBreaks?.orders,
+    data?.stockBreaks?.lines,
+    data?.ordersWithStockBreaks,
+    data?.orderTypes,
+    data?.filters?.orderTypes
+  ].filter(Boolean);
+
+  const objects = [
+    ...sources.flatMap(source => flattenStockBreakSource(source)),
+    ...collectObjectsDeep(data?.supplyAudit || {}),
+    ...collectObjectsDeep(data?.stockBreaks || {})
+  ];
+
+  objects.forEach(item => {
+    const orderType = getOrderTypeFromAny(item);
+    if (!orderType) return;
+
+    getIdentifierKeysFromAny(item).forEach(identifier => {
+      index.set(identifier, orderType);
+      index.set(normalizeSearchText(identifier), orderType);
+    });
+  });
+
+  return index;
+}
+
 function getRawStatus(item) {
   return pickFirst(
     item?.status,
@@ -416,23 +544,28 @@ function getRawCategory(item) {
 }
 
 function getOrderType(item) {
-  return pickFirst(
-    item?.orderType,
-    item?.order_type,
-    item?.OrderType,
-    item?.["Order Type"],
-    item?.["order type"],
-    item?.tipoOrden,
-    item?.tipo_orden,
-    item?.tipoOperacion,
-    item?.tipo_operacion,
-    getByKeyVariants(item, ["orderType", "order_type", "Order Type", "Tipo Orden", "Tipo de Orden"])
-  );
+  const directType = getOrderTypeFromAny(item);
+  if (directType) return directType;
+
+  const identifiers = [
+    ...getIdentifierKeysFromAny(item),
+    getShipmentId(item)
+  ].map(value => safeText(value)).filter(Boolean);
+
+  for (const identifier of identifiers) {
+    const exactMatch = state.orderTypeByOrder?.get(identifier);
+    if (exactMatch) return exactMatch;
+
+    const normalizedMatch = state.orderTypeByOrder?.get(normalizeSearchText(identifier));
+    if (normalizedMatch) return normalizedMatch;
+  }
+
+  return "";
 }
 
 function getOrderSegment(item) {
   const type = normalizeSearchText(getOrderType(item));
-  return type.includes("b2c") ? "B2C" : "B2B";
+  return type.includes("b2c") || type.includes("business to consumer") || type.includes("consumer") ? "B2C" : "B2B";
 }
 
 function filterByOrderSegment(items, segment) {
@@ -540,8 +673,33 @@ function getThirdPartyTotal(items = getOperationalScope()) {
   return items.filter(isThirdPartyShipment).length;
 }
 
+function isMeaningfulSignedBy(value) {
+  const text = normalizeSearchText(value);
+  if (!text) return false;
+
+  return ![
+    "no poseo informacion",
+    "no poseo información",
+    "sin informacion",
+    "sin información",
+    "sin info",
+    "n/a",
+    "na",
+    "null",
+    "undefined",
+    "-"
+  ].includes(text);
+}
+
 function getSignedByValue(item) {
-  const signedBy = pickFirst(
+  const candidates = [
+    item?.signedByRaw,
+    item?.signed_by_raw,
+    item?.["signed by raw"],
+    item?.columnO,
+    item?.colO,
+    item?.o,
+    item?.O,
     item?.signedBy,
     item?.signed_by,
     item?.signedby,
@@ -555,18 +713,16 @@ function getSignedByValue(item) {
     item?.receiver,
     item?.recipient,
     item?.receivedByName,
-    item?.columnO,
-    item?.colO,
-    item?.o,
-    item?.O,
     getByKeyVariants(item, [
-      "signedBy", "signed_by", "signed by", "Signed By", "SIGNED BY",
+      "signedByRaw", "signed by raw", "signedBy", "signed_by", "signed by", "Signed By", "SIGNED BY",
       "receivedBy", "received_by", "received by", "Recibido por", "recibido por",
       "receiver", "recipient", "columnO", "colO", "o", "O"
     ])
-  );
+  ];
 
+  const signedBy = candidates.find(isMeaningfulSignedBy);
   if (signedBy) return signedBy;
+
   return isDeliveredShipment(item) ? "Entregado" : "";
 }
 
@@ -936,8 +1092,50 @@ function flattenStockBreakSource(source, parent = {}) {
   return [{ ...parent, ...source }];
 }
 
+function normalizeStockBreakLinesFromThermometer(data = state.raw) {
+  const items = getFirstArray(
+    data?.inventoryThermometer?.topCriticalItems,
+    data?.inventoryThermometer?.items,
+    data?.inventoryThermometer?.criticalItems,
+    data?.inventoryThermometer?.data
+  );
+
+  return items.map((item, index) => {
+    const orderTypes = Array.isArray(item.orderTypes)
+      ? item.orderTypes
+      : String(item.orderTypes || "").split(/[;,|]/).map(value => value.trim()).filter(Boolean);
+    const orderType = orderTypes[0] || "B2B";
+    const normalizedType = normalizeSearchText(orderType);
+    const segment = normalizedType.includes("b2c") ? "B2C" : "B2B";
+    const affectedRatio = item.affectedRatio || `${formatNumber(item.affectedOrders || 0)}/${formatNumber(item.totalAuditOrders || data?.inventoryThermometer?.totalAuditOrders || 0)}`;
+
+    return {
+      id: `thermometer-${item.item || item.sku || index}`,
+      order: affectedRatio ? `Resumen ${affectedRatio}` : "Resumen SKU",
+      client: safeText(data?.source?.company || "Supply Audit"),
+      orderType: orderType || segment,
+      segment,
+      sku: safeText(item.item || item.sku || item.itemCode || item.productCode || item.codigo || item.description),
+      description: safeText(item.description || item.descripcion || "Resumen agregado por SKU"),
+      requiredQty: toNumber(item.requiredUnits ?? item.requiredQty ?? 0),
+      availableQty: toNumber(item.availableUnits ?? item.availableQty ?? 0),
+      missingQty: toNumber(item.missingUnits ?? item.missingQty ?? 0),
+      aggregated: true
+    };
+  }).filter(line => Number(line.missingQty || 0) > 0)
+    .sort((a, b) => b.missingQty - a.missingQty || a.sku.localeCompare(b.sku, "es", { numeric: true }));
+}
+
 function normalizeStockBreakLines(data = state.raw) {
   const rawLines = getNestedStockBreakLines(data);
+
+  if (!rawLines.length) {
+    const fallbackLines = normalizeStockBreakLinesFromThermometer(data);
+    state.stockBreakSourceMode = fallbackLines.length ? "thermometer" : "none";
+    return fallbackLines;
+  }
+
+  state.stockBreakSourceMode = "lines";
 
   return rawLines.map((line, index) => {
     const order = pickFirst(
@@ -1033,7 +1231,7 @@ function normalizeStockBreakLines(data = state.raw) {
       missingQty
     };
   })
-    .filter(line => line.order !== "Sin información" || line.sku !== "Sin información" || line.missingQty > 0)
+    .filter(line => Number(line.missingQty || 0) > 0)
     .sort((a, b) => b.missingQty - a.missingQty || a.order.localeCompare(b.order, "es", { numeric: true }));
 }
 
@@ -1043,7 +1241,7 @@ function getStockBreakScope() {
 
   return state.stockBreakLines.filter(line => {
     const matchesSegment = !segment || line.segment === segment;
-    const matchesSearch = !search || [line.order, line.client, line.orderType, line.segment, line.sku, line.description]
+    const matchesSearch = !search || [line.order, line.orderType, line.segment, line.sku, line.description]
       .some(value => normalizeSearchText(value).includes(search));
 
     return matchesSegment && matchesSearch;
@@ -1071,15 +1269,21 @@ function renderStockBreaks() {
   if (el.stockBreakDominantTypeKpi) el.stockBreakDominantTypeKpi.textContent = dominantType;
   if (el.stockBreaksCounter) el.stockBreaksCounter.textContent = `${formatNumber(lines.length)} líneas · ${formatNumber(affectedOrders.size)} órdenes`;
   if (el.stockBreaksMeta) {
-    el.stockBreaksMeta.textContent = state.raw?.supplyAudit?.available === false
-      ? "Supply Audit no disponible en la fuente operativa."
-      : "Información calculada desde Supply Audit / quiebres publicados.";
+    if (state.raw?.supplyAudit?.available === false) {
+      el.stockBreaksMeta.textContent = "Auditoría de abastecimiento no disponible en la fuente operativa.";
+    } else if (state.stockBreakSourceMode === "lines") {
+      el.stockBreaksMeta.textContent = "Detalle real por orden y SKU; solo se muestran líneas con faltante mayor a cero.";
+    } else if (state.stockBreakSourceMode === "thermometer") {
+      el.stockBreaksMeta.textContent = "La fuente actual no trae líneas por orden; se muestra resumen agregado por SKU desde el termómetro operativo.";
+    } else {
+      el.stockBreaksMeta.textContent = "La fuente actual no trae detalle de quiebres por orden.";
+    }
   }
 
   if (!lines.length) {
     el.stockBreaksTable.innerHTML = `
       <tr>
-        <td colspan="8" class="table-empty">Sin quiebres de stock para mostrar</td>
+        <td colspan="7" class="table-empty">Sin quiebres de stock para mostrar</td>
       </tr>
     `;
     return;
@@ -1088,7 +1292,6 @@ function renderStockBreaks() {
   el.stockBreaksTable.innerHTML = lines.map(line => `
     <tr>
       <td>${escapeHtml(line.order)}</td>
-      <td>${escapeHtml(line.client)}</td>
       <td><span class="segment-pill ${line.segment.toLowerCase()}">${escapeHtml(line.segment)}</span></td>
       <td><strong>${escapeHtml(line.sku)}</strong></td>
       <td class="stock-break-description" title="${escapeHtml(line.description)}">${escapeHtml(line.description)}</td>
@@ -1107,7 +1310,7 @@ function exportStockBreaks() {
     return;
   }
 
-  const headers = ["order", "client", "orderType", "segment", "sku", "description", "requiredQty", "availableQty", "missingQty"];
+  const headers = ["order", "orderType", "segment", "sku", "description", "requiredQty", "availableQty", "missingQty"];
   const rows = lines.map(line => headers.map(header => `"${String(line[header] ?? "").replaceAll('"', '""')}"`).join(","));
   const csv = [headers.join(","), ...rows].join("\n");
   const blob = new Blob([csv], { type: "text/csv;charset=utf-8;" });
