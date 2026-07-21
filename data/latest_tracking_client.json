@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.2.0",
-  "generatedAt": "2026-07-21T08:12:25",
+  "generatedAt": "2026-07-21T09:10:32",
   "source": {
     "platform": "Polaris",
     "module": "Tracking",
@@ -30,7 +30,7 @@
   },
   "inventoryThermometer": {
     "available": true,
-    "generatedAt": "2026-07-21T08:12:25",
+    "generatedAt": "2026-07-21T09:10:32",
     "totalAuditOrders": 47,
     "totalNoFillOrders": 6,
     "metric": "affected_orders_over_total_audit_orders",
@@ -58,7 +58,7 @@
   },
   "supplyAudit": {
     "available": true,
-    "generatedAt": "2026-07-21T08:12:25",
+    "generatedAt": "2026-07-21T09:10:32",
     "summary": {
       "totalOrders": 47,
       "fullFill": 41,
@@ -69,11 +69,11 @@
     },
     "metadata": {
       "source": "auto-atlas-resource-loader",
-      "lastProcessedAt": "2026-07-20T16:00:46",
+      "lastProcessedAt": "2026-07-21T09:00:31",
       "files": {
-        "order": "Atlas_Order_20260720_155054.csv",
-        "orderLine": "Atlas_OrderLine_20260720_155055.csv",
-        "inventory": "Atlas_ItemInventory_20260720_155119.csv"
+        "order": "Atlas_Order_20260721_085040.csv",
+        "orderLine": "Atlas_OrderLine_20260721_085041.csv",
+        "inventory": "Atlas_ItemInventory_20260721_085201.csv"
       }
     },
     "filters": {
@@ -2094,7 +2094,7 @@
             "client": "",
             "sku": "10073443",
             "item": "10073443",
-            "description": "BLUSA TEJ PLANO 36R FEM 62,4ALGOD CORAL",
+            "description": "BLUSA TEJ PLANO 36R FEM 624ALGOD CORAL",
             "requiredQty": 3,
             "availableQty": 188,
             "missingQty": 0,
@@ -2342,7 +2342,7 @@
             "client": "",
             "sku": "10073457",
             "item": "10073457",
-            "description": "BLUSA TEJ PLANO 38R FEM 62,4ALGOD BLANCO",
+            "description": "BLUSA TEJ PLANO 38R FEM 624ALGOD BLANCO",
             "requiredQty": 2,
             "availableQty": 747,
             "missingQty": 0,
@@ -2402,7 +2402,7 @@
             "client": "",
             "sku": "10073457",
             "item": "10073457",
-            "description": "BLUSA TEJ PLANO 38R FEM 62,4ALGOD BLANCO",
+            "description": "BLUSA TEJ PLANO 38R FEM 624ALGOD BLANCO",
             "requiredQty": 3,
             "availableQty": 747,
             "missingQty": 0,
