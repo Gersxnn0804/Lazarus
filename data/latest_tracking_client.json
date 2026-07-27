@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.2.0",
-  "generatedAt": "2026-07-27T13:10:32",
+  "generatedAt": "2026-07-27T14:10:33",
   "source": {
     "platform": "Polaris",
     "module": "Tracking",
@@ -8,17 +8,17 @@
   },
   "summary": {
     "totalShipments": 6198,
-    "delivered": 6058,
-    "inTransit": 27,
+    "delivered": 6059,
+    "inTransit": 26,
     "scheduled": 1,
     "retry": 5,
     "wrongAddress": 4,
     "returns": 18,
     "incidents": 5,
     "critical": 4,
-    "signedByCaptured": 6037,
-    "signedByResolved": 6037,
-    "deliveredWithoutSignedBy": 21
+    "signedByCaptured": 6040,
+    "signedByResolved": 6040,
+    "deliveredWithoutSignedBy": 19
   },
   "inventoryHealth": {
     "available": true,
@@ -30,7 +30,7 @@
   },
   "inventoryThermometer": {
     "available": true,
-    "generatedAt": "2026-07-27T13:10:32",
+    "generatedAt": "2026-07-27T14:10:33",
     "totalAuditOrders": 6,
     "totalNoFillOrders": 6,
     "metric": "affected_orders_over_total_audit_orders",
@@ -58,7 +58,7 @@
   },
   "supplyAudit": {
     "available": true,
-    "generatedAt": "2026-07-27T13:10:32",
+    "generatedAt": "2026-07-27T14:10:33",
     "summary": {
       "totalOrders": 6,
       "fullFill": 0,
@@ -69,11 +69,11 @@
     },
     "metadata": {
       "source": "auto-atlas-resource-loader",
-      "lastProcessedAt": "2026-07-27T13:00:14",
+      "lastProcessedAt": "2026-07-27T14:00:23",
       "files": {
-        "order": "Atlas_Order_20260727_125055.csv",
-        "orderLine": "Atlas_OrderLine_20260727_125056.csv",
-        "inventory": "Atlas_ItemInventory_20260727_125120.csv"
+        "order": "Atlas_Order_20260727_135108.csv",
+        "orderLine": "Atlas_OrderLine_20260727_135109.csv",
+        "inventory": "Atlas_ItemInventory_20260727_135131.csv"
       }
     },
     "filters": {
@@ -868,10 +868,10 @@
       "category": "Finalizado",
       "orderType": "B2C",
       "order_type": "B2C",
-      "signedBy": "No firma",
-      "signedByRaw": "",
+      "signedBy": "Joselyn Morgado Conserje",
+      "signedByRaw": "Joselyn Morgado Conserje",
       "lastEventLabel": "ENTREGADO",
-      "lastEventDescription": "With delivery courier"
+      "lastEventDescription": "Shipment delivered ok"
     },
     {
       "order": "LT000000000000032597",
@@ -1241,14 +1241,14 @@
       "order": "LT000000000000097385",
       "waybill": "4186088303",
       "lastEventDate": "2026-07-27",
-      "status": "EN PROCESO",
-      "category": "En Tránsito",
+      "status": "ENTREGADO",
+      "category": "Finalizado",
       "orderType": "B2C",
       "order_type": "B2C",
-      "signedBy": "",
-      "signedByRaw": "",
-      "lastEventLabel": "EN PROCESO",
-      "lastEventDescription": "Envío en ruta  para su entrega."
+      "signedBy": "VALENTINA JAVIERA QUINTANILLA",
+      "signedByRaw": "VALENTINA JAVIERA QUINTANILLA",
+      "lastEventLabel": "ENTREGADO",
+      "lastEventDescription": "Shipment delivered ok"
     },
     {
       "order": "LT000000000000097410",
@@ -1284,10 +1284,10 @@
       "category": "Finalizado",
       "orderType": "B2C",
       "order_type": "B2C",
-      "signedBy": "No firma",
-      "signedByRaw": "",
+      "signedBy": "MAX ALEJANDR POZO",
+      "signedByRaw": "MAX ALEJANDR POZO",
       "lastEventLabel": "ENTREGADO",
-      "lastEventDescription": "With delivery courier"
+      "lastEventDescription": "Shipment delivered ok"
     },
     {
       "order": "LT000000000000020365",
