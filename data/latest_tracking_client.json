@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.2.0",
-  "generatedAt": "2026-08-18T12:10:37",
+  "generatedAt": "2026-08-18T13:10:12",
   "source": {
     "platform": "Polaris",
     "module": "Tracking",
@@ -8,17 +8,17 @@
   },
   "summary": {
     "totalShipments": 6081,
-    "delivered": 5994,
+    "delivered": 5996,
     "inTransit": 1,
     "scheduled": 0,
-    "retry": 4,
+    "retry": 2,
     "wrongAddress": 1,
     "returns": 21,
-    "incidents": 4,
+    "incidents": 2,
     "critical": 1,
     "signedByCaptured": 5985,
     "signedByResolved": 5985,
-    "deliveredWithoutSignedBy": 9
+    "deliveredWithoutSignedBy": 11
   },
   "inventoryHealth": {
     "available": true,
@@ -30,7 +30,7 @@
   },
   "inventoryThermometer": {
     "available": true,
-    "generatedAt": "2026-08-18T12:10:37",
+    "generatedAt": "2026-08-18T13:10:12",
     "totalAuditOrders": 6,
     "totalNoFillOrders": 6,
     "metric": "affected_orders_over_total_audit_orders",
@@ -58,7 +58,7 @@
   },
   "supplyAudit": {
     "available": true,
-    "generatedAt": "2026-08-18T12:10:37",
+    "generatedAt": "2026-08-18T13:10:12",
     "summary": {
       "totalOrders": 6,
       "fullFill": 0,
@@ -69,11 +69,11 @@
     },
     "metadata": {
       "source": "auto-atlas-resource-loader",
-      "lastProcessedAt": "2026-08-18T11:00:07",
+      "lastProcessedAt": "2026-08-18T13:00:14",
       "files": {
-        "order": "Atlas_Order_20260818_105054.csv",
-        "orderLine": "Atlas_OrderLine_20260818_105056.csv",
-        "inventory": "Atlas_ItemInventory_20260818_105118.csv"
+        "order": "Atlas_Order_20260818_125054.csv",
+        "orderLine": "Atlas_OrderLine_20260818_125055.csv",
+        "inventory": "Atlas_ItemInventory_20260818_125118.csv"
       }
     },
     "filters": {
@@ -809,6 +809,58 @@
   },
   "shipments": [
     {
+      "order": "LT000000000000100386",
+      "waybill": "4258550085",
+      "lastEventDate": "2026-08-18",
+      "status": "ENTREGADO",
+      "category": "Finalizado",
+      "orderType": "B2C",
+      "order_type": "B2C",
+      "signedBy": "No firma",
+      "signedByRaw": "",
+      "lastEventLabel": "ENTREGADO",
+      "lastEventDescription": "With delivery courier"
+    },
+    {
+      "order": "LT000000000000100354",
+      "waybill": "7701156024",
+      "lastEventDate": "2026-08-18",
+      "status": "REINTENTO",
+      "category": "Incidencia",
+      "orderType": "B2C",
+      "order_type": "B2C",
+      "signedBy": "",
+      "signedByRaw": "",
+      "lastEventLabel": "REINTENTO",
+      "lastEventDescription": "El envío ha sido programado para ser entregado en un siguiente ciclo de entrega."
+    },
+    {
+      "order": "LT000000000000100514",
+      "waybill": "1782728813",
+      "lastEventDate": "2026-08-18",
+      "status": "ENTREGADO",
+      "category": "Finalizado",
+      "orderType": "B2C",
+      "order_type": "B2C",
+      "signedBy": "No firma",
+      "signedByRaw": "",
+      "lastEventLabel": "ENTREGADO",
+      "lastEventDescription": "With delivery courier"
+    },
+    {
+      "order": "LT000000000000100731",
+      "waybill": "3764298484",
+      "lastEventDate": "2026-08-18",
+      "status": "REINTENTO",
+      "category": "Incidencia",
+      "orderType": "B2C",
+      "order_type": "B2C",
+      "signedBy": "",
+      "signedByRaw": "",
+      "lastEventLabel": "REINTENTO",
+      "lastEventDescription": "El envío ha sido programado para ser entregado en un siguiente ciclo de entrega."
+    },
+    {
       "order": "LT000000000000093800",
       "waybill": "8254521542",
       "lastEventDate": "2026-08-18",
@@ -820,6 +872,19 @@
       "signedByRaw": "",
       "lastEventLabel": "EN PROCESO",
       "lastEventDescription": "El envío arribo a una estación de DHL y requiere un tiempo adicional para ser procesado."
+    },
+    {
+      "order": "LT000000000000099958",
+      "waybill": "1816526482",
+      "lastEventDate": "2026-08-18",
+      "status": "ENTREGADO",
+      "category": "Finalizado",
+      "orderType": "B2C",
+      "order_type": "B2C",
+      "signedBy": "No firma",
+      "signedByRaw": "",
+      "lastEventLabel": "ENTREGADO",
+      "lastEventDescription": "With delivery courier"
     },
     {
       "order": "LT000000000000100422",
@@ -835,30 +900,17 @@
       "lastEventDescription": "Shipment delivered ok"
     },
     {
-      "order": "LT000000000000100051",
-      "waybill": "4902584536",
+      "order": "LT000000000000100033",
+      "waybill": "6867802620",
       "lastEventDate": "2026-08-17",
       "status": "ENTREGADO",
       "category": "Finalizado",
       "orderType": "B2C",
       "order_type": "B2C",
-      "signedBy": "HENDRIX DAVID TOVAR",
-      "signedByRaw": "HENDRIX DAVID TOVAR",
+      "signedBy": "GERMAN ANDRE ARGOTE",
+      "signedByRaw": "GERMAN ANDRE ARGOTE",
       "lastEventLabel": "ENTREGADO",
       "lastEventDescription": "Shipment delivered ok"
-    },
-    {
-      "order": "LT000000000000100294",
-      "waybill": "2582560643",
-      "lastEventDate": "2026-08-17",
-      "status": "ENTREGADO",
-      "category": "Finalizado",
-      "orderType": "B2C",
-      "order_type": "B2C",
-      "signedBy": "LATAM972-04335413 2008 PM",
-      "signedByRaw": "LATAM972-04335413 2008 PM",
-      "lastEventLabel": "ENTREGADO",
-      "lastEventDescription": "Delivery arranged, no details expected"
     },
     {
       "order": "LT000000000000100158",
@@ -887,19 +939,6 @@
       "lastEventDescription": "Shipment delivered ok"
     },
     {
-      "order": "LT000000000000100731",
-      "waybill": "3764298484",
-      "lastEventDate": "2026-08-17",
-      "status": "REINTENTO",
-      "category": "Incidencia",
-      "orderType": "B2C",
-      "order_type": "B2C",
-      "signedBy": "",
-      "signedByRaw": "",
-      "lastEventLabel": "REINTENTO",
-      "lastEventDescription": "El envío ha sido programado para ser entregado en un siguiente ciclo de entrega."
-    },
-    {
       "order": "LT000000000000099875",
       "waybill": "1338812075",
       "lastEventDate": "2026-08-17",
@@ -913,41 +952,28 @@
       "lastEventDescription": "Shipment delivered ok"
     },
     {
-      "order": "LT000000000000099958",
-      "waybill": "1816526482",
-      "lastEventDate": "2026-08-17",
-      "status": "REINTENTO",
-      "category": "Incidencia",
-      "orderType": "B2C",
-      "order_type": "B2C",
-      "signedBy": "",
-      "signedByRaw": "",
-      "lastEventLabel": "REINTENTO",
-      "lastEventDescription": "El envío ha sido programado para ser entregado en un siguiente ciclo de entrega."
-    },
-    {
-      "order": "LT000000000000100033",
-      "waybill": "6867802620",
+      "order": "LT000000000000100051",
+      "waybill": "4902584536",
       "lastEventDate": "2026-08-17",
       "status": "ENTREGADO",
       "category": "Finalizado",
       "orderType": "B2C",
       "order_type": "B2C",
-      "signedBy": "GERMAN ANDRE ARGOTE",
-      "signedByRaw": "GERMAN ANDRE ARGOTE",
+      "signedBy": "HENDRIX DAVID TOVAR",
+      "signedByRaw": "HENDRIX DAVID TOVAR",
       "lastEventLabel": "ENTREGADO",
       "lastEventDescription": "Shipment delivered ok"
     },
     {
-      "order": "LT000000000000099734",
-      "waybill": "8250878440",
+      "order": "LT000000000000100318",
+      "waybill": "6675536862",
       "lastEventDate": "2026-08-17",
       "status": "ENTREGADO",
       "category": "Finalizado",
       "orderType": "B2C",
       "order_type": "B2C",
-      "signedBy": "Alexia Rios",
-      "signedByRaw": "Alexia Rios",
+      "signedBy": "Carolina Diaz",
+      "signedByRaw": "Carolina Diaz",
       "lastEventLabel": "ENTREGADO",
       "lastEventDescription": "Shipment delivered ok"
     },
@@ -965,15 +991,15 @@
       "lastEventDescription": "Shipment delivered ok"
     },
     {
-      "order": "LT000000000000100318",
-      "waybill": "6675536862",
+      "order": "LT000000000000100069",
+      "waybill": "2806499286",
       "lastEventDate": "2026-08-17",
       "status": "ENTREGADO",
       "category": "Finalizado",
       "orderType": "B2C",
       "order_type": "B2C",
-      "signedBy": "Carolina Diaz",
-      "signedByRaw": "Carolina Diaz",
+      "signedBy": "MARITZA ANDREA CIFUENTES",
+      "signedByRaw": "MARITZA ANDREA CIFUENTES",
       "lastEventLabel": "ENTREGADO",
       "lastEventDescription": "Shipment delivered ok"
     },
@@ -1043,17 +1069,17 @@
       "lastEventDescription": "Shipment delivered ok"
     },
     {
-      "order": "LT000000000000100069",
-      "waybill": "2806499286",
+      "order": "LT000000000000100294",
+      "waybill": "2582560643",
       "lastEventDate": "2026-08-17",
       "status": "ENTREGADO",
       "category": "Finalizado",
       "orderType": "B2C",
       "order_type": "B2C",
-      "signedBy": "MARITZA ANDREA CIFUENTES",
-      "signedByRaw": "MARITZA ANDREA CIFUENTES",
+      "signedBy": "LATAM972-04335413 2008 PM",
+      "signedByRaw": "LATAM972-04335413 2008 PM",
       "lastEventLabel": "ENTREGADO",
-      "lastEventDescription": "Shipment delivered ok"
+      "lastEventDescription": "Delivery arranged, no details expected"
     },
     {
       "order": "LT000000000000100008",
@@ -1082,17 +1108,17 @@
       "lastEventDescription": "Shipment delivered ok"
     },
     {
-      "order": "LT000000000000100373",
-      "waybill": "6291533894",
+      "order": "LT000000000000100416",
+      "waybill": "5958364123",
       "lastEventDate": "2026-08-17",
       "status": "ENTREGADO",
       "category": "Finalizado",
       "orderType": "B2C",
       "order_type": "B2C",
-      "signedBy": "jhoana salgado",
-      "signedByRaw": "jhoana salgado",
+      "signedBy": "LATAM972-04335450 2008 PM",
+      "signedByRaw": "LATAM972-04335450 2008 PM",
       "lastEventLabel": "ENTREGADO",
-      "lastEventDescription": "Shipment delivered ok"
+      "lastEventDescription": "Delivery arranged, no details expected"
     },
     {
       "order": "LT000000000000100601",
@@ -1108,19 +1134,6 @@
       "lastEventDescription": "Shipment delivered ok"
     },
     {
-      "order": "LT000000000000100386",
-      "waybill": "4258550085",
-      "lastEventDate": "2026-08-17",
-      "status": "REINTENTO",
-      "category": "Incidencia",
-      "orderType": "B2C",
-      "order_type": "B2C",
-      "signedBy": "",
-      "signedByRaw": "",
-      "lastEventLabel": "REINTENTO",
-      "lastEventDescription": "El envío ha sido programado para ser entregado en un siguiente ciclo de entrega."
-    },
-    {
       "order": "LT000000000000100584",
       "waybill": "6675531726",
       "lastEventDate": "2026-08-17",
@@ -1134,32 +1147,6 @@
       "lastEventDescription": "Shipment delivered ok"
     },
     {
-      "order": "LT000000000000100354",
-      "waybill": "7701156024",
-      "lastEventDate": "2026-08-17",
-      "status": "REINTENTO",
-      "category": "Incidencia",
-      "orderType": "B2C",
-      "order_type": "B2C",
-      "signedBy": "",
-      "signedByRaw": "",
-      "lastEventLabel": "REINTENTO",
-      "lastEventDescription": "El envío ha sido programado para ser entregado en un siguiente ciclo de entrega."
-    },
-    {
-      "order": "LT000000000000100514",
-      "waybill": "1782728813",
-      "lastEventDate": "2026-08-17",
-      "status": "ENTREGADO",
-      "category": "Finalizado",
-      "orderType": "B2C",
-      "order_type": "B2C",
-      "signedBy": "No firma",
-      "signedByRaw": "",
-      "lastEventLabel": "ENTREGADO",
-      "lastEventDescription": "Arrived at Delivery Facility"
-    },
-    {
       "order": "LT000000000000100322",
       "waybill": "7701140075",
       "lastEventDate": "2026-08-17",
@@ -1169,6 +1156,19 @@
       "order_type": "B2C",
       "signedBy": "conserje Carlos Fernndez",
       "signedByRaw": "conserje Carlos Fernndez",
+      "lastEventLabel": "ENTREGADO",
+      "lastEventDescription": "Shipment delivered ok"
+    },
+    {
+      "order": "LT000000000000099734",
+      "waybill": "8250878440",
+      "lastEventDate": "2026-08-17",
+      "status": "ENTREGADO",
+      "category": "Finalizado",
+      "orderType": "B2C",
+      "order_type": "B2C",
+      "signedBy": "Alexia Rios",
+      "signedByRaw": "Alexia Rios",
       "lastEventLabel": "ENTREGADO",
       "lastEventDescription": "Shipment delivered ok"
     },
@@ -1212,17 +1212,30 @@
       "lastEventDescription": "El envío se ha entregado a un tercero o subcontratista para su entrega."
     },
     {
-      "order": "LT000000000000100416",
-      "waybill": "5958364123",
+      "order": "LT000000000000100362",
+      "waybill": "7701127766",
       "lastEventDate": "2026-08-17",
       "status": "ENTREGADO",
       "category": "Finalizado",
       "orderType": "B2C",
       "order_type": "B2C",
-      "signedBy": "LATAM972-04335450 2008 PM",
-      "signedByRaw": "LATAM972-04335450 2008 PM",
+      "signedBy": "con. waltee ramos",
+      "signedByRaw": "con. waltee ramos",
       "lastEventLabel": "ENTREGADO",
-      "lastEventDescription": "Delivery arranged, no details expected"
+      "lastEventDescription": "Shipment delivered ok"
+    },
+    {
+      "order": "LT000000000000100373",
+      "waybill": "6291533894",
+      "lastEventDate": "2026-08-17",
+      "status": "ENTREGADO",
+      "category": "Finalizado",
+      "orderType": "B2C",
+      "order_type": "B2C",
+      "signedBy": "jhoana salgado",
+      "signedByRaw": "jhoana salgado",
+      "lastEventLabel": "ENTREGADO",
+      "lastEventDescription": "Shipment delivered ok"
     },
     {
       "order": "LT000000000000100380",
@@ -1234,19 +1247,6 @@
       "order_type": "B2C",
       "signedBy": "JORGE OCANO",
       "signedByRaw": "JORGE OCANO",
-      "lastEventLabel": "ENTREGADO",
-      "lastEventDescription": "Shipment delivered ok"
-    },
-    {
-      "order": "LT000000000000100362",
-      "waybill": "7701127766",
-      "lastEventDate": "2026-08-17",
-      "status": "ENTREGADO",
-      "category": "Finalizado",
-      "orderType": "B2C",
-      "order_type": "B2C",
-      "signedBy": "con. waltee ramos",
-      "signedByRaw": "con. waltee ramos",
       "lastEventLabel": "ENTREGADO",
       "lastEventDescription": "Shipment delivered ok"
     },
@@ -1264,30 +1264,82 @@
       "lastEventDescription": "Shipment delivered ok"
     },
     {
-      "order": "LT000000000000100145",
-      "waybill": "6867809270",
+      "order": "LT000000000000099966",
+      "waybill": "2522150481",
       "lastEventDate": "2026-08-14",
       "status": "ENTREGADO",
       "category": "Finalizado",
       "orderType": "B2C",
       "order_type": "B2C",
-      "signedBy": "mireya soto",
-      "signedByRaw": "mireya soto",
+      "signedBy": "Carmen Gonzlez. sje",
+      "signedByRaw": "Carmen Gonzlez. sje",
       "lastEventLabel": "ENTREGADO",
       "lastEventDescription": "Shipment delivered ok"
     },
     {
-      "order": "LT000000000000099726",
-      "waybill": "1012897605",
+      "order": "LT000000000000033960",
+      "waybill": "1889920771",
       "lastEventDate": "2026-08-14",
       "status": "ENTREGADO",
       "category": "Finalizado",
       "orderType": "B2C",
       "order_type": "B2C",
-      "signedBy": "manuel Romn conserjera",
-      "signedByRaw": "manuel Romn conserjera",
+      "signedBy": "Joseline Mejias",
+      "signedByRaw": "Joseline Mejias",
       "lastEventLabel": "ENTREGADO",
       "lastEventDescription": "Shipment delivered ok"
+    },
+    {
+      "order": "LT000000000000100001",
+      "waybill": "7818850502",
+      "lastEventDate": "2026-08-14",
+      "status": "ENTREGADO",
+      "category": "Finalizado",
+      "orderType": "B2C",
+      "order_type": "B2C",
+      "signedBy": "Andrea Harrison, vecina",
+      "signedByRaw": "Andrea Harrison, vecina",
+      "lastEventLabel": "ENTREGADO",
+      "lastEventDescription": "Shipment delivered ok"
+    },
+    {
+      "order": "LT000000000000099908",
+      "waybill": "6867806002",
+      "lastEventDate": "2026-08-14",
+      "status": "ENTREGADO",
+      "category": "Finalizado",
+      "orderType": "B2C",
+      "order_type": "B2C",
+      "signedBy": "Valentina Carmona",
+      "signedByRaw": "Valentina Carmona",
+      "lastEventLabel": "ENTREGADO",
+      "lastEventDescription": "Shipment delivered ok"
+    },
+    {
+      "order": "LT000000000000091095",
+      "waybill": "1961680151",
+      "lastEventDate": "2026-08-14",
+      "status": "DEVOLUCION",
+      "category": "Pendiente",
+      "orderType": "B2C",
+      "order_type": "B2C",
+      "signedBy": "",
+      "signedByRaw": "",
+      "lastEventLabel": "DEVOLUCION",
+      "lastEventDescription": "El envío ha sido retornado según las instrucciones del remitente o destinatario o de acuerdo con nuestro procedimiento estándar."
+    },
+    {
+      "order": "LT000000000000033326",
+      "waybill": "3644184412",
+      "lastEventDate": "2026-08-14",
+      "status": "DEVOLUCION",
+      "category": "Pendiente",
+      "orderType": "B2C",
+      "order_type": "B2C",
+      "signedBy": "",
+      "signedByRaw": "",
+      "lastEventLabel": "DEVOLUCION",
+      "lastEventDescription": "El envío ha sido retornado según las instrucciones del remitente o destinatario o de acuerdo con nuestro procedimiento estándar."
     },
     {
       "order": "LT000000000000099959",
@@ -1316,32 +1368,6 @@
       "lastEventDescription": "Shipment delivered ok"
     },
     {
-      "order": "LT000000000000033960",
-      "waybill": "1889920771",
-      "lastEventDate": "2026-08-14",
-      "status": "ENTREGADO",
-      "category": "Finalizado",
-      "orderType": "B2C",
-      "order_type": "B2C",
-      "signedBy": "Joseline Mejias",
-      "signedByRaw": "Joseline Mejias",
-      "lastEventLabel": "ENTREGADO",
-      "lastEventDescription": "Shipment delivered ok"
-    },
-    {
-      "order": "LT000000000000091095",
-      "waybill": "1961680151",
-      "lastEventDate": "2026-08-14",
-      "status": "DEVOLUCION",
-      "category": "Pendiente",
-      "orderType": "B2C",
-      "order_type": "B2C",
-      "signedBy": "",
-      "signedByRaw": "",
-      "lastEventLabel": "DEVOLUCION",
-      "lastEventDescription": "El envío ha sido retornado según las instrucciones del remitente o destinatario o de acuerdo con nuestro procedimiento estándar."
-    },
-    {
       "order": "LT000000000000099979",
       "waybill": "1012907711",
       "lastEventDate": "2026-08-14",
@@ -1368,54 +1394,28 @@
       "lastEventDescription": "Shipment delivered ok"
     },
     {
-      "order": "LT000000000000033326",
-      "waybill": "3644184412",
-      "lastEventDate": "2026-08-14",
-      "status": "DEVOLUCION",
-      "category": "Pendiente",
-      "orderType": "B2C",
-      "order_type": "B2C",
-      "signedBy": "",
-      "signedByRaw": "",
-      "lastEventLabel": "DEVOLUCION",
-      "lastEventDescription": "El envío ha sido retornado según las instrucciones del remitente o destinatario o de acuerdo con nuestro procedimiento estándar."
-    },
-    {
-      "order": "LT000000000000100001",
-      "waybill": "7818850502",
+      "order": "LT000000000000099726",
+      "waybill": "1012897605",
       "lastEventDate": "2026-08-14",
       "status": "ENTREGADO",
       "category": "Finalizado",
       "orderType": "B2C",
       "order_type": "B2C",
-      "signedBy": "Andrea Harrison, vecina",
-      "signedByRaw": "Andrea Harrison, vecina",
+      "signedBy": "manuel Romn conserjera",
+      "signedByRaw": "manuel Romn conserjera",
       "lastEventLabel": "ENTREGADO",
       "lastEventDescription": "Shipment delivered ok"
     },
     {
-      "order": "LT000000000000099966",
-      "waybill": "2522150481",
+      "order": "LT000000000000100145",
+      "waybill": "6867809270",
       "lastEventDate": "2026-08-14",
       "status": "ENTREGADO",
       "category": "Finalizado",
       "orderType": "B2C",
       "order_type": "B2C",
-      "signedBy": "Carmen Gonzlez. sje",
-      "signedByRaw": "Carmen Gonzlez. sje",
-      "lastEventLabel": "ENTREGADO",
-      "lastEventDescription": "Shipment delivered ok"
-    },
-    {
-      "order": "LT000000000000099908",
-      "waybill": "6867806002",
-      "lastEventDate": "2026-08-14",
-      "status": "ENTREGADO",
-      "category": "Finalizado",
-      "orderType": "B2C",
-      "order_type": "B2C",
-      "signedBy": "Valentina Carmona",
-      "signedByRaw": "Valentina Carmona",
+      "signedBy": "mireya soto",
+      "signedByRaw": "mireya soto",
       "lastEventLabel": "ENTREGADO",
       "lastEventDescription": "Shipment delivered ok"
     },
