@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.2.0",
-  "generatedAt": "2026-08-20T09:10:41",
+  "generatedAt": "2026-08-20T10:10:16",
   "source": {
     "platform": "Polaris",
     "module": "Tracking",
@@ -9,11 +9,11 @@
   "summary": {
     "totalShipments": 6081,
     "delivered": 5997,
-    "inTransit": 1,
+    "inTransit": 0,
     "scheduled": 1,
     "retry": 1,
     "wrongAddress": 1,
-    "returns": 21,
+    "returns": 22,
     "incidents": 1,
     "critical": 1,
     "signedByCaptured": 5989,
@@ -30,7 +30,7 @@
   },
   "inventoryThermometer": {
     "available": true,
-    "generatedAt": "2026-08-20T09:10:41",
+    "generatedAt": "2026-08-20T10:10:16",
     "totalAuditOrders": 6,
     "totalNoFillOrders": 6,
     "metric": "affected_orders_over_total_audit_orders",
@@ -58,7 +58,7 @@
   },
   "supplyAudit": {
     "available": true,
-    "generatedAt": "2026-08-20T09:10:41",
+    "generatedAt": "2026-08-20T10:10:16",
     "summary": {
       "totalOrders": 6,
       "fullFill": 0,
@@ -69,11 +69,11 @@
     },
     "metadata": {
       "source": "auto-atlas-resource-loader",
-      "lastProcessedAt": "2026-08-20T09:01:00",
+      "lastProcessedAt": "2026-08-20T10:00:09",
       "files": {
-        "order": "Atlas_Order_20260820_085054.csv",
-        "orderLine": "Atlas_OrderLine_20260820_085055.csv",
-        "inventory": "Atlas_ItemInventory_20260820_085120.csv"
+        "order": "Atlas_Order_20260820_095111.csv",
+        "orderLine": "Atlas_OrderLine_20260820_095112.csv",
+        "inventory": "Atlas_ItemInventory_20260820_095145.csv"
       }
     },
     "filters": {
@@ -812,14 +812,14 @@
       "order": "LT000000000000093800",
       "waybill": "8254521542",
       "lastEventDate": "2026-08-20",
-      "status": "EN PROCESO",
-      "category": "En Tránsito",
+      "status": "DEVOLUCION",
+      "category": "Pendiente",
       "orderType": "B2C",
       "order_type": "B2C",
       "signedBy": "",
       "signedByRaw": "",
-      "lastEventLabel": "EN PROCESO",
-      "lastEventDescription": "El envío arribo a una estación de DHL y requiere un tiempo adicional para ser procesado."
+      "lastEventLabel": "DEVOLUCION",
+      "lastEventDescription": "El envío ha sido retornado según las instrucciones del remitente o destinatario o de acuerdo con nuestro procedimiento estándar."
     },
     {
       "order": "LT000000000000100386",
