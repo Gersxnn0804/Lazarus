@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.2.0",
-  "generatedAt": "2026-08-20T07:49:26",
+  "generatedAt": "2026-08-20T08:10:12",
   "source": {
     "platform": "Polaris",
     "module": "Tracking",
@@ -30,7 +30,7 @@
   },
   "inventoryThermometer": {
     "available": true,
-    "generatedAt": "2026-08-20T07:49:26",
+    "generatedAt": "2026-08-20T08:10:12",
     "totalAuditOrders": 6,
     "totalNoFillOrders": 6,
     "metric": "affected_orders_over_total_audit_orders",
@@ -58,7 +58,7 @@
   },
   "supplyAudit": {
     "available": true,
-    "generatedAt": "2026-08-20T07:49:26",
+    "generatedAt": "2026-08-20T08:10:12",
     "summary": {
       "totalOrders": 6,
       "fullFill": 0,
@@ -69,11 +69,11 @@
     },
     "metadata": {
       "source": "auto-atlas-resource-loader",
-      "lastProcessedAt": "2026-08-19T19:00:16",
+      "lastProcessedAt": "2026-08-20T08:00:06",
       "files": {
-        "order": "Atlas_Order_20260819_185812.csv",
-        "orderLine": "Atlas_OrderLine_20260819_185813.csv",
-        "inventory": "Atlas_ItemInventory_20260819_185841.csv"
+        "order": "Atlas_Order_20260820_075054.csv",
+        "orderLine": "Atlas_OrderLine_20260820_075055.csv",
+        "inventory": "Atlas_ItemInventory_20260820_075209.csv"
       }
     },
     "filters": {
@@ -809,6 +809,19 @@
   },
   "shipments": [
     {
+      "order": "LT000000000000093800",
+      "waybill": "8254521542",
+      "lastEventDate": "2026-08-20",
+      "status": "EN PROCESO",
+      "category": "En Tránsito",
+      "orderType": "B2C",
+      "order_type": "B2C",
+      "signedBy": "",
+      "signedByRaw": "",
+      "lastEventLabel": "EN PROCESO",
+      "lastEventDescription": "El envío arribo a una estación de DHL y requiere un tiempo adicional para ser procesado."
+    },
+    {
       "order": "LT000000000000100386",
       "waybill": "4258550085",
       "lastEventDate": "2026-08-19",
@@ -846,19 +859,6 @@
       "signedByRaw": "Andres Muoz",
       "lastEventLabel": "ENTREGADO",
       "lastEventDescription": "Shipment delivered ok"
-    },
-    {
-      "order": "LT000000000000093800",
-      "waybill": "8254521542",
-      "lastEventDate": "2026-08-19",
-      "status": "EN PROCESO",
-      "category": "En Tránsito",
-      "orderType": "B2C",
-      "order_type": "B2C",
-      "signedBy": "",
-      "signedByRaw": "",
-      "lastEventLabel": "EN PROCESO",
-      "lastEventDescription": "El envío arribo a una estación de DHL y requiere un tiempo adicional para ser procesado."
     },
     {
       "order": "LT000000000000100731",
