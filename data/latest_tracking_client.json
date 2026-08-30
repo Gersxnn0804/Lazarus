@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.2.0",
-  "generatedAt": "2026-08-30T18:10:14",
+  "generatedAt": "2026-08-30T19:10:38",
   "source": {
     "platform": "Polaris",
     "module": "Tracking",
@@ -30,7 +30,7 @@
   },
   "inventoryThermometer": {
     "available": true,
-    "generatedAt": "2026-08-30T18:10:14",
+    "generatedAt": "2026-08-30T19:10:38",
     "totalAuditOrders": 53,
     "totalNoFillOrders": 28,
     "metric": "affected_orders_over_total_audit_orders",
@@ -210,7 +210,7 @@
   },
   "supplyAudit": {
     "available": true,
-    "generatedAt": "2026-08-30T18:10:14",
+    "generatedAt": "2026-08-30T19:10:38",
     "summary": {
       "totalOrders": 53,
       "fullFill": 25,
@@ -221,11 +221,11 @@
     },
     "metadata": {
       "source": "auto-atlas-resource-loader",
-      "lastProcessedAt": "2026-08-30T18:00:15",
+      "lastProcessedAt": "2026-08-30T19:00:58",
       "files": {
-        "order": "Atlas_Order_20260830_175101.csv",
-        "orderLine": "Atlas_OrderLine_20260830_175102.csv",
-        "inventory": "Atlas_ItemInventory_20260830_175220.csv"
+        "order": "Atlas_Order_20260830_185101.csv",
+        "orderLine": "Atlas_OrderLine_20260830_185102.csv",
+        "inventory": "Atlas_ItemInventory_20260830_185126.csv"
       }
     },
     "filters": {
