@@ -97,19 +97,140 @@ function formatPercent(value) {
   });
 }
 
+function padDatePart(value) {
+  return String(value).padStart(2, "0");
+}
+
+function isValidDateParts(year, month, day) {
+  if (!year || !month || !day) return false;
+  if (month < 1 || month > 12) return false;
+  if (day < 1 || day > 31) return false;
+
+  const test = new Date(year, month - 1, day);
+
+  return test.getFullYear() === year
+    && test.getMonth() === month - 1
+    && test.getDate() === day;
+}
+
+function parseOperationalDate(value) {
+  if (!value) return null;
+
+  const raw = String(value).trim();
+  if (!raw) return null;
+
+  const normalized = raw.replace(/\./g, "-");
+
+  const yearFirstMatch = normalized.match(
+    /^(\d{4})[-/](\d{1,2})[-/](\d{1,2})(?:[T\s]+(\d{1,2}):(\d{2})(?::(\d{2}))?)?/
+  );
+
+  if (yearFirstMatch) {
+    const year = Number(yearFirstMatch[1]);
+    const first = Number(yearFirstMatch[2]);
+    const second = Number(yearFirstMatch[3]);
+
+    let month;
+    let day;
+
+    if (first > 12 && second <= 12) {
+      day = first;
+      month = second;
+    } else if (second > 12 && first <= 12) {
+      month = first;
+      day = second;
+    } else {
+      day = first;
+      month = second;
+    }
+
+    if (!isValidDateParts(year, month, day)) return null;
+
+    return {
+      year,
+      month,
+      day,
+      hour: Number(yearFirstMatch[4] || 0),
+      minute: Number(yearFirstMatch[5] || 0),
+      second: Number(yearFirstMatch[6] || 0),
+      hasTime: yearFirstMatch[4] !== undefined
+    };
+  }
+
+  const dayFirstMatch = normalized.match(
+    /^(\d{1,2})[-/](\d{1,2})[-/](\d{4})(?:[T\s]+(\d{1,2}):(\d{2})(?::(\d{2}))?)?/
+  );
+
+  if (dayFirstMatch) {
+    const day = Number(dayFirstMatch[1]);
+    const month = Number(dayFirstMatch[2]);
+    const year = Number(dayFirstMatch[3]);
+
+    if (!isValidDateParts(year, month, day)) return null;
+
+    return {
+      year,
+      month,
+      day,
+      hour: Number(dayFirstMatch[4] || 0),
+      minute: Number(dayFirstMatch[5] || 0),
+      second: Number(dayFirstMatch[6] || 0),
+      hasTime: dayFirstMatch[4] !== undefined
+    };
+  }
+
+  const fallbackDate = new Date(raw);
+
+  if (Number.isNaN(fallbackDate.getTime())) return null;
+
+  return {
+    year: fallbackDate.getFullYear(),
+    month: fallbackDate.getMonth() + 1,
+    day: fallbackDate.getDate(),
+    hour: fallbackDate.getHours(),
+    minute: fallbackDate.getMinutes(),
+    second: fallbackDate.getSeconds(),
+    hasTime: true
+  };
+}
+
+function formatShipmentDate(value) {
+  const parsed = parseOperationalDate(value);
+
+  if (!parsed) return value ? String(value) : "Sin fecha";
+
+  return `${padDatePart(parsed.day)}-${padDatePart(parsed.month)}-${parsed.year}`;
+}
+
+function formatShipmentDateTime(value) {
+  const parsed = parseOperationalDate(value);
+
+  if (!parsed) return value ? String(value) : "Sin fecha";
+
+  const date = `${padDatePart(parsed.day)}-${padDatePart(parsed.month)}-${parsed.year}`;
+
+  if (!parsed.hasTime) return date;
+
+  return `${date} ${padDatePart(parsed.hour)}:${padDatePart(parsed.minute)}`;
+}
+
+function getShipmentDateSortKey(value) {
+  const parsed = parseOperationalDate(value);
+
+  if (!parsed) return String(value || "");
+
+  return [
+    parsed.year,
+    padDatePart(parsed.month),
+    padDatePart(parsed.day),
+    padDatePart(parsed.hour),
+    padDatePart(parsed.minute),
+    padDatePart(parsed.second)
+  ].join("");
+}
+
 function formatDateTime(value) {
-  if (!value) return "Sin fecha";
-
-  const date = new Date(value);
-  if (Number.isNaN(date.getTime())) return String(value);
-
-  return date.toLocaleString("es-CL", {
-    year: "numeric",
-    month: "2-digit",
-    day: "2-digit",
-    hour: "2-digit",
-    minute: "2-digit"
-  });
+  return formatShipmentDateTime(value);
 }
 
 function safeText(value) {
@@ -593,8 +714,8 @@ function renderFilters() {
 
   const statuses = [...new Set(state.shipments.map(item => getRawStatus(item)).filter(Boolean))].sort((a, b) => String(a).localeCompare(String(b), "es", { numeric: true }));
   const categories = [...new Set(state.shipments.map(item => getRawCategory(item)).filter(Boolean))].sort((a, b) => String(a).localeCompare(String(b), "es", { numeric: true }));
-  const dates = [...new Set(state.shipments.map(item => item.lastEventDate).filter(Boolean))].sort().reverse();
-
+  const dates = [...new Set(state.shipments.map(item => formatShipmentDate(item.lastEventDate)).filter(date => date && date !== "Sin fecha"))].sort((a, b) => getShipmentDateSortKey(b).localeCompare(getShipmentDateSortKey(a)));
+  
   statuses.forEach(status => {
     el.statusFilter.insertAdjacentHTML("beforeend", `<option value="${escapeHtml(status)}">${escapeHtml(status)}</option>`);
   });
@@ -1381,26 +1502,28 @@ function applyFilters({ preservePage = false } = {}) {
     const rawStatus = getRawStatus(item);
     const rawCategory = getRawCategory(item);
     const signedBy = getSignedByValue(item);
+    const itemDate = formatShipmentDate(item.lastEventDate);
 
-    const matchesSearch = !search || [
-      item.order,
-      item.waybill,
-      rawStatus,
-      rawCategory,
-      signedBy,
-      item.lastEventLabel,
-      item.lastEventDescription,
-      item.customer,
-      item.client,
-      item.destination,
-      item.destino
-    ].some(value => normalizeSearchText(value).includes(search));
+  const matchesSearch = !search || [
+    item.order,
+    item.waybill,
+    itemDate,
+    rawStatus,
+    rawCategory,
+    signedBy,
+    item.lastEventLabel,
+    item.lastEventDescription,
+    item.customer,
+    item.client,
+    item.destination,
+    item.destino
+  ].some(value => normalizeSearchText(value).includes(search));
 
     return matchesSearch
       && (!status || rawStatus === status)
       && (!category || rawCategory === category)
       && (!channel || getOrderSegment(item) === channel)
-      && (!date || item.lastEventDate === date);
+      && (!date || itemDate === date);
   });
 
   sortFiltered(false);
@@ -1419,6 +1542,7 @@ function applyFilters({ preservePage = false } = {}) {
 
 
 function getSortableValue(item, key) {
+  if (key === "lastEventDate") return getShipmentDateSortKey(item.lastEventDate);
   if (key === "status") return getRawStatus(item);
   if (key === "category") return getRawCategory(item);
   if (key === "orderSegment") return getOrderSegment(item);
@@ -1480,7 +1604,7 @@ function renderTable() {
       <tr class="${selected}" data-shipment-id="${escapeHtml(shipmentId)}">
         <td>${escapeHtml(item.order)}</td>
         <td>${escapeHtml(item.waybill)}</td>
-        <td>${escapeHtml(item.lastEventDate)}</td>
+        <td>${escapeHtml(formatShipmentDate(item.lastEventDate))}</td>
         <td><span class="status-pill ${statusClass}">${escapeHtml(rawStatus)}</span></td>
         <td><span class="segment-pill ${getSegmentClass(orderSegment)}">${escapeHtml(orderSegment)}</span></td>
         <td>${escapeHtml(rawCategory)}</td>
@@ -1548,7 +1672,7 @@ function renderDetail(shipmentId) {
 
       <div class="detail-row">
         <span>Fecha evento</span>
-        <strong>${escapeHtml(item.lastEventDate)}</strong>
+        <strong>${escapeHtml(formatShipmentDate(item.lastEventDate))}</strong>
       </div>
 
       <div class="detail-row">
