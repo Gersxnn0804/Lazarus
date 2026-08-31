@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.2.0",
-  "generatedAt": "2026-08-31T12:10:29",
+  "generatedAt": "2026-08-31T13:10:30",
   "source": {
     "platform": "Polaris",
     "module": "Tracking",
@@ -22,28 +22,28 @@
   },
   "inventoryHealth": {
     "available": true,
-    "auditOrders": 202,
-    "fullFillOrders": 189,
-    "noFillOrders": 13,
-    "healthPercentage": 93.56,
+    "auditOrders": 207,
+    "fullFillOrders": 196,
+    "noFillOrders": 11,
+    "healthPercentage": 94.69,
     "level": "GOOD"
   },
   "inventoryThermometer": {
     "available": true,
-    "generatedAt": "2026-08-31T12:10:29",
-    "totalAuditOrders": 202,
-    "totalNoFillOrders": 13,
+    "generatedAt": "2026-08-31T13:10:30",
+    "totalAuditOrders": 207,
+    "totalNoFillOrders": 11,
     "metric": "affected_orders_over_total_audit_orders",
     "topCriticalItems": [
       {
         "item": "10075178",
         "description": "PANTALON T PLANO 48R FEM 70LANA INDI",
-        "stockoutIndex": 2.97,
-        "value": 2.97,
+        "stockoutIndex": 2.9,
+        "value": 2.9,
         "unit": "%",
         "affectedOrders": 6,
-        "totalAuditOrders": 202,
-        "affectedRatio": "6/202",
+        "totalAuditOrders": 207,
+        "affectedRatio": "6/207",
         "missingUnits": 11,
         "requiredUnits": 11,
         "availableUnits": 0,
@@ -57,31 +57,12 @@
       {
         "item": "100000000200040903",
         "description": "POLERA MALLA S UNISEX ALGO BLANC M.CORTA",
-        "stockoutIndex": 0.99,
-        "value": 0.99,
+        "stockoutIndex": 0.97,
+        "value": 0.97,
         "unit": "%",
         "affectedOrders": 2,
-        "totalAuditOrders": 202,
-        "affectedRatio": "2/202",
-        "missingUnits": 4,
-        "requiredUnits": 4,
-        "availableUnits": 0,
-        "orderTypes": [
-          "B2C"
-        ],
-        "order_types": [
-          "B2C"
-        ]
-      },
-      {
-        "item": "100000000200040908",
-        "description": "POLERA MALLA 2XL UNIS ALGO BLANC M.CORTA",
-        "stockoutIndex": 0.99,
-        "value": 0.99,
-        "unit": "%",
-        "affectedOrders": 2,
-        "totalAuditOrders": 202,
-        "affectedRatio": "2/202",
+        "totalAuditOrders": 207,
+        "affectedRatio": "2/207",
         "missingUnits": 4,
         "requiredUnits": 4,
         "availableUnits": 0,
@@ -95,12 +76,12 @@
       {
         "item": "100000000200004745",
         "description": "POLERA M UNISEX 50ALGOD AZUL MNG CORTA",
-        "stockoutIndex": 0.5,
-        "value": 0.5,
+        "stockoutIndex": 0.48,
+        "value": 0.48,
         "unit": "%",
         "affectedOrders": 1,
-        "totalAuditOrders": 202,
-        "affectedRatio": "1/202",
+        "totalAuditOrders": 207,
+        "affectedRatio": "1/207",
         "missingUnits": 4,
         "requiredUnits": 4,
         "availableUnits": 0,
@@ -114,12 +95,12 @@
       {
         "item": "100000000200004743",
         "description": "POLERA XXXL UNISEX 50ALGOD AZUL MG LARG",
-        "stockoutIndex": 0.5,
-        "value": 0.5,
+        "stockoutIndex": 0.48,
+        "value": 0.48,
         "unit": "%",
         "affectedOrders": 1,
-        "totalAuditOrders": 202,
-        "affectedRatio": "1/202",
+        "totalAuditOrders": 207,
+        "affectedRatio": "1/207",
         "missingUnits": 3,
         "requiredUnits": 3,
         "availableUnits": 0,
@@ -133,12 +114,12 @@
       {
         "item": "100000000200004737",
         "description": "POLERA L UNISEX 50ALGOD AZUL MNG LARGA",
-        "stockoutIndex": 0.5,
-        "value": 0.5,
+        "stockoutIndex": 0.48,
+        "value": 0.48,
         "unit": "%",
         "affectedOrders": 1,
-        "totalAuditOrders": 202,
-        "affectedRatio": "1/202",
+        "totalAuditOrders": 207,
+        "affectedRatio": "1/207",
         "missingUnits": 2,
         "requiredUnits": 2,
         "availableUnits": 0,
@@ -152,12 +133,12 @@
       {
         "item": "10075355",
         "description": "PALETO TEC PLANO 56T MASC 70 LANA AZUL",
-        "stockoutIndex": 0.5,
-        "value": 0.5,
+        "stockoutIndex": 0.48,
+        "value": 0.48,
         "unit": "%",
         "affectedOrders": 1,
-        "totalAuditOrders": 202,
-        "affectedRatio": "1/202",
+        "totalAuditOrders": 207,
+        "affectedRatio": "1/207",
         "missingUnits": 1,
         "requiredUnits": 1,
         "availableUnits": 0,
@@ -172,22 +153,22 @@
   },
   "supplyAudit": {
     "available": true,
-    "generatedAt": "2026-08-31T12:10:29",
+    "generatedAt": "2026-08-31T13:10:30",
     "summary": {
-      "totalOrders": 202,
-      "fullFill": 189,
-      "noFill": 13,
-      "fillRate": 93.56,
-      "criticalSkus": 7,
-      "missingUnits": 29
+      "totalOrders": 207,
+      "fullFill": 196,
+      "noFill": 11,
+      "fillRate": 94.69,
+      "criticalSkus": 6,
+      "missingUnits": 25
     },
     "metadata": {
       "source": "auto-atlas-resource-loader",
-      "lastProcessedAt": "2026-08-31T12:00:37",
+      "lastProcessedAt": "2026-08-31T13:00:23",
       "files": {
-        "order": "Atlas_Order_20260831_115110.csv",
-        "orderLine": "Atlas_OrderLine_20260831_115114.csv",
-        "inventory": "Atlas_ItemInventory_20260831_115143.csv"
+        "order": "Atlas_Order_20260831_125047.csv",
+        "orderLine": "Atlas_OrderLine_20260831_125051.csv",
+        "inventory": "Atlas_ItemInventory_20260831_125119.csv"
       }
     },
     "filters": {
@@ -3071,6 +3052,38 @@
       },
       {
         "id": 60,
+        "order": "LT000000000000101239",
+        "client": "",
+        "orderType": "B2C",
+        "order_type": "B2C",
+        "destinationCity": "LAS CONDES",
+        "status": "FULL FILL",
+        "reason": "Disponible",
+        "requiredQty": 1,
+        "availableQty": 68,
+        "missingQty": 0,
+        "criticalSku": "OK",
+        "totalLines": 1,
+        "shortageLines": 0,
+        "lines": [
+          {
+            "order": "LT000000000000101239",
+            "client": "",
+            "sku": "10072074",
+            "item": "10072074",
+            "description": "MALETA 23KG UNISEX 100 POLIURETANO NEGRO",
+            "requiredQty": 1,
+            "availableQty": 68,
+            "missingQty": 0,
+            "status": "OK",
+            "orderType": "B2C",
+            "order_type": "B2C",
+            "destinationCity": "LAS CONDES"
+          }
+        ]
+      },
+      {
+        "id": 61,
         "order": "LT000000000000101244",
         "client": "",
         "orderType": "B2C",
@@ -3102,7 +3115,7 @@
         ]
       },
       {
-        "id": 61,
+        "id": 62,
         "order": "LT000000000000101270",
         "client": "",
         "orderType": "B2C",
@@ -3176,7 +3189,7 @@
         ]
       },
       {
-        "id": 62,
+        "id": 63,
         "order": "LT000000000000101271",
         "client": "",
         "orderType": "B2C",
@@ -3236,7 +3249,7 @@
         ]
       },
       {
-        "id": 63,
+        "id": 64,
         "order": "LT000000000000101281",
         "client": "",
         "orderType": "B2C",
@@ -3296,7 +3309,7 @@
         ]
       },
       {
-        "id": 64,
+        "id": 65,
         "order": "LT000000000000101283",
         "client": "",
         "orderType": "B2C",
@@ -3328,7 +3341,7 @@
         ]
       },
       {
-        "id": 65,
+        "id": 66,
         "order": "LT000000000000101289",
         "client": "",
         "orderType": "B2C",
@@ -3360,7 +3373,7 @@
         ]
       },
       {
-        "id": 66,
+        "id": 67,
         "order": "LT000000000000101290",
         "client": "",
         "orderType": "B2C",
@@ -3434,7 +3447,7 @@
         ]
       },
       {
-        "id": 67,
+        "id": 68,
         "order": "LT000000000000101291",
         "client": "",
         "orderType": "B2C",
@@ -3466,7 +3479,7 @@
         ]
       },
       {
-        "id": 68,
+        "id": 69,
         "order": "LT000000000000101294",
         "client": "",
         "orderType": "B2C",
@@ -3526,7 +3539,7 @@
         ]
       },
       {
-        "id": 69,
+        "id": 70,
         "order": "LT000000000000101295",
         "client": "",
         "orderType": "B2C",
@@ -3558,7 +3571,7 @@
         ]
       },
       {
-        "id": 70,
+        "id": 71,
         "order": "LT000000000000101300",
         "client": "",
         "orderType": "B2C",
@@ -3590,7 +3603,7 @@
         ]
       },
       {
-        "id": 71,
+        "id": 72,
         "order": "LT000000000000101303",
         "client": "",
         "orderType": "B2C",
@@ -3636,7 +3649,7 @@
         ]
       },
       {
-        "id": 72,
+        "id": 73,
         "order": "LT000000000000101315",
         "client": "",
         "orderType": "B2C",
@@ -3668,7 +3681,7 @@
         ]
       },
       {
-        "id": 73,
+        "id": 74,
         "order": "LT000000000000101318",
         "client": "",
         "orderType": "B2C",
@@ -3728,7 +3741,7 @@
         ]
       },
       {
-        "id": 74,
+        "id": 75,
         "order": "LT000000000000101329",
         "client": "",
         "orderType": "B2C",
@@ -3830,7 +3843,7 @@
         ]
       },
       {
-        "id": 75,
+        "id": 76,
         "order": "LT000000000000101330",
         "client": "",
         "orderType": "B2C",
@@ -3862,7 +3875,7 @@
         ]
       },
       {
-        "id": 76,
+        "id": 77,
         "order": "LT000000000000101336",
         "client": "",
         "orderType": "B2C",
@@ -3894,7 +3907,7 @@
         ]
       },
       {
-        "id": 77,
+        "id": 78,
         "order": "LT000000000000101365",
         "client": "",
         "orderType": "B2C",
@@ -3926,7 +3939,7 @@
         ]
       },
       {
-        "id": 78,
+        "id": 79,
         "order": "LT000000000000101407",
         "client": "",
         "orderType": "B2C",
@@ -3972,7 +3985,7 @@
         ]
       },
       {
-        "id": 79,
+        "id": 80,
         "order": "LT000000000000101414",
         "client": "",
         "orderType": "B2C",
@@ -4004,7 +4017,7 @@
         ]
       },
       {
-        "id": 80,
+        "id": 81,
         "order": "LT000000000000101425",
         "client": "",
         "orderType": "B2C",
@@ -4036,7 +4049,7 @@
         ]
       },
       {
-        "id": 81,
+        "id": 82,
         "order": "LT000000000000101431",
         "client": "",
         "orderType": "B2C",
@@ -4068,7 +4081,7 @@
         ]
       },
       {
-        "id": 82,
+        "id": 83,
         "order": "LT000000000000101433",
         "client": "",
         "orderType": "B2C",
@@ -4100,7 +4113,7 @@
         ]
       },
       {
-        "id": 83,
+        "id": 84,
         "order": "LT000000000000101435",
         "client": "",
         "orderType": "B2C",
@@ -4132,7 +4145,7 @@
         ]
       },
       {
-        "id": 84,
+        "id": 85,
         "order": "LT000000000000101436",
         "client": "",
         "orderType": "B2C",
@@ -4192,7 +4205,7 @@
         ]
       },
       {
-        "id": 85,
+        "id": 86,
         "order": "LT000000000000101439",
         "client": "",
         "orderType": "B2C",
@@ -4224,7 +4237,7 @@
         ]
       },
       {
-        "id": 86,
+        "id": 87,
         "order": "LT000000000000101454",
         "client": "",
         "orderType": "B2C",
@@ -4256,7 +4269,7 @@
         ]
       },
       {
-        "id": 87,
+        "id": 88,
         "order": "LT000000000000101496",
         "client": "",
         "orderType": "B2C",
@@ -4288,7 +4301,7 @@
         ]
       },
       {
-        "id": 88,
+        "id": 89,
         "order": "LT000000000000101499",
         "client": "",
         "orderType": "B2C",
@@ -4362,7 +4375,7 @@
         ]
       },
       {
-        "id": 89,
+        "id": 90,
         "order": "LT000000000000101509",
         "client": "",
         "orderType": "B2C",
@@ -4394,7 +4407,7 @@
         ]
       },
       {
-        "id": 90,
+        "id": 91,
         "order": "LT000000000000101556",
         "client": "",
         "orderType": "B2C",
@@ -4440,7 +4453,7 @@
         ]
       },
       {
-        "id": 91,
+        "id": 92,
         "order": "LT000000000000101592",
         "client": "",
         "orderType": "B2C",
@@ -4542,7 +4555,7 @@
         ]
       },
       {
-        "id": 92,
+        "id": 93,
         "order": "LT000000000000101646",
         "client": "",
         "orderType": "B2C",
@@ -4574,7 +4587,7 @@
         ]
       },
       {
-        "id": 93,
+        "id": 94,
         "order": "LT000000000000101651",
         "client": "",
         "orderType": "B2C",
@@ -4606,7 +4619,7 @@
         ]
       },
       {
-        "id": 94,
+        "id": 95,
         "order": "LT000000000000101679",
         "client": "",
         "orderType": "B2C",
@@ -4666,7 +4679,7 @@
         ]
       },
       {
-        "id": 95,
+        "id": 96,
         "order": "LT000000000000101699",
         "client": "",
         "orderType": "B2C",
@@ -4726,7 +4739,7 @@
         ]
       },
       {
-        "id": 96,
+        "id": 97,
         "order": "LT000000000000101721",
         "client": "",
         "orderType": "B2C",
@@ -4758,7 +4771,7 @@
         ]
       },
       {
-        "id": 97,
+        "id": 98,
         "order": "LT000000000000101742",
         "client": "",
         "orderType": "B2C",
@@ -4790,7 +4803,7 @@
         ]
       },
       {
-        "id": 98,
+        "id": 99,
         "order": "LT000000000000101775",
         "client": "",
         "orderType": "B2C",
@@ -4822,7 +4835,7 @@
         ]
       },
       {
-        "id": 99,
+        "id": 100,
         "order": "LT000000000000101790",
         "client": "",
         "orderType": "B2C",
@@ -4896,7 +4909,7 @@
         ]
       },
       {
-        "id": 100,
+        "id": 101,
         "order": "LT000000000000101812",
         "client": "",
         "orderType": "B2C",
@@ -4984,7 +4997,39 @@
         ]
       },
       {
-        "id": 101,
+        "id": 102,
+        "order": "LT000000000000101825",
+        "client": "",
+        "orderType": "B2C",
+        "order_type": "B2C",
+        "destinationCity": "LAS CONDES",
+        "status": "FULL FILL",
+        "reason": "Disponible",
+        "requiredQty": 1,
+        "availableQty": 68,
+        "missingQty": 0,
+        "criticalSku": "OK",
+        "totalLines": 1,
+        "shortageLines": 0,
+        "lines": [
+          {
+            "order": "LT000000000000101825",
+            "client": "",
+            "sku": "10072074",
+            "item": "10072074",
+            "description": "MALETA 23KG UNISEX 100 POLIURETANO NEGRO",
+            "requiredQty": 1,
+            "availableQty": 68,
+            "missingQty": 0,
+            "status": "OK",
+            "orderType": "B2C",
+            "order_type": "B2C",
+            "destinationCity": "LAS CONDES"
+          }
+        ]
+      },
+      {
+        "id": 103,
         "order": "LT000000000000101826",
         "client": "",
         "orderType": "B2C",
@@ -5044,7 +5089,7 @@
         ]
       },
       {
-        "id": 102,
+        "id": 104,
         "order": "LT000000000000101842",
         "client": "",
         "orderType": "B2C",
@@ -5090,7 +5135,7 @@
         ]
       },
       {
-        "id": 103,
+        "id": 105,
         "order": "LT000000000000101850",
         "client": "",
         "orderType": "B2C",
@@ -5150,7 +5195,7 @@
         ]
       },
       {
-        "id": 104,
+        "id": 106,
         "order": "LT000000000000101852",
         "client": "",
         "orderType": "B2C",
@@ -5210,7 +5255,7 @@
         ]
       },
       {
-        "id": 105,
+        "id": 107,
         "order": "LT000000000000101856",
         "client": "",
         "orderType": "B2C",
@@ -5256,7 +5301,7 @@
         ]
       },
       {
-        "id": 106,
+        "id": 108,
         "order": "LT000000000000101876",
         "client": "",
         "orderType": "B2C",
@@ -5288,7 +5333,7 @@
         ]
       },
       {
-        "id": 107,
+        "id": 109,
         "order": "LT000000000000101988",
         "client": "",
         "orderType": "B2C",
@@ -5320,7 +5365,39 @@
         ]
       },
       {
-        "id": 108,
+        "id": 110,
+        "order": "LT000000000000101990",
+        "client": "",
+        "orderType": "B2C",
+        "order_type": "B2C",
+        "destinationCity": "QUILICURA",
+        "status": "FULL FILL",
+        "reason": "Disponible",
+        "requiredQty": 1,
+        "availableQty": 68,
+        "missingQty": 0,
+        "criticalSku": "OK",
+        "totalLines": 1,
+        "shortageLines": 0,
+        "lines": [
+          {
+            "order": "LT000000000000101990",
+            "client": "",
+            "sku": "10072074",
+            "item": "10072074",
+            "description": "MALETA 23KG UNISEX 100 POLIURETANO NEGRO",
+            "requiredQty": 1,
+            "availableQty": 68,
+            "missingQty": 0,
+            "status": "OK",
+            "orderType": "B2C",
+            "order_type": "B2C",
+            "destinationCity": "QUILICURA"
+          }
+        ]
+      },
+      {
+        "id": 111,
         "order": "LT000000000000101992",
         "client": "",
         "orderType": "B2C",
@@ -5394,7 +5471,7 @@
         ]
       },
       {
-        "id": 109,
+        "id": 112,
         "order": "LT000000000000102039",
         "client": "",
         "orderType": "B2C",
@@ -5454,7 +5531,7 @@
         ]
       },
       {
-        "id": 110,
+        "id": 113,
         "order": "LT000000000000102060",
         "client": "",
         "orderType": "B2C",
@@ -5500,7 +5577,7 @@
         ]
       },
       {
-        "id": 111,
+        "id": 114,
         "order": "LT000000000000102134",
         "client": "",
         "orderType": "B2C",
@@ -5532,7 +5609,7 @@
         ]
       },
       {
-        "id": 112,
+        "id": 115,
         "order": "LT000000000000102136",
         "client": "",
         "orderType": "B2C",
@@ -5564,7 +5641,7 @@
         ]
       },
       {
-        "id": 113,
+        "id": 116,
         "order": "LT000000000000102160",
         "client": "",
         "orderType": "B2C",
@@ -5596,7 +5673,7 @@
         ]
       },
       {
-        "id": 114,
+        "id": 117,
         "order": "LT000000000000102179",
         "client": "",
         "orderType": "B2C",
@@ -5642,7 +5719,7 @@
         ]
       },
       {
-        "id": 115,
+        "id": 118,
         "order": "LT000000000000102201",
         "client": "",
         "orderType": "B2C",
@@ -5702,7 +5779,7 @@
         ]
       },
       {
-        "id": 116,
+        "id": 119,
         "order": "LT000000000000102204",
         "client": "",
         "orderType": "B2C",
@@ -5734,7 +5811,7 @@
         ]
       },
       {
-        "id": 117,
+        "id": 120,
         "order": "LT000000000000102214",
         "client": "",
         "orderType": "B2C",
@@ -5780,7 +5857,7 @@
         ]
       },
       {
-        "id": 118,
+        "id": 121,
         "order": "LT000000000000102232",
         "client": "",
         "orderType": "B2C",
@@ -5840,7 +5917,7 @@
         ]
       },
       {
-        "id": 119,
+        "id": 122,
         "order": "LT000000000000102233",
         "client": "",
         "orderType": "B2C",
@@ -5886,7 +5963,7 @@
         ]
       },
       {
-        "id": 120,
+        "id": 123,
         "order": "LT000000000000102234",
         "client": "",
         "orderType": "B2C",
@@ -5974,7 +6051,7 @@
         ]
       },
       {
-        "id": 121,
+        "id": 124,
         "order": "LT000000000000102236",
         "client": "",
         "orderType": "B2C",
@@ -6006,7 +6083,7 @@
         ]
       },
       {
-        "id": 122,
+        "id": 125,
         "order": "LT000000000000102330",
         "client": "",
         "orderType": "B2C",
@@ -6080,7 +6157,7 @@
         ]
       },
       {
-        "id": 123,
+        "id": 126,
         "order": "LT000000000000102347",
         "client": "",
         "orderType": "B2C",
@@ -6154,7 +6231,7 @@
         ]
       },
       {
-        "id": 124,
+        "id": 127,
         "order": "LT000000000000102394",
         "client": "",
         "orderType": "B2C",
@@ -6200,7 +6277,7 @@
         ]
       },
       {
-        "id": 125,
+        "id": 128,
         "order": "LT000000000000102462",
         "client": "",
         "orderType": "B2C",
@@ -6274,7 +6351,7 @@
         ]
       },
       {
-        "id": 126,
+        "id": 129,
         "order": "LT000000000000102489",
         "client": "",
         "orderType": "B2C",
@@ -6362,7 +6439,7 @@
         ]
       },
       {
-        "id": 127,
+        "id": 130,
         "order": "LT000000000000102525",
         "client": "",
         "orderType": "B2C",
@@ -6394,99 +6471,7 @@
         ]
       },
       {
-        "id": 128,
-        "order": "LT000000000000102530",
-        "client": "",
-        "orderType": "B2C",
-        "order_type": "B2C",
-        "destinationCity": "RECOLETA",
-        "status": "NO FILL",
-        "reason": "Stock insuficiente",
-        "requiredQty": 3,
-        "availableQty": 14,
-        "missingQty": 2,
-        "criticalSku": "100000000200040908",
-        "totalLines": 2,
-        "shortageLines": 1,
-        "lines": [
-          {
-            "order": "LT000000000000102530",
-            "client": "",
-            "sku": "100000000200040908",
-            "item": "100000000200040908",
-            "description": "POLERA MALLA 2XL UNIS ALGO BLANC M.CORTA",
-            "requiredQty": 2,
-            "availableQty": 0,
-            "missingQty": 2,
-            "status": "SHORTAGE",
-            "orderType": "B2C",
-            "order_type": "B2C",
-            "destinationCity": "RECOLETA"
-          },
-          {
-            "order": "LT000000000000102530",
-            "client": "",
-            "sku": "100000000200041014",
-            "item": "100000000200041014",
-            "description": "CHAQUETA CORTAVIENTO 2XL POLIESTER AZUL",
-            "requiredQty": 1,
-            "availableQty": 14,
-            "missingQty": 0,
-            "status": "OK",
-            "orderType": "B2C",
-            "order_type": "B2C",
-            "destinationCity": "RECOLETA"
-          }
-        ]
-      },
-      {
-        "id": 129,
-        "order": "LT000000000000102531",
-        "client": "",
-        "orderType": "B2C",
-        "order_type": "B2C",
-        "destinationCity": "LA FLORIDA",
-        "status": "NO FILL",
-        "reason": "Stock insuficiente",
-        "requiredQty": 3,
-        "availableQty": 14,
-        "missingQty": 2,
-        "criticalSku": "100000000200040908",
-        "totalLines": 2,
-        "shortageLines": 1,
-        "lines": [
-          {
-            "order": "LT000000000000102531",
-            "client": "",
-            "sku": "100000000200040908",
-            "item": "100000000200040908",
-            "description": "POLERA MALLA 2XL UNIS ALGO BLANC M.CORTA",
-            "requiredQty": 2,
-            "availableQty": 0,
-            "missingQty": 2,
-            "status": "SHORTAGE",
-            "orderType": "B2C",
-            "order_type": "B2C",
-            "destinationCity": "LA FLORIDA"
-          },
-          {
-            "order": "LT000000000000102531",
-            "client": "",
-            "sku": "100000000200041014",
-            "item": "100000000200041014",
-            "description": "CHAQUETA CORTAVIENTO 2XL POLIESTER AZUL",
-            "requiredQty": 1,
-            "availableQty": 14,
-            "missingQty": 0,
-            "status": "OK",
-            "orderType": "B2C",
-            "order_type": "B2C",
-            "destinationCity": "LA FLORIDA"
-          }
-        ]
-      },
-      {
-        "id": 130,
+        "id": 131,
         "order": "LT000000000000102614",
         "client": "",
         "orderType": "B2C",
@@ -6546,7 +6531,7 @@
         ]
       },
       {
-        "id": 131,
+        "id": 132,
         "order": "LT000000000000102621",
         "client": "",
         "orderType": "B2C",
@@ -6606,7 +6591,7 @@
         ]
       },
       {
-        "id": 132,
+        "id": 133,
         "order": "LT000000000000102625",
         "client": "",
         "orderType": "B2C",
@@ -6694,7 +6679,7 @@
         ]
       },
       {
-        "id": 133,
+        "id": 134,
         "order": "LT000000000000102637",
         "client": "",
         "orderType": "B2C",
@@ -6726,7 +6711,7 @@
         ]
       },
       {
-        "id": 134,
+        "id": 135,
         "order": "LT000000000000102686",
         "client": "",
         "orderType": "B2C",
@@ -6772,7 +6757,7 @@
         ]
       },
       {
-        "id": 135,
+        "id": 136,
         "order": "LT000000000000102716",
         "client": "",
         "orderType": "B2C",
@@ -6832,7 +6817,7 @@
         ]
       },
       {
-        "id": 136,
+        "id": 137,
         "order": "LT000000000000102765",
         "client": "",
         "orderType": "B2C",
@@ -6878,7 +6863,7 @@
         ]
       },
       {
-        "id": 137,
+        "id": 138,
         "order": "LT000000000000102768",
         "client": "",
         "orderType": "B2C",
@@ -6910,7 +6895,7 @@
         ]
       },
       {
-        "id": 138,
+        "id": 139,
         "order": "LT000000000000102780",
         "client": "",
         "orderType": "B2C",
@@ -6942,7 +6927,39 @@
         ]
       },
       {
-        "id": 139,
+        "id": 140,
+        "order": "LT000000000000102803",
+        "client": "",
+        "orderType": "B2C",
+        "order_type": "B2C",
+        "destinationCity": "ANTOFAGASTA",
+        "status": "FULL FILL",
+        "reason": "Disponible",
+        "requiredQty": 1,
+        "availableQty": 179,
+        "missingQty": 0,
+        "criticalSku": "OK",
+        "totalLines": 1,
+        "shortageLines": 0,
+        "lines": [
+          {
+            "order": "LT000000000000102803",
+            "client": "",
+            "sku": "10075126",
+            "item": "10075126",
+            "description": "PANTALON T PLANO 44R FEM 70LANA INDI",
+            "requiredQty": 1,
+            "availableQty": 179,
+            "missingQty": 0,
+            "status": "OK",
+            "orderType": "B2C",
+            "order_type": "B2C",
+            "destinationCity": "ANTOFAGASTA"
+          }
+        ]
+      },
+      {
+        "id": 141,
         "order": "LT000000000000102825",
         "client": "",
         "orderType": "B2C",
@@ -6974,7 +6991,7 @@
         ]
       },
       {
-        "id": 140,
+        "id": 142,
         "order": "LT000000000000102834",
         "client": "",
         "orderType": "B2C",
@@ -7006,7 +7023,7 @@
         ]
       },
       {
-        "id": 141,
+        "id": 143,
         "order": "LT000000000000102864",
         "client": "",
         "orderType": "B2C",
@@ -7038,7 +7055,7 @@
         ]
       },
       {
-        "id": 142,
+        "id": 144,
         "order": "LT000000000000102870",
         "client": "",
         "orderType": "B2C",
@@ -7126,7 +7143,7 @@
         ]
       },
       {
-        "id": 143,
+        "id": 145,
         "order": "LT000000000000102874",
         "client": "",
         "orderType": "B2C",
@@ -7172,7 +7189,7 @@
         ]
       },
       {
-        "id": 144,
+        "id": 146,
         "order": "LT000000000000102877",
         "client": "",
         "orderType": "B2C",
@@ -7204,7 +7221,7 @@
         ]
       },
       {
-        "id": 145,
+        "id": 147,
         "order": "LT000000000000102878",
         "client": "",
         "orderType": "B2C",
@@ -7236,7 +7253,7 @@
         ]
       },
       {
-        "id": 146,
+        "id": 148,
         "order": "LT000000000000102881",
         "client": "",
         "orderType": "B2C",
@@ -7268,7 +7285,7 @@
         ]
       },
       {
-        "id": 147,
+        "id": 149,
         "order": "LT000000000000102883",
         "client": "",
         "orderType": "B2C",
@@ -7300,7 +7317,7 @@
         ]
       },
       {
-        "id": 148,
+        "id": 150,
         "order": "LT000000000000102891",
         "client": "",
         "orderType": "B2C",
@@ -7332,7 +7349,7 @@
         ]
       },
       {
-        "id": 149,
+        "id": 151,
         "order": "LT000000000000102905",
         "client": "",
         "orderType": "B2C",
@@ -7420,7 +7437,7 @@
         ]
       },
       {
-        "id": 150,
+        "id": 152,
         "order": "LT000000000000102915",
         "client": "",
         "orderType": "B2C",
@@ -7494,7 +7511,7 @@
         ]
       },
       {
-        "id": 151,
+        "id": 153,
         "order": "LT000000000000102916",
         "client": "",
         "orderType": "B2C",
@@ -7540,7 +7557,7 @@
         ]
       },
       {
-        "id": 152,
+        "id": 154,
         "order": "LT000000000000102933",
         "client": "",
         "orderType": "B2C",
@@ -7572,7 +7589,7 @@
         ]
       },
       {
-        "id": 153,
+        "id": 155,
         "order": "LT000000000000102944",
         "client": "",
         "orderType": "B2C",
@@ -7604,7 +7621,7 @@
         ]
       },
       {
-        "id": 154,
+        "id": 156,
         "order": "LT000000000000102945",
         "client": "",
         "orderType": "B2C",
@@ -7636,7 +7653,7 @@
         ]
       },
       {
-        "id": 155,
+        "id": 157,
         "order": "LT000000000000102946",
         "client": "",
         "orderType": "B2C",
@@ -7668,7 +7685,7 @@
         ]
       },
       {
-        "id": 156,
+        "id": 158,
         "order": "LT000000000000102951",
         "client": "",
         "orderType": "B2C",
@@ -7714,7 +7731,7 @@
         ]
       },
       {
-        "id": 157,
+        "id": 159,
         "order": "LT000000000000102959",
         "client": "",
         "orderType": "B2C",
@@ -7774,7 +7791,7 @@
         ]
       },
       {
-        "id": 158,
+        "id": 160,
         "order": "LT000000000000102965",
         "client": "",
         "orderType": "B2C",
@@ -7834,7 +7851,7 @@
         ]
       },
       {
-        "id": 159,
+        "id": 161,
         "order": "LT000000000000102967",
         "client": "",
         "orderType": "B2C",
@@ -7866,7 +7883,7 @@
         ]
       },
       {
-        "id": 160,
+        "id": 162,
         "order": "LT000000000000102968",
         "client": "",
         "orderType": "B2C",
@@ -7912,7 +7929,7 @@
         ]
       },
       {
-        "id": 161,
+        "id": 163,
         "order": "LT000000000000102969",
         "client": "",
         "orderType": "B2C",
@@ -7944,7 +7961,7 @@
         ]
       },
       {
-        "id": 162,
+        "id": 164,
         "order": "LT000000000000102970",
         "client": "",
         "orderType": "B2C",
@@ -7976,7 +7993,7 @@
         ]
       },
       {
-        "id": 163,
+        "id": 165,
         "order": "LT000000000000102971",
         "client": "",
         "orderType": "B2C",
@@ -8008,7 +8025,7 @@
         ]
       },
       {
-        "id": 164,
+        "id": 166,
         "order": "LT000000000000102972",
         "client": "",
         "orderType": "B2C",
@@ -8068,7 +8085,7 @@
         ]
       },
       {
-        "id": 165,
+        "id": 167,
         "order": "LT000000000000102974",
         "client": "",
         "orderType": "B2C",
@@ -8100,7 +8117,7 @@
         ]
       },
       {
-        "id": 166,
+        "id": 168,
         "order": "LT000000000000102976",
         "client": "",
         "orderType": "B2C",
@@ -8146,7 +8163,7 @@
         ]
       },
       {
-        "id": 167,
+        "id": 169,
         "order": "LT000000000000102977",
         "client": "",
         "orderType": "B2C",
@@ -8206,7 +8223,7 @@
         ]
       },
       {
-        "id": 168,
+        "id": 170,
         "order": "LT000000000000102983",
         "client": "",
         "orderType": "B2C",
@@ -8238,7 +8255,7 @@
         ]
       },
       {
-        "id": 169,
+        "id": 171,
         "order": "LT000000000000102989",
         "client": "",
         "orderType": "B2C",
@@ -8298,7 +8315,7 @@
         ]
       },
       {
-        "id": 170,
+        "id": 172,
         "order": "LT000000000000102995",
         "client": "",
         "orderType": "B2C",
@@ -8330,7 +8347,7 @@
         ]
       },
       {
-        "id": 171,
+        "id": 173,
         "order": "LT000000000000102998",
         "client": "",
         "orderType": "B2C",
@@ -8362,7 +8379,7 @@
         ]
       },
       {
-        "id": 172,
+        "id": 174,
         "order": "LT000000000000103003",
         "client": "",
         "orderType": "B2C",
@@ -8422,7 +8439,7 @@
         ]
       },
       {
-        "id": 173,
+        "id": 175,
         "order": "LT000000000000103038",
         "client": "",
         "orderType": "B2C",
@@ -8496,7 +8513,7 @@
         ]
       },
       {
-        "id": 174,
+        "id": 176,
         "order": "LT000000000000103039",
         "client": "",
         "orderType": "B2C",
@@ -8542,7 +8559,7 @@
         ]
       },
       {
-        "id": 175,
+        "id": 177,
         "order": "LT000000000000103056",
         "client": "",
         "orderType": "B2C",
@@ -8574,7 +8591,7 @@
         ]
       },
       {
-        "id": 176,
+        "id": 178,
         "order": "LT000000000000103062",
         "client": "",
         "orderType": "B2C",
@@ -8620,7 +8637,7 @@
         ]
       },
       {
-        "id": 177,
+        "id": 179,
         "order": "LT000000000000103066",
         "client": "",
         "orderType": "B2C",
@@ -8652,7 +8669,7 @@
         ]
       },
       {
-        "id": 178,
+        "id": 180,
         "order": "LT000000000000103067",
         "client": "",
         "orderType": "B2C",
@@ -8698,7 +8715,7 @@
         ]
       },
       {
-        "id": 179,
+        "id": 181,
         "order": "LT000000000000103068",
         "client": "",
         "orderType": "B2C",
@@ -8730,7 +8747,7 @@
         ]
       },
       {
-        "id": 180,
+        "id": 182,
         "order": "LT000000000000103070",
         "client": "",
         "orderType": "B2C",
@@ -8762,7 +8779,7 @@
         ]
       },
       {
-        "id": 181,
+        "id": 183,
         "order": "LT000000000000103072",
         "client": "",
         "orderType": "B2C",
@@ -8808,7 +8825,7 @@
         ]
       },
       {
-        "id": 182,
+        "id": 184,
         "order": "LT000000000000103092",
         "client": "",
         "orderType": "B2C",
@@ -8840,7 +8857,7 @@
         ]
       },
       {
-        "id": 183,
+        "id": 185,
         "order": "LT000000000000103113",
         "client": "",
         "orderType": "B2C",
@@ -8872,7 +8889,7 @@
         ]
       },
       {
-        "id": 184,
+        "id": 186,
         "order": "LT000000000000103118",
         "client": "",
         "orderType": "B2C",
@@ -8904,7 +8921,7 @@
         ]
       },
       {
-        "id": 185,
+        "id": 187,
         "order": "LT000000000000103119",
         "client": "",
         "orderType": "B2C",
@@ -8978,7 +8995,7 @@
         ]
       },
       {
-        "id": 186,
+        "id": 188,
         "order": "LT000000000000103120",
         "client": "",
         "orderType": "B2C",
@@ -9010,7 +9027,7 @@
         ]
       },
       {
-        "id": 187,
+        "id": 189,
         "order": "LT000000000000103125",
         "client": "",
         "orderType": "B2C",
@@ -9070,7 +9087,7 @@
         ]
       },
       {
-        "id": 188,
+        "id": 190,
         "order": "LT000000000000103133",
         "client": "",
         "orderType": "B2C",
@@ -9158,7 +9175,7 @@
         ]
       },
       {
-        "id": 189,
+        "id": 191,
         "order": "LT000000000000103137",
         "client": "",
         "orderType": "B2C",
@@ -9190,7 +9207,7 @@
         ]
       },
       {
-        "id": 190,
+        "id": 192,
         "order": "LT000000000000103166",
         "client": "",
         "orderType": "B2C",
@@ -9236,7 +9253,7 @@
         ]
       },
       {
-        "id": 191,
+        "id": 193,
         "order": "LT000000000000103178",
         "client": "",
         "orderType": "B2C",
@@ -9282,7 +9299,7 @@
         ]
       },
       {
-        "id": 192,
+        "id": 194,
         "order": "LT000000000000103229",
         "client": "",
         "orderType": "B2C",
@@ -9314,7 +9331,7 @@
         ]
       },
       {
-        "id": 193,
+        "id": 195,
         "order": "LT000000000000103256",
         "client": "",
         "orderType": "B2C",
@@ -9346,7 +9363,7 @@
         ]
       },
       {
-        "id": 194,
+        "id": 196,
         "order": "LT000000000000103261",
         "client": "",
         "orderType": "B2C",
@@ -9406,7 +9423,7 @@
         ]
       },
       {
-        "id": 195,
+        "id": 197,
         "order": "LT000000000000103280",
         "client": "",
         "orderType": "B2C",
@@ -9480,7 +9497,7 @@
         ]
       },
       {
-        "id": 196,
+        "id": 198,
         "order": "LT000000000000103295",
         "client": "",
         "orderType": "B2C",
@@ -9512,7 +9529,7 @@
         ]
       },
       {
-        "id": 197,
+        "id": 199,
         "order": "LT000000000000103301",
         "client": "",
         "orderType": "B2C",
@@ -9558,7 +9575,7 @@
         ]
       },
       {
-        "id": 198,
+        "id": 200,
         "order": "LT000000000000103308",
         "client": "",
         "orderType": "B2C",
@@ -9618,7 +9635,7 @@
         ]
       },
       {
-        "id": 199,
+        "id": 201,
         "order": "LT000000000000103310",
         "client": "",
         "orderType": "B2C",
@@ -9650,7 +9667,7 @@
         ]
       },
       {
-        "id": 200,
+        "id": 202,
         "order": "LT000000000000103353",
         "client": "",
         "orderType": "B2C",
@@ -9682,7 +9699,7 @@
         ]
       },
       {
-        "id": 201,
+        "id": 203,
         "order": "LT000000000000103372",
         "client": "",
         "orderType": "B2C",
@@ -9742,7 +9759,7 @@
         ]
       },
       {
-        "id": 202,
+        "id": 204,
         "order": "LT000000000000103406",
         "client": "",
         "orderType": "B2C",
@@ -9786,14 +9803,264 @@
             "destinationCity": "Las Condes"
           }
         ]
+      },
+      {
+        "id": 205,
+        "order": "LT000000000000103417",
+        "client": "",
+        "orderType": "B2C",
+        "order_type": "B2C",
+        "destinationCity": "Quilpue",
+        "status": "FULL FILL",
+        "reason": "Disponible",
+        "requiredQty": 2,
+        "availableQty": 578,
+        "missingQty": 0,
+        "criticalSku": "OK",
+        "totalLines": 1,
+        "shortageLines": 0,
+        "lines": [
+          {
+            "order": "LT000000000000103417",
+            "client": "",
+            "sku": "10075143",
+            "item": "10075143",
+            "description": "Pantalón Piloto Hombre Azul",
+            "requiredQty": 2,
+            "availableQty": 578,
+            "missingQty": 0,
+            "status": "OK",
+            "orderType": "B2C",
+            "order_type": "B2C",
+            "destinationCity": "Quilpue"
+          }
+        ]
+      },
+      {
+        "id": 206,
+        "order": "LT000000000000103422",
+        "client": "",
+        "orderType": "B2C",
+        "order_type": "B2C",
+        "destinationCity": "ALTO HOSPICIO",
+        "status": "FULL FILL",
+        "reason": "Disponible",
+        "requiredQty": 18,
+        "availableQty": 5367,
+        "missingQty": 0,
+        "criticalSku": "OK",
+        "totalLines": 11,
+        "shortageLines": 0,
+        "lines": [
+          {
+            "order": "LT000000000000103422",
+            "client": "",
+            "sku": "100000000200002855",
+            "item": "100000000200002855",
+            "description": "Pantalón Térmicos Azul",
+            "requiredQty": 1,
+            "availableQty": 674,
+            "missingQty": 0,
+            "status": "OK",
+            "orderType": "B2C",
+            "order_type": "B2C",
+            "destinationCity": "ALTO HOSPICIO"
+          },
+          {
+            "order": "LT000000000000103422",
+            "client": "",
+            "sku": "100000000200002919",
+            "item": "100000000200002919",
+            "description": "Pantalon Lluvia Unisex Amarillo",
+            "requiredQty": 1,
+            "availableQty": 544,
+            "missingQty": 0,
+            "status": "OK",
+            "orderType": "B2C",
+            "order_type": "B2C",
+            "destinationCity": "ALTO HOSPICIO"
+          },
+          {
+            "order": "LT000000000000103422",
+            "client": "",
+            "sku": "100000000200002936",
+            "item": "100000000200002936",
+            "description": "CAPA INTERIOR MALLA XL MASC POLIES AZUL",
+            "requiredQty": 2,
+            "availableQty": 689,
+            "missingQty": 0,
+            "status": "OK",
+            "orderType": "B2C",
+            "order_type": "B2C",
+            "destinationCity": "ALTO HOSPICIO"
+          },
+          {
+            "order": "LT000000000000103422",
+            "client": "",
+            "sku": "100000000200002940",
+            "item": "100000000200002940",
+            "description": "Chaqueta Cortaviento Unisex Azul",
+            "requiredQty": 1,
+            "availableQty": 717,
+            "missingQty": 0,
+            "status": "OK",
+            "orderType": "B2C",
+            "order_type": "B2C",
+            "destinationCity": "ALTO HOSPICIO"
+          },
+          {
+            "order": "LT000000000000103422",
+            "client": "",
+            "sku": "100000000200002956",
+            "item": "100000000200002956",
+            "description": "Parka Térmica Unisex Azul",
+            "requiredQty": 1,
+            "availableQty": 577,
+            "missingQty": 0,
+            "status": "OK",
+            "orderType": "B2C",
+            "order_type": "B2C",
+            "destinationCity": "ALTO HOSPICIO"
+          },
+          {
+            "order": "LT000000000000103422",
+            "client": "",
+            "sku": "100000000200002963",
+            "item": "100000000200002963",
+            "description": "Polerón Algodón Azul Marino",
+            "requiredQty": 1,
+            "availableQty": 750,
+            "missingQty": 0,
+            "status": "OK",
+            "orderType": "B2C",
+            "order_type": "B2C",
+            "destinationCity": "ALTO HOSPICIO"
+          },
+          {
+            "order": "LT000000000000103422",
+            "client": "",
+            "sku": "100000000200004160",
+            "item": "100000000200004160",
+            "description": "Chaqueta Lluvia Unisex Amarillo",
+            "requiredQty": 1,
+            "availableQty": 684,
+            "missingQty": 0,
+            "status": "OK",
+            "orderType": "B2C",
+            "order_type": "B2C",
+            "destinationCity": "ALTO HOSPICIO"
+          },
+          {
+            "order": "LT000000000000103422",
+            "client": "",
+            "sku": "10075145",
+            "item": "10075145",
+            "description": "Pantalón Piloto Hombre Azul",
+            "requiredQty": 2,
+            "availableQty": 130,
+            "missingQty": 0,
+            "status": "OK",
+            "orderType": "B2C",
+            "order_type": "B2C",
+            "destinationCity": "ALTO HOSPICIO"
+          },
+          {
+            "order": "LT000000000000103422",
+            "client": "",
+            "sku": "10075863",
+            "item": "10075863",
+            "description": "Camisa Manga Larga Hombre Blanca",
+            "requiredQty": 3,
+            "availableQty": 307,
+            "missingQty": 0,
+            "status": "OK",
+            "orderType": "B2C",
+            "order_type": "B2C",
+            "destinationCity": "ALTO HOSPICIO"
+          },
+          {
+            "order": "LT000000000000103422",
+            "client": "",
+            "sku": "10075879",
+            "item": "10075879",
+            "description": "CAMISA TEC PLANO 43R MASC ALGOD BLANCO",
+            "requiredQty": 3,
+            "availableQty": 119,
+            "missingQty": 0,
+            "status": "OK",
+            "orderType": "B2C",
+            "order_type": "B2C",
+            "destinationCity": "ALTO HOSPICIO"
+          },
+          {
+            "order": "LT000000000000103422",
+            "client": "",
+            "sku": "10075930",
+            "item": "10075930",
+            "description": "Zapatos Negros con cordones",
+            "requiredQty": 2,
+            "availableQty": 176,
+            "missingQty": 0,
+            "status": "OK",
+            "orderType": "B2C",
+            "order_type": "B2C",
+            "destinationCity": "ALTO HOSPICIO"
+          }
+        ]
+      },
+      {
+        "id": 207,
+        "order": "LT000000000000103426",
+        "client": "",
+        "orderType": "B2C",
+        "order_type": "B2C",
+        "destinationCity": "ÑUÑOA",
+        "status": "FULL FILL",
+        "reason": "Disponible",
+        "requiredQty": 3,
+        "availableQty": 172,
+        "missingQty": 0,
+        "criticalSku": "OK",
+        "totalLines": 2,
+        "shortageLines": 0,
+        "lines": [
+          {
+            "order": "LT000000000000103426",
+            "client": "",
+            "sku": "10075197",
+            "item": "10075197",
+            "description": "PANTALON T PLANO 52R MASC 70LANA AZUL",
+            "requiredQty": 2,
+            "availableQty": 152,
+            "missingQty": 0,
+            "status": "OK",
+            "orderType": "B2C",
+            "order_type": "B2C",
+            "destinationCity": "ÑUÑOA"
+          },
+          {
+            "order": "LT000000000000103426",
+            "client": "",
+            "sku": "10075338",
+            "item": "10075338",
+            "description": "PALETO TEC PLANO 50T MASC 70 LANA AZUL",
+            "requiredQty": 1,
+            "availableQty": 20,
+            "missingQty": 0,
+            "status": "OK",
+            "orderType": "B2C",
+            "order_type": "B2C",
+            "destinationCity": "ÑUÑOA"
+          }
+        ]
       }
     ],
     "stockBreaks": {
       "available": true,
-      "totalOrders": 202,
-      "totalNoFillOrders": 13,
-      "totalShortageLines": 14,
-      "missingUnits": 29,
+      "totalOrders": 207,
+      "totalNoFillOrders": 11,
+      "totalShortageLines": 12,
+      "missingUnits": 25,
       "orders": [
         {
           "order": "LT000000000000095269",
@@ -10062,62 +10329,6 @@
           ]
         },
         {
-          "order": "LT000000000000102530",
-          "client": "",
-          "orderType": "B2C",
-          "order_type": "B2C",
-          "destinationCity": "RECOLETA",
-          "status": "NO FILL",
-          "requiredQty": 3,
-          "availableQty": 14,
-          "missingQty": 2,
-          "totalShortageLines": 1,
-          "products": [
-            {
-              "order": "LT000000000000102530",
-              "client": "",
-              "sku": "100000000200040908",
-              "item": "100000000200040908",
-              "description": "POLERA MALLA 2XL UNIS ALGO BLANC M.CORTA",
-              "requiredQty": 2,
-              "availableQty": 0,
-              "missingQty": 2,
-              "status": "SHORTAGE",
-              "orderType": "B2C",
-              "order_type": "B2C",
-              "destinationCity": "RECOLETA"
-            }
-          ]
-        },
-        {
-          "order": "LT000000000000102531",
-          "client": "",
-          "orderType": "B2C",
-          "order_type": "B2C",
-          "destinationCity": "LA FLORIDA",
-          "status": "NO FILL",
-          "requiredQty": 3,
-          "availableQty": 14,
-          "missingQty": 2,
-          "totalShortageLines": 1,
-          "products": [
-            {
-              "order": "LT000000000000102531",
-              "client": "",
-              "sku": "100000000200040908",
-              "item": "100000000200040908",
-              "description": "POLERA MALLA 2XL UNIS ALGO BLANC M.CORTA",
-              "requiredQty": 2,
-              "availableQty": 0,
-              "missingQty": 2,
-              "status": "SHORTAGE",
-              "orderType": "B2C",
-              "order_type": "B2C",
-              "destinationCity": "LA FLORIDA"
-            }
-          ]
-        },
-        {
           "order": "LT000000000000102625",
           "client": "",
           "orderType": "B2C",
@@ -10316,34 +10527,6 @@
           "destinationCity": "LA FLORIDA"
         },
         {
-          "order": "LT000000000000102530",
-          "client": "",
-          "sku": "100000000200040908",
-          "item": "100000000200040908",
-          "description": "POLERA MALLA 2XL UNIS ALGO BLANC M.CORTA",
-          "requiredQty": 2,
-          "availableQty": 0,
-          "missingQty": 2,
-          "status": "SHORTAGE",
-          "orderType": "B2C",
-          "order_type": "B2C",
-          "destinationCity": "RECOLETA"
-        },
-        {
-          "order": "LT000000000000102531",
-          "client": "",
-          "sku": "100000000200040908",
-          "item": "100000000200040908",
-          "description": "POLERA MALLA 2XL UNIS ALGO BLANC M.CORTA",
-          "requiredQty": 2,
-          "availableQty": 0,
-          "missingQty": 2,
-          "status": "SHORTAGE",
-          "orderType": "B2C",
-          "order_type": "B2C",
-          "destinationCity": "LA FLORIDA"
-        },
-        {
           "order": "LT000000000000102625",
           "client": "",
           "sku": "10075355",
@@ -10376,10 +10559,10 @@
   },
   "stockBreaks": {
     "available": true,
-    "totalOrders": 202,
-    "totalNoFillOrders": 13,
-    "totalShortageLines": 14,
-    "missingUnits": 29,
+    "totalOrders": 207,
+    "totalNoFillOrders": 11,
+    "totalShortageLines": 12,
+    "missingUnits": 25,
     "orders": [
       {
         "order": "LT000000000000095269",
@@ -10648,62 +10831,6 @@
         ]
       },
       {
-        "order": "LT000000000000102530",
-        "client": "",
-        "orderType": "B2C",
-        "order_type": "B2C",
-        "destinationCity": "RECOLETA",
-        "status": "NO FILL",
-        "requiredQty": 3,
-        "availableQty": 14,
-        "missingQty": 2,
-        "totalShortageLines": 1,
-        "products": [
-          {
-            "order": "LT000000000000102530",
-            "client": "",
-            "sku": "100000000200040908",
-            "item": "100000000200040908",
-            "description": "POLERA MALLA 2XL UNIS ALGO BLANC M.CORTA",
-            "requiredQty": 2,
-            "availableQty": 0,
-            "missingQty": 2,
-            "status": "SHORTAGE",
-            "orderType": "B2C",
-            "order_type": "B2C",
-            "destinationCity": "RECOLETA"
-          }
-        ]
-      },
-      {
-        "order": "LT000000000000102531",
-        "client": "",
-        "orderType": "B2C",
-        "order_type": "B2C",
-        "destinationCity": "LA FLORIDA",
-        "status": "NO FILL",
-        "requiredQty": 3,
-        "availableQty": 14,
-        "missingQty": 2,
-        "totalShortageLines": 1,
-        "products": [
-          {
-            "order": "LT000000000000102531",
-            "client": "",
-            "sku": "100000000200040908",
-            "item": "100000000200040908",
-            "description": "POLERA MALLA 2XL UNIS ALGO BLANC M.CORTA",
-            "requiredQty": 2,
-            "availableQty": 0,
-            "missingQty": 2,
-            "status": "SHORTAGE",
-            "orderType": "B2C",
-            "order_type": "B2C",
-            "destinationCity": "LA FLORIDA"
-          }
-        ]
-      },
-      {
         "order": "LT000000000000102625",
         "client": "",
         "orderType": "B2C",
@@ -10896,34 +11023,6 @@
         "requiredQty": 3,
         "availableQty": 0,
         "missingQty": 3,
-        "status": "SHORTAGE",
-        "orderType": "B2C",
-        "order_type": "B2C",
-        "destinationCity": "LA FLORIDA"
-      },
-      {
-        "order": "LT000000000000102530",
-        "client": "",
-        "sku": "100000000200040908",
-        "item": "100000000200040908",
-        "description": "POLERA MALLA 2XL UNIS ALGO BLANC M.CORTA",
-        "requiredQty": 2,
-        "availableQty": 0,
-        "missingQty": 2,
-        "status": "SHORTAGE",
-        "orderType": "B2C",
-        "order_type": "B2C",
-        "destinationCity": "RECOLETA"
-      },
-      {
-        "order": "LT000000000000102531",
-        "client": "",
-        "sku": "100000000200040908",
-        "item": "100000000200040908",
-        "description": "POLERA MALLA 2XL UNIS ALGO BLANC M.CORTA",
-        "requiredQty": 2,
-        "availableQty": 0,
-        "missingQty": 2,
         "status": "SHORTAGE",
         "orderType": "B2C",
         "order_type": "B2C",
