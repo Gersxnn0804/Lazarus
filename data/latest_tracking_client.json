@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.2.0",
-  "generatedAt": "2026-09-08T14:10:20",
+  "generatedAt": "2026-09-08T15:10:22",
   "source": {
     "platform": "Polaris",
     "module": "Tracking",
@@ -30,7 +30,7 @@
   },
   "inventoryThermometer": {
     "available": true,
-    "generatedAt": "2026-09-08T14:10:20",
+    "generatedAt": "2026-09-08T15:10:22",
     "totalAuditOrders": 77,
     "totalNoFillOrders": 19,
     "metric": "affected_orders_over_total_audit_orders",
@@ -134,7 +134,7 @@
   },
   "supplyAudit": {
     "available": true,
-    "generatedAt": "2026-09-08T14:10:20",
+    "generatedAt": "2026-09-08T15:10:22",
     "summary": {
       "totalOrders": 77,
       "fullFill": 58,
@@ -145,11 +145,11 @@
     },
     "metadata": {
       "source": "auto-atlas-resource-loader",
-      "lastProcessedAt": "2026-09-08T14:00:13",
+      "lastProcessedAt": "2026-09-08T15:00:48",
       "files": {
-        "order": "Atlas_Order_20260908_135043.csv",
-        "orderLine": "Atlas_OrderLine_20260908_135044.csv",
-        "inventory": "Atlas_ItemInventory_20260908_135111.csv"
+        "order": "Atlas_Order_20260908_145044.csv",
+        "orderLine": "Atlas_OrderLine_20260908_145045.csv",
+        "inventory": "Atlas_ItemInventory_20260908_145115.csv"
       }
     },
     "filters": {
@@ -326,7 +326,7 @@
         "status": "FULL FILL",
         "reason": "Disponible",
         "requiredQty": 8,
-        "availableQty": 259,
+        "availableQty": 255,
         "missingQty": 0,
         "criticalSku": "OK",
         "totalLines": 3,
@@ -367,7 +367,7 @@
             "item": "10078426",
             "description": "Pantalón Embarazada - Azul",
             "requiredQty": 2,
-            "availableQty": 13,
+            "availableQty": 9,
             "missingQty": 0,
             "status": "OK",
             "orderType": "B2BMAD",
@@ -5398,7 +5398,7 @@
         "status": "FULL FILL",
         "reason": "Disponible",
         "requiredQty": 9,
-        "availableQty": 1438,
+        "availableQty": 1439,
         "missingQty": 0,
         "criticalSku": "OK",
         "totalLines": 4,
@@ -5439,7 +5439,7 @@
             "item": "10075875",
             "description": "CAMISA TEC PLANO 39R MASC ALGOD BLANCO",
             "requiredQty": 3,
-            "availableQty": 353,
+            "availableQty": 354,
             "missingQty": 0,
             "status": "OK",
             "orderType": "B2C",
