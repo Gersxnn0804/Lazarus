@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.2.0",
-  "generatedAt": "2026-09-08T10:10:41",
+  "generatedAt": "2026-09-08T11:10:11",
   "source": {
     "platform": "Polaris",
     "module": "Tracking",
@@ -22,28 +22,28 @@
   },
   "inventoryHealth": {
     "available": true,
-    "auditOrders": 115,
-    "fullFillOrders": 96,
+    "auditOrders": 109,
+    "fullFillOrders": 90,
     "noFillOrders": 19,
-    "healthPercentage": 83.48,
+    "healthPercentage": 82.57,
     "level": "ATTENTION"
   },
   "inventoryThermometer": {
     "available": true,
-    "generatedAt": "2026-09-08T10:10:41",
-    "totalAuditOrders": 115,
+    "generatedAt": "2026-09-08T11:10:11",
+    "totalAuditOrders": 109,
     "totalNoFillOrders": 19,
     "metric": "affected_orders_over_total_audit_orders",
     "topCriticalItems": [
       {
         "item": "10072074",
         "description": "MALETA 23KG UNISEX 100 POLIURETANO NEGRO",
-        "stockoutIndex": 14.78,
-        "value": 14.78,
+        "stockoutIndex": 15.6,
+        "value": 15.6,
         "unit": "%",
         "affectedOrders": 17,
-        "totalAuditOrders": 115,
-        "affectedRatio": "17/115",
+        "totalAuditOrders": 109,
+        "affectedRatio": "17/109",
         "missingUnits": 17,
         "requiredUnits": 17,
         "availableUnits": 0,
@@ -57,12 +57,12 @@
       {
         "item": "10075193",
         "description": "Pantalón Hombre Azul",
-        "stockoutIndex": 0.87,
-        "value": 0.87,
+        "stockoutIndex": 0.92,
+        "value": 0.92,
         "unit": "%",
         "affectedOrders": 1,
-        "totalAuditOrders": 115,
-        "affectedRatio": "1/115",
+        "totalAuditOrders": 109,
+        "affectedRatio": "1/109",
         "missingUnits": 2,
         "requiredUnits": 2,
         "availableUnits": 0,
@@ -76,12 +76,12 @@
       {
         "item": "10076134",
         "description": "TAG U FEM ACERO NIQUELADO PLATEADO",
-        "stockoutIndex": 0.87,
-        "value": 0.87,
+        "stockoutIndex": 0.92,
+        "value": 0.92,
         "unit": "%",
         "affectedOrders": 1,
-        "totalAuditOrders": 115,
-        "affectedRatio": "1/115",
+        "totalAuditOrders": 109,
+        "affectedRatio": "1/109",
         "missingUnits": 1,
         "requiredUnits": 1,
         "availableUnits": 0,
@@ -95,12 +95,12 @@
       {
         "item": "10075746",
         "description": "FALDA LARGA T PLANO 44R FEM 70 LANA INDI",
-        "stockoutIndex": 0.87,
-        "value": 0.87,
+        "stockoutIndex": 0.92,
+        "value": 0.92,
         "unit": "%",
         "affectedOrders": 1,
-        "totalAuditOrders": 115,
-        "affectedRatio": "1/115",
+        "totalAuditOrders": 109,
+        "affectedRatio": "1/109",
         "missingUnits": 1,
         "requiredUnits": 1,
         "availableUnits": 0,
@@ -115,22 +115,22 @@
   },
   "supplyAudit": {
     "available": true,
-    "generatedAt": "2026-09-08T10:10:41",
+    "generatedAt": "2026-09-08T11:10:11",
     "summary": {
-      "totalOrders": 115,
-      "fullFill": 96,
+      "totalOrders": 109,
+      "fullFill": 90,
       "noFill": 19,
-      "fillRate": 83.48,
+      "fillRate": 82.57,
       "criticalSkus": 4,
       "missingUnits": 21
     },
     "metadata": {
       "source": "auto-atlas-resource-loader",
-      "lastProcessedAt": "2026-09-08T10:00:57",
+      "lastProcessedAt": "2026-09-08T11:00:03",
       "files": {
-        "order": "Atlas_Order_20260908_095050.csv",
-        "orderLine": "Atlas_OrderLine_20260908_095052.csv",
-        "inventory": "Atlas_ItemInventory_20260908_095212.csv"
+        "order": "Atlas_Order_20260908_105059.csv",
+        "orderLine": "Atlas_OrderLine_20260908_105102.csv",
+        "inventory": "Atlas_ItemInventory_20260908_105125.csv"
       }
     },
     "filters": {
@@ -153,198 +153,6 @@
     "orders": [
       {
         "id": 1,
-        "order": "LT000000000000095269",
-        "client": "",
-        "orderType": "B2C",
-        "order_type": "B2C",
-        "destinationCity": "LO PRADO",
-        "status": "FULL FILL",
-        "reason": "Disponible",
-        "requiredQty": 2,
-        "availableQty": 16,
-        "missingQty": 0,
-        "criticalSku": "OK",
-        "totalLines": 1,
-        "shortageLines": 0,
-        "lines": [
-          {
-            "order": "LT000000000000095269",
-            "client": "",
-            "sku": "10075178",
-            "item": "10075178",
-            "description": "PANTALON T PLANO 48R FEM 70LANA INDI",
-            "requiredQty": 2,
-            "availableQty": 16,
-            "missingQty": 0,
-            "status": "OK",
-            "orderType": "B2C",
-            "order_type": "B2C",
-            "destinationCity": "LO PRADO"
-          }
-        ]
-      },
-      {
-        "id": 2,
-        "order": "LT000000000000095275",
-        "client": "",
-        "orderType": "B2C",
-        "order_type": "B2C",
-        "destinationCity": "PUENTE ALTO",
-        "status": "FULL FILL",
-        "reason": "Disponible",
-        "requiredQty": 2,
-        "availableQty": 16,
-        "missingQty": 0,
-        "criticalSku": "OK",
-        "totalLines": 1,
-        "shortageLines": 0,
-        "lines": [
-          {
-            "order": "LT000000000000095275",
-            "client": "",
-            "sku": "10075178",
-            "item": "10075178",
-            "description": "PANTALON T PLANO 48R FEM 70LANA INDI",
-            "requiredQty": 2,
-            "availableQty": 16,
-            "missingQty": 0,
-            "status": "OK",
-            "orderType": "B2C",
-            "order_type": "B2C",
-            "destinationCity": "PUENTE ALTO"
-          }
-        ]
-      },
-      {
-        "id": 3,
-        "order": "LT000000000000095277",
-        "client": "",
-        "orderType": "B2C",
-        "order_type": "B2C",
-        "destinationCity": "VITACURA",
-        "status": "FULL FILL",
-        "reason": "Disponible",
-        "requiredQty": 2,
-        "availableQty": 16,
-        "missingQty": 0,
-        "criticalSku": "OK",
-        "totalLines": 1,
-        "shortageLines": 0,
-        "lines": [
-          {
-            "order": "LT000000000000095277",
-            "client": "",
-            "sku": "10075178",
-            "item": "10075178",
-            "description": "PANTALON T PLANO 48R FEM 70LANA INDI",
-            "requiredQty": 2,
-            "availableQty": 16,
-            "missingQty": 0,
-            "status": "OK",
-            "orderType": "B2C",
-            "order_type": "B2C",
-            "destinationCity": "VITACURA"
-          }
-        ]
-      },
-      {
-        "id": 4,
-        "order": "LT000000000000095279",
-        "client": "",
-        "orderType": "B2C",
-        "order_type": "B2C",
-        "destinationCity": "NUNOA",
-        "status": "FULL FILL",
-        "reason": "Disponible",
-        "requiredQty": 2,
-        "availableQty": 16,
-        "missingQty": 0,
-        "criticalSku": "OK",
-        "totalLines": 1,
-        "shortageLines": 0,
-        "lines": [
-          {
-            "order": "LT000000000000095279",
-            "client": "",
-            "sku": "10075178",
-            "item": "10075178",
-            "description": "PANTALON T PLANO 48R FEM 70LANA INDI",
-            "requiredQty": 2,
-            "availableQty": 16,
-            "missingQty": 0,
-            "status": "OK",
-            "orderType": "B2C",
-            "order_type": "B2C",
-            "destinationCity": "NUNOA"
-          }
-        ]
-      },
-      {
-        "id": 5,
-        "order": "LT000000000000095280",
-        "client": "",
-        "orderType": "B2C",
-        "order_type": "B2C",
-        "destinationCity": "MAIPU",
-        "status": "FULL FILL",
-        "reason": "Disponible",
-        "requiredQty": 2,
-        "availableQty": 16,
-        "missingQty": 0,
-        "criticalSku": "OK",
-        "totalLines": 1,
-        "shortageLines": 0,
-        "lines": [
-          {
-            "order": "LT000000000000095280",
-            "client": "",
-            "sku": "10075178",
-            "item": "10075178",
-            "description": "PANTALON T PLANO 48R FEM 70LANA INDI",
-            "requiredQty": 2,
-            "availableQty": 16,
-            "missingQty": 0,
-            "status": "OK",
-            "orderType": "B2C",
-            "order_type": "B2C",
-            "destinationCity": "MAIPU"
-          }
-        ]
-      },
-      {
-        "id": 6,
-        "order": "LT000000000000095284",
-        "client": "",
-        "orderType": "B2C",
-        "order_type": "B2C",
-        "destinationCity": "LAS CONDES",
-        "status": "FULL FILL",
-        "reason": "Disponible",
-        "requiredQty": 1,
-        "availableQty": 16,
-        "missingQty": 0,
-        "criticalSku": "OK",
-        "totalLines": 1,
-        "shortageLines": 0,
-        "lines": [
-          {
-            "order": "LT000000000000095284",
-            "client": "",
-            "sku": "10075178",
-            "item": "10075178",
-            "description": "PANTALON T PLANO 48R FEM 70LANA INDI",
-            "requiredQty": 1,
-            "availableQty": 16,
-            "missingQty": 0,
-            "status": "OK",
-            "orderType": "B2C",
-            "order_type": "B2C",
-            "destinationCity": "LAS CONDES"
-          }
-        ]
-      },
-      {
-        "id": 7,
         "order": "LT000000000000099418",
         "client": "",
         "orderType": "B2BJBA",
@@ -404,7 +212,7 @@
         ]
       },
       {
-        "id": 8,
+        "id": 2,
         "order": "LT000000000000099881",
         "client": "",
         "orderType": "B2BDOR",
@@ -450,7 +258,7 @@
         ]
       },
       {
-        "id": 9,
+        "id": 3,
         "order": "LT000000000000099954",
         "client": "",
         "orderType": "B2BDOR",
@@ -538,7 +346,7 @@
         ]
       },
       {
-        "id": 10,
+        "id": 4,
         "order": "LT000000000000099985",
         "client": "",
         "orderType": "B2BMAD",
@@ -626,7 +434,7 @@
         ]
       },
       {
-        "id": 11,
+        "id": 5,
         "order": "LT000000000000100259",
         "client": "",
         "orderType": "B2BMAD",
@@ -686,7 +494,7 @@
         ]
       },
       {
-        "id": 12,
+        "id": 6,
         "order": "LT000000000000100371",
         "client": "",
         "orderType": "B2BDOR",
@@ -844,7 +652,7 @@
         ]
       },
       {
-        "id": 13,
+        "id": 7,
         "order": "LT000000000000100377",
         "client": "",
         "orderType": "B2BDOR",
@@ -918,7 +726,7 @@
         ]
       },
       {
-        "id": 14,
+        "id": 8,
         "order": "LT000000000000100391",
         "client": "",
         "orderType": "B2BMAD",
@@ -1118,7 +926,7 @@
         ]
       },
       {
-        "id": 15,
+        "id": 9,
         "order": "LT000000000000100454",
         "client": "",
         "orderType": "B2BMAD",
@@ -1318,7 +1126,7 @@
         ]
       },
       {
-        "id": 16,
+        "id": 10,
         "order": "LT000000000000100485",
         "client": "",
         "orderType": "B2BDOR",
@@ -1378,7 +1186,7 @@
         ]
       },
       {
-        "id": 17,
+        "id": 11,
         "order": "LT000000000000100582",
         "client": "",
         "orderType": "B2BJFK",
@@ -1424,7 +1232,7 @@
         ]
       },
       {
-        "id": 18,
+        "id": 12,
         "order": "LT000000000000100678",
         "client": "",
         "orderType": "B2BDOR",
@@ -1540,7 +1348,7 @@
         ]
       },
       {
-        "id": 19,
+        "id": 13,
         "order": "LT000000000000100696",
         "client": "",
         "orderType": "B2BMAD",
@@ -1642,7 +1450,7 @@
         ]
       },
       {
-        "id": 20,
+        "id": 14,
         "order": "LT000000000000100725",
         "client": "",
         "orderType": "B2BDOR",
@@ -1688,7 +1496,7 @@
         ]
       },
       {
-        "id": 21,
+        "id": 15,
         "order": "LT000000000000100864",
         "client": "",
         "orderType": "B2C",
@@ -1748,7 +1556,7 @@
         ]
       },
       {
-        "id": 22,
+        "id": 16,
         "order": "LT000000000000100869",
         "client": "",
         "orderType": "B2C",
@@ -1794,7 +1602,7 @@
         ]
       },
       {
-        "id": 23,
+        "id": 17,
         "order": "LT000000000000100874",
         "client": "",
         "orderType": "B2BJFK",
@@ -1952,7 +1760,7 @@
         ]
       },
       {
-        "id": 24,
+        "id": 18,
         "order": "LT000000000000100937",
         "client": "",
         "orderType": "B2C",
@@ -2096,7 +1904,7 @@
         ]
       },
       {
-        "id": 25,
+        "id": 19,
         "order": "LT000000000000101029",
         "client": "",
         "orderType": "B2BJFK",
@@ -2240,7 +2048,7 @@
         ]
       },
       {
-        "id": 26,
+        "id": 20,
         "order": "LT000000000000101070",
         "client": "",
         "orderType": "B2C",
@@ -2412,7 +2220,7 @@
         ]
       },
       {
-        "id": 27,
+        "id": 21,
         "order": "LT000000000000101106",
         "client": "",
         "orderType": "B2BLPB",
@@ -2458,7 +2266,7 @@
         ]
       },
       {
-        "id": 28,
+        "id": 22,
         "order": "LT000000000000101107",
         "client": "",
         "orderType": "B2BLPB",
@@ -2504,7 +2312,7 @@
         ]
       },
       {
-        "id": 29,
+        "id": 23,
         "order": "LT000000000000101112",
         "client": "",
         "orderType": "B2BLPB",
@@ -2550,7 +2358,7 @@
         ]
       },
       {
-        "id": 30,
+        "id": 24,
         "order": "LT000000000000101113",
         "client": "",
         "orderType": "B2BLPB",
@@ -2596,7 +2404,7 @@
         ]
       },
       {
-        "id": 31,
+        "id": 25,
         "order": "LT000000000000101114",
         "client": "",
         "orderType": "B2BLPB",
@@ -2628,7 +2436,7 @@
         ]
       },
       {
-        "id": 32,
+        "id": 26,
         "order": "LT000000000000101116",
         "client": "",
         "orderType": "B2BLPB",
@@ -2702,7 +2510,7 @@
         ]
       },
       {
-        "id": 33,
+        "id": 27,
         "order": "LT000000000000101118",
         "client": "",
         "orderType": "B2BLPB",
@@ -2748,7 +2556,7 @@
         ]
       },
       {
-        "id": 34,
+        "id": 28,
         "order": "LT000000000000101198",
         "client": "",
         "orderType": "B2BLPB",
@@ -2808,7 +2616,7 @@
         ]
       },
       {
-        "id": 35,
+        "id": 29,
         "order": "LT000000000000101234",
         "client": "",
         "orderType": "B2BDOR",
@@ -2868,7 +2676,7 @@
         ]
       },
       {
-        "id": 36,
+        "id": 30,
         "order": "LT000000000000101245",
         "client": "",
         "orderType": "B2BJFK",
@@ -3068,7 +2876,7 @@
         ]
       },
       {
-        "id": 37,
+        "id": 31,
         "order": "LT000000000000101329",
         "client": "",
         "orderType": "B2C",
@@ -3170,7 +2978,7 @@
         ]
       },
       {
-        "id": 38,
+        "id": 32,
         "order": "LT000000000000101354",
         "client": "",
         "orderType": "B2BMAD",
@@ -3314,7 +3122,7 @@
         ]
       },
       {
-        "id": 39,
+        "id": 33,
         "order": "LT000000000000101500",
         "client": "",
         "orderType": "B2BDOR",
@@ -3444,7 +3252,7 @@
         ]
       },
       {
-        "id": 40,
+        "id": 34,
         "order": "LT000000000000101520",
         "client": "",
         "orderType": "B2BJFK",
@@ -3616,7 +3424,7 @@
         ]
       },
       {
-        "id": 41,
+        "id": 35,
         "order": "LT000000000000101556",
         "client": "",
         "orderType": "B2C",
@@ -3662,7 +3470,7 @@
         ]
       },
       {
-        "id": 42,
+        "id": 36,
         "order": "LT000000000000101577",
         "client": "",
         "orderType": "B2BMAD",
@@ -3722,7 +3530,7 @@
         ]
       },
       {
-        "id": 43,
+        "id": 37,
         "order": "LT000000000000101580",
         "client": "",
         "orderType": "B2BMAD",
@@ -3754,7 +3562,7 @@
         ]
       },
       {
-        "id": 44,
+        "id": 38,
         "order": "LT000000000000101586",
         "client": "",
         "orderType": "B2BDOR",
@@ -3926,7 +3734,7 @@
         ]
       },
       {
-        "id": 45,
+        "id": 39,
         "order": "LT000000000000101600",
         "client": "",
         "orderType": "B2BDOR",
@@ -4042,7 +3850,7 @@
         ]
       },
       {
-        "id": 46,
+        "id": 40,
         "order": "LT000000000000101800",
         "client": "",
         "orderType": "B2BLPB",
@@ -4102,7 +3910,7 @@
         ]
       },
       {
-        "id": 47,
+        "id": 41,
         "order": "LT000000000000101812",
         "client": "",
         "orderType": "B2C",
@@ -4190,7 +3998,7 @@
         ]
       },
       {
-        "id": 48,
+        "id": 42,
         "order": "LT000000000000101905",
         "client": "",
         "orderType": "B2BDOR",
@@ -4306,7 +4114,7 @@
         ]
       },
       {
-        "id": 49,
+        "id": 43,
         "order": "LT000000000000101977",
         "client": "",
         "orderType": "B2BDOR",
@@ -4422,7 +4230,7 @@
         ]
       },
       {
-        "id": 50,
+        "id": 44,
         "order": "LT000000000000102039",
         "client": "",
         "orderType": "B2C",
@@ -4482,7 +4290,7 @@
         ]
       },
       {
-        "id": 51,
+        "id": 45,
         "order": "LT000000000000102143",
         "client": "",
         "orderType": "B2BDOR",
@@ -4626,7 +4434,7 @@
         ]
       },
       {
-        "id": 52,
+        "id": 46,
         "order": "LT000000000000102541",
         "client": "",
         "orderType": "B2BLHR",
@@ -4686,7 +4494,7 @@
         ]
       },
       {
-        "id": 53,
+        "id": 47,
         "order": "LT000000000000102633",
         "client": "",
         "orderType": "B2BDOR",
@@ -4844,7 +4652,7 @@
         ]
       },
       {
-        "id": 54,
+        "id": 48,
         "order": "LT000000000000102785",
         "client": "",
         "orderType": "B2BDOR",
@@ -5044,7 +4852,7 @@
         ]
       },
       {
-        "id": 55,
+        "id": 49,
         "order": "LT000000000000102808",
         "client": "",
         "orderType": "B2BDOR",
@@ -5244,7 +5052,7 @@
         ]
       },
       {
-        "id": 56,
+        "id": 50,
         "order": "LT000000000000102870",
         "client": "",
         "orderType": "B2C",
@@ -5332,7 +5140,7 @@
         ]
       },
       {
-        "id": 57,
+        "id": 51,
         "order": "LT000000000000102874",
         "client": "",
         "orderType": "B2C",
@@ -5378,7 +5186,7 @@
         ]
       },
       {
-        "id": 58,
+        "id": 52,
         "order": "LT000000000000102943",
         "client": "",
         "orderType": "B2BDOR",
@@ -5550,7 +5358,7 @@
         ]
       },
       {
-        "id": 59,
+        "id": 53,
         "order": "LT000000000000102951",
         "client": "",
         "orderType": "B2C",
@@ -5596,7 +5404,7 @@
         ]
       },
       {
-        "id": 60,
+        "id": 54,
         "order": "LT000000000000102968",
         "client": "",
         "orderType": "B2C",
@@ -5642,7 +5450,7 @@
         ]
       },
       {
-        "id": 61,
+        "id": 55,
         "order": "LT000000000000102972",
         "client": "",
         "orderType": "B2C",
@@ -5702,7 +5510,7 @@
         ]
       },
       {
-        "id": 62,
+        "id": 56,
         "order": "LT000000000000102994",
         "client": "",
         "orderType": "B2BDOR",
@@ -5902,7 +5710,7 @@
         ]
       },
       {
-        "id": 63,
+        "id": 57,
         "order": "LT000000000000103179",
         "client": "",
         "orderType": "B2BDOR",
@@ -6046,7 +5854,7 @@
         ]
       },
       {
-        "id": 64,
+        "id": 58,
         "order": "LT000000000000103183",
         "client": "",
         "orderType": "B2BDOR",
@@ -6204,7 +6012,7 @@
         ]
       },
       {
-        "id": 65,
+        "id": 59,
         "order": "LT000000000000103280",
         "client": "",
         "orderType": "B2C",
@@ -6278,7 +6086,7 @@
         ]
       },
       {
-        "id": 66,
+        "id": 60,
         "order": "LT000000000000103341",
         "client": "",
         "orderType": "B2BDOR",
@@ -6324,7 +6132,7 @@
         ]
       },
       {
-        "id": 67,
+        "id": 61,
         "order": "LT000000000000103392",
         "client": "",
         "orderType": "B2BMAD",
@@ -6398,7 +6206,7 @@
         ]
       },
       {
-        "id": 68,
+        "id": 62,
         "order": "LT000000000000103393",
         "client": "",
         "orderType": "B2BMAD",
@@ -6556,7 +6364,7 @@
         ]
       },
       {
-        "id": 69,
+        "id": 63,
         "order": "LT000000000000103413",
         "client": "",
         "orderType": "B2BDOR",
@@ -6602,7 +6410,7 @@
         ]
       },
       {
-        "id": 70,
+        "id": 64,
         "order": "LT000000000000103424",
         "client": "",
         "orderType": "B2BDOR",
@@ -6760,7 +6568,7 @@
         ]
       },
       {
-        "id": 71,
+        "id": 65,
         "order": "LT000000000000103441",
         "client": "",
         "orderType": "B2BMAD",
@@ -6918,7 +6726,7 @@
         ]
       },
       {
-        "id": 72,
+        "id": 66,
         "order": "LT000000000000103548",
         "client": "",
         "orderType": "B2C",
@@ -6978,7 +6786,7 @@
         ]
       },
       {
-        "id": 73,
+        "id": 67,
         "order": "LT000000000000103575",
         "client": "",
         "orderType": "B2BLHR",
@@ -7178,7 +6986,7 @@
         ]
       },
       {
-        "id": 74,
+        "id": 68,
         "order": "LT000000000000103578",
         "client": "",
         "orderType": "B2BLHR",
@@ -7378,7 +7186,7 @@
         ]
       },
       {
-        "id": 75,
+        "id": 69,
         "order": "LT000000000000103598",
         "client": "",
         "orderType": "B2BDOR",
@@ -7508,7 +7316,7 @@
         ]
       },
       {
-        "id": 76,
+        "id": 70,
         "order": "LT000000000000103654",
         "client": "",
         "orderType": "B2BDOR",
@@ -7568,7 +7376,7 @@
         ]
       },
       {
-        "id": 77,
+        "id": 71,
         "order": "LT000000000000103726",
         "client": "",
         "orderType": "B2BDOR",
@@ -7726,7 +7534,7 @@
         ]
       },
       {
-        "id": 78,
+        "id": 72,
         "order": "LT000000000000103873",
         "client": "",
         "orderType": "B2BMAD",
@@ -7870,7 +7678,7 @@
         ]
       },
       {
-        "id": 79,
+        "id": 73,
         "order": "LT000000000000103902",
         "client": "",
         "orderType": "B2BLAX",
@@ -7916,7 +7724,7 @@
         ]
       },
       {
-        "id": 80,
+        "id": 74,
         "order": "LT000000000000103911",
         "client": "",
         "orderType": "B2BDOR",
@@ -8074,7 +7882,7 @@
         ]
       },
       {
-        "id": 81,
+        "id": 75,
         "order": "LT000000000000103913",
         "client": "",
         "orderType": "B2BDOR",
@@ -8232,7 +8040,7 @@
         ]
       },
       {
-        "id": 82,
+        "id": 76,
         "order": "LT000000000000103915",
         "client": "",
         "orderType": "B2BDOR",
@@ -8390,7 +8198,7 @@
         ]
       },
       {
-        "id": 83,
+        "id": 77,
         "order": "LT000000000000103916",
         "client": "",
         "orderType": "B2BDOR",
@@ -8548,7 +8356,7 @@
         ]
       },
       {
-        "id": 84,
+        "id": 78,
         "order": "LT000000000000103919",
         "client": "",
         "orderType": "B2BDOR",
@@ -8706,7 +8514,7 @@
         ]
       },
       {
-        "id": 85,
+        "id": 79,
         "order": "LT000000000000103924",
         "client": "",
         "orderType": "B2BDOR",
@@ -8864,7 +8672,7 @@
         ]
       },
       {
-        "id": 86,
+        "id": 80,
         "order": "LT000000000000103935",
         "client": "",
         "orderType": "B2C",
@@ -8924,7 +8732,7 @@
         ]
       },
       {
-        "id": 87,
+        "id": 81,
         "order": "LT000000000000103952",
         "client": "",
         "orderType": "B2BMAD",
@@ -8984,7 +8792,7 @@
         ]
       },
       {
-        "id": 88,
+        "id": 82,
         "order": "LT000000000000103956",
         "client": "",
         "orderType": "B2BDOR",
@@ -9184,7 +8992,7 @@
         ]
       },
       {
-        "id": 89,
+        "id": 83,
         "order": "LT000000000000103974",
         "client": "",
         "orderType": "B2BDOR",
@@ -9342,7 +9150,7 @@
         ]
       },
       {
-        "id": 90,
+        "id": 84,
         "order": "LT000000000000103981",
         "client": "",
         "orderType": "B2BDOR",
@@ -9500,7 +9308,7 @@
         ]
       },
       {
-        "id": 91,
+        "id": 85,
         "order": "LT000000000000104041",
         "client": "",
         "orderType": "B2C",
@@ -9532,7 +9340,7 @@
         ]
       },
       {
-        "id": 92,
+        "id": 86,
         "order": "LT000000000000104074",
         "client": "",
         "orderType": "B2C",
@@ -9564,7 +9372,7 @@
         ]
       },
       {
-        "id": 93,
+        "id": 87,
         "order": "LT000000000000104089",
         "client": "",
         "orderType": "B2C",
@@ -9722,7 +9530,7 @@
         ]
       },
       {
-        "id": 94,
+        "id": 88,
         "order": "LT000000000000104096",
         "client": "",
         "orderType": "B2BDOR",
@@ -9782,7 +9590,7 @@
         ]
       },
       {
-        "id": 95,
+        "id": 89,
         "order": "LT000000000000104115",
         "client": "",
         "orderType": "B2BDOR",
@@ -9926,7 +9734,7 @@
         ]
       },
       {
-        "id": 96,
+        "id": 90,
         "order": "LT000000000000104116",
         "client": "",
         "orderType": "B2BDOR",
@@ -10070,7 +9878,7 @@
         ]
       },
       {
-        "id": 97,
+        "id": 91,
         "order": "LT000000000000104141",
         "client": "",
         "orderType": "B2C",
@@ -10102,7 +9910,7 @@
         ]
       },
       {
-        "id": 98,
+        "id": 92,
         "order": "LT000000000000104148",
         "client": "",
         "orderType": "B2C",
@@ -10148,7 +9956,7 @@
         ]
       },
       {
-        "id": 99,
+        "id": 93,
         "order": "LT000000000000104156",
         "client": "",
         "orderType": "B2C",
@@ -10194,7 +10002,7 @@
         ]
       },
       {
-        "id": 100,
+        "id": 94,
         "order": "LT000000000000104186",
         "client": "",
         "orderType": "B2C",
@@ -10240,7 +10048,7 @@
         ]
       },
       {
-        "id": 101,
+        "id": 95,
         "order": "LT000000000000104201",
         "client": "",
         "orderType": "B2C",
@@ -10300,7 +10108,7 @@
         ]
       },
       {
-        "id": 102,
+        "id": 96,
         "order": "LT000000000000104219",
         "client": "",
         "orderType": "B2C",
@@ -10458,7 +10266,7 @@
         ]
       },
       {
-        "id": 103,
+        "id": 97,
         "order": "LT000000000000104224",
         "client": "",
         "orderType": "B2C",
@@ -10518,7 +10326,7 @@
         ]
       },
       {
-        "id": 104,
+        "id": 98,
         "order": "LT000000000000104236",
         "client": "",
         "orderType": "B2C",
@@ -10550,7 +10358,7 @@
         ]
       },
       {
-        "id": 105,
+        "id": 99,
         "order": "LT000000000000104247",
         "client": "",
         "orderType": "B2C",
@@ -10582,7 +10390,7 @@
         ]
       },
       {
-        "id": 106,
+        "id": 100,
         "order": "LT000000000000104288",
         "client": "",
         "orderType": "B2C",
@@ -10656,7 +10464,7 @@
         ]
       },
       {
-        "id": 107,
+        "id": 101,
         "order": "LT000000000000104291",
         "client": "",
         "orderType": "B2C",
@@ -10702,7 +10510,7 @@
         ]
       },
       {
-        "id": 108,
+        "id": 102,
         "order": "LT000000000000104293",
         "client": "",
         "orderType": "B2C",
@@ -10734,7 +10542,7 @@
         ]
       },
       {
-        "id": 109,
+        "id": 103,
         "order": "LT000000000000104298",
         "client": "",
         "orderType": "B2C",
@@ -10780,7 +10588,7 @@
         ]
       },
       {
-        "id": 110,
+        "id": 104,
         "order": "LT000000000000104305",
         "client": "",
         "orderType": "B2C",
@@ -10826,7 +10634,7 @@
         ]
       },
       {
-        "id": 111,
+        "id": 105,
         "order": "LT000000000000104307",
         "client": "",
         "orderType": "B2C",
@@ -10858,7 +10666,7 @@
         ]
       },
       {
-        "id": 112,
+        "id": 106,
         "order": "LT000000000000104308",
         "client": "",
         "orderType": "B2C",
@@ -11016,7 +10824,7 @@
         ]
       },
       {
-        "id": 113,
+        "id": 107,
         "order": "LT000000000000104321",
         "client": "",
         "orderType": "B2C",
@@ -11090,7 +10898,7 @@
         ]
       },
       {
-        "id": 114,
+        "id": 108,
         "order": "LT000000000000104322",
         "client": "",
         "orderType": "B2C",
@@ -11150,7 +10958,7 @@
         ]
       },
       {
-        "id": 115,
+        "id": 109,
         "order": "LT000000000000104329",
         "client": "",
         "orderType": "B2C",
@@ -11198,7 +11006,7 @@
     ],
     "stockBreaks": {
       "available": true,
-      "totalOrders": 115,
+      "totalOrders": 109,
       "totalNoFillOrders": 19,
       "totalShortageLines": 20,
       "missingUnits": 21,
@@ -12036,7 +11844,7 @@
   },
   "stockBreaks": {
     "available": true,
-    "totalOrders": 115,
+    "totalOrders": 109,
     "totalNoFillOrders": 19,
     "totalShortageLines": 20,
     "missingUnits": 21,
