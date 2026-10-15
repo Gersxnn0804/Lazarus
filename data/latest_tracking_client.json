@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.2.0",
-  "generatedAt": "2026-10-15T12:10:21",
+  "generatedAt": "2026-10-15T13:10:19",
   "source": {
     "platform": "Polaris",
     "module": "Tracking",
@@ -22,28 +22,28 @@
   },
   "inventoryHealth": {
     "available": true,
-    "auditOrders": 32,
-    "fullFillOrders": 28,
+    "auditOrders": 33,
+    "fullFillOrders": 29,
     "noFillOrders": 4,
-    "healthPercentage": 87.5,
+    "healthPercentage": 87.88,
     "level": "GOOD"
   },
   "inventoryThermometer": {
     "available": true,
-    "generatedAt": "2026-10-15T12:10:21",
-    "totalAuditOrders": 32,
+    "generatedAt": "2026-10-15T13:10:19",
+    "totalAuditOrders": 33,
     "totalNoFillOrders": 4,
     "metric": "affected_orders_over_total_audit_orders",
     "topCriticalItems": [
       {
         "item": "10076134",
         "description": "TAG U FEM ACERO NIQUELADO PLATEADO",
-        "stockoutIndex": 6.25,
-        "value": 6.25,
+        "stockoutIndex": 6.06,
+        "value": 6.06,
         "unit": "%",
         "affectedOrders": 2,
-        "totalAuditOrders": 32,
-        "affectedRatio": "2/32",
+        "totalAuditOrders": 33,
+        "affectedRatio": "2/33",
         "missingUnits": 2,
         "requiredUnits": 2,
         "availableUnits": 0,
@@ -59,12 +59,12 @@
       {
         "item": "100000000200010284",
         "description": "MEIAS-CALCAS TAMANHO XG FEMININO FEITO 85 POLIAMIDA / 15 ELASTANO. COR PRETO. PARA MULTIPLAS AREAS. SEM FORRO. PARA ADULTO.",
-        "stockoutIndex": 3.12,
-        "value": 3.12,
+        "stockoutIndex": 3.03,
+        "value": 3.03,
         "unit": "%",
         "affectedOrders": 1,
-        "totalAuditOrders": 32,
-        "affectedRatio": "1/32",
+        "totalAuditOrders": 33,
+        "affectedRatio": "1/33",
         "missingUnits": 8,
         "requiredUnits": 8,
         "availableUnits": 0,
@@ -78,12 +78,12 @@
       {
         "item": "100000000200006198",
         "description": "BLAZER TEJ PLANO 32P FEM 70 LANA CORA",
-        "stockoutIndex": 3.12,
-        "value": 3.12,
+        "stockoutIndex": 3.03,
+        "value": 3.03,
         "unit": "%",
         "affectedOrders": 1,
-        "totalAuditOrders": 32,
-        "affectedRatio": "1/32",
+        "totalAuditOrders": 33,
+        "affectedRatio": "1/33",
         "missingUnits": 2,
         "requiredUnits": 2,
         "availableUnits": 0,
@@ -98,22 +98,22 @@
   },
   "supplyAudit": {
     "available": true,
-    "generatedAt": "2026-10-15T12:10:21",
+    "generatedAt": "2026-10-15T13:10:19",
     "summary": {
-      "totalOrders": 32,
-      "fullFill": 28,
+      "totalOrders": 33,
+      "fullFill": 29,
       "noFill": 4,
-      "fillRate": 87.5,
+      "fillRate": 87.88,
       "criticalSkus": 3,
       "missingUnits": 12
     },
     "metadata": {
       "source": "auto-atlas-resource-loader",
-      "lastProcessedAt": "2026-10-15T12:00:53",
+      "lastProcessedAt": "2026-10-15T13:00:56",
       "files": {
-        "order": "Atlas_Order_20261015_115031.csv",
-        "orderLine": "Atlas_OrderLine_20261015_115032.csv",
-        "inventory": "Atlas_ItemInventory_20261015_115054.csv"
+        "order": "Atlas_Order_20261015_125047.csv",
+        "orderLine": "Atlas_OrderLine_20261015_125048.csv",
+        "inventory": "Atlas_ItemInventory_20261015_125113.csv"
       }
     },
     "filters": {
@@ -3057,11 +3057,71 @@
             "destinationCity": "RECOLETA"
           }
         ]
+      },
+      {
+        "id": 33,
+        "order": "LT000000000000109690",
+        "client": "",
+        "orderType": "B2C",
+        "order_type": "B2C",
+        "destinationCity": "ANTOFAGASTA",
+        "status": "FULL FILL",
+        "reason": "Disponible",
+        "requiredQty": 7,
+        "availableQty": 1570,
+        "missingQty": 0,
+        "criticalSku": "OK",
+        "totalLines": 3,
+        "shortageLines": 0,
+        "lines": [
+          {
+            "order": "LT000000000000109690",
+            "client": "",
+            "sku": "10073457",
+            "item": "10073457",
+            "description": "BLUSA TEJ PLANO 38R FEM 624ALGOD BLANCO",
+            "requiredQty": 4,
+            "availableQty": 1189,
+            "missingQty": 0,
+            "status": "OK",
+            "orderType": "B2C",
+            "order_type": "B2C",
+            "destinationCity": "ANTOFAGASTA"
+          },
+          {
+            "order": "LT000000000000109690",
+            "client": "",
+            "sku": "10075122",
+            "item": "10075122",
+            "description": "Pantalón Mujer Indigo",
+            "requiredQty": 2,
+            "availableQty": 228,
+            "missingQty": 0,
+            "status": "OK",
+            "orderType": "B2C",
+            "order_type": "B2C",
+            "destinationCity": "ANTOFAGASTA"
+          },
+          {
+            "order": "LT000000000000109690",
+            "client": "",
+            "sku": "10075967",
+            "item": "10075967",
+            "description": "Zapatos Mujer Taco Alto Brillante",
+            "requiredQty": 1,
+            "availableQty": 153,
+            "missingQty": 0,
+            "status": "OK",
+            "orderType": "B2C",
+            "order_type": "B2C",
+            "destinationCity": "ANTOFAGASTA"
+          }
+        ]
       }
     ],
     "stockBreaks": {
       "available": true,
-      "totalOrders": 32,
+      "totalOrders": 33,
       "totalNoFillOrders": 4,
       "totalShortageLines": 4,
       "missingUnits": 12,
@@ -3241,7 +3301,7 @@
   },
   "stockBreaks": {
     "available": true,
-    "totalOrders": 32,
+    "totalOrders": 33,
     "totalNoFillOrders": 4,
     "totalShortageLines": 4,
     "missingUnits": 12,
