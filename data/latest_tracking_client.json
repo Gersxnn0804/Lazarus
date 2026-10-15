@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.2.0",
-  "generatedAt": "2026-10-15T10:10:24",
+  "generatedAt": "2026-10-15T11:10:30",
   "source": {
     "platform": "Polaris",
     "module": "Tracking",
@@ -22,28 +22,28 @@
   },
   "inventoryHealth": {
     "available": true,
-    "auditOrders": 29,
-    "fullFillOrders": 25,
+    "auditOrders": 32,
+    "fullFillOrders": 28,
     "noFillOrders": 4,
-    "healthPercentage": 86.21,
+    "healthPercentage": 87.5,
     "level": "GOOD"
   },
   "inventoryThermometer": {
     "available": true,
-    "generatedAt": "2026-10-15T10:10:24",
-    "totalAuditOrders": 29,
+    "generatedAt": "2026-10-15T11:10:30",
+    "totalAuditOrders": 32,
     "totalNoFillOrders": 4,
     "metric": "affected_orders_over_total_audit_orders",
     "topCriticalItems": [
       {
         "item": "10076134",
         "description": "TAG U FEM ACERO NIQUELADO PLATEADO",
-        "stockoutIndex": 6.9,
-        "value": 6.9,
+        "stockoutIndex": 6.25,
+        "value": 6.25,
         "unit": "%",
         "affectedOrders": 2,
-        "totalAuditOrders": 29,
-        "affectedRatio": "2/29",
+        "totalAuditOrders": 32,
+        "affectedRatio": "2/32",
         "missingUnits": 2,
         "requiredUnits": 2,
         "availableUnits": 0,
@@ -59,12 +59,12 @@
       {
         "item": "100000000200010284",
         "description": "MEIAS-CALCAS TAMANHO XG FEMININO FEITO 85 POLIAMIDA / 15 ELASTANO. COR PRETO. PARA MULTIPLAS AREAS. SEM FORRO. PARA ADULTO.",
-        "stockoutIndex": 3.45,
-        "value": 3.45,
+        "stockoutIndex": 3.12,
+        "value": 3.12,
         "unit": "%",
         "affectedOrders": 1,
-        "totalAuditOrders": 29,
-        "affectedRatio": "1/29",
+        "totalAuditOrders": 32,
+        "affectedRatio": "1/32",
         "missingUnits": 8,
         "requiredUnits": 8,
         "availableUnits": 0,
@@ -78,12 +78,12 @@
       {
         "item": "100000000200006198",
         "description": "BLAZER TEJ PLANO 32P FEM 70 LANA CORA",
-        "stockoutIndex": 3.45,
-        "value": 3.45,
+        "stockoutIndex": 3.12,
+        "value": 3.12,
         "unit": "%",
         "affectedOrders": 1,
-        "totalAuditOrders": 29,
-        "affectedRatio": "1/29",
+        "totalAuditOrders": 32,
+        "affectedRatio": "1/32",
         "missingUnits": 2,
         "requiredUnits": 2,
         "availableUnits": 0,
@@ -98,22 +98,22 @@
   },
   "supplyAudit": {
     "available": true,
-    "generatedAt": "2026-10-15T10:10:24",
+    "generatedAt": "2026-10-15T11:10:30",
     "summary": {
-      "totalOrders": 29,
-      "fullFill": 25,
+      "totalOrders": 32,
+      "fullFill": 28,
       "noFill": 4,
-      "fillRate": 86.21,
+      "fillRate": 87.5,
       "criticalSkus": 3,
       "missingUnits": 12
     },
     "metadata": {
       "source": "auto-atlas-resource-loader",
-      "lastProcessedAt": "2026-10-15T10:00:24",
+      "lastProcessedAt": "2026-10-15T11:00:50",
       "files": {
-        "order": "Atlas_Order_20261015_095051.csv",
-        "orderLine": "Atlas_OrderLine_20261015_095052.csv",
-        "inventory": "Atlas_ItemInventory_20261015_095211.csv"
+        "order": "Atlas_Order_20261015_105053.csv",
+        "orderLine": "Atlas_OrderLine_20261015_105054.csv",
+        "inventory": "Atlas_ItemInventory_20261015_105116.csv"
       }
     },
     "filters": {
@@ -882,6 +882,126 @@
       },
       {
         "id": 10,
+        "order": "LT000000000000108450",
+        "client": "",
+        "orderType": "B2C",
+        "order_type": "B2C",
+        "destinationCity": "COLINA",
+        "status": "FULL FILL",
+        "reason": "Disponible",
+        "requiredQty": 4,
+        "availableQty": 2163,
+        "missingQty": 0,
+        "criticalSku": "OK",
+        "totalLines": 4,
+        "shortageLines": 0,
+        "lines": [
+          {
+            "order": "LT000000000000108450",
+            "client": "",
+            "sku": "10072074",
+            "item": "10072074",
+            "description": "MALETA 23KG UNISEX 100 POLIURETANO NEGRO",
+            "requiredQty": 1,
+            "availableQty": 28,
+            "missingQty": 0,
+            "status": "OK",
+            "orderType": "B2C",
+            "order_type": "B2C",
+            "destinationCity": "COLINA"
+          },
+          {
+            "order": "LT000000000000108450",
+            "client": "",
+            "sku": "10074921",
+            "item": "10074921",
+            "description": "Alitas",
+            "requiredQty": 1,
+            "availableQty": 1610,
+            "missingQty": 0,
+            "status": "OK",
+            "orderType": "B2C",
+            "order_type": "B2C",
+            "destinationCity": "COLINA"
+          },
+          {
+            "order": "LT000000000000108450",
+            "client": "",
+            "sku": "10075933",
+            "item": "10075933",
+            "description": "Zapatos Negros con cordones - 43 MER",
+            "requiredQty": 1,
+            "availableQty": 384,
+            "missingQty": 0,
+            "status": "OK",
+            "orderType": "B2C",
+            "order_type": "B2C",
+            "destinationCity": "COLINA"
+          },
+          {
+            "order": "LT000000000000108450",
+            "client": "",
+            "sku": "10076121",
+            "item": "10076121",
+            "description": "SUETER MASCULINO ALGODON M NEGRO",
+            "requiredQty": 1,
+            "availableQty": 141,
+            "missingQty": 0,
+            "status": "OK",
+            "orderType": "B2C",
+            "order_type": "B2C",
+            "destinationCity": "COLINA"
+          }
+        ]
+      },
+      {
+        "id": 11,
+        "order": "LT000000000000108474",
+        "client": "",
+        "orderType": "B2C",
+        "order_type": "B2C",
+        "destinationCity": "Providencia",
+        "status": "FULL FILL",
+        "reason": "Disponible",
+        "requiredQty": 3,
+        "availableQty": 807,
+        "missingQty": 0,
+        "criticalSku": "OK",
+        "totalLines": 2,
+        "shortageLines": 0,
+        "lines": [
+          {
+            "order": "LT000000000000108474",
+            "client": "",
+            "sku": "10072075",
+            "item": "10072075",
+            "description": "MALETA TAMANO U TEXTIL 900D RIPSTOP AZUL",
+            "requiredQty": 1,
+            "availableQty": 783,
+            "missingQty": 0,
+            "status": "OK",
+            "orderType": "B2C",
+            "order_type": "B2C",
+            "destinationCity": "Providencia"
+          },
+          {
+            "order": "LT000000000000108474",
+            "client": "",
+            "sku": "10075754",
+            "item": "10075754",
+            "description": "FALDA LARGA T PLANO 46T FEM 70 LANA INDI",
+            "requiredQty": 2,
+            "availableQty": 24,
+            "missingQty": 0,
+            "status": "OK",
+            "orderType": "B2C",
+            "order_type": "B2C",
+            "destinationCity": "Providencia"
+          }
+        ]
+      },
+      {
+        "id": 12,
         "order": "LT000000000000108810",
         "client": "",
         "orderType": "B2C",
@@ -913,7 +1033,7 @@
         ]
       },
       {
-        "id": 11,
+        "id": 13,
         "order": "LT000000000000108845",
         "client": "",
         "orderType": "B2BMAD",
@@ -973,7 +1093,7 @@
         ]
       },
       {
-        "id": 12,
+        "id": 14,
         "order": "LT000000000000108852",
         "client": "",
         "orderType": "B2C",
@@ -1005,7 +1125,7 @@
         ]
       },
       {
-        "id": 13,
+        "id": 15,
         "order": "LT000000000000108975",
         "client": "",
         "orderType": "B2BBAS",
@@ -1163,7 +1283,7 @@
         ]
       },
       {
-        "id": 14,
+        "id": 16,
         "order": "LT000000000000109001",
         "client": "",
         "orderType": "B2C",
@@ -1195,7 +1315,7 @@
         ]
       },
       {
-        "id": 15,
+        "id": 17,
         "order": "LT000000000000109086",
         "client": "",
         "orderType": "B2C",
@@ -1227,7 +1347,7 @@
         ]
       },
       {
-        "id": 16,
+        "id": 18,
         "order": "LT000000000000109109",
         "client": "",
         "orderType": "B2BBAS",
@@ -1301,7 +1421,7 @@
         ]
       },
       {
-        "id": 17,
+        "id": 19,
         "order": "LT000000000000109167",
         "client": "",
         "orderType": "B2BBAS",
@@ -1473,7 +1593,7 @@
         ]
       },
       {
-        "id": 18,
+        "id": 20,
         "order": "LT000000000000109254",
         "client": "",
         "orderType": "B2BMAD",
@@ -1603,7 +1723,7 @@
         ]
       },
       {
-        "id": 19,
+        "id": 21,
         "order": "LT000000000000109277",
         "client": "",
         "orderType": "B2BMAD",
@@ -1649,7 +1769,7 @@
         ]
       },
       {
-        "id": 20,
+        "id": 22,
         "order": "LT000000000000109429",
         "client": "",
         "orderType": "B2C",
@@ -1681,7 +1801,7 @@
         ]
       },
       {
-        "id": 21,
+        "id": 23,
         "order": "LT000000000000109443",
         "client": "",
         "orderType": "B2BBAS",
@@ -1690,7 +1810,7 @@
         "status": "FULL FILL",
         "reason": "Disponible",
         "requiredQty": 10,
-        "availableQty": 2136,
+        "availableQty": 2140,
         "missingQty": 0,
         "criticalSku": "OK",
         "totalLines": 11,
@@ -1815,7 +1935,7 @@
             "item": "10075986",
             "description": "CALZADO FEMENINO SUP 37 CUERO NAPA NEGRO",
             "requiredQty": 1,
-            "availableQty": 136,
+            "availableQty": 140,
             "missingQty": 0,
             "status": "OK",
             "orderType": "B2BBAS",
@@ -1853,7 +1973,7 @@
         ]
       },
       {
-        "id": 22,
+        "id": 24,
         "order": "LT000000000000109541",
         "client": "",
         "orderType": "B2C",
@@ -2025,7 +2145,7 @@
         ]
       },
       {
-        "id": 23,
+        "id": 25,
         "order": "LT000000000000109559",
         "client": "",
         "orderType": "B2C",
@@ -2141,7 +2261,7 @@
         ]
       },
       {
-        "id": 24,
+        "id": 26,
         "order": "LT000000000000109565",
         "client": "",
         "orderType": "B2C",
@@ -2313,7 +2433,7 @@
         ]
       },
       {
-        "id": 25,
+        "id": 27,
         "order": "LT000000000000109568",
         "client": "",
         "orderType": "B2C",
@@ -2345,7 +2465,7 @@
         ]
       },
       {
-        "id": 26,
+        "id": 28,
         "order": "LT000000000000109578",
         "client": "",
         "orderType": "B2C",
@@ -2405,7 +2525,7 @@
         ]
       },
       {
-        "id": 27,
+        "id": 29,
         "order": "LT000000000000109587",
         "client": "",
         "orderType": "B2C",
@@ -2451,7 +2571,7 @@
         ]
       },
       {
-        "id": 28,
+        "id": 30,
         "order": "LT000000000000109600",
         "client": "",
         "orderType": "B2BDOR",
@@ -2460,7 +2580,7 @@
         "status": "FULL FILL",
         "reason": "Disponible",
         "requiredQty": 11,
-        "availableQty": 2705,
+        "availableQty": 2717,
         "missingQty": 0,
         "criticalSku": "OK",
         "totalLines": 5,
@@ -2501,7 +2621,7 @@
             "item": "100000000200002894",
             "description": "Polera Manga Larga Unisex Gris",
             "requiredQty": 3,
-            "availableQty": 136,
+            "availableQty": 148,
             "missingQty": 0,
             "status": "OK",
             "orderType": "B2BDOR",
@@ -2539,7 +2659,7 @@
         ]
       },
       {
-        "id": 29,
+        "id": 31,
         "order": "LT000000000000109603",
         "client": "",
         "orderType": "B2BDOR",
@@ -2548,7 +2668,7 @@
         "status": "FULL FILL",
         "reason": "Disponible",
         "requiredQty": 22,
-        "availableQty": 8657,
+        "availableQty": 8661,
         "missingQty": 0,
         "criticalSku": "OK",
         "totalLines": 13,
@@ -2729,7 +2849,7 @@
             "item": "10075986",
             "description": "CALZADO FEMENINO SUP 37 CUERO NAPA NEGRO",
             "requiredQty": 1,
-            "availableQty": 136,
+            "availableQty": 140,
             "missingQty": 0,
             "status": "OK",
             "orderType": "B2BDOR",
@@ -2737,11 +2857,211 @@
             "destinationCity": "Miami"
           }
         ]
+      },
+      {
+        "id": 32,
+        "order": "LT000000000000109628",
+        "client": "",
+        "orderType": "B2C",
+        "order_type": "B2C",
+        "destinationCity": "RECOLETA",
+        "status": "FULL FILL",
+        "reason": "Disponible",
+        "requiredQty": 22,
+        "availableQty": 6310,
+        "missingQty": 0,
+        "criticalSku": "OK",
+        "totalLines": 13,
+        "shortageLines": 0,
+        "lines": [
+          {
+            "order": "LT000000000000109628",
+            "client": "",
+            "sku": "10072077",
+            "item": "10072077",
+            "description": "CARTERA U FEM 100 CUERO SINTETICO NEGRO",
+            "requiredQty": 1,
+            "availableQty": 1071,
+            "missingQty": 0,
+            "status": "OK",
+            "orderType": "B2C",
+            "order_type": "B2C",
+            "destinationCity": "RECOLETA"
+          },
+          {
+            "order": "LT000000000000109628",
+            "client": "",
+            "sku": "10073434",
+            "item": "10073434",
+            "description": "BLUSA TEJ PLANO 44R FEM 62,4ALGOD BLANCO",
+            "requiredQty": 3,
+            "availableQty": 182,
+            "missingQty": 0,
+            "status": "OK",
+            "orderType": "B2C",
+            "order_type": "B2C",
+            "destinationCity": "RECOLETA"
+          },
+          {
+            "order": "LT000000000000109628",
+            "client": "",
+            "sku": "10073460",
+            "item": "10073460",
+            "description": "BLUSA TEJ PLANO 44R FEM 62,4ALGOD BLANCO",
+            "requiredQty": 3,
+            "availableQty": 332,
+            "missingQty": 0,
+            "status": "OK",
+            "orderType": "B2C",
+            "order_type": "B2C",
+            "destinationCity": "RECOLETA"
+          },
+          {
+            "order": "LT000000000000109628",
+            "client": "",
+            "sku": "10074927",
+            "item": "10074927",
+            "description": "Cinturón Mujer",
+            "requiredQty": 1,
+            "availableQty": 298,
+            "missingQty": 0,
+            "status": "OK",
+            "orderType": "B2C",
+            "order_type": "B2C",
+            "destinationCity": "RECOLETA"
+          },
+          {
+            "order": "LT000000000000109628",
+            "client": "",
+            "sku": "10075126",
+            "item": "10075126",
+            "description": "PANTALON T PLANO 44R FEM 70LANA INDI",
+            "requiredQty": 2,
+            "availableQty": 170,
+            "missingQty": 0,
+            "status": "OK",
+            "orderType": "B2C",
+            "order_type": "B2C",
+            "destinationCity": "RECOLETA"
+          },
+          {
+            "order": "LT000000000000109628",
+            "client": "",
+            "sku": "10075239",
+            "item": "10075239",
+            "description": "SOBRETODO FEMENINO POLIESTER 40R INDIGO",
+            "requiredQty": 1,
+            "availableQty": 224,
+            "missingQty": 0,
+            "status": "OK",
+            "orderType": "B2C",
+            "order_type": "B2C",
+            "destinationCity": "RECOLETA"
+          },
+          {
+            "order": "LT000000000000109628",
+            "client": "",
+            "sku": "10075392",
+            "item": "10075392",
+            "description": "BLAZER TEJ PLANO 42P FEM 70 LANA INDI",
+            "requiredQty": 2,
+            "availableQty": 91,
+            "missingQty": 0,
+            "status": "OK",
+            "orderType": "B2C",
+            "order_type": "B2C",
+            "destinationCity": "RECOLETA"
+          },
+          {
+            "order": "LT000000000000109628",
+            "client": "",
+            "sku": "10075588",
+            "item": "10075588",
+            "description": "pañuelo azul",
+            "requiredQty": 4,
+            "availableQty": 3075,
+            "missingQty": 0,
+            "status": "OK",
+            "orderType": "B2C",
+            "order_type": "B2C",
+            "destinationCity": "RECOLETA"
+          },
+          {
+            "order": "LT000000000000109628",
+            "client": "",
+            "sku": "10075643",
+            "item": "10075643",
+            "description": "FALDA LARGA T PLANO 42T FEM 70 LANA INDI",
+            "requiredQty": 1,
+            "availableQty": 14,
+            "missingQty": 0,
+            "status": "OK",
+            "orderType": "B2C",
+            "order_type": "B2C",
+            "destinationCity": "RECOLETA"
+          },
+          {
+            "order": "LT000000000000109628",
+            "client": "",
+            "sku": "10075793",
+            "item": "10075793",
+            "description": "SWEATER M FEM 95 ALG MALLA RECTA AZUL",
+            "requiredQty": 1,
+            "availableQty": 771,
+            "missingQty": 0,
+            "status": "OK",
+            "orderType": "B2C",
+            "order_type": "B2C",
+            "destinationCity": "RECOLETA"
+          },
+          {
+            "order": "LT000000000000109628",
+            "client": "",
+            "sku": "10075963",
+            "item": "10075963",
+            "description": "ZAPATO BALERIN 41 FEM NAPA CAUCHO NEGRO",
+            "requiredQty": 1,
+            "availableQty": 38,
+            "missingQty": 0,
+            "status": "OK",
+            "orderType": "B2C",
+            "order_type": "B2C",
+            "destinationCity": "RECOLETA"
+          },
+          {
+            "order": "LT000000000000109628",
+            "client": "",
+            "sku": "10075972",
+            "item": "10075972",
+            "description": "ZAPATO TACO 41 FEM NAPA CAUCHO NEGRO",
+            "requiredQty": 1,
+            "availableQty": 25,
+            "missingQty": 0,
+            "status": "OK",
+            "orderType": "B2C",
+            "order_type": "B2C",
+            "destinationCity": "RECOLETA"
+          },
+          {
+            "order": "LT000000000000109628",
+            "client": "",
+            "sku": "10075990",
+            "item": "10075990",
+            "description": "ZAP BOTIN TACO 41 FEM NAPA CAUCHO NEGRO",
+            "requiredQty": 1,
+            "availableQty": 19,
+            "missingQty": 0,
+            "status": "OK",
+            "orderType": "B2C",
+            "order_type": "B2C",
+            "destinationCity": "RECOLETA"
+          }
+        ]
       }
     ],
     "stockBreaks": {
       "available": true,
-      "totalOrders": 29,
+      "totalOrders": 32,
       "totalNoFillOrders": 4,
       "totalShortageLines": 4,
       "missingUnits": 12,
@@ -2921,7 +3241,7 @@
   },
   "stockBreaks": {
     "available": true,
-    "totalOrders": 29,
+    "totalOrders": 32,
     "totalNoFillOrders": 4,
     "totalShortageLines": 4,
     "missingUnits": 12,
