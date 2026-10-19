@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.2.0",
-  "generatedAt": "2026-10-19T13:10:16",
+  "generatedAt": "2026-10-19T14:10:12",
   "source": {
     "platform": "Polaris",
     "module": "Tracking",
@@ -30,14 +30,14 @@
   },
   "inventoryThermometer": {
     "available": false,
-    "generatedAt": "2026-10-19T13:10:16",
+    "generatedAt": "2026-10-19T14:10:12",
     "totalAuditOrders": 0,
     "totalNoFillOrders": 0,
     "topCriticalItems": []
   },
   "supplyAudit": {
     "available": false,
-    "generatedAt": "2026-10-19T13:10:16",
+    "generatedAt": "2026-10-19T14:10:12",
     "summary": {
       "totalOrders": 0,
       "fullFill": 0,
