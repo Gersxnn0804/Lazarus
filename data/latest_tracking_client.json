@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.2.0",
-  "generatedAt": "2026-10-20T08:10:18",
+  "generatedAt": "2026-10-20T09:10:14",
   "source": {
     "platform": "Polaris",
     "module": "Tracking",
@@ -30,14 +30,14 @@
   },
   "inventoryThermometer": {
     "available": false,
-    "generatedAt": "2026-10-20T08:10:18",
+    "generatedAt": "2026-10-20T09:10:14",
     "totalAuditOrders": 0,
     "totalNoFillOrders": 0,
     "topCriticalItems": []
   },
   "supplyAudit": {
     "available": false,
-    "generatedAt": "2026-10-20T08:10:18",
+    "generatedAt": "2026-10-20T09:10:14",
     "summary": {
       "totalOrders": 0,
       "fullFill": 0,
@@ -38989,7 +38989,7 @@
       "order": "LT000000000000109875",
       "waybill": "",
       "lastEventDate": "",
-      "status": "Allocated",
+      "status": "Manifested",
       "category": "Pendiente",
       "orderType": "B2C",
       "order_type": "B2C",
@@ -38998,7 +38998,7 @@
       "shipmentState": "",
       "originalStatus": "",
       "originalComment": "",
-      "warehouseStatus": "Allocated",
+      "warehouseStatus": "Manifested",
       "transportStatus": "",
       "transportHandover": {
         "confirmed": false,
@@ -39009,7 +39009,7 @@
       "deliveryConfirmed": false,
       "deliveryDate": "",
       "incidents": [],
-      "lastEventLabel": "Allocated",
+      "lastEventLabel": "Manifested",
       "lastEventDescription": ""
     },
     {
@@ -39097,7 +39097,7 @@
       "order": "LT000000000000109887",
       "waybill": "",
       "lastEventDate": "",
-      "status": "Allocated",
+      "status": "Manifested",
       "category": "Pendiente",
       "orderType": "B2C",
       "order_type": "B2C",
@@ -39106,7 +39106,7 @@
       "shipmentState": "",
       "originalStatus": "",
       "originalComment": "",
-      "warehouseStatus": "Allocated",
+      "warehouseStatus": "Manifested",
       "transportStatus": "",
       "transportHandover": {
         "confirmed": false,
@@ -39117,7 +39117,7 @@
       "deliveryConfirmed": false,
       "deliveryDate": "",
       "incidents": [],
-      "lastEventLabel": "Allocated",
+      "lastEventLabel": "Manifested",
       "lastEventDescription": ""
     },
     {
@@ -39178,7 +39178,7 @@
       "order": "LT000000000000109900",
       "waybill": "",
       "lastEventDate": "",
-      "status": "Allocated",
+      "status": "Manifested",
       "category": "Pendiente",
       "orderType": "B2C",
       "order_type": "B2C",
@@ -39187,7 +39187,7 @@
       "shipmentState": "",
       "originalStatus": "",
       "originalComment": "",
-      "warehouseStatus": "Allocated",
+      "warehouseStatus": "Manifested",
       "transportStatus": "",
       "transportHandover": {
         "confirmed": false,
@@ -39198,7 +39198,7 @@
       "deliveryConfirmed": false,
       "deliveryDate": "",
       "incidents": [],
-      "lastEventLabel": "Allocated",
+      "lastEventLabel": "Manifested",
       "lastEventDescription": ""
     },
     {
@@ -39313,7 +39313,7 @@
       "order": "LT000000000000109958",
       "waybill": "",
       "lastEventDate": "",
-      "status": "Allocated",
+      "status": "Manifested",
       "category": "Pendiente",
       "orderType": "B2C",
       "order_type": "B2C",
@@ -39322,7 +39322,7 @@
       "shipmentState": "",
       "originalStatus": "",
       "originalComment": "",
-      "warehouseStatus": "Allocated",
+      "warehouseStatus": "Manifested",
       "transportStatus": "",
       "transportHandover": {
         "confirmed": false,
@@ -39333,7 +39333,7 @@
       "deliveryConfirmed": false,
       "deliveryDate": "",
       "incidents": [],
-      "lastEventLabel": "Allocated",
+      "lastEventLabel": "Manifested",
       "lastEventDescription": ""
     },
     {
@@ -39448,7 +39448,7 @@
       "order": "LT000000000000110173",
       "waybill": "",
       "lastEventDate": "",
-      "status": "Released",
+      "status": "Cancelled",
       "category": "Pendiente",
       "orderType": "B2C",
       "order_type": "B2C",
@@ -39457,7 +39457,7 @@
       "shipmentState": "",
       "originalStatus": "",
       "originalComment": "",
-      "warehouseStatus": "Released",
+      "warehouseStatus": "Cancelled",
       "transportStatus": "",
       "transportHandover": {
         "confirmed": false,
@@ -39468,7 +39468,7 @@
       "deliveryConfirmed": false,
       "deliveryDate": "",
       "incidents": [],
-      "lastEventLabel": "Released",
+      "lastEventLabel": "Cancelled",
       "lastEventDescription": ""
     },
     {
