@@ -1,59 +1,19 @@
 # Lazarus Tracking Intelligence
 
-Dashboard web estático para visualizar información operativa publicada por Polaris.
+Portal estático de Tracking publicado mediante GitHub Pages: Polaris → JSON → Lazarus.
 
-## Estructura principal
+- Contratos admitidos: `1.2.0` (transición) y `2.0.0` (Warehouse, Transporte e historial observado).
+- `js/tracking-contract.js` valida, normaliza y calcula indicadores por LT única. `js/app.js` conserva login, filtros, exportación y refresco, sin dependencias de Supply Audit.
+- El universo inicial incluye todas las órdenes. Los filtros B2C y B2B son opcionales; las órdenes sin tipo permanecen visibles en Todas.
+- Las etapas inferidas se muestran con ≈ y borde discontinuo. Solamente los eventos publicados forman el historial.
+- La recepción del destinatario requiere `deliveryConfirmed` y una fecha válida. La entrega a transporte propio se identifica por separado.
+- Los indicadores sin evidencia suficiente muestran N/D. El porcentaje de entregas no es el KPI SLA de Polaris.
+- Actualización cada 60 segundos; descarga limitada a 20 segundos. Ante errores se conserva la última publicación válida; se advierte si tiene más de 6 horas o su fecha no es verificable.
+- Signed By y comentarios L/M fueron autorizados expresamente para consulta externa el 2026-10-21. `publicationPolicy` permite deshabilitarlos. Los vacíos no se rellenan con valores ficticios.
+- Se conserva el acceso local existente. Un login implementado en JavaScript no protege los JSON descargables desde GitHub Pages; el publicador utiliza una lista explícita de campos públicos.
 
-- `index.html`: interfaz principal.
-- `css/styles.css`: diseño visual responsive.
-- `js/app.js`: lectura de datos, filtros, KPIs, detalle, estados dinámicos y quiebres de stock.
-- `data/latest_tracking_client.json`: fuente operativa publicada por Polaris.
-- `assets/branding/lazarus.png`: ícono visual de Lazarus.
+## Validación
 
-## Funcionalidades incluidas
+`node --test tests/*.test.cjs` ejecuta las pruebas del adaptador. `node tests/browser.mjs` ejecuta la validación estática con Playwright instalado externamente (`LAZARUS_PLAYWRIGHT_MODULE` permite indicar su ubicación). Las fixtures son ficticias o sanitizadas; no contienen nombres reales, credenciales, mitigaciones ni rutas operativas.
 
-- Login local por usuario autorizado.
-- KPIs de envíos, entregas, tránsito, pendientes, tercerizados y devoluciones.
-- Filtro operativo B2C / B2B. B2B corresponde a todo lo que no sea B2C.
-- Tabla de envíos con estados dinámicos provenientes de la fuente operativa.
-- Detalle de orden con campo `Recibido por` / `signed by`.
-- Si `signed by` está vacío y el envío está entregado, se muestra `Entregado`.
-- Si `signed by` está vacío y el envío no está entregado, queda vacío.
-- Termómetro de quiebres de stock por órdenes afectadas y unidades faltantes.
-- Nueva ventana `Quiebres de stock` desde Supply Audit.
-- Exportación CSV de envíos y quiebres.
-
-## Estructura esperada para quiebres
-
-```json
-{
-  "supplyAudit": {
-    "available": true,
-    "summary": {},
-    "metadata": {},
-    "filters": {},
-    "validation": {},
-    "orders": [],
-    "stockBreaks": {
-      "orders": [],
-      "lines": []
-    }
-  }
-}
-```
-
-Cada línea de quiebre puede usar claves como:
-
-```json
-{
-  "order": "123456789",
-  "client": "Cliente",
-  "orderType": "B2C",
-  "order_type": "B2C",
-  "sku": "SKU-001",
-  "description": "Producto",
-  "requiredQty": 10,
-  "availableQty": 3,
-  "missingQty": 7
-}
-```
+El portal no requiere bundler ni backend. Servir esta carpeta mediante HTTP y probar tanto `/` como `/Lazarus/`. No abrir el HTML mediante file://.

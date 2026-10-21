@@ -1,0 +1,2222 @@
+{
+  "schemaVersion": "2.0.0",
+  "generatedAt": "2026-10-21T15:47:33-03:00",
+  "source": {
+    "platform": "Polaris",
+    "module": "Tracking",
+    "company": "LATAM Uniformes"
+  },
+  "publicationPolicy": {
+    "signedBy": true,
+    "comments": true
+  },
+  "summary": {
+    "totalShipments": 22,
+    "delivered": 2,
+    "active": 17,
+    "warehouseOrders": 21,
+    "shipped": 16,
+    "pendingCollection": 1,
+    "inTransit": 3,
+    "outForDelivery": 0,
+    "scheduled": 2,
+    "retry": 0,
+    "wrongAddress": 0,
+    "returns": 1,
+    "incidents": 3,
+    "critical": 1,
+    "ownTransport": 1,
+    "signedByCaptured": 1,
+    "signedByResolved": 1,
+    "deliveredWithoutSignedBy": 1
+  },
+  "shipments": [
+    {
+      "order": "LT000001",
+      "waybill": "",
+      "orderType": "B2C",
+      "order_type": "B2C",
+      "status": "Cancelled",
+      "category": "Pendiente",
+      "shipmentState": "",
+      "warehouseStatus": "Cancelled",
+      "transportStatus": "",
+      "warehouseFlow": [
+        {
+          "key": "Cancelled",
+          "label": "Cancelled",
+          "state": "current",
+          "evidence": "observed"
+        },
+        {
+          "key": "Released",
+          "label": "Released",
+          "state": "disabled",
+          "evidence": "none"
+        },
+        {
+          "key": "Allocated",
+          "label": "Allocated",
+          "state": "disabled",
+          "evidence": "none"
+        },
+        {
+          "key": "Packed",
+          "label": "Packed",
+          "state": "disabled",
+          "evidence": "none"
+        },
+        {
+          "key": "Manifested",
+          "label": "Manifested",
+          "state": "disabled",
+          "evidence": "none"
+        },
+        {
+          "key": "Shipped",
+          "label": "Shipped",
+          "state": "disabled",
+          "evidence": "none"
+        }
+      ],
+      "transportFlow": [
+        {
+          "key": "Recolección",
+          "label": "Recolección",
+          "state": "pending",
+          "evidence": "none"
+        },
+        {
+          "key": "En tránsito",
+          "label": "En tránsito",
+          "state": "pending",
+          "evidence": "none"
+        },
+        {
+          "key": "En reparto",
+          "label": "En reparto",
+          "state": "pending",
+          "evidence": "none"
+        },
+        {
+          "key": "Entregada",
+          "label": "Entregada",
+          "state": "pending",
+          "evidence": "none"
+        }
+      ],
+      "transportHandover": {
+        "confirmed": false,
+        "mode": "",
+        "source": "",
+        "message": ""
+      },
+      "deliveryConfirmed": false,
+      "deliveryDate": "",
+      "lastEventDate": "",
+      "lastUpdatedAt": "2026-06-29 12:00:00",
+      "lastEventLabel": "Cancelled",
+      "lastEventDescription": "",
+      "incidents": [],
+      "events": [],
+      "signedBy": "",
+      "signedByRaw": "",
+      "originalStatus": "",
+      "originalComment": ""
+    },
+    {
+      "order": "LT000002",
+      "waybill": "",
+      "orderType": "B2C",
+      "order_type": "B2C",
+      "status": "Released",
+      "category": "Pendiente",
+      "shipmentState": "",
+      "warehouseStatus": "Released",
+      "transportStatus": "",
+      "warehouseFlow": [
+        {
+          "key": "Cancelled",
+          "label": "Cancelled",
+          "state": "disabled",
+          "evidence": "none"
+        },
+        {
+          "key": "Released",
+          "label": "Released",
+          "state": "current",
+          "evidence": "observed"
+        },
+        {
+          "key": "Allocated",
+          "label": "Allocated",
+          "state": "pending",
+          "evidence": "none"
+        },
+        {
+          "key": "Packed",
+          "label": "Packed",
+          "state": "pending",
+          "evidence": "none"
+        },
+        {
+          "key": "Manifested",
+          "label": "Manifested",
+          "state": "pending",
+          "evidence": "none"
+        },
+        {
+          "key": "Shipped",
+          "label": "Shipped",
+          "state": "pending",
+          "evidence": "none"
+        }
+      ],
+      "transportFlow": [
+        {
+          "key": "Recolección",
+          "label": "Recolección",
+          "state": "pending",
+          "evidence": "none"
+        },
+        {
+          "key": "En tránsito",
+          "label": "En tránsito",
+          "state": "pending",
+          "evidence": "none"
+        },
+        {
+          "key": "En reparto",
+          "label": "En reparto",
+          "state": "pending",
+          "evidence": "none"
+        },
+        {
+          "key": "Entregada",
+          "label": "Entregada",
+          "state": "pending",
+          "evidence": "none"
+        }
+      ],
+      "transportHandover": {
+        "confirmed": false,
+        "mode": "",
+        "source": "",
+        "message": ""
+      },
+      "deliveryConfirmed": false,
+      "deliveryDate": "",
+      "lastEventDate": "",
+      "lastUpdatedAt": "2026-06-29 12:00:00",
+      "lastEventLabel": "Released",
+      "lastEventDescription": "",
+      "incidents": [],
+      "events": [],
+      "signedBy": "",
+      "signedByRaw": "",
+      "originalStatus": "",
+      "originalComment": ""
+    },
+    {
+      "order": "LT000003",
+      "waybill": "",
+      "orderType": "B2C",
+      "order_type": "B2C",
+      "status": "Allocated",
+      "category": "Pendiente",
+      "shipmentState": "",
+      "warehouseStatus": "Allocated",
+      "transportStatus": "",
+      "warehouseFlow": [
+        {
+          "key": "Cancelled",
+          "label": "Cancelled",
+          "state": "disabled",
+          "evidence": "none"
+        },
+        {
+          "key": "Released",
+          "label": "Released",
+          "state": "complete",
+          "evidence": "inferred"
+        },
+        {
+          "key": "Allocated",
+          "label": "Allocated",
+          "state": "current",
+          "evidence": "observed"
+        },
+        {
+          "key": "Packed",
+          "label": "Packed",
+          "state": "pending",
+          "evidence": "none"
+        },
+        {
+          "key": "Manifested",
+          "label": "Manifested",
+          "state": "pending",
+          "evidence": "none"
+        },
+        {
+          "key": "Shipped",
+          "label": "Shipped",
+          "state": "pending",
+          "evidence": "none"
+        }
+      ],
+      "transportFlow": [
+        {
+          "key": "Recolección",
+          "label": "Recolección",
+          "state": "pending",
+          "evidence": "none"
+        },
+        {
+          "key": "En tránsito",
+          "label": "En tránsito",
+          "state": "pending",
+          "evidence": "none"
+        },
+        {
+          "key": "En reparto",
+          "label": "En reparto",
+          "state": "pending",
+          "evidence": "none"
+        },
+        {
+          "key": "Entregada",
+          "label": "Entregada",
+          "state": "pending",
+          "evidence": "none"
+        }
+      ],
+      "transportHandover": {
+        "confirmed": false,
+        "mode": "",
+        "source": "",
+        "message": ""
+      },
+      "deliveryConfirmed": false,
+      "deliveryDate": "",
+      "lastEventDate": "",
+      "lastUpdatedAt": "2026-06-29 12:00:00",
+      "lastEventLabel": "Allocated",
+      "lastEventDescription": "",
+      "incidents": [],
+      "events": [],
+      "signedBy": "",
+      "signedByRaw": "",
+      "originalStatus": "",
+      "originalComment": ""
+    },
+    {
+      "order": "LT000004",
+      "waybill": "",
+      "orderType": "B2C",
+      "order_type": "B2C",
+      "status": "Packed",
+      "category": "Pendiente",
+      "shipmentState": "",
+      "warehouseStatus": "Packed",
+      "transportStatus": "",
+      "warehouseFlow": [
+        {
+          "key": "Cancelled",
+          "label": "Cancelled",
+          "state": "disabled",
+          "evidence": "none"
+        },
+        {
+          "key": "Released",
+          "label": "Released",
+          "state": "complete",
+          "evidence": "inferred"
+        },
+        {
+          "key": "Allocated",
+          "label": "Allocated",
+          "state": "complete",
+          "evidence": "inferred"
+        },
+        {
+          "key": "Packed",
+          "label": "Packed",
+          "state": "current",
+          "evidence": "observed"
+        },
+        {
+          "key": "Manifested",
+          "label": "Manifested",
+          "state": "pending",
+          "evidence": "none"
+        },
+        {
+          "key": "Shipped",
+          "label": "Shipped",
+          "state": "pending",
+          "evidence": "none"
+        }
+      ],
+      "transportFlow": [
+        {
+          "key": "Recolección",
+          "label": "Recolección",
+          "state": "pending",
+          "evidence": "none"
+        },
+        {
+          "key": "En tránsito",
+          "label": "En tránsito",
+          "state": "pending",
+          "evidence": "none"
+        },
+        {
+          "key": "En reparto",
+          "label": "En reparto",
+          "state": "pending",
+          "evidence": "none"
+        },
+        {
+          "key": "Entregada",
+          "label": "Entregada",
+          "state": "pending",
+          "evidence": "none"
+        }
+      ],
+      "transportHandover": {
+        "confirmed": false,
+        "mode": "",
+        "source": "",
+        "message": ""
+      },
+      "deliveryConfirmed": false,
+      "deliveryDate": "",
+      "lastEventDate": "",
+      "lastUpdatedAt": "2026-06-29 12:00:00",
+      "lastEventLabel": "Packed",
+      "lastEventDescription": "",
+      "incidents": [],
+      "events": [],
+      "signedBy": "",
+      "signedByRaw": "",
+      "originalStatus": "",
+      "originalComment": ""
+    },
+    {
+      "order": "LT000005",
+      "waybill": "",
+      "orderType": "B2C",
+      "order_type": "B2C",
+      "status": "Manifested",
+      "category": "Pendiente",
+      "shipmentState": "",
+      "warehouseStatus": "Manifested",
+      "transportStatus": "",
+      "warehouseFlow": [
+        {
+          "key": "Cancelled",
+          "label": "Cancelled",
+          "state": "disabled",
+          "evidence": "none"
+        },
+        {
+          "key": "Released",
+          "label": "Released",
+          "state": "complete",
+          "evidence": "inferred"
+        },
+        {
+          "key": "Allocated",
+          "label": "Allocated",
+          "state": "complete",
+          "evidence": "inferred"
+        },
+        {
+          "key": "Packed",
+          "label": "Packed",
+          "state": "complete",
+          "evidence": "inferred"
+        },
+        {
+          "key": "Manifested",
+          "label": "Manifested",
+          "state": "current",
+          "evidence": "observed"
+        },
+        {
+          "key": "Shipped",
+          "label": "Shipped",
+          "state": "pending",
+          "evidence": "none"
+        }
+      ],
+      "transportFlow": [
+        {
+          "key": "Recolección",
+          "label": "Recolección",
+          "state": "pending",
+          "evidence": "none"
+        },
+        {
+          "key": "En tránsito",
+          "label": "En tránsito",
+          "state": "pending",
+          "evidence": "none"
+        },
+        {
+          "key": "En reparto",
+          "label": "En reparto",
+          "state": "pending",
+          "evidence": "none"
+        },
+        {
+          "key": "Entregada",
+          "label": "Entregada",
+          "state": "pending",
+          "evidence": "none"
+        }
+      ],
+      "transportHandover": {
+        "confirmed": false,
+        "mode": "",
+        "source": "",
+        "message": ""
+      },
+      "deliveryConfirmed": false,
+      "deliveryDate": "",
+      "lastEventDate": "",
+      "lastUpdatedAt": "2026-06-29 12:00:00",
+      "lastEventLabel": "Manifested",
+      "lastEventDescription": "",
+      "incidents": [],
+      "events": [],
+      "signedBy": "",
+      "signedByRaw": "",
+      "originalStatus": "",
+      "originalComment": ""
+    },
+    {
+      "order": "LT000006",
+      "waybill": "",
+      "orderType": "B2C",
+      "order_type": "B2C",
+      "status": "Shipped",
+      "category": "Pendiente",
+      "shipmentState": "",
+      "warehouseStatus": "Shipped",
+      "transportStatus": "",
+      "warehouseFlow": [
+        {
+          "key": "Cancelled",
+          "label": "Cancelled",
+          "state": "disabled",
+          "evidence": "none"
+        },
+        {
+          "key": "Released",
+          "label": "Released",
+          "state": "complete",
+          "evidence": "inferred"
+        },
+        {
+          "key": "Allocated",
+          "label": "Allocated",
+          "state": "complete",
+          "evidence": "inferred"
+        },
+        {
+          "key": "Packed",
+          "label": "Packed",
+          "state": "complete",
+          "evidence": "inferred"
+        },
+        {
+          "key": "Manifested",
+          "label": "Manifested",
+          "state": "complete",
+          "evidence": "inferred"
+        },
+        {
+          "key": "Shipped",
+          "label": "Shipped",
+          "state": "current",
+          "evidence": "observed"
+        }
+      ],
+      "transportFlow": [
+        {
+          "key": "Recolección",
+          "label": "Recolección",
+          "state": "pending",
+          "evidence": "none"
+        },
+        {
+          "key": "En tránsito",
+          "label": "En tránsito",
+          "state": "pending",
+          "evidence": "none"
+        },
+        {
+          "key": "En reparto",
+          "label": "En reparto",
+          "state": "pending",
+          "evidence": "none"
+        },
+        {
+          "key": "Entregada",
+          "label": "Entregada",
+          "state": "pending",
+          "evidence": "none"
+        }
+      ],
+      "transportHandover": {
+        "confirmed": false,
+        "mode": "",
+        "source": "",
+        "message": ""
+      },
+      "deliveryConfirmed": false,
+      "deliveryDate": "",
+      "lastEventDate": "",
+      "lastUpdatedAt": "2026-06-29 12:00:00",
+      "lastEventLabel": "Shipped",
+      "lastEventDescription": "",
+      "incidents": [],
+      "events": [],
+      "signedBy": "",
+      "signedByRaw": "",
+      "originalStatus": "",
+      "originalComment": ""
+    },
+    {
+      "order": "LT000101",
+      "waybill": "0000000101",
+      "orderType": "B2C",
+      "order_type": "B2C",
+      "status": "ENTREGADA",
+      "category": "Finalizado",
+      "shipmentState": "shipment delivered ok",
+      "warehouseStatus": "Shipped",
+      "transportStatus": "Entregada",
+      "warehouseFlow": [
+        {
+          "key": "Cancelled",
+          "label": "Cancelled",
+          "state": "disabled",
+          "evidence": "none"
+        },
+        {
+          "key": "Released",
+          "label": "Released",
+          "state": "complete",
+          "evidence": "inferred"
+        },
+        {
+          "key": "Allocated",
+          "label": "Allocated",
+          "state": "complete",
+          "evidence": "inferred"
+        },
+        {
+          "key": "Packed",
+          "label": "Packed",
+          "state": "complete",
+          "evidence": "inferred"
+        },
+        {
+          "key": "Manifested",
+          "label": "Manifested",
+          "state": "complete",
+          "evidence": "inferred"
+        },
+        {
+          "key": "Shipped",
+          "label": "Shipped",
+          "state": "current",
+          "evidence": "observed"
+        }
+      ],
+      "transportFlow": [
+        {
+          "key": "Recolección",
+          "label": "Recolección",
+          "state": "complete",
+          "evidence": "inferred"
+        },
+        {
+          "key": "En tránsito",
+          "label": "En tránsito",
+          "state": "complete",
+          "evidence": "inferred"
+        },
+        {
+          "key": "En reparto",
+          "label": "En reparto",
+          "state": "complete",
+          "evidence": "inferred"
+        },
+        {
+          "key": "Entregada",
+          "label": "Entregada",
+          "state": "current",
+          "evidence": "observed"
+        }
+      ],
+      "transportHandover": {
+        "confirmed": false,
+        "mode": "",
+        "source": "",
+        "message": ""
+      },
+      "deliveryConfirmed": true,
+      "deliveryDate": "2026-06-30T15:00:00-04:00",
+      "lastEventDate": "2026-06-30 15:00:00",
+      "lastUpdatedAt": "2026-06-29 12:00:00",
+      "lastEventLabel": "ENTREGADA",
+      "lastEventDescription": "shipment delivered ok",
+      "incidents": [],
+      "events": [
+        {
+          "status": "ENTREGADA",
+          "stage": "Entregada",
+          "date": "2026-06-30T15:00:00-04:00",
+          "description": "shipment delivered ok",
+          "originalStatus": " L literal\n",
+          "originalComment": " M literal "
+        }
+      ],
+      "signedBy": "RECEPTOR FICTICIO",
+      "signedByRaw": "RECEPTOR FICTICIO",
+      "originalStatus": " L literal\n",
+      "originalComment": " M literal "
+    },
+    {
+      "order": "LT000102",
+      "waybill": "0000000102",
+      "orderType": "B2C",
+      "order_type": "B2C",
+      "status": "PENDIENTE DE RECOLECCION",
+      "category": "Pendiente",
+      "shipmentState": "shipment data received",
+      "warehouseStatus": "Shipped",
+      "transportStatus": "",
+      "warehouseFlow": [
+        {
+          "key": "Cancelled",
+          "label": "Cancelled",
+          "state": "disabled",
+          "evidence": "none"
+        },
+        {
+          "key": "Released",
+          "label": "Released",
+          "state": "complete",
+          "evidence": "inferred"
+        },
+        {
+          "key": "Allocated",
+          "label": "Allocated",
+          "state": "complete",
+          "evidence": "inferred"
+        },
+        {
+          "key": "Packed",
+          "label": "Packed",
+          "state": "complete",
+          "evidence": "inferred"
+        },
+        {
+          "key": "Manifested",
+          "label": "Manifested",
+          "state": "complete",
+          "evidence": "inferred"
+        },
+        {
+          "key": "Shipped",
+          "label": "Shipped",
+          "state": "current",
+          "evidence": "observed"
+        }
+      ],
+      "transportFlow": [
+        {
+          "key": "Recolección",
+          "label": "Recolección",
+          "state": "pending",
+          "evidence": "none"
+        },
+        {
+          "key": "En tránsito",
+          "label": "En tránsito",
+          "state": "pending",
+          "evidence": "none"
+        },
+        {
+          "key": "En reparto",
+          "label": "En reparto",
+          "state": "pending",
+          "evidence": "none"
+        },
+        {
+          "key": "Entregada",
+          "label": "Entregada",
+          "state": "pending",
+          "evidence": "none"
+        }
+      ],
+      "transportHandover": {
+        "confirmed": false,
+        "mode": "",
+        "source": "",
+        "message": ""
+      },
+      "deliveryConfirmed": false,
+      "deliveryDate": "",
+      "lastEventDate": "2026-06-30 15:00:00",
+      "lastUpdatedAt": "2026-06-29 12:00:00",
+      "lastEventLabel": "PENDIENTE DE RECOLECCION",
+      "lastEventDescription": "shipment data received",
+      "incidents": [],
+      "events": [
+        {
+          "status": "PENDIENTE DE RECOLECCION",
+          "stage": "",
+          "date": "2026-06-30T15:00:00-04:00",
+          "description": "shipment data received",
+          "originalStatus": " L literal\n",
+          "originalComment": " M literal "
+        }
+      ],
+      "signedBy": "",
+      "signedByRaw": "",
+      "originalStatus": " L literal\n",
+      "originalComment": " M literal "
+    },
+    {
+      "order": "LT000103",
+      "waybill": "0000000103",
+      "orderType": "B2C",
+      "order_type": "B2C",
+      "status": "DEVOLUCION",
+      "category": "Crítico",
+      "shipmentState": "returned to shipper",
+      "warehouseStatus": "Shipped",
+      "transportStatus": "",
+      "warehouseFlow": [
+        {
+          "key": "Cancelled",
+          "label": "Cancelled",
+          "state": "disabled",
+          "evidence": "none"
+        },
+        {
+          "key": "Released",
+          "label": "Released",
+          "state": "complete",
+          "evidence": "inferred"
+        },
+        {
+          "key": "Allocated",
+          "label": "Allocated",
+          "state": "complete",
+          "evidence": "inferred"
+        },
+        {
+          "key": "Packed",
+          "label": "Packed",
+          "state": "complete",
+          "evidence": "inferred"
+        },
+        {
+          "key": "Manifested",
+          "label": "Manifested",
+          "state": "complete",
+          "evidence": "inferred"
+        },
+        {
+          "key": "Shipped",
+          "label": "Shipped",
+          "state": "current",
+          "evidence": "observed"
+        }
+      ],
+      "transportFlow": [
+        {
+          "key": "Recolección",
+          "label": "Recolección",
+          "state": "pending",
+          "evidence": "none"
+        },
+        {
+          "key": "En tránsito",
+          "label": "En tránsito",
+          "state": "pending",
+          "evidence": "none"
+        },
+        {
+          "key": "En reparto",
+          "label": "En reparto",
+          "state": "pending",
+          "evidence": "none"
+        },
+        {
+          "key": "Entregada",
+          "label": "Entregada",
+          "state": "pending",
+          "evidence": "none"
+        }
+      ],
+      "transportHandover": {
+        "confirmed": false,
+        "mode": "",
+        "source": "",
+        "message": ""
+      },
+      "deliveryConfirmed": false,
+      "deliveryDate": "",
+      "lastEventDate": "2026-06-30 15:00:00",
+      "lastUpdatedAt": "2026-06-29 12:00:00",
+      "lastEventLabel": "DEVOLUCION",
+      "lastEventDescription": "returned to shipper",
+      "incidents": [
+        "DEVOLUCION"
+      ],
+      "events": [
+        {
+          "status": "DEVOLUCION",
+          "stage": "",
+          "date": "2026-06-30T15:00:00-04:00",
+          "description": "returned to shipper",
+          "originalStatus": " L literal\n",
+          "originalComment": " M literal "
+        }
+      ],
+      "signedBy": "",
+      "signedByRaw": "",
+      "originalStatus": " L literal\n",
+      "originalComment": " M literal "
+    },
+    {
+      "order": "LT000104",
+      "waybill": "0000000104",
+      "orderType": "B2C",
+      "order_type": "B2C",
+      "status": "TERCERIZADA",
+      "category": "Incidencia",
+      "shipmentState": "delivery arranged no details expected",
+      "warehouseStatus": "Shipped",
+      "transportStatus": "",
+      "warehouseFlow": [
+        {
+          "key": "Cancelled",
+          "label": "Cancelled",
+          "state": "disabled",
+          "evidence": "none"
+        },
+        {
+          "key": "Released",
+          "label": "Released",
+          "state": "complete",
+          "evidence": "inferred"
+        },
+        {
+          "key": "Allocated",
+          "label": "Allocated",
+          "state": "complete",
+          "evidence": "inferred"
+        },
+        {
+          "key": "Packed",
+          "label": "Packed",
+          "state": "complete",
+          "evidence": "inferred"
+        },
+        {
+          "key": "Manifested",
+          "label": "Manifested",
+          "state": "complete",
+          "evidence": "inferred"
+        },
+        {
+          "key": "Shipped",
+          "label": "Shipped",
+          "state": "current",
+          "evidence": "observed"
+        }
+      ],
+      "transportFlow": [
+        {
+          "key": "Recolección",
+          "label": "Recolección",
+          "state": "pending",
+          "evidence": "none"
+        },
+        {
+          "key": "En tránsito",
+          "label": "En tránsito",
+          "state": "pending",
+          "evidence": "none"
+        },
+        {
+          "key": "En reparto",
+          "label": "En reparto",
+          "state": "pending",
+          "evidence": "none"
+        },
+        {
+          "key": "Entregada",
+          "label": "Entregada",
+          "state": "pending",
+          "evidence": "none"
+        }
+      ],
+      "transportHandover": {
+        "confirmed": false,
+        "mode": "",
+        "source": "",
+        "message": ""
+      },
+      "deliveryConfirmed": false,
+      "deliveryDate": "",
+      "lastEventDate": "2026-06-30 15:00:00",
+      "lastUpdatedAt": "2026-06-29 12:00:00",
+      "lastEventLabel": "TERCERIZADA",
+      "lastEventDescription": "delivery arranged no details expected",
+      "incidents": [],
+      "events": [
+        {
+          "status": "TERCERIZADA",
+          "stage": "",
+          "date": "2026-06-30T15:00:00-04:00",
+          "description": "delivery arranged no details expected",
+          "originalStatus": " L literal\n",
+          "originalComment": " M literal "
+        }
+      ],
+      "signedBy": "",
+      "signedByRaw": "",
+      "originalStatus": " L literal\n",
+      "originalComment": " M literal "
+    },
+    {
+      "order": "LT000105",
+      "waybill": "0000000105",
+      "orderType": "B2C",
+      "order_type": "B2C",
+      "status": "EN RUTA",
+      "category": "En Tránsito",
+      "shipmentState": "shipment on hold",
+      "warehouseStatus": "Shipped",
+      "transportStatus": "",
+      "warehouseFlow": [
+        {
+          "key": "Cancelled",
+          "label": "Cancelled",
+          "state": "disabled",
+          "evidence": "none"
+        },
+        {
+          "key": "Released",
+          "label": "Released",
+          "state": "complete",
+          "evidence": "inferred"
+        },
+        {
+          "key": "Allocated",
+          "label": "Allocated",
+          "state": "complete",
+          "evidence": "inferred"
+        },
+        {
+          "key": "Packed",
+          "label": "Packed",
+          "state": "complete",
+          "evidence": "inferred"
+        },
+        {
+          "key": "Manifested",
+          "label": "Manifested",
+          "state": "complete",
+          "evidence": "inferred"
+        },
+        {
+          "key": "Shipped",
+          "label": "Shipped",
+          "state": "current",
+          "evidence": "observed"
+        }
+      ],
+      "transportFlow": [
+        {
+          "key": "Recolección",
+          "label": "Recolección",
+          "state": "pending",
+          "evidence": "none"
+        },
+        {
+          "key": "En tránsito",
+          "label": "En tránsito",
+          "state": "pending",
+          "evidence": "none"
+        },
+        {
+          "key": "En reparto",
+          "label": "En reparto",
+          "state": "pending",
+          "evidence": "none"
+        },
+        {
+          "key": "Entregada",
+          "label": "Entregada",
+          "state": "pending",
+          "evidence": "none"
+        }
+      ],
+      "transportHandover": {
+        "confirmed": false,
+        "mode": "",
+        "source": "",
+        "message": ""
+      },
+      "deliveryConfirmed": false,
+      "deliveryDate": "",
+      "lastEventDate": "2026-06-30 15:00:00",
+      "lastUpdatedAt": "2026-06-29 12:00:00",
+      "lastEventLabel": "EN RUTA",
+      "lastEventDescription": "shipment on hold",
+      "incidents": [],
+      "events": [
+        {
+          "status": "EN RUTA",
+          "stage": "",
+          "date": "2026-06-30T15:00:00-04:00",
+          "description": "shipment on hold",
+          "originalStatus": " L literal\n",
+          "originalComment": " M literal "
+        }
+      ],
+      "signedBy": "",
+      "signedByRaw": "",
+      "originalStatus": " L literal\n",
+      "originalComment": " M literal "
+    },
+    {
+      "order": "LT000106",
+      "waybill": "0000000106",
+      "orderType": "B2C",
+      "order_type": "B2C",
+      "status": "ENTREGA PARCIAL",
+      "category": "Incidencia",
+      "shipmentState": "partial delivery",
+      "warehouseStatus": "Shipped",
+      "transportStatus": "",
+      "warehouseFlow": [
+        {
+          "key": "Cancelled",
+          "label": "Cancelled",
+          "state": "disabled",
+          "evidence": "none"
+        },
+        {
+          "key": "Released",
+          "label": "Released",
+          "state": "complete",
+          "evidence": "inferred"
+        },
+        {
+          "key": "Allocated",
+          "label": "Allocated",
+          "state": "complete",
+          "evidence": "inferred"
+        },
+        {
+          "key": "Packed",
+          "label": "Packed",
+          "state": "complete",
+          "evidence": "inferred"
+        },
+        {
+          "key": "Manifested",
+          "label": "Manifested",
+          "state": "complete",
+          "evidence": "inferred"
+        },
+        {
+          "key": "Shipped",
+          "label": "Shipped",
+          "state": "current",
+          "evidence": "observed"
+        }
+      ],
+      "transportFlow": [
+        {
+          "key": "Recolección",
+          "label": "Recolección",
+          "state": "pending",
+          "evidence": "none"
+        },
+        {
+          "key": "En tránsito",
+          "label": "En tránsito",
+          "state": "pending",
+          "evidence": "none"
+        },
+        {
+          "key": "En reparto",
+          "label": "En reparto",
+          "state": "pending",
+          "evidence": "none"
+        },
+        {
+          "key": "Entregada",
+          "label": "Entregada",
+          "state": "pending",
+          "evidence": "none"
+        }
+      ],
+      "transportHandover": {
+        "confirmed": false,
+        "mode": "",
+        "source": "",
+        "message": ""
+      },
+      "deliveryConfirmed": false,
+      "deliveryDate": "",
+      "lastEventDate": "2026-06-30 15:00:00",
+      "lastUpdatedAt": "2026-06-29 12:00:00",
+      "lastEventLabel": "ENTREGA PARCIAL",
+      "lastEventDescription": "partial delivery",
+      "incidents": [
+        "ENTREGA PARCIAL"
+      ],
+      "events": [
+        {
+          "status": "ENTREGA PARCIAL",
+          "stage": "",
+          "date": "2026-06-30T15:00:00-04:00",
+          "description": "partial delivery",
+          "originalStatus": " L literal\n",
+          "originalComment": " M literal "
+        }
+      ],
+      "signedBy": "",
+      "signedByRaw": "",
+      "originalStatus": " L literal\n",
+      "originalComment": " M literal "
+    },
+    {
+      "order": "LT000107",
+      "waybill": "0000000107",
+      "orderType": "B2C",
+      "order_type": "B2C",
+      "status": "EN ADUANA",
+      "category": "Incidencia",
+      "shipmentState": "clearance delay cd",
+      "warehouseStatus": "Shipped",
+      "transportStatus": "",
+      "warehouseFlow": [
+        {
+          "key": "Cancelled",
+          "label": "Cancelled",
+          "state": "disabled",
+          "evidence": "none"
+        },
+        {
+          "key": "Released",
+          "label": "Released",
+          "state": "complete",
+          "evidence": "inferred"
+        },
+        {
+          "key": "Allocated",
+          "label": "Allocated",
+          "state": "complete",
+          "evidence": "inferred"
+        },
+        {
+          "key": "Packed",
+          "label": "Packed",
+          "state": "complete",
+          "evidence": "inferred"
+        },
+        {
+          "key": "Manifested",
+          "label": "Manifested",
+          "state": "complete",
+          "evidence": "inferred"
+        },
+        {
+          "key": "Shipped",
+          "label": "Shipped",
+          "state": "current",
+          "evidence": "observed"
+        }
+      ],
+      "transportFlow": [
+        {
+          "key": "Recolección",
+          "label": "Recolección",
+          "state": "pending",
+          "evidence": "none"
+        },
+        {
+          "key": "En tránsito",
+          "label": "En tránsito",
+          "state": "pending",
+          "evidence": "none"
+        },
+        {
+          "key": "En reparto",
+          "label": "En reparto",
+          "state": "pending",
+          "evidence": "none"
+        },
+        {
+          "key": "Entregada",
+          "label": "Entregada",
+          "state": "pending",
+          "evidence": "none"
+        }
+      ],
+      "transportHandover": {
+        "confirmed": false,
+        "mode": "",
+        "source": "",
+        "message": ""
+      },
+      "deliveryConfirmed": false,
+      "deliveryDate": "",
+      "lastEventDate": "2026-06-30 15:00:00",
+      "lastUpdatedAt": "2026-06-29 12:00:00",
+      "lastEventLabel": "EN ADUANA",
+      "lastEventDescription": "clearance delay cd",
+      "incidents": [
+        "EN ADUANA"
+      ],
+      "events": [
+        {
+          "status": "EN ADUANA",
+          "stage": "",
+          "date": "2026-06-30T15:00:00-04:00",
+          "description": "clearance delay cd",
+          "originalStatus": " L literal\n",
+          "originalComment": " M literal "
+        }
+      ],
+      "signedBy": "",
+      "signedByRaw": "",
+      "originalStatus": " L literal\n",
+      "originalComment": " M literal "
+    },
+    {
+      "order": "LT000108",
+      "waybill": "0000000108",
+      "orderType": "B2C",
+      "order_type": "B2C",
+      "status": "EN RUTA",
+      "category": "En Tránsito",
+      "shipmentState": "processed at dhl location",
+      "warehouseStatus": "Shipped",
+      "transportStatus": "En tránsito",
+      "warehouseFlow": [
+        {
+          "key": "Cancelled",
+          "label": "Cancelled",
+          "state": "disabled",
+          "evidence": "none"
+        },
+        {
+          "key": "Released",
+          "label": "Released",
+          "state": "complete",
+          "evidence": "inferred"
+        },
+        {
+          "key": "Allocated",
+          "label": "Allocated",
+          "state": "complete",
+          "evidence": "inferred"
+        },
+        {
+          "key": "Packed",
+          "label": "Packed",
+          "state": "complete",
+          "evidence": "inferred"
+        },
+        {
+          "key": "Manifested",
+          "label": "Manifested",
+          "state": "complete",
+          "evidence": "inferred"
+        },
+        {
+          "key": "Shipped",
+          "label": "Shipped",
+          "state": "current",
+          "evidence": "observed"
+        }
+      ],
+      "transportFlow": [
+        {
+          "key": "Recolección",
+          "label": "Recolección",
+          "state": "complete",
+          "evidence": "inferred"
+        },
+        {
+          "key": "En tránsito",
+          "label": "En tránsito",
+          "state": "current",
+          "evidence": "observed"
+        },
+        {
+          "key": "En reparto",
+          "label": "En reparto",
+          "state": "pending",
+          "evidence": "none"
+        },
+        {
+          "key": "Entregada",
+          "label": "Entregada",
+          "state": "pending",
+          "evidence": "none"
+        }
+      ],
+      "transportHandover": {
+        "confirmed": false,
+        "mode": "",
+        "source": "",
+        "message": ""
+      },
+      "deliveryConfirmed": false,
+      "deliveryDate": "",
+      "lastEventDate": "2026-06-30 15:00:00",
+      "lastUpdatedAt": "2026-06-29 12:00:00",
+      "lastEventLabel": "EN RUTA",
+      "lastEventDescription": "processed at dhl location",
+      "incidents": [],
+      "events": [
+        {
+          "status": "EN RUTA",
+          "stage": "En tránsito",
+          "date": "2026-06-30T15:00:00-04:00",
+          "description": "processed at dhl location",
+          "originalStatus": " L literal\n",
+          "originalComment": " M literal "
+        }
+      ],
+      "signedBy": "",
+      "signedByRaw": "",
+      "originalStatus": " L literal\n",
+      "originalComment": " M literal "
+    },
+    {
+      "order": "LT000109",
+      "waybill": "0000000109",
+      "orderType": "B2C",
+      "order_type": "B2C",
+      "status": "EN RUTA",
+      "category": "En Tránsito",
+      "shipmentState": "departed facility",
+      "warehouseStatus": "Shipped",
+      "transportStatus": "En tránsito",
+      "warehouseFlow": [
+        {
+          "key": "Cancelled",
+          "label": "Cancelled",
+          "state": "disabled",
+          "evidence": "none"
+        },
+        {
+          "key": "Released",
+          "label": "Released",
+          "state": "complete",
+          "evidence": "inferred"
+        },
+        {
+          "key": "Allocated",
+          "label": "Allocated",
+          "state": "complete",
+          "evidence": "inferred"
+        },
+        {
+          "key": "Packed",
+          "label": "Packed",
+          "state": "complete",
+          "evidence": "inferred"
+        },
+        {
+          "key": "Manifested",
+          "label": "Manifested",
+          "state": "complete",
+          "evidence": "inferred"
+        },
+        {
+          "key": "Shipped",
+          "label": "Shipped",
+          "state": "current",
+          "evidence": "observed"
+        }
+      ],
+      "transportFlow": [
+        {
+          "key": "Recolección",
+          "label": "Recolección",
+          "state": "complete",
+          "evidence": "inferred"
+        },
+        {
+          "key": "En tránsito",
+          "label": "En tránsito",
+          "state": "current",
+          "evidence": "observed"
+        },
+        {
+          "key": "En reparto",
+          "label": "En reparto",
+          "state": "pending",
+          "evidence": "none"
+        },
+        {
+          "key": "Entregada",
+          "label": "Entregada",
+          "state": "pending",
+          "evidence": "none"
+        }
+      ],
+      "transportHandover": {
+        "confirmed": false,
+        "mode": "",
+        "source": "",
+        "message": ""
+      },
+      "deliveryConfirmed": false,
+      "deliveryDate": "",
+      "lastEventDate": "2026-06-30 15:00:00",
+      "lastUpdatedAt": "2026-06-29 12:00:00",
+      "lastEventLabel": "EN RUTA",
+      "lastEventDescription": "departed facility",
+      "incidents": [],
+      "events": [
+        {
+          "status": "EN RUTA",
+          "stage": "En tránsito",
+          "date": "2026-06-30T15:00:00-04:00",
+          "description": "departed facility",
+          "originalStatus": " L literal\n",
+          "originalComment": " M literal "
+        }
+      ],
+      "signedBy": "",
+      "signedByRaw": "",
+      "originalStatus": " L literal\n",
+      "originalComment": " M literal "
+    },
+    {
+      "order": "LT000110",
+      "waybill": "0000000110",
+      "orderType": "B2C",
+      "order_type": "B2C",
+      "status": "PROGRAMADO",
+      "category": "Pendiente",
+      "shipmentState": "scheduled to move",
+      "warehouseStatus": "Shipped",
+      "transportStatus": "",
+      "warehouseFlow": [
+        {
+          "key": "Cancelled",
+          "label": "Cancelled",
+          "state": "disabled",
+          "evidence": "none"
+        },
+        {
+          "key": "Released",
+          "label": "Released",
+          "state": "complete",
+          "evidence": "inferred"
+        },
+        {
+          "key": "Allocated",
+          "label": "Allocated",
+          "state": "complete",
+          "evidence": "inferred"
+        },
+        {
+          "key": "Packed",
+          "label": "Packed",
+          "state": "complete",
+          "evidence": "inferred"
+        },
+        {
+          "key": "Manifested",
+          "label": "Manifested",
+          "state": "complete",
+          "evidence": "inferred"
+        },
+        {
+          "key": "Shipped",
+          "label": "Shipped",
+          "state": "current",
+          "evidence": "observed"
+        }
+      ],
+      "transportFlow": [
+        {
+          "key": "Recolección",
+          "label": "Recolección",
+          "state": "pending",
+          "evidence": "none"
+        },
+        {
+          "key": "En tránsito",
+          "label": "En tránsito",
+          "state": "pending",
+          "evidence": "none"
+        },
+        {
+          "key": "En reparto",
+          "label": "En reparto",
+          "state": "pending",
+          "evidence": "none"
+        },
+        {
+          "key": "Entregada",
+          "label": "Entregada",
+          "state": "pending",
+          "evidence": "none"
+        }
+      ],
+      "transportHandover": {
+        "confirmed": false,
+        "mode": "",
+        "source": "",
+        "message": ""
+      },
+      "deliveryConfirmed": false,
+      "deliveryDate": "",
+      "lastEventDate": "2026-06-30 15:00:00",
+      "lastUpdatedAt": "2026-06-29 12:00:00",
+      "lastEventLabel": "PROGRAMADO",
+      "lastEventDescription": "scheduled to move",
+      "incidents": [],
+      "events": [
+        {
+          "status": "PROGRAMADO",
+          "stage": "",
+          "date": "2026-06-30T15:00:00-04:00",
+          "description": "scheduled to move",
+          "originalStatus": " L literal\n",
+          "originalComment": " M literal "
+        }
+      ],
+      "signedBy": "",
+      "signedByRaw": "",
+      "originalStatus": " L literal\n",
+      "originalComment": " M literal "
+    },
+    {
+      "order": "LT000111",
+      "waybill": "0000000111",
+      "orderType": "B2C",
+      "order_type": "B2C",
+      "status": "EN SUCURSAL DE DESTINO",
+      "category": "En Tránsito",
+      "shipmentState": "arrived at delivery facility",
+      "warehouseStatus": "Shipped",
+      "transportStatus": "En tránsito",
+      "warehouseFlow": [
+        {
+          "key": "Cancelled",
+          "label": "Cancelled",
+          "state": "disabled",
+          "evidence": "none"
+        },
+        {
+          "key": "Released",
+          "label": "Released",
+          "state": "complete",
+          "evidence": "inferred"
+        },
+        {
+          "key": "Allocated",
+          "label": "Allocated",
+          "state": "complete",
+          "evidence": "inferred"
+        },
+        {
+          "key": "Packed",
+          "label": "Packed",
+          "state": "complete",
+          "evidence": "inferred"
+        },
+        {
+          "key": "Manifested",
+          "label": "Manifested",
+          "state": "complete",
+          "evidence": "inferred"
+        },
+        {
+          "key": "Shipped",
+          "label": "Shipped",
+          "state": "current",
+          "evidence": "observed"
+        }
+      ],
+      "transportFlow": [
+        {
+          "key": "Recolección",
+          "label": "Recolección",
+          "state": "complete",
+          "evidence": "inferred"
+        },
+        {
+          "key": "En tránsito",
+          "label": "En tránsito",
+          "state": "current",
+          "evidence": "observed"
+        },
+        {
+          "key": "En reparto",
+          "label": "En reparto",
+          "state": "pending",
+          "evidence": "none"
+        },
+        {
+          "key": "Entregada",
+          "label": "Entregada",
+          "state": "pending",
+          "evidence": "none"
+        }
+      ],
+      "transportHandover": {
+        "confirmed": false,
+        "mode": "",
+        "source": "",
+        "message": ""
+      },
+      "deliveryConfirmed": false,
+      "deliveryDate": "",
+      "lastEventDate": "2026-06-30 15:00:00",
+      "lastUpdatedAt": "2026-06-29 12:00:00",
+      "lastEventLabel": "EN SUCURSAL DE DESTINO",
+      "lastEventDescription": "arrived at delivery facility",
+      "incidents": [],
+      "events": [
+        {
+          "status": "EN SUCURSAL DE DESTINO",
+          "stage": "En tránsito",
+          "date": "2026-06-30T15:00:00-04:00",
+          "description": "arrived at delivery facility",
+          "originalStatus": " L literal\n",
+          "originalComment": " M literal "
+        }
+      ],
+      "signedBy": "",
+      "signedByRaw": "",
+      "originalStatus": " L literal\n",
+      "originalComment": " M literal "
+    },
+    {
+      "order": "LT000112",
+      "waybill": "0000000112",
+      "orderType": "B2C",
+      "order_type": "B2C",
+      "status": "RECOLECTADO",
+      "category": "En Tránsito",
+      "shipmentState": "shipment picked up",
+      "warehouseStatus": "Shipped",
+      "transportStatus": "Recolección",
+      "warehouseFlow": [
+        {
+          "key": "Cancelled",
+          "label": "Cancelled",
+          "state": "disabled",
+          "evidence": "none"
+        },
+        {
+          "key": "Released",
+          "label": "Released",
+          "state": "complete",
+          "evidence": "inferred"
+        },
+        {
+          "key": "Allocated",
+          "label": "Allocated",
+          "state": "complete",
+          "evidence": "inferred"
+        },
+        {
+          "key": "Packed",
+          "label": "Packed",
+          "state": "complete",
+          "evidence": "inferred"
+        },
+        {
+          "key": "Manifested",
+          "label": "Manifested",
+          "state": "complete",
+          "evidence": "inferred"
+        },
+        {
+          "key": "Shipped",
+          "label": "Shipped",
+          "state": "current",
+          "evidence": "observed"
+        }
+      ],
+      "transportFlow": [
+        {
+          "key": "Recolección",
+          "label": "Recolección",
+          "state": "current",
+          "evidence": "observed"
+        },
+        {
+          "key": "En tránsito",
+          "label": "En tránsito",
+          "state": "pending",
+          "evidence": "none"
+        },
+        {
+          "key": "En reparto",
+          "label": "En reparto",
+          "state": "pending",
+          "evidence": "none"
+        },
+        {
+          "key": "Entregada",
+          "label": "Entregada",
+          "state": "pending",
+          "evidence": "none"
+        }
+      ],
+      "transportHandover": {
+        "confirmed": false,
+        "mode": "",
+        "source": "",
+        "message": ""
+      },
+      "deliveryConfirmed": false,
+      "deliveryDate": "",
+      "lastEventDate": "2026-06-30 15:00:00",
+      "lastUpdatedAt": "2026-06-29 12:00:00",
+      "lastEventLabel": "RECOLECTADO",
+      "lastEventDescription": "shipment picked up",
+      "incidents": [],
+      "events": [
+        {
+          "status": "RECOLECTADO",
+          "stage": "Recolección",
+          "date": "2026-06-30T15:00:00-04:00",
+          "description": "shipment picked up",
+          "originalStatus": " L literal\n",
+          "originalComment": " M literal "
+        }
+      ],
+      "signedBy": "",
+      "signedByRaw": "",
+      "originalStatus": " L literal\n",
+      "originalComment": " M literal "
+    },
+    {
+      "order": "LT000113",
+      "waybill": "0000000113",
+      "orderType": "B2C",
+      "order_type": "B2C",
+      "status": "PROGRAMADO",
+      "category": "Pendiente",
+      "shipmentState": "scheduled for delivery as agreed",
+      "warehouseStatus": "Shipped",
+      "transportStatus": "",
+      "warehouseFlow": [
+        {
+          "key": "Cancelled",
+          "label": "Cancelled",
+          "state": "disabled",
+          "evidence": "none"
+        },
+        {
+          "key": "Released",
+          "label": "Released",
+          "state": "complete",
+          "evidence": "inferred"
+        },
+        {
+          "key": "Allocated",
+          "label": "Allocated",
+          "state": "complete",
+          "evidence": "inferred"
+        },
+        {
+          "key": "Packed",
+          "label": "Packed",
+          "state": "complete",
+          "evidence": "inferred"
+        },
+        {
+          "key": "Manifested",
+          "label": "Manifested",
+          "state": "complete",
+          "evidence": "inferred"
+        },
+        {
+          "key": "Shipped",
+          "label": "Shipped",
+          "state": "current",
+          "evidence": "observed"
+        }
+      ],
+      "transportFlow": [
+        {
+          "key": "Recolección",
+          "label": "Recolección",
+          "state": "pending",
+          "evidence": "none"
+        },
+        {
+          "key": "En tránsito",
+          "label": "En tránsito",
+          "state": "pending",
+          "evidence": "none"
+        },
+        {
+          "key": "En reparto",
+          "label": "En reparto",
+          "state": "pending",
+          "evidence": "none"
+        },
+        {
+          "key": "Entregada",
+          "label": "Entregada",
+          "state": "pending",
+          "evidence": "none"
+        }
+      ],
+      "transportHandover": {
+        "confirmed": false,
+        "mode": "",
+        "source": "",
+        "message": ""
+      },
+      "deliveryConfirmed": false,
+      "deliveryDate": "",
+      "lastEventDate": "2026-06-30 15:00:00",
+      "lastUpdatedAt": "2026-06-29 12:00:00",
+      "lastEventLabel": "PROGRAMADO",
+      "lastEventDescription": "scheduled for delivery as agreed",
+      "incidents": [],
+      "events": [
+        {
+          "status": "PROGRAMADO",
+          "stage": "",
+          "date": "2026-06-30T15:00:00-04:00",
+          "description": "scheduled for delivery as agreed",
+          "originalStatus": " L literal\n",
+          "originalComment": " M literal "
+        }
+      ],
+      "signedBy": "",
+      "signedByRaw": "",
+      "originalStatus": " L literal\n",
+      "originalComment": " M literal "
+    },
+    {
+      "order": "LT000200",
+      "waybill": "",
+      "orderType": "B2BLPB",
+      "order_type": "B2BLPB",
+      "status": "ENTREGADA",
+      "category": "Finalizado",
+      "shipmentState": "",
+      "warehouseStatus": "Shipped",
+      "transportStatus": "Entregada",
+      "warehouseFlow": [
+        {
+          "key": "Cancelled",
+          "label": "Cancelled",
+          "state": "disabled",
+          "evidence": "none"
+        },
+        {
+          "key": "Released",
+          "label": "Released",
+          "state": "complete",
+          "evidence": "inferred"
+        },
+        {
+          "key": "Allocated",
+          "label": "Allocated",
+          "state": "complete",
+          "evidence": "inferred"
+        },
+        {
+          "key": "Packed",
+          "label": "Packed",
+          "state": "complete",
+          "evidence": "inferred"
+        },
+        {
+          "key": "Manifested",
+          "label": "Manifested",
+          "state": "complete",
+          "evidence": "inferred"
+        },
+        {
+          "key": "Shipped",
+          "label": "Shipped",
+          "state": "current",
+          "evidence": "observed"
+        }
+      ],
+      "transportFlow": [
+        {
+          "key": "Recolección",
+          "label": "Recolección",
+          "state": "pending",
+          "evidence": "none"
+        },
+        {
+          "key": "En tránsito",
+          "label": "En tránsito",
+          "state": "pending",
+          "evidence": "none"
+        },
+        {
+          "key": "En reparto",
+          "label": "En reparto",
+          "state": "pending",
+          "evidence": "none"
+        },
+        {
+          "key": "Entregada",
+          "label": "Entregada",
+          "state": "current",
+          "evidence": "warehouse"
+        }
+      ],
+      "transportHandover": {
+        "confirmed": true,
+        "mode": "own",
+        "source": "Warehouse",
+        "message": "Entregada a transporte propio."
+      },
+      "deliveryConfirmed": false,
+      "deliveryDate": "",
+      "lastEventDate": "",
+      "lastUpdatedAt": "2026-06-29 12:00:00",
+      "lastEventLabel": "ENTREGADA",
+      "lastEventDescription": "",
+      "incidents": [],
+      "events": [],
+      "signedBy": "",
+      "signedByRaw": "",
+      "originalStatus": "",
+      "originalComment": ""
+    },
+    {
+      "order": "LT000201",
+      "waybill": "",
+      "orderType": "B2C",
+      "order_type": "B2C",
+      "status": "ENTREGADA",
+      "category": "Finalizado",
+      "shipmentState": "Shipment delivered ok",
+      "warehouseStatus": "Shipped",
+      "transportStatus": "Entregada",
+      "warehouseFlow": [
+        {
+          "key": "Cancelled",
+          "label": "Cancelled",
+          "state": "disabled",
+          "evidence": "none"
+        },
+        {
+          "key": "Released",
+          "label": "Released",
+          "state": "complete",
+          "evidence": "inferred"
+        },
+        {
+          "key": "Allocated",
+          "label": "Allocated",
+          "state": "complete",
+          "evidence": "inferred"
+        },
+        {
+          "key": "Packed",
+          "label": "Packed",
+          "state": "complete",
+          "evidence": "inferred"
+        },
+        {
+          "key": "Manifested",
+          "label": "Manifested",
+          "state": "complete",
+          "evidence": "inferred"
+        },
+        {
+          "key": "Shipped",
+          "label": "Shipped",
+          "state": "current",
+          "evidence": "observed"
+        }
+      ],
+      "transportFlow": [
+        {
+          "key": "Recolección",
+          "label": "Recolección",
+          "state": "complete",
+          "evidence": "inferred"
+        },
+        {
+          "key": "En tránsito",
+          "label": "En tránsito",
+          "state": "complete",
+          "evidence": "inferred"
+        },
+        {
+          "key": "En reparto",
+          "label": "En reparto",
+          "state": "complete",
+          "evidence": "inferred"
+        },
+        {
+          "key": "Entregada",
+          "label": "Entregada",
+          "state": "current",
+          "evidence": "observed"
+        }
+      ],
+      "transportHandover": {
+        "confirmed": false,
+        "mode": "",
+        "source": "",
+        "message": ""
+      },
+      "deliveryConfirmed": true,
+      "deliveryDate": "2026-06-30T00:00:00-04:00",
+      "lastEventDate": "2026-06-30",
+      "lastUpdatedAt": "2026-06-29 12:00:00",
+      "lastEventLabel": "ENTREGADA",
+      "lastEventDescription": "Shipment delivered ok",
+      "incidents": [],
+      "events": [
+        {
+          "status": "ENTREGADA",
+          "stage": "Entregada",
+          "date": "2026-06-30T00:00:00-04:00",
+          "description": "Shipment delivered ok",
+          "originalStatus": "",
+          "originalComment": ""
+        }
+      ],
+      "signedBy": "",
+      "signedByRaw": "",
+      "originalStatus": "",
+      "originalComment": ""
+    },
+    {
+      "order": "LT000202",
+      "waybill": "00000002",
+      "orderType": "",
+      "order_type": "",
+      "status": "RECOLECTADO",
+      "category": "En Tránsito",
+      "shipmentState": "Shipment picked up",
+      "warehouseStatus": "Unclassified",
+      "transportStatus": "Recolección",
+      "warehouseFlow": [
+        {
+          "key": "Cancelled",
+          "label": "Cancelled",
+          "state": "disabled",
+          "evidence": "none"
+        },
+        {
+          "key": "Released",
+          "label": "Released",
+          "state": "pending",
+          "evidence": "none"
+        },
+        {
+          "key": "Allocated",
+          "label": "Allocated",
+          "state": "pending",
+          "evidence": "none"
+        },
+        {
+          "key": "Packed",
+          "label": "Packed",
+          "state": "pending",
+          "evidence": "none"
+        },
+        {
+          "key": "Manifested",
+          "label": "Manifested",
+          "state": "pending",
+          "evidence": "none"
+        },
+        {
+          "key": "Shipped",
+          "label": "Shipped",
+          "state": "pending",
+          "evidence": "none"
+        }
+      ],
+      "transportFlow": [
+        {
+          "key": "Recolección",
+          "label": "Recolección",
+          "state": "current",
+          "evidence": "observed"
+        },
+        {
+          "key": "En tránsito",
+          "label": "En tránsito",
+          "state": "pending",
+          "evidence": "none"
+        },
+        {
+          "key": "En reparto",
+          "label": "En reparto",
+          "state": "pending",
+          "evidence": "none"
+        },
+        {
+          "key": "Entregada",
+          "label": "Entregada",
+          "state": "pending",
+          "evidence": "none"
+        }
+      ],
+      "transportHandover": {
+        "confirmed": false,
+        "mode": "",
+        "source": "",
+        "message": ""
+      },
+      "deliveryConfirmed": false,
+      "deliveryDate": "",
+      "lastEventDate": "2026-06-30",
+      "lastUpdatedAt": "2026-06-29 12:00:00",
+      "lastEventLabel": "RECOLECTADO",
+      "lastEventDescription": "Shipment picked up",
+      "incidents": [],
+      "events": [
+        {
+          "status": "RECOLECTADO",
+          "stage": "Recolección",
+          "date": "2026-06-30T00:00:00-04:00",
+          "description": "Shipment picked up",
+          "originalStatus": "",
+          "originalComment": ""
+        }
+      ],
+      "signedBy": "",
+      "signedByRaw": "",
+      "originalStatus": "",
+      "originalComment": ""
+    }
+  ]
+}

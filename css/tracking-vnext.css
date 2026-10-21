@@ -1,0 +1,40 @@
+/* Tracking additions preserve Lazarus typography, branding and layout scale. */
+.kpi-topbar { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.kpi-card { min-width: 0; }
+.charts-grid.analytics-grid { grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); }
+.status-panel { grid-column: auto; }
+.workspace { grid-template-columns: minmax(0, 1fr); }
+.detail-panel { position: static; min-height: 0; }
+.enterprise-detail .detail-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.enterprise-detail { min-width: 0; }
+.table-panel table { min-width: 1600px; }
+.table-panel .table-wrap { max-height: min(65vh, 720px); scroll-behavior: auto; }
+.table-panel th { position: sticky; top: 0; z-index: 2; background: #0f172a; }
+.table-panel td:first-child, .table-panel th:first-child { position: sticky; left: 0; background: #0b1626; z-index: 1; }
+.table-panel th:first-child { z-index: 3; }
+.order-select { color: var(--text); background: transparent; padding: 0; text-align: left; font-size: 13px; }
+.order-select:focus-visible, .flow-step:focus-visible { outline: 2px solid var(--cyan); outline-offset: 4px; }
+.table-toolbar-scroll { justify-content: space-between; flex-wrap: wrap; gap: 10px; }
+.row-warning { display: block; color: var(--amber); margin-top: 6px; }
+.progress-block { margin: 8px 0; }
+.progress-title { display: block; color: var(--muted); font-size: 11px; text-transform: uppercase; margin-bottom: 8px; letter-spacing: .05em; }
+.progress-flow { display: flex; gap: 6px; padding: 0; margin: 0; list-style: none; width: max-content; }
+.flow-step { border: 1px solid var(--line); border-radius: 9px; padding: 7px 9px; background: rgba(15,23,42,.8); color: #94a3b8; min-width: 80px; }
+.flow-step span { display: block; font-size: 12px; white-space: nowrap; }
+.flow-step small { display: block; font-size: 10px; margin-top: 4px; color: inherit; opacity: .9; }
+.flow-step.current { border-color: var(--cyan); color: #a5f3fc; background: rgba(34,211,238,.1); box-shadow: 0 0 0 1px rgba(34,211,238,.25); }
+.flow-step.complete { color: #6ee7b7; border-color: rgba(52,211,153,.4); }
+.flow-step.inferred { border-style: dashed; }
+.flow-step.disabled { opacity: .45; }
+.flow-step.conflict { color: #fda4af; border-color: var(--red); }
+.flow-step.own, .status-pill.own { color: #ddd6fe; border-color: var(--violet); background: rgba(167,139,250,.12); }
+.handover-note { color: #ddd6fe; padding: 16px 22px; border-block: 1px solid rgba(167,139,250,.3); }
+.detail-description { overflow-x: auto; }
+.detail-description p { white-space: pre-wrap; overflow-wrap: anywhere; min-height: 1em; }
+.event-list { padding-left: 18px; }
+.event-list li { margin-block: 14px; }
+.event-list time { display: block; margin-top: 5px; color: var(--muted); font-size: 12px; }
+.main-content { min-width: 0; }
+@media(max-width:1200px) { .kpi-topbar { grid-template-columns: repeat(3,minmax(0,1fr)); } .charts-grid.analytics-grid { grid-template-columns: minmax(0,1fr); } }
+@media(max-width:820px) { .kpi-topbar { grid-template-columns: repeat(2,minmax(0,1fr)); } .enterprise-detail .detail-list { grid-template-columns: minmax(0,1fr); } }
+@media(max-width:480px) { .kpi-card { padding: 14px; } .kpi-card-header span { font-size: 11px; } .kpi-card strong { font-size: 28px; } .detail-row { grid-template-columns: minmax(90px,.6fr) minmax(0,1fr); } }

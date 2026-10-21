@@ -6,7 +6,8 @@
   <meta name="theme-color" content="#07111f" />
   <title>Lazarus | Tracking Intelligence</title>
   <link rel="icon" type="image/png" href="assets/branding/lazarus.png" />
-  <link rel="stylesheet" href="css/styles.css?v=wms-scroll-table-20260710" />
+  <link rel="stylesheet" href="css/styles.css?v=vnext-001" />
+  <link rel="stylesheet" href="css/tracking-vnext.css?v=vnext-001" />
 </head>
 <body>
   <section id="loginScreen" class="login-screen">
@@ -20,7 +21,7 @@
         </div>
 
         <div class="login-hero-copy login-hero-copy-clean">
-          <span>Dashboard privado</span>
+          <span>Portal de seguimiento</span>
         </div>
       </article>
 
@@ -74,7 +75,6 @@
         <a class="active" href="#overview"><span>▦</span>Resumen Ejecutivo</a>
         <a href="#analytics"><span>⌁</span>Analítica</a>
         <a href="#orders"><span>▱</span>Envíos</a>
-        <a href="#stock-breaks"><span>▤</span>Quiebres de stock</a>
         <a href="#detail"><span>☷</span>Detalle</a>
       </nav>
 
@@ -84,7 +84,7 @@
             <span class="data-icon">◉</span>
             <div>
               <span>Estado de lectura</span>
-              <strong id="sourceStatus">Sin validar</strong>
+              <strong id="sourceStatus" role="status" aria-live="polite">Sin validar</strong>
             </div>
           </div>
           <small id="sourceMeta">Esperando actualización...</small>
@@ -95,43 +95,18 @@
     </aside>
 
     <main class="main-content" id="overview">
-      <section class="kpi-grid kpi-topbar" id="kpiGrid" aria-label="Indicadores principales">
-        <article class="kpi-card kpi-total">
-          <div class="kpi-card-header"><span>Total envíos</span><i>◇</i></div>
-          <strong id="kpiTotal">0</strong>
-          <small id="kpiGenerated">Todos los envíos</small>
-        </article>
-
-        <article class="kpi-card success">
-          <div class="kpi-card-header"><span>Entregados</span><i>✓</i></div>
-          <strong id="kpiDelivered">0</strong>
-          <small id="kpiDeliveredRate">0% del total</small>
-        </article>
-
-        <article class="kpi-card info">
-          <div class="kpi-card-header"><span>En tránsito</span><i>↗</i></div>
-          <strong id="kpiTransit">0</strong>
-          <small>En movimiento</small>
-        </article>
-
-        <article class="kpi-card warning">
-          <div class="kpi-card-header"><span>Pendientes</span><i>◷</i></div>
-          <strong id="kpiPending">0</strong>
-          <small>Programados / reintentos</small>
-        </article>
-
-        <article class="kpi-card danger">
-          <div class="kpi-card-header"><span>Tercerizados</span><i>⇄</i></div>
-          <strong id="kpiCritical">0</strong>
-          <small>Gestión por tercero</small>
-        </article>
-
-        <article class="kpi-card dark">
-          <div class="kpi-card-header"><span>Devoluciones</span><i>↩</i></div>
-          <strong id="kpiReturns">0</strong>
-          <small>Retornos registrados</small>
-        </article>
-      </section>
+      <section class="kpi-grid kpi-topbar" id="kpiGrid" aria-label="Indicadores principales"><article class="kpi-card"><div class="kpi-card-header"><span>Total de órdenes</span></div><strong id="kpiTotal">N/D</strong><small id="kpiGenerated">Órdenes únicas</small></article>
+<article class="kpi-card"><div class="kpi-card-header"><span>Entregas confirmadas</span></div><strong id="kpiDelivered">N/D</strong><small id="kpiDeliveredRate">Recepción del destinatario</small></article>
+<article class="kpi-card"><div class="kpi-card-header"><span>Órdenes activas</span></div><strong id="kpiActive">N/D</strong><small>Seguimiento pendiente</small></article>
+<article class="kpi-card"><div class="kpi-card-header"><span>Órdenes Warehouse</span></div><strong id="kpiWarehouse">N/D</strong><small>Con información de bodega</small></article>
+<article class="kpi-card"><div class="kpi-card-header"><span>Shipped</span></div><strong id="kpiShipped">N/D</strong><small>Salida de Warehouse</small></article>
+<article class="kpi-card"><div class="kpi-card-header"><span>Pendientes de recolección</span></div><strong id="kpiPending">N/D</strong><small>Datos recibidos por transporte</small></article>
+<article class="kpi-card"><div class="kpi-card-header"><span>En tránsito</span></div><strong id="kpiTransit">N/D</strong><small>Hito informado</small></article>
+<article class="kpi-card"><div class="kpi-card-header"><span>En reparto</span></div><strong id="kpiOutForDelivery">N/D</strong><small>Reparto confirmado</small></article>
+<article class="kpi-card"><div class="kpi-card-header"><span>Transporte propio</span></div><strong id="kpiOwn">N/D</strong><small>Entrega de Warehouse</small></article>
+<article class="kpi-card"><div class="kpi-card-header"><span>Tercerizadas</span></div><strong id="kpiCritical">N/D</strong><small>Gestión por tercero</small></article>
+<article class="kpi-card"><div class="kpi-card-header"><span>Devoluciones</span></div><strong id="kpiReturns">N/D</strong><small>Retorno informado</small></article>
+<article class="kpi-card"><div class="kpi-card-header"><span>Información insuficiente</span></div><strong id="kpiInsufficient">N/D</strong><small>Órdenes en revisión</small></article></section>
 
       <section class="dashboard-actions" aria-label="Acciones del dashboard">
         <button id="reloadBtn" class="primary-btn"><span>↻</span>Actualizar datos</button>
@@ -149,8 +124,8 @@
         <article class="panel compliance-panel">
           <div class="panel-header">
             <div>
-              <h3>Cumplimiento</h3>
-              <p>Porcentaje de envíos entregados sobre el total operativo.</p>
+              <h3>Entregas confirmadas</h3>
+              <p>Recepción confirmada del destinatario; no equivale al KPI SLA de Polaris.</p>
             </div>
           </div>
 
@@ -159,39 +134,6 @@
               <span>0%<small>Entregados</small></span>
             </div>
             <div id="donutLegend" class="donut-legend advanced-legend"></div>
-          </div>
-        </article>
-
-        <article class="panel stockout-panel">
-          <div class="panel-header">
-            <div>
-              <h3>Termómetro de quiebres de stock</h3>
-              <p>Ítems con mayor impacto por órdenes afectadas y unidades faltantes.</p>
-            </div>
-          </div>
-
-          <div class="stockout-layout">
-            <div class="thermometer-wrap" aria-hidden="true">
-              <div class="thermo-scale">
-                <span>100</span>
-                <span>75</span>
-                <span>50</span>
-                <span>25</span>
-                <span>0</span>
-              </div>
-
-              <div id="stockoutThermometer" class="thermometer" style="--level:0">
-                <div class="thermo-tube">
-                  <div class="thermo-fill"></div>
-                </div>
-                <div class="thermo-bulb"></div>
-              </div>
-            </div>
-
-            <div class="stockout-content">
-              <h4>Ítems críticos detectados</h4>
-              <div id="stockoutList" class="stockout-list empty-stockout"></div>
-            </div>
           </div>
         </article>
 
@@ -204,75 +146,6 @@
           </div>
           <div id="statusDistribution" class="status-distribution"></div>
         </article>
-      </section>
-
-      <section class="panel stock-breaks-section" id="stock-breaks">
-        <div class="panel-header stock-breaks-header">
-          <div>
-            <h3>Quiebres de stock</h3>
-            <p>Detalle operativo de órdenes, SKU y unidades faltantes publicado desde Supply Audit.</p>
-          </div>
-          <button id="exportStockBreaksBtn" class="mini-btn stock-export-btn"><span>⇩</span>Exportar quiebres</button>
-        </div>
-
-        <div class="stock-breaks-kpis" aria-label="Indicadores de quiebres de stock">
-          <article>
-            <span>Líneas con quiebre</span>
-            <strong id="stockBreakLinesKpi">0</strong>
-          </article>
-          <article>
-            <span>Órdenes afectadas</span>
-            <strong id="stockBreakOrdersKpi">0</strong>
-          </article>
-          <article>
-            <span>Unidades faltantes</span>
-            <strong id="stockBreakMissingKpi">0</strong>
-          </article>
-          <article>
-            <span>Tipo dominante</span>
-            <strong id="stockBreakDominantTypeKpi">-</strong>
-          </article>
-        </div>
-
-        <div class="stock-breaks-filters">
-          <label class="filter-control search-control">
-            <span>Buscar quiebre</span>
-            <input id="stockBreakSearch" type="search" placeholder="Buscar por orden, SKU o descripción..." />
-          </label>
-
-          <label class="filter-control">
-            <span>Tipo orden</span>
-            <select id="stockBreakTypeFilter">
-              <option value="">B2C + B2B</option>
-              <option value="B2C">B2C</option>
-              <option value="B2B">B2B</option>
-            </select>
-          </label>
-        </div>
-
-        <div class="stock-breaks-table-wrap">
-          <table class="stock-breaks-table">
-            <thead>
-              <tr>
-                <th>Orden</th>
-                <th>Tipo</th>
-                <th>SKU</th>
-                <th>Descripción</th>
-                <th>Solicitado</th>
-                <th>Disponible</th>
-                <th>Faltante</th>
-              </tr>
-            </thead>
-            <tbody id="stockBreaksTable">
-              <tr><td colspan="7" class="table-empty">Sin quiebres de stock para mostrar</td></tr>
-            </tbody>
-          </table>
-        </div>
-
-        <div class="stock-breaks-footer">
-          <span id="stockBreaksCounter">0 líneas</span>
-          <span id="stockBreaksMeta">Esperando información de Supply Audit.</span>
-        </div>
       </section>
 
       <section class="workspace" id="orders">
@@ -308,7 +181,7 @@
             <label class="filter-control">
               <span>Tipo orden</span>
               <select id="channelFilter">
-                <option value="">B2C + B2B</option>
+                <option value="">Todas las órdenes</option>
                 <option value="B2C">B2C</option>
                 <option value="B2B">B2B</option>
               </select>
@@ -322,7 +195,7 @@
             </label>
           </div>
 
-          <div class="table-wrap">
+          <div class="table-wrap" role="region" aria-label="Órdenes con progreso Warehouse y Transporte" tabindex="0">
             <table>
               <thead>
                 <tr>
@@ -331,17 +204,17 @@
                   <th><button class="sort-btn" data-sort="lastEventDate">Fecha</button></th>
                   <th><button class="sort-btn" data-sort="status">Estado</button></th>
                   <th><button class="sort-btn" data-sort="orderSegment">Tipo</button></th>
-                  <th><button class="sort-btn" data-sort="category">Categoría</button></th>
+                  <th>Warehouse</th><th>Transporte</th>
                 </tr>
               </thead>
               <tbody id="ordersTable">
-                <tr><td colspan="6" class="table-empty">Sin datos para mostrar</td></tr>
+                <tr><td colspan="7" class="table-empty">Sin datos para mostrar</td></tr>
               </tbody>
             </table>
           </div>
 
           <div class="table-toolbar table-toolbar-scroll">
-            <span id="pageInfo">Mostrando 0 envíos</span>
+            <button id="prevPageBtn" class="mini-btn" disabled>Anterior</button><span id="pageInfo">Sin órdenes</span><button id="nextPageBtn" class="mini-btn" disabled>Siguiente</button>
           </div>
         </article>
 
@@ -365,6 +238,7 @@
   </div>
 
   <div id="toast" class="toast hidden" role="status" aria-live="polite"></div>
-  <script src="js/app.js?v=wms-scroll-table-20260710"></script>
+  <script src="js/tracking-contract.js?v=vnext-001"></script>
+  <script src="js/app.js?v=vnext-001"></script>
 </body>
 </html>
