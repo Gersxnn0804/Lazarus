@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.2.0",
-  "generatedAt": "2026-10-21T09:10:55",
+  "generatedAt": "2026-10-21T10:10:46",
   "source": {
     "platform": "Polaris",
     "module": "Tracking",
@@ -30,14 +30,14 @@
   },
   "inventoryThermometer": {
     "available": false,
-    "generatedAt": "2026-10-21T09:10:55",
+    "generatedAt": "2026-10-21T10:10:46",
     "totalAuditOrders": 0,
     "totalNoFillOrders": 0,
     "topCriticalItems": []
   },
   "supplyAudit": {
     "available": false,
-    "generatedAt": "2026-10-21T09:10:55",
+    "generatedAt": "2026-10-21T10:10:46",
     "summary": {
       "totalOrders": 0,
       "fullFill": 0,
@@ -29720,8 +29720,8 @@
       "order": "LT000000000000105997",
       "waybill": "",
       "lastEventDate": "",
-      "status": "Packed",
-      "category": "Pendiente",
+      "status": "ENTREGADA",
+      "category": "Finalizado",
       "orderType": "B2BDOR",
       "order_type": "B2BDOR",
       "signedBy": "",
@@ -29729,18 +29729,18 @@
       "shipmentState": "",
       "originalStatus": "",
       "originalComment": "",
-      "warehouseStatus": "Packed",
-      "transportStatus": "",
+      "warehouseStatus": "Shipped",
+      "transportStatus": "Entregada",
       "transportHandover": {
-        "confirmed": false,
-        "mode": "",
-        "source": "",
-        "message": ""
+        "confirmed": true,
+        "mode": "own",
+        "source": "Warehouse",
+        "message": "Entregada a transporte propio."
       },
       "deliveryConfirmed": false,
       "deliveryDate": "",
       "incidents": [],
-      "lastEventLabel": "Packed",
+      "lastEventLabel": "ENTREGADA",
       "lastEventDescription": ""
     },
     {
@@ -30179,8 +30179,8 @@
       "order": "LT000000000000106323",
       "waybill": "",
       "lastEventDate": "",
-      "status": "Packed",
-      "category": "Pendiente",
+      "status": "ENTREGADA",
+      "category": "Finalizado",
       "orderType": "B2BDOR",
       "order_type": "B2BDOR",
       "signedBy": "",
@@ -30188,18 +30188,18 @@
       "shipmentState": "",
       "originalStatus": "",
       "originalComment": "",
-      "warehouseStatus": "Packed",
-      "transportStatus": "",
+      "warehouseStatus": "Shipped",
+      "transportStatus": "Entregada",
       "transportHandover": {
-        "confirmed": false,
-        "mode": "",
-        "source": "",
-        "message": ""
+        "confirmed": true,
+        "mode": "own",
+        "source": "Warehouse",
+        "message": "Entregada a transporte propio."
       },
       "deliveryConfirmed": false,
       "deliveryDate": "",
       "incidents": [],
-      "lastEventLabel": "Packed",
+      "lastEventLabel": "ENTREGADA",
       "lastEventDescription": ""
     },
     {
@@ -30503,8 +30503,8 @@
       "order": "LT000000000000106469",
       "waybill": "",
       "lastEventDate": "",
-      "status": "Packed",
-      "category": "Pendiente",
+      "status": "ENTREGADA",
+      "category": "Finalizado",
       "orderType": "B2BDOR",
       "order_type": "B2BDOR",
       "signedBy": "",
@@ -30512,18 +30512,18 @@
       "shipmentState": "",
       "originalStatus": "",
       "originalComment": "",
-      "warehouseStatus": "Packed",
-      "transportStatus": "",
+      "warehouseStatus": "Shipped",
+      "transportStatus": "Entregada",
       "transportHandover": {
-        "confirmed": false,
-        "mode": "",
-        "source": "",
-        "message": ""
+        "confirmed": true,
+        "mode": "own",
+        "source": "Warehouse",
+        "message": "Entregada a transporte propio."
       },
       "deliveryConfirmed": false,
       "deliveryDate": "",
       "incidents": [],
-      "lastEventLabel": "Packed",
+      "lastEventLabel": "ENTREGADA",
       "lastEventDescription": ""
     },
     {
@@ -30746,8 +30746,8 @@
       "order": "LT000000000000106662",
       "waybill": "",
       "lastEventDate": "",
-      "status": "Packed",
-      "category": "Pendiente",
+      "status": "ENTREGADA",
+      "category": "Finalizado",
       "orderType": "B2BDOR",
       "order_type": "B2BDOR",
       "signedBy": "",
@@ -30755,18 +30755,18 @@
       "shipmentState": "",
       "originalStatus": "",
       "originalComment": "",
-      "warehouseStatus": "Packed",
-      "transportStatus": "",
+      "warehouseStatus": "Shipped",
+      "transportStatus": "Entregada",
       "transportHandover": {
-        "confirmed": false,
-        "mode": "",
-        "source": "",
-        "message": ""
+        "confirmed": true,
+        "mode": "own",
+        "source": "Warehouse",
+        "message": "Entregada a transporte propio."
       },
       "deliveryConfirmed": false,
       "deliveryDate": "",
       "incidents": [],
-      "lastEventLabel": "Packed",
+      "lastEventLabel": "ENTREGADA",
       "lastEventDescription": ""
     },
     {
@@ -31799,8 +31799,8 @@
       "order": "LT000000000000107048",
       "waybill": "",
       "lastEventDate": "",
-      "status": "Packed",
-      "category": "Pendiente",
+      "status": "ENTREGADA",
+      "category": "Finalizado",
       "orderType": "B2BDOR",
       "order_type": "B2BDOR",
       "signedBy": "",
@@ -31808,18 +31808,18 @@
       "shipmentState": "",
       "originalStatus": "",
       "originalComment": "",
-      "warehouseStatus": "Packed",
-      "transportStatus": "",
+      "warehouseStatus": "Shipped",
+      "transportStatus": "Entregada",
       "transportHandover": {
-        "confirmed": false,
-        "mode": "",
-        "source": "",
-        "message": ""
+        "confirmed": true,
+        "mode": "own",
+        "source": "Warehouse",
+        "message": "Entregada a transporte propio."
       },
       "deliveryConfirmed": false,
       "deliveryDate": "",
       "incidents": [],
-      "lastEventLabel": "Packed",
+      "lastEventLabel": "ENTREGADA",
       "lastEventDescription": ""
     },
     {
@@ -31910,8 +31910,8 @@
       "order": "LT000000000000107070",
       "waybill": "",
       "lastEventDate": "",
-      "status": "Packed",
-      "category": "Pendiente",
+      "status": "ENTREGADA",
+      "category": "Finalizado",
       "orderType": "B2BDOR",
       "order_type": "B2BDOR",
       "signedBy": "",
@@ -31919,18 +31919,18 @@
       "shipmentState": "",
       "originalStatus": "",
       "originalComment": "",
-      "warehouseStatus": "Packed",
-      "transportStatus": "",
+      "warehouseStatus": "Shipped",
+      "transportStatus": "Entregada",
       "transportHandover": {
-        "confirmed": false,
-        "mode": "",
-        "source": "",
-        "message": ""
+        "confirmed": true,
+        "mode": "own",
+        "source": "Warehouse",
+        "message": "Entregada a transporte propio."
       },
       "deliveryConfirmed": false,
       "deliveryDate": "",
       "incidents": [],
-      "lastEventLabel": "Packed",
+      "lastEventLabel": "ENTREGADA",
       "lastEventDescription": ""
     },
     {
@@ -32963,8 +32963,8 @@
       "order": "LT000000000000107446",
       "waybill": "",
       "lastEventDate": "",
-      "status": "Packed",
-      "category": "Pendiente",
+      "status": "ENTREGADA",
+      "category": "Finalizado",
       "orderType": "B2BDOR",
       "order_type": "B2BDOR",
       "signedBy": "",
@@ -32972,26 +32972,26 @@
       "shipmentState": "",
       "originalStatus": "",
       "originalComment": "",
-      "warehouseStatus": "Packed",
-      "transportStatus": "",
+      "warehouseStatus": "Shipped",
+      "transportStatus": "Entregada",
       "transportHandover": {
-        "confirmed": false,
-        "mode": "",
-        "source": "",
-        "message": ""
+        "confirmed": true,
+        "mode": "own",
+        "source": "Warehouse",
+        "message": "Entregada a transporte propio."
       },
       "deliveryConfirmed": false,
       "deliveryDate": "",
       "incidents": [],
-      "lastEventLabel": "Packed",
+      "lastEventLabel": "ENTREGADA",
       "lastEventDescription": ""
     },
     {
       "order": "LT000000000000107451",
       "waybill": "",
       "lastEventDate": "",
-      "status": "Packed",
-      "category": "Pendiente",
+      "status": "ENTREGADA",
+      "category": "Finalizado",
       "orderType": "B2BDOR",
       "order_type": "B2BDOR",
       "signedBy": "",
@@ -32999,18 +32999,18 @@
       "shipmentState": "",
       "originalStatus": "",
       "originalComment": "",
-      "warehouseStatus": "Packed",
-      "transportStatus": "",
+      "warehouseStatus": "Shipped",
+      "transportStatus": "Entregada",
       "transportHandover": {
-        "confirmed": false,
-        "mode": "",
-        "source": "",
-        "message": ""
+        "confirmed": true,
+        "mode": "own",
+        "source": "Warehouse",
+        "message": "Entregada a transporte propio."
       },
       "deliveryConfirmed": false,
       "deliveryDate": "",
       "incidents": [],
-      "lastEventLabel": "Packed",
+      "lastEventLabel": "ENTREGADA",
       "lastEventDescription": ""
     },
     {
@@ -33611,8 +33611,8 @@
       "order": "LT000000000000107743",
       "waybill": "",
       "lastEventDate": "",
-      "status": "Packed",
-      "category": "Pendiente",
+      "status": "ENTREGADA",
+      "category": "Finalizado",
       "orderType": "B2BDOR",
       "order_type": "B2BDOR",
       "signedBy": "",
@@ -33620,18 +33620,18 @@
       "shipmentState": "",
       "originalStatus": "",
       "originalComment": "",
-      "warehouseStatus": "Packed",
-      "transportStatus": "",
+      "warehouseStatus": "Shipped",
+      "transportStatus": "Entregada",
       "transportHandover": {
-        "confirmed": false,
-        "mode": "",
-        "source": "",
-        "message": ""
+        "confirmed": true,
+        "mode": "own",
+        "source": "Warehouse",
+        "message": "Entregada a transporte propio."
       },
       "deliveryConfirmed": false,
       "deliveryDate": "",
       "incidents": [],
-      "lastEventLabel": "Packed",
+      "lastEventLabel": "ENTREGADA",
       "lastEventDescription": ""
     },
     {
@@ -33665,8 +33665,8 @@
       "order": "LT000000000000107799",
       "waybill": "",
       "lastEventDate": "",
-      "status": "Packed",
-      "category": "Pendiente",
+      "status": "ENTREGADA",
+      "category": "Finalizado",
       "orderType": "B2BDOR",
       "order_type": "B2BDOR",
       "signedBy": "",
@@ -33674,18 +33674,18 @@
       "shipmentState": "",
       "originalStatus": "",
       "originalComment": "",
-      "warehouseStatus": "Packed",
-      "transportStatus": "",
+      "warehouseStatus": "Shipped",
+      "transportStatus": "Entregada",
       "transportHandover": {
-        "confirmed": false,
-        "mode": "",
-        "source": "",
-        "message": ""
+        "confirmed": true,
+        "mode": "own",
+        "source": "Warehouse",
+        "message": "Entregada a transporte propio."
       },
       "deliveryConfirmed": false,
       "deliveryDate": "",
       "incidents": [],
-      "lastEventLabel": "Packed",
+      "lastEventLabel": "ENTREGADA",
       "lastEventDescription": ""
     },
     {
@@ -34882,8 +34882,8 @@
       "order": "LT000000000000108132",
       "waybill": "",
       "lastEventDate": "",
-      "status": "Packed",
-      "category": "Pendiente",
+      "status": "ENTREGADA",
+      "category": "Finalizado",
       "orderType": "B2BDOR",
       "order_type": "B2BDOR",
       "signedBy": "",
@@ -34891,18 +34891,18 @@
       "shipmentState": "",
       "originalStatus": "",
       "originalComment": "",
-      "warehouseStatus": "Packed",
-      "transportStatus": "",
+      "warehouseStatus": "Shipped",
+      "transportStatus": "Entregada",
       "transportHandover": {
-        "confirmed": false,
-        "mode": "",
-        "source": "",
-        "message": ""
+        "confirmed": true,
+        "mode": "own",
+        "source": "Warehouse",
+        "message": "Entregada a transporte propio."
       },
       "deliveryConfirmed": false,
       "deliveryDate": "",
       "incidents": [],
-      "lastEventLabel": "Packed",
+      "lastEventLabel": "ENTREGADA",
       "lastEventDescription": ""
     },
     {
@@ -35101,8 +35101,8 @@
       "order": "LT000000000000108210",
       "waybill": "",
       "lastEventDate": "",
-      "status": "Packed",
-      "category": "Pendiente",
+      "status": "ENTREGADA",
+      "category": "Finalizado",
       "orderType": "B2BDOR",
       "order_type": "B2BDOR",
       "signedBy": "",
@@ -35110,18 +35110,18 @@
       "shipmentState": "",
       "originalStatus": "",
       "originalComment": "",
-      "warehouseStatus": "Packed",
-      "transportStatus": "",
+      "warehouseStatus": "Shipped",
+      "transportStatus": "Entregada",
       "transportHandover": {
-        "confirmed": false,
-        "mode": "",
-        "source": "",
-        "message": ""
+        "confirmed": true,
+        "mode": "own",
+        "source": "Warehouse",
+        "message": "Entregada a transporte propio."
       },
       "deliveryConfirmed": false,
       "deliveryDate": "",
       "incidents": [],
-      "lastEventLabel": "Packed",
+      "lastEventLabel": "ENTREGADA",
       "lastEventDescription": ""
     },
     {
@@ -35155,8 +35155,8 @@
       "order": "LT000000000000108267",
       "waybill": "",
       "lastEventDate": "",
-      "status": "Packed",
-      "category": "Pendiente",
+      "status": "ENTREGADA",
+      "category": "Finalizado",
       "orderType": "B2BDOR",
       "order_type": "B2BDOR",
       "signedBy": "",
@@ -35164,18 +35164,18 @@
       "shipmentState": "",
       "originalStatus": "",
       "originalComment": "",
-      "warehouseStatus": "Packed",
-      "transportStatus": "",
+      "warehouseStatus": "Shipped",
+      "transportStatus": "Entregada",
       "transportHandover": {
-        "confirmed": false,
-        "mode": "",
-        "source": "",
-        "message": ""
+        "confirmed": true,
+        "mode": "own",
+        "source": "Warehouse",
+        "message": "Entregada a transporte propio."
       },
       "deliveryConfirmed": false,
       "deliveryDate": "",
       "incidents": [],
-      "lastEventLabel": "Packed",
+      "lastEventLabel": "ENTREGADA",
       "lastEventDescription": ""
     },
     {
@@ -35454,8 +35454,8 @@
       "order": "LT000000000000108460",
       "waybill": "",
       "lastEventDate": "",
-      "status": "Packed",
-      "category": "Pendiente",
+      "status": "ENTREGADA",
+      "category": "Finalizado",
       "orderType": "B2BDOR",
       "order_type": "B2BDOR",
       "signedBy": "",
@@ -35463,18 +35463,18 @@
       "shipmentState": "",
       "originalStatus": "",
       "originalComment": "",
-      "warehouseStatus": "Packed",
-      "transportStatus": "",
+      "warehouseStatus": "Shipped",
+      "transportStatus": "Entregada",
       "transportHandover": {
-        "confirmed": false,
-        "mode": "",
-        "source": "",
-        "message": ""
+        "confirmed": true,
+        "mode": "own",
+        "source": "Warehouse",
+        "message": "Entregada a transporte propio."
       },
       "deliveryConfirmed": false,
       "deliveryDate": "",
       "incidents": [],
-      "lastEventLabel": "Packed",
+      "lastEventLabel": "ENTREGADA",
       "lastEventDescription": ""
     },
     {
@@ -35697,8 +35697,8 @@
       "order": "LT000000000000108524",
       "waybill": "",
       "lastEventDate": "",
-      "status": "Packed",
-      "category": "Pendiente",
+      "status": "ENTREGADA",
+      "category": "Finalizado",
       "orderType": "B2BDOR",
       "order_type": "B2BDOR",
       "signedBy": "",
@@ -35706,26 +35706,26 @@
       "shipmentState": "",
       "originalStatus": "",
       "originalComment": "",
-      "warehouseStatus": "Packed",
-      "transportStatus": "",
+      "warehouseStatus": "Shipped",
+      "transportStatus": "Entregada",
       "transportHandover": {
-        "confirmed": false,
-        "mode": "",
-        "source": "",
-        "message": ""
+        "confirmed": true,
+        "mode": "own",
+        "source": "Warehouse",
+        "message": "Entregada a transporte propio."
       },
       "deliveryConfirmed": false,
       "deliveryDate": "",
       "incidents": [],
-      "lastEventLabel": "Packed",
+      "lastEventLabel": "ENTREGADA",
       "lastEventDescription": ""
     },
     {
       "order": "LT000000000000108542",
       "waybill": "",
       "lastEventDate": "",
-      "status": "Packed",
-      "category": "Pendiente",
+      "status": "ENTREGADA",
+      "category": "Finalizado",
       "orderType": "B2BDOR",
       "order_type": "B2BDOR",
       "signedBy": "",
@@ -35733,18 +35733,18 @@
       "shipmentState": "",
       "originalStatus": "",
       "originalComment": "",
-      "warehouseStatus": "Packed",
-      "transportStatus": "",
+      "warehouseStatus": "Shipped",
+      "transportStatus": "Entregada",
       "transportHandover": {
-        "confirmed": false,
-        "mode": "",
-        "source": "",
-        "message": ""
+        "confirmed": true,
+        "mode": "own",
+        "source": "Warehouse",
+        "message": "Entregada a transporte propio."
       },
       "deliveryConfirmed": false,
       "deliveryDate": "",
       "incidents": [],
-      "lastEventLabel": "Packed",
+      "lastEventLabel": "ENTREGADA",
       "lastEventDescription": ""
     },
     {
@@ -36189,8 +36189,8 @@
       "order": "LT000000000000108705",
       "waybill": "",
       "lastEventDate": "",
-      "status": "Packed",
-      "category": "Pendiente",
+      "status": "ENTREGADA",
+      "category": "Finalizado",
       "orderType": "B2BDOR",
       "order_type": "B2BDOR",
       "signedBy": "",
@@ -36198,18 +36198,18 @@
       "shipmentState": "",
       "originalStatus": "",
       "originalComment": "",
-      "warehouseStatus": "Packed",
-      "transportStatus": "",
+      "warehouseStatus": "Shipped",
+      "transportStatus": "Entregada",
       "transportHandover": {
-        "confirmed": false,
-        "mode": "",
-        "source": "",
-        "message": ""
+        "confirmed": true,
+        "mode": "own",
+        "source": "Warehouse",
+        "message": "Entregada a transporte propio."
       },
       "deliveryConfirmed": false,
       "deliveryDate": "",
       "incidents": [],
-      "lastEventLabel": "Packed",
+      "lastEventLabel": "ENTREGADA",
       "lastEventDescription": ""
     },
     {
@@ -36299,8 +36299,8 @@
       "order": "LT000000000000108766",
       "waybill": "",
       "lastEventDate": "",
-      "status": "Packed",
-      "category": "Pendiente",
+      "status": "ENTREGADA",
+      "category": "Finalizado",
       "orderType": "B2BDOR",
       "order_type": "B2BDOR",
       "signedBy": "",
@@ -36308,18 +36308,18 @@
       "shipmentState": "",
       "originalStatus": "",
       "originalComment": "",
-      "warehouseStatus": "Packed",
-      "transportStatus": "",
+      "warehouseStatus": "Shipped",
+      "transportStatus": "Entregada",
       "transportHandover": {
-        "confirmed": false,
-        "mode": "",
-        "source": "",
-        "message": ""
+        "confirmed": true,
+        "mode": "own",
+        "source": "Warehouse",
+        "message": "Entregada a transporte propio."
       },
       "deliveryConfirmed": false,
       "deliveryDate": "",
       "incidents": [],
-      "lastEventLabel": "Packed",
+      "lastEventLabel": "ENTREGADA",
       "lastEventDescription": ""
     },
     {
@@ -36874,8 +36874,8 @@
       "order": "LT000000000000108931",
       "waybill": "",
       "lastEventDate": "",
-      "status": "Packed",
-      "category": "Pendiente",
+      "status": "ENTREGADA",
+      "category": "Finalizado",
       "orderType": "B2BDOR",
       "order_type": "B2BDOR",
       "signedBy": "",
@@ -36883,18 +36883,18 @@
       "shipmentState": "",
       "originalStatus": "",
       "originalComment": "",
-      "warehouseStatus": "Packed",
-      "transportStatus": "",
+      "warehouseStatus": "Shipped",
+      "transportStatus": "Entregada",
       "transportHandover": {
-        "confirmed": false,
-        "mode": "",
-        "source": "",
-        "message": ""
+        "confirmed": true,
+        "mode": "own",
+        "source": "Warehouse",
+        "message": "Entregada a transporte propio."
       },
       "deliveryConfirmed": false,
       "deliveryDate": "",
       "incidents": [],
-      "lastEventLabel": "Packed",
+      "lastEventLabel": "ENTREGADA",
       "lastEventDescription": ""
     },
     {
@@ -37090,8 +37090,8 @@
       "order": "LT000000000000108987",
       "waybill": "",
       "lastEventDate": "",
-      "status": "Packed",
-      "category": "Pendiente",
+      "status": "ENTREGADA",
+      "category": "Finalizado",
       "orderType": "B2BDOR",
       "order_type": "B2BDOR",
       "signedBy": "",
@@ -37099,18 +37099,18 @@
       "shipmentState": "",
       "originalStatus": "",
       "originalComment": "",
-      "warehouseStatus": "Packed",
-      "transportStatus": "",
+      "warehouseStatus": "Shipped",
+      "transportStatus": "Entregada",
       "transportHandover": {
-        "confirmed": false,
-        "mode": "",
-        "source": "",
-        "message": ""
+        "confirmed": true,
+        "mode": "own",
+        "source": "Warehouse",
+        "message": "Entregada a transporte propio."
       },
       "deliveryConfirmed": false,
       "deliveryDate": "",
       "incidents": [],
-      "lastEventLabel": "Packed",
+      "lastEventLabel": "ENTREGADA",
       "lastEventDescription": ""
     },
     {
@@ -38345,8 +38345,8 @@
       "order": "LT000000000000109478",
       "waybill": "",
       "lastEventDate": "",
-      "status": "Packed",
-      "category": "Pendiente",
+      "status": "ENTREGADA",
+      "category": "Finalizado",
       "orderType": "B2BDOR",
       "order_type": "B2BDOR",
       "signedBy": "",
@@ -38354,18 +38354,18 @@
       "shipmentState": "",
       "originalStatus": "",
       "originalComment": "",
-      "warehouseStatus": "Packed",
-      "transportStatus": "",
+      "warehouseStatus": "Shipped",
+      "transportStatus": "Entregada",
       "transportHandover": {
-        "confirmed": false,
-        "mode": "",
-        "source": "",
-        "message": ""
+        "confirmed": true,
+        "mode": "own",
+        "source": "Warehouse",
+        "message": "Entregada a transporte propio."
       },
       "deliveryConfirmed": false,
       "deliveryDate": "",
       "incidents": [],
-      "lastEventLabel": "Packed",
+      "lastEventLabel": "ENTREGADA",
       "lastEventDescription": ""
     },
     {
@@ -38565,8 +38565,8 @@
       "order": "LT000000000000109600",
       "waybill": "",
       "lastEventDate": "",
-      "status": "Packed",
-      "category": "Pendiente",
+      "status": "ENTREGADA",
+      "category": "Finalizado",
       "orderType": "B2BDOR",
       "order_type": "B2BDOR",
       "signedBy": "",
@@ -38574,26 +38574,26 @@
       "shipmentState": "",
       "originalStatus": "",
       "originalComment": "",
-      "warehouseStatus": "Packed",
-      "transportStatus": "",
+      "warehouseStatus": "Shipped",
+      "transportStatus": "Entregada",
       "transportHandover": {
-        "confirmed": false,
-        "mode": "",
-        "source": "",
-        "message": ""
+        "confirmed": true,
+        "mode": "own",
+        "source": "Warehouse",
+        "message": "Entregada a transporte propio."
       },
       "deliveryConfirmed": false,
       "deliveryDate": "",
       "incidents": [],
-      "lastEventLabel": "Packed",
+      "lastEventLabel": "ENTREGADA",
       "lastEventDescription": ""
     },
     {
       "order": "LT000000000000109603",
       "waybill": "",
       "lastEventDate": "",
-      "status": "Packed",
-      "category": "Pendiente",
+      "status": "ENTREGADA",
+      "category": "Finalizado",
       "orderType": "B2BDOR",
       "order_type": "B2BDOR",
       "signedBy": "",
@@ -38601,18 +38601,18 @@
       "shipmentState": "",
       "originalStatus": "",
       "originalComment": "",
-      "warehouseStatus": "Packed",
-      "transportStatus": "",
+      "warehouseStatus": "Shipped",
+      "transportStatus": "Entregada",
       "transportHandover": {
-        "confirmed": false,
-        "mode": "",
-        "source": "",
-        "message": ""
+        "confirmed": true,
+        "mode": "own",
+        "source": "Warehouse",
+        "message": "Entregada a transporte propio."
       },
       "deliveryConfirmed": false,
       "deliveryDate": "",
       "incidents": [],
-      "lastEventLabel": "Packed",
+      "lastEventLabel": "ENTREGADA",
       "lastEventDescription": ""
     },
     {
@@ -38987,7 +38987,7 @@
       "shipmentState": "Shipment Data Received",
       "originalStatus": "",
       "originalComment": "",
-      "warehouseStatus": "Manifested",
+      "warehouseStatus": "Shipped",
       "transportStatus": "",
       "transportHandover": {
         "confirmed": false,
@@ -38998,8 +38998,7 @@
       "deliveryConfirmed": false,
       "deliveryDate": "",
       "incidents": [
-        "PENDIENTE DE RECOLECCION",
-        "WAREHOUSE_TRANSPORT_SYNC"
+        "PENDIENTE DE RECOLECCION"
       ],
       "lastEventLabel": "PENDIENTE DE RECOLECCION",
       "lastEventDescription": "Shipment Data Received"
@@ -39071,7 +39070,7 @@
       "shipmentState": "Shipment Data Received",
       "originalStatus": "",
       "originalComment": "",
-      "warehouseStatus": "Manifested",
+      "warehouseStatus": "Shipped",
       "transportStatus": "",
       "transportHandover": {
         "confirmed": false,
@@ -39082,8 +39081,7 @@
       "deliveryConfirmed": false,
       "deliveryDate": "",
       "incidents": [
-        "PENDIENTE DE RECOLECCION",
-        "WAREHOUSE_TRANSPORT_SYNC"
+        "PENDIENTE DE RECOLECCION"
       ],
       "lastEventLabel": "PENDIENTE DE RECOLECCION",
       "lastEventDescription": "Shipment Data Received"
@@ -39101,7 +39099,7 @@
       "shipmentState": "Shipment Data Received",
       "originalStatus": "",
       "originalComment": "",
-      "warehouseStatus": "Manifested",
+      "warehouseStatus": "Shipped",
       "transportStatus": "",
       "transportHandover": {
         "confirmed": false,
@@ -39112,8 +39110,7 @@
       "deliveryConfirmed": false,
       "deliveryDate": "",
       "incidents": [
-        "PENDIENTE DE RECOLECCION",
-        "WAREHOUSE_TRANSPORT_SYNC"
+        "PENDIENTE DE RECOLECCION"
       ],
       "lastEventLabel": "PENDIENTE DE RECOLECCION",
       "lastEventDescription": "Shipment Data Received"
@@ -39158,7 +39155,7 @@
       "shipmentState": "Shipment Data Received",
       "originalStatus": "",
       "originalComment": "",
-      "warehouseStatus": "Manifested",
+      "warehouseStatus": "Shipped",
       "transportStatus": "",
       "transportHandover": {
         "confirmed": false,
@@ -39169,8 +39166,7 @@
       "deliveryConfirmed": false,
       "deliveryDate": "",
       "incidents": [
-        "PENDIENTE DE RECOLECCION",
-        "WAREHOUSE_TRANSPORT_SYNC"
+        "PENDIENTE DE RECOLECCION"
       ],
       "lastEventLabel": "PENDIENTE DE RECOLECCION",
       "lastEventDescription": "Shipment Data Received"
@@ -39377,7 +39373,7 @@
       "shipmentState": "Shipment Data Received",
       "originalStatus": "",
       "originalComment": "",
-      "warehouseStatus": "Manifested",
+      "warehouseStatus": "Shipped",
       "transportStatus": "",
       "transportHandover": {
         "confirmed": false,
@@ -39388,8 +39384,7 @@
       "deliveryConfirmed": false,
       "deliveryDate": "",
       "incidents": [
-        "PENDIENTE DE RECOLECCION",
-        "WAREHOUSE_TRANSPORT_SYNC"
+        "PENDIENTE DE RECOLECCION"
       ],
       "lastEventLabel": "PENDIENTE DE RECOLECCION",
       "lastEventDescription": "Shipment Data Received"
@@ -39461,7 +39456,7 @@
       "shipmentState": "Shipment Data Received",
       "originalStatus": "",
       "originalComment": "",
-      "warehouseStatus": "Manifested",
+      "warehouseStatus": "Shipped",
       "transportStatus": "",
       "transportHandover": {
         "confirmed": false,
@@ -39472,8 +39467,7 @@
       "deliveryConfirmed": false,
       "deliveryDate": "",
       "incidents": [
-        "PENDIENTE DE RECOLECCION",
-        "WAREHOUSE_TRANSPORT_SYNC"
+        "PENDIENTE DE RECOLECCION"
       ],
       "lastEventLabel": "PENDIENTE DE RECOLECCION",
       "lastEventDescription": "Shipment Data Received"
@@ -39482,7 +39476,7 @@
       "order": "LT000000000000110135",
       "waybill": "",
       "lastEventDate": "",
-      "status": "Manifested",
+      "status": "Shipped",
       "category": "Pendiente",
       "orderType": "B2C",
       "order_type": "B2C",
@@ -39491,7 +39485,7 @@
       "shipmentState": "",
       "originalStatus": "",
       "originalComment": "",
-      "warehouseStatus": "Manifested",
+      "warehouseStatus": "Shipped",
       "transportStatus": "",
       "transportHandover": {
         "confirmed": false,
@@ -39502,14 +39496,14 @@
       "deliveryConfirmed": false,
       "deliveryDate": "",
       "incidents": [],
-      "lastEventLabel": "Manifested",
+      "lastEventLabel": "Shipped",
       "lastEventDescription": ""
     },
     {
       "order": "LT000000000000110141",
       "waybill": "",
       "lastEventDate": "",
-      "status": "Manifested",
+      "status": "Shipped",
       "category": "Pendiente",
       "orderType": "B2C",
       "order_type": "B2C",
@@ -39518,7 +39512,7 @@
       "shipmentState": "",
       "originalStatus": "",
       "originalComment": "",
-      "warehouseStatus": "Manifested",
+      "warehouseStatus": "Shipped",
       "transportStatus": "",
       "transportHandover": {
         "confirmed": false,
@@ -39529,14 +39523,14 @@
       "deliveryConfirmed": false,
       "deliveryDate": "",
       "incidents": [],
-      "lastEventLabel": "Manifested",
+      "lastEventLabel": "Shipped",
       "lastEventDescription": ""
     },
     {
       "order": "LT000000000000110147",
       "waybill": "",
       "lastEventDate": "",
-      "status": "Manifested",
+      "status": "Shipped",
       "category": "Pendiente",
       "orderType": "B2C",
       "order_type": "B2C",
@@ -39545,7 +39539,7 @@
       "shipmentState": "",
       "originalStatus": "",
       "originalComment": "",
-      "warehouseStatus": "Manifested",
+      "warehouseStatus": "Shipped",
       "transportStatus": "",
       "transportHandover": {
         "confirmed": false,
@@ -39556,7 +39550,7 @@
       "deliveryConfirmed": false,
       "deliveryDate": "",
       "incidents": [],
-      "lastEventLabel": "Manifested",
+      "lastEventLabel": "Shipped",
       "lastEventDescription": ""
     },
     {
@@ -39617,7 +39611,7 @@
       "order": "LT000000000000110195",
       "waybill": "",
       "lastEventDate": "",
-      "status": "Manifested",
+      "status": "Shipped",
       "category": "Pendiente",
       "orderType": "B2C",
       "order_type": "B2C",
@@ -39626,7 +39620,7 @@
       "shipmentState": "",
       "originalStatus": "",
       "originalComment": "",
-      "warehouseStatus": "Manifested",
+      "warehouseStatus": "Shipped",
       "transportStatus": "",
       "transportHandover": {
         "confirmed": false,
@@ -39637,14 +39631,14 @@
       "deliveryConfirmed": false,
       "deliveryDate": "",
       "incidents": [],
-      "lastEventLabel": "Manifested",
+      "lastEventLabel": "Shipped",
       "lastEventDescription": ""
     },
     {
       "order": "LT000000000000110203",
       "waybill": "",
       "lastEventDate": "",
-      "status": "Manifested",
+      "status": "Shipped",
       "category": "Pendiente",
       "orderType": "B2C",
       "order_type": "B2C",
@@ -39653,7 +39647,7 @@
       "shipmentState": "",
       "originalStatus": "",
       "originalComment": "",
-      "warehouseStatus": "Manifested",
+      "warehouseStatus": "Shipped",
       "transportStatus": "",
       "transportHandover": {
         "confirmed": false,
@@ -39664,14 +39658,14 @@
       "deliveryConfirmed": false,
       "deliveryDate": "",
       "incidents": [],
-      "lastEventLabel": "Manifested",
+      "lastEventLabel": "Shipped",
       "lastEventDescription": ""
     },
     {
       "order": "LT000000000000110204",
       "waybill": "",
       "lastEventDate": "",
-      "status": "Manifested",
+      "status": "Shipped",
       "category": "Pendiente",
       "orderType": "B2C",
       "order_type": "B2C",
@@ -39680,7 +39674,7 @@
       "shipmentState": "",
       "originalStatus": "",
       "originalComment": "",
-      "warehouseStatus": "Manifested",
+      "warehouseStatus": "Shipped",
       "transportStatus": "",
       "transportHandover": {
         "confirmed": false,
@@ -39691,14 +39685,14 @@
       "deliveryConfirmed": false,
       "deliveryDate": "",
       "incidents": [],
-      "lastEventLabel": "Manifested",
+      "lastEventLabel": "Shipped",
       "lastEventDescription": ""
     },
     {
       "order": "LT000000000000110223",
       "waybill": "",
       "lastEventDate": "",
-      "status": "Manifested",
+      "status": "Shipped",
       "category": "Pendiente",
       "orderType": "B2C",
       "order_type": "B2C",
@@ -39707,7 +39701,7 @@
       "shipmentState": "",
       "originalStatus": "",
       "originalComment": "",
-      "warehouseStatus": "Manifested",
+      "warehouseStatus": "Shipped",
       "transportStatus": "",
       "transportHandover": {
         "confirmed": false,
@@ -39718,14 +39712,14 @@
       "deliveryConfirmed": false,
       "deliveryDate": "",
       "incidents": [],
-      "lastEventLabel": "Manifested",
+      "lastEventLabel": "Shipped",
       "lastEventDescription": ""
     },
     {
       "order": "LT000000000000110228",
       "waybill": "",
       "lastEventDate": "",
-      "status": "Manifested",
+      "status": "Shipped",
       "category": "Pendiente",
       "orderType": "B2C",
       "order_type": "B2C",
@@ -39734,7 +39728,7 @@
       "shipmentState": "",
       "originalStatus": "",
       "originalComment": "",
-      "warehouseStatus": "Manifested",
+      "warehouseStatus": "Shipped",
       "transportStatus": "",
       "transportHandover": {
         "confirmed": false,
@@ -39745,14 +39739,14 @@
       "deliveryConfirmed": false,
       "deliveryDate": "",
       "incidents": [],
-      "lastEventLabel": "Manifested",
+      "lastEventLabel": "Shipped",
       "lastEventDescription": ""
     },
     {
       "order": "LT000000000000110300",
       "waybill": "",
       "lastEventDate": "",
-      "status": "Manifested",
+      "status": "Shipped",
       "category": "Pendiente",
       "orderType": "B2C",
       "order_type": "B2C",
@@ -39761,7 +39755,7 @@
       "shipmentState": "",
       "originalStatus": "",
       "originalComment": "",
-      "warehouseStatus": "Manifested",
+      "warehouseStatus": "Shipped",
       "transportStatus": "",
       "transportHandover": {
         "confirmed": false,
@@ -39772,14 +39766,14 @@
       "deliveryConfirmed": false,
       "deliveryDate": "",
       "incidents": [],
-      "lastEventLabel": "Manifested",
+      "lastEventLabel": "Shipped",
       "lastEventDescription": ""
     },
     {
       "order": "LT000000000000110304",
       "waybill": "",
       "lastEventDate": "",
-      "status": "Manifested",
+      "status": "Shipped",
       "category": "Pendiente",
       "orderType": "B2C",
       "order_type": "B2C",
@@ -39788,7 +39782,7 @@
       "shipmentState": "",
       "originalStatus": "",
       "originalComment": "",
-      "warehouseStatus": "Manifested",
+      "warehouseStatus": "Shipped",
       "transportStatus": "",
       "transportHandover": {
         "confirmed": false,
@@ -39799,14 +39793,14 @@
       "deliveryConfirmed": false,
       "deliveryDate": "",
       "incidents": [],
-      "lastEventLabel": "Manifested",
+      "lastEventLabel": "Shipped",
       "lastEventDescription": ""
     },
     {
       "order": "LT000000000000110307",
       "waybill": "",
       "lastEventDate": "",
-      "status": "Manifested",
+      "status": "Shipped",
       "category": "Pendiente",
       "orderType": "B2C",
       "order_type": "B2C",
@@ -39815,7 +39809,7 @@
       "shipmentState": "",
       "originalStatus": "",
       "originalComment": "",
-      "warehouseStatus": "Manifested",
+      "warehouseStatus": "Shipped",
       "transportStatus": "",
       "transportHandover": {
         "confirmed": false,
@@ -39826,7 +39820,7 @@
       "deliveryConfirmed": false,
       "deliveryDate": "",
       "incidents": [],
-      "lastEventLabel": "Manifested",
+      "lastEventLabel": "Shipped",
       "lastEventDescription": ""
     }
   ]
