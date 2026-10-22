@@ -1,21 +1,21 @@
 {
   "schemaVersion": "1.2.0",
-  "generatedAt": "2026-10-22T10:47:02",
+  "generatedAt": "2026-10-22T11:11:03",
   "source": {
     "platform": "Polaris",
     "module": "Tracking",
     "company": "LATAM Uniformes"
   },
   "summary": {
-    "totalShipments": 1478,
-    "delivered": 1098,
+    "totalShipments": 1484,
+    "delivered": 1100,
     "inTransit": 21,
     "scheduled": 1,
     "retry": 0,
     "wrongAddress": 0,
     "returns": 1,
-    "incidents": 69,
-    "critical": 3,
+    "incidents": 13,
+    "critical": 1,
     "signedByCaptured": 1106,
     "signedByResolved": 1106,
     "deliveredWithoutSignedBy": 0
@@ -30,14 +30,14 @@
   },
   "inventoryThermometer": {
     "available": false,
-    "generatedAt": "2026-10-22T10:47:02",
+    "generatedAt": "2026-10-22T11:11:03",
     "totalAuditOrders": 0,
     "totalNoFillOrders": 0,
     "topCriticalItems": []
   },
   "supplyAudit": {
     "available": false,
-    "generatedAt": "2026-10-22T10:47:02",
+    "generatedAt": "2026-10-22T11:11:03",
     "summary": {
       "totalOrders": 0,
       "fullFill": 0,
@@ -2511,10 +2511,10 @@
     },
     {
       "order": "LT000000000000096224",
-      "waybill": "",
+      "waybill": "3799819435",
       "lastEventDate": "23/07/2026 15:21",
-      "status": "INFORMACIÓN INSUFICIENTE",
-      "category": "Crítico",
+      "status": "ENTREGADA",
+      "category": "Finalizado",
       "orderType": "B2C",
       "order_type": "B2C",
       "signedBy": "JOHAN SEBASTIAN MEJIA",
@@ -2523,20 +2523,16 @@
       "originalStatus": "",
       "originalComment": "",
       "warehouseStatus": "Shipped",
-      "transportStatus": "",
+      "transportStatus": "Entregada",
       "transportHandover": {
         "confirmed": false,
         "mode": "",
         "source": "",
         "message": ""
       },
-      "deliveryConfirmed": false,
-      "deliveryDate": "",
-      "incidents": [
-        "PENDIENTE DE RECOLECCION",
-        "PICKUP_CONFLICT",
-        "WAYBILL_CONFLICT"
-      ],
+      "deliveryConfirmed": true,
+      "deliveryDate": "2026-07-23T15:21:00-04:00",
+      "incidents": [],
       "lastEventLabel": "ENTREGADA",
       "lastEventDescription": "Shipment delivered ok"
     },
@@ -15661,7 +15657,6 @@
       "deliveryConfirmed": false,
       "deliveryDate": "",
       "incidents": [
-        "LEGACY_STATUS_RECLASSIFIED",
         "TERCERIZADA"
       ],
       "lastEventLabel": "TERCERIZADA",
@@ -16042,7 +16037,6 @@
       "deliveryConfirmed": false,
       "deliveryDate": "",
       "incidents": [
-        "LEGACY_STATUS_RECLASSIFIED",
         "TERCERIZADA"
       ],
       "lastEventLabel": "TERCERIZADA",
@@ -23551,7 +23545,6 @@
       "deliveryConfirmed": false,
       "deliveryDate": "",
       "incidents": [
-        "LEGACY_STATUS_RECLASSIFIED",
         "TERCERIZADA"
       ],
       "lastEventLabel": "TERCERIZADA",
@@ -24040,7 +24033,6 @@
       "deliveryConfirmed": false,
       "deliveryDate": "",
       "incidents": [
-        "LEGACY_STATUS_RECLASSIFIED",
         "TERCERIZADA"
       ],
       "lastEventLabel": "TERCERIZADA",
@@ -31873,7 +31865,6 @@
       "deliveryConfirmed": false,
       "deliveryDate": "",
       "incidents": [
-        "LEGACY_STATUS_RECLASSIFIED",
         "TERCERIZADA"
       ],
       "lastEventLabel": "TERCERIZADA",
@@ -34575,9 +34566,7 @@
       },
       "deliveryConfirmed": true,
       "deliveryDate": "2026-10-16T16:45:00-03:00",
-      "incidents": [
-        "LEGACY_STATUS_RECLASSIFIED"
-      ],
+      "incidents": [],
       "lastEventLabel": "ENTREGADA",
       "lastEventDescription": "Shipment delivered ok"
     },
@@ -34983,7 +34972,6 @@
       "deliveryConfirmed": false,
       "deliveryDate": "",
       "incidents": [
-        "LEGACY_STATUS_RECLASSIFIED",
         "TERCERIZADA"
       ],
       "lastEventLabel": "TERCERIZADA",
@@ -35282,9 +35270,7 @@
       },
       "deliveryConfirmed": true,
       "deliveryDate": "2026-10-15T12:36:00-03:00",
-      "incidents": [
-        "TERCERIZADA"
-      ],
+      "incidents": [],
       "lastEventLabel": "ENTREGADA",
       "lastEventDescription": "Shipment delivered ok"
     },
@@ -35851,9 +35837,7 @@
       },
       "deliveryConfirmed": true,
       "deliveryDate": "2026-10-10T10:43:00-03:00",
-      "incidents": [
-        "TERCERIZADA"
-      ],
+      "incidents": [],
       "lastEventLabel": "ENTREGADA",
       "lastEventDescription": "Shipment delivered ok"
     },
@@ -36015,9 +35999,7 @@
       },
       "deliveryConfirmed": true,
       "deliveryDate": "2026-10-10T10:47:00-03:00",
-      "incidents": [
-        "TERCERIZADA"
-      ],
+      "incidents": [],
       "lastEventLabel": "ENTREGADA",
       "lastEventDescription": "Shipment delivered ok"
     },
@@ -36044,9 +36026,7 @@
       },
       "deliveryConfirmed": true,
       "deliveryDate": "2026-10-19T17:56:00-03:00",
-      "incidents": [
-        "LEGACY_STATUS_RECLASSIFIED"
-      ],
+      "incidents": [],
       "lastEventLabel": "ENTREGADA",
       "lastEventDescription": "Shipment delivered ok"
     },
@@ -36235,9 +36215,7 @@
       },
       "deliveryConfirmed": true,
       "deliveryDate": "2026-10-16T15:20:00-03:00",
-      "incidents": [
-        "LEGACY_STATUS_RECLASSIFIED"
-      ],
+      "incidents": [],
       "lastEventLabel": "ENTREGADA",
       "lastEventDescription": "Shipment delivered ok"
     },
@@ -36561,9 +36539,7 @@
       },
       "deliveryConfirmed": true,
       "deliveryDate": "2026-10-16T13:13:00-03:00",
-      "incidents": [
-        "LEGACY_STATUS_RECLASSIFIED"
-      ],
+      "incidents": [],
       "lastEventLabel": "ENTREGADA",
       "lastEventDescription": "Shipment delivered ok"
     },
@@ -36617,9 +36593,7 @@
       },
       "deliveryConfirmed": true,
       "deliveryDate": "2026-10-16T11:47:00-03:00",
-      "incidents": [
-        "LEGACY_STATUS_RECLASSIFIED"
-      ],
+      "incidents": [],
       "lastEventLabel": "ENTREGADA",
       "lastEventDescription": "Shipment delivered ok"
     },
@@ -36700,9 +36674,7 @@
       },
       "deliveryConfirmed": true,
       "deliveryDate": "2026-10-15T14:17:00-03:00",
-      "incidents": [
-        "TERCERIZADA"
-      ],
+      "incidents": [],
       "lastEventLabel": "ENTREGADA",
       "lastEventDescription": "Shipment delivered ok"
     },
@@ -36783,9 +36755,7 @@
       },
       "deliveryConfirmed": true,
       "deliveryDate": "2026-10-15T11:49:00-03:00",
-      "incidents": [
-        "TERCERIZADA"
-      ],
+      "incidents": [],
       "lastEventLabel": "ENTREGADA",
       "lastEventDescription": "Shipment delivered ok"
     },
@@ -37192,9 +37162,7 @@
       },
       "deliveryConfirmed": true,
       "deliveryDate": "2026-10-15T17:12:00-03:00",
-      "incidents": [
-        "LEGACY_STATUS_RECLASSIFIED"
-      ],
+      "incidents": [],
       "lastEventLabel": "ENTREGADA",
       "lastEventDescription": "Shipment delivered ok"
     },
@@ -37221,9 +37189,7 @@
       },
       "deliveryConfirmed": true,
       "deliveryDate": "2026-10-16T13:00:00-03:00",
-      "incidents": [
-        "LEGACY_STATUS_RECLASSIFIED"
-      ],
+      "incidents": [],
       "lastEventLabel": "ENTREGADA",
       "lastEventDescription": "Shipment delivered ok"
     },
@@ -37250,11 +37216,7 @@
       },
       "deliveryConfirmed": true,
       "deliveryDate": "2026-10-15T17:35:00-03:00",
-      "incidents": [
-        "EN RUTA",
-        "LEGACY_STATUS_RECLASSIFIED",
-        "RETENCION"
-      ],
+      "incidents": [],
       "lastEventLabel": "ENTREGADA",
       "lastEventDescription": "Shipment delivered ok"
     },
@@ -37308,9 +37270,7 @@
       },
       "deliveryConfirmed": true,
       "deliveryDate": "2026-10-16T10:26:00-03:00",
-      "incidents": [
-        "TERCERIZADA"
-      ],
+      "incidents": [],
       "lastEventLabel": "ENTREGADA",
       "lastEventDescription": "Shipment delivered ok"
     },
@@ -37338,8 +37298,6 @@
       "deliveryConfirmed": false,
       "deliveryDate": "",
       "incidents": [
-        "EN RUTA",
-        "LEGACY_STATUS_RECLASSIFIED",
         "RETENCION"
       ],
       "lastEventLabel": "EN RUTA",
@@ -37422,9 +37380,7 @@
       },
       "deliveryConfirmed": true,
       "deliveryDate": "2026-10-16T11:50:00-03:00",
-      "incidents": [
-        "LEGACY_STATUS_RECLASSIFIED"
-      ],
+      "incidents": [],
       "lastEventLabel": "ENTREGADA",
       "lastEventDescription": "Shipment delivered ok"
     },
@@ -37478,9 +37434,7 @@
       },
       "deliveryConfirmed": true,
       "deliveryDate": "2026-10-15T11:53:00-03:00",
-      "incidents": [
-        "LEGACY_STATUS_RECLASSIFIED"
-      ],
+      "incidents": [],
       "lastEventLabel": "ENTREGADA",
       "lastEventDescription": "Shipment delivered ok"
     },
@@ -37507,9 +37461,7 @@
       },
       "deliveryConfirmed": true,
       "deliveryDate": "2026-10-16T13:55:00-03:00",
-      "incidents": [
-        "LEGACY_STATUS_RECLASSIFIED"
-      ],
+      "incidents": [],
       "lastEventLabel": "ENTREGADA",
       "lastEventDescription": "Shipment delivered ok"
     },
@@ -37536,9 +37488,7 @@
       },
       "deliveryConfirmed": true,
       "deliveryDate": "2026-10-16T10:52:00-03:00",
-      "incidents": [
-        "LEGACY_STATUS_RECLASSIFIED"
-      ],
+      "incidents": [],
       "lastEventLabel": "ENTREGADA",
       "lastEventDescription": "Shipment delivered ok"
     },
@@ -37566,9 +37516,7 @@
       "deliveryConfirmed": false,
       "deliveryDate": "",
       "incidents": [
-        "LEGACY_STATUS_RECLASSIFIED",
-        "POR RECOGER",
-        "PROGRAMADO"
+        "POR RECOGER"
       ],
       "lastEventLabel": "POR RECOGER",
       "lastEventDescription": "Awaiting collection by recipient as requested"
@@ -37650,9 +37598,7 @@
       },
       "deliveryConfirmed": true,
       "deliveryDate": "2026-10-16T13:23:00-03:00",
-      "incidents": [
-        "LEGACY_STATUS_RECLASSIFIED"
-      ],
+      "incidents": [],
       "lastEventLabel": "ENTREGADA",
       "lastEventDescription": "Shipment delivered ok"
     },
@@ -37679,9 +37625,7 @@
       },
       "deliveryConfirmed": true,
       "deliveryDate": "2026-10-16T12:36:00-03:00",
-      "incidents": [
-        "LEGACY_STATUS_RECLASSIFIED"
-      ],
+      "incidents": [],
       "lastEventLabel": "ENTREGADA",
       "lastEventDescription": "Shipment delivered ok"
     },
@@ -37709,7 +37653,6 @@
       "deliveryConfirmed": false,
       "deliveryDate": "",
       "incidents": [
-        "LEGACY_STATUS_RECLASSIFIED",
         "POR RECOGER"
       ],
       "lastEventLabel": "POR RECOGER",
@@ -37738,9 +37681,7 @@
       },
       "deliveryConfirmed": true,
       "deliveryDate": "2026-10-16T15:08:00-03:00",
-      "incidents": [
-        "LEGACY_STATUS_RECLASSIFIED"
-      ],
+      "incidents": [],
       "lastEventLabel": "ENTREGADA",
       "lastEventDescription": "Shipment delivered ok"
     },
@@ -37767,9 +37708,7 @@
       },
       "deliveryConfirmed": true,
       "deliveryDate": "2026-10-16T11:32:00-03:00",
-      "incidents": [
-        "LEGACY_STATUS_RECLASSIFIED"
-      ],
+      "incidents": [],
       "lastEventLabel": "ENTREGADA",
       "lastEventDescription": "Shipment delivered ok"
     },
@@ -37796,9 +37735,7 @@
       },
       "deliveryConfirmed": true,
       "deliveryDate": "2026-10-15T14:10:00-03:00",
-      "incidents": [
-        "LEGACY_STATUS_RECLASSIFIED"
-      ],
+      "incidents": [],
       "lastEventLabel": "ENTREGADA",
       "lastEventDescription": "Shipment delivered ok"
     },
@@ -37825,9 +37762,7 @@
       },
       "deliveryConfirmed": true,
       "deliveryDate": "2026-10-15T12:26:00-03:00",
-      "incidents": [
-        "LEGACY_STATUS_RECLASSIFIED"
-      ],
+      "incidents": [],
       "lastEventLabel": "ENTREGADA",
       "lastEventDescription": "Shipment delivered ok"
     },
@@ -37854,9 +37789,7 @@
       },
       "deliveryConfirmed": true,
       "deliveryDate": "2026-10-16T10:31:00-03:00",
-      "incidents": [
-        "LEGACY_STATUS_RECLASSIFIED"
-      ],
+      "incidents": [],
       "lastEventLabel": "ENTREGADA",
       "lastEventDescription": "Shipment delivered ok"
     },
@@ -37964,9 +37897,7 @@
       },
       "deliveryConfirmed": true,
       "deliveryDate": "2026-10-16T14:12:00-03:00",
-      "incidents": [
-        "LEGACY_STATUS_RECLASSIFIED"
-      ],
+      "incidents": [],
       "lastEventLabel": "ENTREGADA",
       "lastEventDescription": "Shipment delivered ok"
     },
@@ -38020,9 +37951,7 @@
       },
       "deliveryConfirmed": true,
       "deliveryDate": "2026-10-16T13:08:00-03:00",
-      "incidents": [
-        "LEGACY_STATUS_RECLASSIFIED"
-      ],
+      "incidents": [],
       "lastEventLabel": "ENTREGADA",
       "lastEventDescription": "Shipment delivered ok"
     },
@@ -38049,10 +37978,7 @@
       },
       "deliveryConfirmed": false,
       "deliveryDate": "",
-      "incidents": [
-        "LEGACY_STATUS_RECLASSIFIED",
-        "PROGRAMADO"
-      ],
+      "incidents": [],
       "lastEventLabel": "EN REPARTO",
       "lastEventDescription": "With delivery courier"
     },
@@ -38079,9 +38005,7 @@
       },
       "deliveryConfirmed": true,
       "deliveryDate": "2026-10-15T11:12:00-03:00",
-      "incidents": [
-        "LEGACY_STATUS_RECLASSIFIED"
-      ],
+      "incidents": [],
       "lastEventLabel": "ENTREGADA",
       "lastEventDescription": "Shipment delivered ok"
     },
@@ -38108,9 +38032,7 @@
       },
       "deliveryConfirmed": true,
       "deliveryDate": "2026-10-16T12:03:00-03:00",
-      "incidents": [
-        "LEGACY_STATUS_RECLASSIFIED"
-      ],
+      "incidents": [],
       "lastEventLabel": "ENTREGADA",
       "lastEventDescription": "Shipment delivered ok"
     },
@@ -38137,9 +38059,7 @@
       },
       "deliveryConfirmed": true,
       "deliveryDate": "2026-10-16T11:54:00-03:00",
-      "incidents": [
-        "LEGACY_STATUS_RECLASSIFIED"
-      ],
+      "incidents": [],
       "lastEventLabel": "ENTREGADA",
       "lastEventDescription": "Shipment delivered ok"
     },
@@ -38166,9 +38086,7 @@
       },
       "deliveryConfirmed": true,
       "deliveryDate": "2026-10-15T15:25:00-03:00",
-      "incidents": [
-        "LEGACY_STATUS_RECLASSIFIED"
-      ],
+      "incidents": [],
       "lastEventLabel": "ENTREGADA",
       "lastEventDescription": "Shipment delivered ok"
     },
@@ -38249,9 +38167,7 @@
       },
       "deliveryConfirmed": true,
       "deliveryDate": "2026-10-16T14:13:00-03:00",
-      "incidents": [
-        "LEGACY_STATUS_RECLASSIFIED"
-      ],
+      "incidents": [],
       "lastEventLabel": "ENTREGADA",
       "lastEventDescription": "Shipment delivered ok"
     },
@@ -38278,9 +38194,7 @@
       },
       "deliveryConfirmed": true,
       "deliveryDate": "2026-10-16T13:37:00-03:00",
-      "incidents": [
-        "LEGACY_STATUS_RECLASSIFIED"
-      ],
+      "incidents": [],
       "lastEventLabel": "ENTREGADA",
       "lastEventDescription": "Shipment delivered ok"
     },
@@ -38307,9 +38221,7 @@
       },
       "deliveryConfirmed": true,
       "deliveryDate": "2026-10-16T13:08:00-03:00",
-      "incidents": [
-        "LEGACY_STATUS_RECLASSIFIED"
-      ],
+      "incidents": [],
       "lastEventLabel": "ENTREGADA",
       "lastEventDescription": "Shipment delivered ok"
     },
@@ -38336,9 +38248,7 @@
       },
       "deliveryConfirmed": true,
       "deliveryDate": "2026-10-19T12:37:00-03:00",
-      "incidents": [
-        "LEGACY_STATUS_RECLASSIFIED"
-      ],
+      "incidents": [],
       "lastEventLabel": "ENTREGADA",
       "lastEventDescription": "Shipment delivered ok"
     },
@@ -38398,10 +38308,10 @@
     },
     {
       "order": "LT000000000000109544",
-      "waybill": "",
+      "waybill": "6283627055",
       "lastEventDate": "20/10/2026 12:28",
-      "status": "INFORMACIÓN INSUFICIENTE",
-      "category": "Crítico",
+      "status": "ENTREGADA",
+      "category": "Finalizado",
       "orderType": "B2C",
       "order_type": "B2C",
       "signedBy": "con. jose Ramirez",
@@ -38410,20 +38320,16 @@
       "originalStatus": "",
       "originalComment": "",
       "warehouseStatus": "Shipped",
-      "transportStatus": "",
+      "transportStatus": "Entregada",
       "transportHandover": {
         "confirmed": false,
         "mode": "",
         "source": "",
         "message": ""
       },
-      "deliveryConfirmed": false,
-      "deliveryDate": "",
-      "incidents": [
-        "PENDIENTE DE RECOLECCION",
-        "PICKUP_CONFLICT",
-        "WAYBILL_CONFLICT"
-      ],
+      "deliveryConfirmed": true,
+      "deliveryDate": "2026-10-20T12:28:00-03:00",
+      "incidents": [],
       "lastEventLabel": "ENTREGADA",
       "lastEventDescription": "Shipment delivered ok"
     },
@@ -38639,9 +38545,7 @@
       },
       "deliveryConfirmed": true,
       "deliveryDate": "2026-10-20T15:19:00-03:00",
-      "incidents": [
-        "STATUS_DICTIONARY_CONFLICT"
-      ],
+      "incidents": [],
       "lastEventLabel": "ENTREGADA",
       "lastEventDescription": "Shipment delivered ok"
     },
@@ -38695,9 +38599,7 @@
       },
       "deliveryConfirmed": true,
       "deliveryDate": "2026-10-20T14:11:00-03:00",
-      "incidents": [
-        "STATUS_DICTIONARY_CONFLICT"
-      ],
+      "incidents": [],
       "lastEventLabel": "ENTREGADA",
       "lastEventDescription": "Shipment delivered ok"
     },
@@ -38751,9 +38653,7 @@
       },
       "deliveryConfirmed": true,
       "deliveryDate": "2026-10-20T14:59:00-03:00",
-      "incidents": [
-        "STATUS_DICTIONARY_CONFLICT"
-      ],
+      "incidents": [],
       "lastEventLabel": "ENTREGADA",
       "lastEventDescription": "Shipment delivered ok"
     },
@@ -38942,9 +38842,7 @@
       },
       "deliveryConfirmed": true,
       "deliveryDate": "2026-10-20T14:23:00-03:00",
-      "incidents": [
-        "STATUS_DICTIONARY_CONFLICT"
-      ],
+      "incidents": [],
       "lastEventLabel": "ENTREGADA",
       "lastEventDescription": "Shipment delivered ok"
     },
@@ -38998,10 +38896,7 @@
       },
       "deliveryConfirmed": false,
       "deliveryDate": "",
-      "incidents": [
-        "PENDIENTE DE RECOLECCION",
-        "PICKUP_CONFLICT"
-      ],
+      "incidents": [],
       "lastEventLabel": "EN SUCURSAL DE DESTINO",
       "lastEventDescription": "Arrived at Delivery Facility"
     },
@@ -39082,10 +38977,7 @@
       },
       "deliveryConfirmed": false,
       "deliveryDate": "",
-      "incidents": [
-        "PENDIENTE DE RECOLECCION",
-        "PICKUP_CONFLICT"
-      ],
+      "incidents": [],
       "lastEventLabel": "EN SUCURSAL DE DESTINO",
       "lastEventDescription": "Arrived at Delivery Facility"
     },
@@ -39112,10 +39004,7 @@
       },
       "deliveryConfirmed": false,
       "deliveryDate": "",
-      "incidents": [
-        "PENDIENTE DE RECOLECCION",
-        "PICKUP_CONFLICT"
-      ],
+      "incidents": [],
       "lastEventLabel": "EN SUCURSAL DE DESTINO",
       "lastEventDescription": "Arrived at Delivery Facility"
     },
@@ -39169,10 +39058,7 @@
       },
       "deliveryConfirmed": false,
       "deliveryDate": "",
-      "incidents": [
-        "PENDIENTE DE RECOLECCION",
-        "PICKUP_CONFLICT"
-      ],
+      "incidents": [],
       "lastEventLabel": "EN SUCURSAL DE DESTINO",
       "lastEventDescription": "Arrived at Delivery Facility"
     },
@@ -39308,7 +39194,6 @@
       "deliveryConfirmed": false,
       "deliveryDate": "",
       "incidents": [
-        "EN RUTA",
         "RETENCION"
       ],
       "lastEventLabel": "EN RUTA",
@@ -39393,10 +39278,7 @@
       },
       "deliveryConfirmed": false,
       "deliveryDate": "",
-      "incidents": [
-        "PENDIENTE DE RECOLECCION",
-        "PICKUP_CONFLICT"
-      ],
+      "incidents": [],
       "lastEventLabel": "EN SUCURSAL DE DESTINO",
       "lastEventDescription": "Arrived at Delivery Facility"
     },
@@ -39477,10 +39359,7 @@
       },
       "deliveryConfirmed": false,
       "deliveryDate": "",
-      "incidents": [
-        "PENDIENTE DE RECOLECCION",
-        "PICKUP_CONFLICT"
-      ],
+      "incidents": [],
       "lastEventLabel": "EN RUTA",
       "lastEventDescription": "Processed at DHL Location"
     },
@@ -39755,6 +39634,33 @@
       "lastEventDescription": "Arrived at Delivery Facility"
     },
     {
+      "order": "LT000000000000110275",
+      "waybill": "",
+      "lastEventDate": "",
+      "status": "Released",
+      "category": "Pendiente",
+      "orderType": "B2BBAS",
+      "order_type": "B2BBAS",
+      "signedBy": "",
+      "signedByRaw": "",
+      "shipmentState": "",
+      "originalStatus": "",
+      "originalComment": "",
+      "warehouseStatus": "Released",
+      "transportStatus": "",
+      "transportHandover": {
+        "confirmed": false,
+        "mode": "",
+        "source": "",
+        "message": ""
+      },
+      "deliveryConfirmed": false,
+      "deliveryDate": "",
+      "incidents": [],
+      "lastEventLabel": "Released",
+      "lastEventDescription": ""
+    },
+    {
       "order": "LT000000000000110300",
       "waybill": "2362087770",
       "lastEventDate": "22/10/2026 06:23",
@@ -39848,7 +39754,7 @@
       "shipmentState": "Shipment picked up",
       "originalStatus": "",
       "originalComment": "",
-      "warehouseStatus": "Manifested",
+      "warehouseStatus": "Shipped",
       "transportStatus": "Recolección",
       "transportHandover": {
         "confirmed": false,
@@ -39858,9 +39764,7 @@
       },
       "deliveryConfirmed": false,
       "deliveryDate": "",
-      "incidents": [
-        "WAREHOUSE_TRANSPORT_SYNC"
-      ],
+      "incidents": [],
       "lastEventLabel": "RECOLECTADO",
       "lastEventDescription": "Shipment picked up"
     },
@@ -39877,7 +39781,7 @@
       "shipmentState": "Shipment picked up",
       "originalStatus": "",
       "originalComment": "",
-      "warehouseStatus": "Manifested",
+      "warehouseStatus": "Shipped",
       "transportStatus": "Recolección",
       "transportHandover": {
         "confirmed": false,
@@ -39887,9 +39791,7 @@
       },
       "deliveryConfirmed": false,
       "deliveryDate": "",
-      "incidents": [
-        "WAREHOUSE_TRANSPORT_SYNC"
-      ],
+      "incidents": [],
       "lastEventLabel": "RECOLECTADO",
       "lastEventDescription": "Shipment picked up"
     },
@@ -39933,7 +39835,7 @@
       "shipmentState": "Shipment picked up",
       "originalStatus": "",
       "originalComment": "",
-      "warehouseStatus": "Manifested",
+      "warehouseStatus": "Shipped",
       "transportStatus": "Recolección",
       "transportHandover": {
         "confirmed": false,
@@ -39943,9 +39845,7 @@
       },
       "deliveryConfirmed": false,
       "deliveryDate": "",
-      "incidents": [
-        "WAREHOUSE_TRANSPORT_SYNC"
-      ],
+      "incidents": [],
       "lastEventLabel": "RECOLECTADO",
       "lastEventDescription": "Shipment picked up"
     },
@@ -39989,7 +39889,7 @@
       "shipmentState": "Shipment picked up",
       "originalStatus": "",
       "originalComment": "",
-      "warehouseStatus": "Manifested",
+      "warehouseStatus": "Shipped",
       "transportStatus": "Recolección",
       "transportHandover": {
         "confirmed": false,
@@ -39999,9 +39899,7 @@
       },
       "deliveryConfirmed": false,
       "deliveryDate": "",
-      "incidents": [
-        "WAREHOUSE_TRANSPORT_SYNC"
-      ],
+      "incidents": [],
       "lastEventLabel": "RECOLECTADO",
       "lastEventDescription": "Shipment picked up"
     },
@@ -40018,7 +39916,7 @@
       "shipmentState": "Shipment picked up",
       "originalStatus": "",
       "originalComment": "",
-      "warehouseStatus": "Manifested",
+      "warehouseStatus": "Shipped",
       "transportStatus": "Recolección",
       "transportHandover": {
         "confirmed": false,
@@ -40028,9 +39926,7 @@
       },
       "deliveryConfirmed": false,
       "deliveryDate": "",
-      "incidents": [
-        "WAREHOUSE_TRANSPORT_SYNC"
-      ],
+      "incidents": [],
       "lastEventLabel": "RECOLECTADO",
       "lastEventDescription": "Shipment picked up"
     },
@@ -40074,7 +39970,7 @@
       "shipmentState": "Shipment picked up",
       "originalStatus": "",
       "originalComment": "",
-      "warehouseStatus": "Manifested",
+      "warehouseStatus": "Shipped",
       "transportStatus": "Recolección",
       "transportHandover": {
         "confirmed": false,
@@ -40084,9 +39980,7 @@
       },
       "deliveryConfirmed": false,
       "deliveryDate": "",
-      "incidents": [
-        "WAREHOUSE_TRANSPORT_SYNC"
-      ],
+      "incidents": [],
       "lastEventLabel": "RECOLECTADO",
       "lastEventDescription": "Shipment picked up"
     },
@@ -40103,7 +39997,7 @@
       "shipmentState": "Shipment picked up",
       "originalStatus": "",
       "originalComment": "",
-      "warehouseStatus": "Manifested",
+      "warehouseStatus": "Shipped",
       "transportStatus": "Recolección",
       "transportHandover": {
         "confirmed": false,
@@ -40113,9 +40007,7 @@
       },
       "deliveryConfirmed": false,
       "deliveryDate": "",
-      "incidents": [
-        "WAREHOUSE_TRANSPORT_SYNC"
-      ],
+      "incidents": [],
       "lastEventLabel": "RECOLECTADO",
       "lastEventDescription": "Shipment picked up"
     },
@@ -40132,7 +40024,7 @@
       "shipmentState": "Shipment picked up",
       "originalStatus": "",
       "originalComment": "",
-      "warehouseStatus": "Manifested",
+      "warehouseStatus": "Shipped",
       "transportStatus": "Recolección",
       "transportHandover": {
         "confirmed": false,
@@ -40142,11 +40034,144 @@
       },
       "deliveryConfirmed": false,
       "deliveryDate": "",
-      "incidents": [
-        "WAREHOUSE_TRANSPORT_SYNC"
-      ],
+      "incidents": [],
       "lastEventLabel": "RECOLECTADO",
       "lastEventDescription": "Shipment picked up"
+    },
+    {
+      "order": "LT000000000000110520",
+      "waybill": "",
+      "lastEventDate": "",
+      "status": "Released",
+      "category": "Pendiente",
+      "orderType": "B2C",
+      "order_type": "B2C",
+      "signedBy": "",
+      "signedByRaw": "",
+      "shipmentState": "",
+      "originalStatus": "",
+      "originalComment": "",
+      "warehouseStatus": "Released",
+      "transportStatus": "",
+      "transportHandover": {
+        "confirmed": false,
+        "mode": "",
+        "source": "",
+        "message": ""
+      },
+      "deliveryConfirmed": false,
+      "deliveryDate": "",
+      "incidents": [],
+      "lastEventLabel": "Released",
+      "lastEventDescription": ""
+    },
+    {
+      "order": "LT000000000000110532",
+      "waybill": "",
+      "lastEventDate": "",
+      "status": "Released",
+      "category": "Pendiente",
+      "orderType": "B2C",
+      "order_type": "B2C",
+      "signedBy": "",
+      "signedByRaw": "",
+      "shipmentState": "",
+      "originalStatus": "",
+      "originalComment": "",
+      "warehouseStatus": "Released",
+      "transportStatus": "",
+      "transportHandover": {
+        "confirmed": false,
+        "mode": "",
+        "source": "",
+        "message": ""
+      },
+      "deliveryConfirmed": false,
+      "deliveryDate": "",
+      "incidents": [],
+      "lastEventLabel": "Released",
+      "lastEventDescription": ""
+    },
+    {
+      "order": "LT000000000000110587",
+      "waybill": "",
+      "lastEventDate": "",
+      "status": "Released",
+      "category": "Pendiente",
+      "orderType": "B2C",
+      "order_type": "B2C",
+      "signedBy": "",
+      "signedByRaw": "",
+      "shipmentState": "",
+      "originalStatus": "",
+      "originalComment": "",
+      "warehouseStatus": "Released",
+      "transportStatus": "",
+      "transportHandover": {
+        "confirmed": false,
+        "mode": "",
+        "source": "",
+        "message": ""
+      },
+      "deliveryConfirmed": false,
+      "deliveryDate": "",
+      "incidents": [],
+      "lastEventLabel": "Released",
+      "lastEventDescription": ""
+    },
+    {
+      "order": "LT000000000000110622",
+      "waybill": "",
+      "lastEventDate": "",
+      "status": "Released",
+      "category": "Pendiente",
+      "orderType": "B2C",
+      "order_type": "B2C",
+      "signedBy": "",
+      "signedByRaw": "",
+      "shipmentState": "",
+      "originalStatus": "",
+      "originalComment": "",
+      "warehouseStatus": "Released",
+      "transportStatus": "",
+      "transportHandover": {
+        "confirmed": false,
+        "mode": "",
+        "source": "",
+        "message": ""
+      },
+      "deliveryConfirmed": false,
+      "deliveryDate": "",
+      "incidents": [],
+      "lastEventLabel": "Released",
+      "lastEventDescription": ""
+    },
+    {
+      "order": "LT000000000000110669",
+      "waybill": "",
+      "lastEventDate": "",
+      "status": "Released",
+      "category": "Pendiente",
+      "orderType": "B2C",
+      "order_type": "B2C",
+      "signedBy": "",
+      "signedByRaw": "",
+      "shipmentState": "",
+      "originalStatus": "",
+      "originalComment": "",
+      "warehouseStatus": "Released",
+      "transportStatus": "",
+      "transportHandover": {
+        "confirmed": false,
+        "mode": "",
+        "source": "",
+        "message": ""
+      },
+      "deliveryConfirmed": false,
+      "deliveryDate": "",
+      "incidents": [],
+      "lastEventLabel": "Released",
+      "lastEventDescription": ""
     }
   ]
 }
