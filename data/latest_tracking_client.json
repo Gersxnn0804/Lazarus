@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.2.0",
-  "generatedAt": "2026-10-23T15:10:48",
+  "generatedAt": "2026-10-23T16:10:23",
   "source": {
     "platform": "Polaris",
     "module": "Tracking",
@@ -8,16 +8,16 @@
   },
   "summary": {
     "totalShipments": 1490,
-    "delivered": 1124,
+    "delivered": 1126,
     "inTransit": 3,
     "scheduled": 1,
     "retry": 1,
     "wrongAddress": 0,
     "returns": 1,
-    "incidents": 17,
+    "incidents": 16,
     "critical": 1,
-    "signedByCaptured": 1130,
-    "signedByResolved": 1130,
+    "signedByCaptured": 1132,
+    "signedByResolved": 1132,
     "deliveredWithoutSignedBy": 0
   },
   "inventoryHealth": {
@@ -30,14 +30,14 @@
   },
   "inventoryThermometer": {
     "available": false,
-    "generatedAt": "2026-10-23T15:10:48",
+    "generatedAt": "2026-10-23T16:10:23",
     "totalAuditOrders": 0,
     "totalNoFillOrders": 0,
     "topCriticalItems": []
   },
   "supplyAudit": {
     "available": false,
-    "generatedAt": "2026-10-23T15:10:48",
+    "generatedAt": "2026-10-23T16:10:23",
     "summary": {
       "totalOrders": 0,
       "fullFill": 0,
@@ -39333,29 +39333,29 @@
     {
       "order": "LT000000000000110099",
       "waybill": "1260233623",
-      "lastEventDate": "23/10/2026 11:30",
-      "status": "EN REPARTO",
-      "category": "En Tránsito",
+      "lastEventDate": "23/10/2026 15:04",
+      "status": "ENTREGADA",
+      "category": "Finalizado",
       "orderType": "B2C",
       "order_type": "B2C",
-      "signedBy": "",
-      "signedByRaw": "",
-      "shipmentState": "With delivery courier",
+      "signedBy": "Marta Maya",
+      "signedByRaw": "Marta Maya",
+      "shipmentState": "Shipment delivered ok",
       "originalStatus": "",
       "originalComment": "",
       "warehouseStatus": "Shipped",
-      "transportStatus": "En reparto",
+      "transportStatus": "Entregada",
       "transportHandover": {
         "confirmed": false,
         "mode": "",
         "source": "",
         "message": ""
       },
-      "deliveryConfirmed": false,
-      "deliveryDate": "",
+      "deliveryConfirmed": true,
+      "deliveryDate": "2026-10-23T15:04:00-03:00",
       "incidents": [],
-      "lastEventLabel": "EN REPARTO",
-      "lastEventDescription": "With delivery courier"
+      "lastEventLabel": "ENTREGADA",
+      "lastEventDescription": "Shipment delivered ok"
     },
     {
       "order": "LT000000000000110135",
@@ -39875,31 +39875,29 @@
     {
       "order": "LT000000000000110398",
       "waybill": "2639286941",
-      "lastEventDate": "23/10/2026 11:21",
-      "status": "EN REPARTO",
-      "category": "En Tránsito",
+      "lastEventDate": "23/10/2026 15:06",
+      "status": "ENTREGADA",
+      "category": "Finalizado",
       "orderType": "B2C",
       "order_type": "B2C",
-      "signedBy": "",
-      "signedByRaw": "",
-      "shipmentState": "With delivery courier",
-      "originalStatus": "Envío en ruta  para su entrega.",
-      "originalComment": "Espera la entrega hoy",
+      "signedBy": "jose m. reguera",
+      "signedByRaw": "jose m. reguera",
+      "shipmentState": "Shipment delivered ok",
+      "originalStatus": "",
+      "originalComment": "",
       "warehouseStatus": "Shipped",
-      "transportStatus": "En reparto",
+      "transportStatus": "Entregada",
       "transportHandover": {
         "confirmed": false,
         "mode": "",
         "source": "",
         "message": ""
       },
-      "deliveryConfirmed": false,
-      "deliveryDate": "",
-      "incidents": [
-        "STATUS_DICTIONARY_CONFLICT"
-      ],
-      "lastEventLabel": "EN REPARTO",
-      "lastEventDescription": "With delivery courier"
+      "deliveryConfirmed": true,
+      "deliveryDate": "2026-10-23T15:06:00-03:00",
+      "incidents": [],
+      "lastEventLabel": "ENTREGADA",
+      "lastEventDescription": "Shipment delivered ok"
     },
     {
       "order": "LT000000000000110433",
