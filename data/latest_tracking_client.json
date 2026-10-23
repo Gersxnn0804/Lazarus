@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.2.0",
-  "generatedAt": "2026-10-23T08:32:40",
+  "generatedAt": "2026-10-23T09:10:37",
   "source": {
     "platform": "Polaris",
     "module": "Tracking",
@@ -30,14 +30,14 @@
   },
   "inventoryThermometer": {
     "available": false,
-    "generatedAt": "2026-10-23T08:32:40",
+    "generatedAt": "2026-10-23T09:10:37",
     "totalAuditOrders": 0,
     "totalNoFillOrders": 0,
     "topCriticalItems": []
   },
   "supplyAudit": {
     "available": false,
-    "generatedAt": "2026-10-23T08:32:40",
+    "generatedAt": "2026-10-23T09:10:37",
     "summary": {
       "totalOrders": 0,
       "fullFill": 0,
@@ -27768,7 +27768,7 @@
       "order": "LT000000000000104973",
       "waybill": "",
       "lastEventDate": "",
-      "status": "Allocated",
+      "status": "Packed",
       "category": "Pendiente",
       "orderType": "B2BBAS",
       "order_type": "B2BBAS",
@@ -27777,7 +27777,7 @@
       "shipmentState": "",
       "originalStatus": "",
       "originalComment": "",
-      "warehouseStatus": "Allocated",
+      "warehouseStatus": "Packed",
       "transportStatus": "",
       "transportHandover": {
         "confirmed": false,
@@ -27788,7 +27788,7 @@
       "deliveryConfirmed": false,
       "deliveryDate": "",
       "incidents": [],
-      "lastEventLabel": "Allocated",
+      "lastEventLabel": "Packed",
       "lastEventDescription": ""
     },
     {
@@ -32306,7 +32306,7 @@
       "order": "LT000000000000107215",
       "waybill": "",
       "lastEventDate": "",
-      "status": "Allocated",
+      "status": "Packed",
       "category": "Pendiente",
       "orderType": "B2BBAS",
       "order_type": "B2BBAS",
@@ -32315,7 +32315,7 @@
       "shipmentState": "",
       "originalStatus": "",
       "originalComment": "",
-      "warehouseStatus": "Allocated",
+      "warehouseStatus": "Packed",
       "transportStatus": "",
       "transportHandover": {
         "confirmed": false,
@@ -32326,7 +32326,7 @@
       "deliveryConfirmed": false,
       "deliveryDate": "",
       "incidents": [],
-      "lastEventLabel": "Allocated",
+      "lastEventLabel": "Packed",
       "lastEventDescription": ""
     },
     {
@@ -34898,7 +34898,7 @@
       "order": "LT000000000000108148",
       "waybill": "",
       "lastEventDate": "",
-      "status": "Allocated",
+      "status": "Packed",
       "category": "Pendiente",
       "orderType": "B2BMAD",
       "order_type": "B2BMAD",
@@ -34907,7 +34907,7 @@
       "shipmentState": "",
       "originalStatus": "",
       "originalComment": "",
-      "warehouseStatus": "Allocated",
+      "warehouseStatus": "Packed",
       "transportStatus": "",
       "transportHandover": {
         "confirmed": false,
@@ -34918,7 +34918,7 @@
       "deliveryConfirmed": false,
       "deliveryDate": "",
       "incidents": [],
-      "lastEventLabel": "Allocated",
+      "lastEventLabel": "Packed",
       "lastEventDescription": ""
     },
     {
@@ -37388,7 +37388,7 @@
       "order": "LT000000000000109109",
       "waybill": "",
       "lastEventDate": "",
-      "status": "Allocated",
+      "status": "Packed",
       "category": "Pendiente",
       "orderType": "B2BBAS",
       "order_type": "B2BBAS",
@@ -37397,7 +37397,7 @@
       "shipmentState": "",
       "originalStatus": "",
       "originalComment": "",
-      "warehouseStatus": "Allocated",
+      "warehouseStatus": "Packed",
       "transportStatus": "",
       "transportHandover": {
         "confirmed": false,
@@ -37408,7 +37408,7 @@
       "deliveryConfirmed": false,
       "deliveryDate": "",
       "incidents": [],
-      "lastEventLabel": "Allocated",
+      "lastEventLabel": "Packed",
       "lastEventDescription": ""
     },
     {
@@ -40137,7 +40137,7 @@
       "order": "LT000000000000110622",
       "waybill": "",
       "lastEventDate": "",
-      "status": "Allocated",
+      "status": "Manifested",
       "category": "Pendiente",
       "orderType": "B2C",
       "order_type": "B2C",
@@ -40146,7 +40146,7 @@
       "shipmentState": "",
       "originalStatus": "",
       "originalComment": "",
-      "warehouseStatus": "Allocated",
+      "warehouseStatus": "Manifested",
       "transportStatus": "",
       "transportHandover": {
         "confirmed": false,
@@ -40157,14 +40157,14 @@
       "deliveryConfirmed": false,
       "deliveryDate": "",
       "incidents": [],
-      "lastEventLabel": "Allocated",
+      "lastEventLabel": "Manifested",
       "lastEventDescription": ""
     },
     {
       "order": "LT000000000000110669",
       "waybill": "",
       "lastEventDate": "",
-      "status": "Allocated",
+      "status": "Manifested",
       "category": "Pendiente",
       "orderType": "B2C",
       "order_type": "B2C",
@@ -40173,7 +40173,7 @@
       "shipmentState": "",
       "originalStatus": "",
       "originalComment": "",
-      "warehouseStatus": "Allocated",
+      "warehouseStatus": "Manifested",
       "transportStatus": "",
       "transportHandover": {
         "confirmed": false,
@@ -40184,7 +40184,7 @@
       "deliveryConfirmed": false,
       "deliveryDate": "",
       "incidents": [],
-      "lastEventLabel": "Allocated",
+      "lastEventLabel": "Manifested",
       "lastEventDescription": ""
     },
     {
@@ -40245,7 +40245,7 @@
       "order": "LT000000000000110719",
       "waybill": "",
       "lastEventDate": "",
-      "status": "Allocated",
+      "status": "Manifested",
       "category": "Pendiente",
       "orderType": "B2C",
       "order_type": "B2C",
@@ -40254,7 +40254,7 @@
       "shipmentState": "",
       "originalStatus": "",
       "originalComment": "",
-      "warehouseStatus": "Allocated",
+      "warehouseStatus": "Manifested",
       "transportStatus": "",
       "transportHandover": {
         "confirmed": false,
@@ -40265,7 +40265,7 @@
       "deliveryConfirmed": false,
       "deliveryDate": "",
       "incidents": [],
-      "lastEventLabel": "Allocated",
+      "lastEventLabel": "Manifested",
       "lastEventDescription": ""
     },
     {
