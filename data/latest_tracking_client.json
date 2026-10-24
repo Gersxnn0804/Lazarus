@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.2.0",
-  "generatedAt": "2026-10-24T17:48:46",
+  "generatedAt": "2026-10-24T18:10:28",
   "source": {
     "platform": "Polaris",
     "module": "Tracking",
@@ -8,16 +8,16 @@
   },
   "summary": {
     "totalShipments": 1490,
-    "delivered": 1126,
-    "inTransit": 3,
+    "delivered": 1128,
+    "inTransit": 4,
     "scheduled": 1,
     "retry": 1,
     "wrongAddress": 0,
     "returns": 1,
     "incidents": 16,
     "critical": 1,
-    "signedByCaptured": 1132,
-    "signedByResolved": 1132,
+    "signedByCaptured": 1134,
+    "signedByResolved": 1134,
     "deliveredWithoutSignedBy": 0
   },
   "inventoryHealth": {
@@ -30,14 +30,14 @@
   },
   "inventoryThermometer": {
     "available": false,
-    "generatedAt": "2026-10-24T17:48:46",
+    "generatedAt": "2026-10-24T18:10:28",
     "totalAuditOrders": 0,
     "totalNoFillOrders": 0,
     "topCriticalItems": []
   },
   "supplyAudit": {
     "available": false,
-    "generatedAt": "2026-10-24T17:48:46",
+    "generatedAt": "2026-10-24T18:10:28",
     "summary": {
       "totalOrders": 0,
       "fullFill": 0,
@@ -39169,29 +39169,29 @@
     {
       "order": "LT000000000000109936",
       "waybill": "3453931541",
-      "lastEventDate": "23/10/2026 11:28",
-      "status": "EN REPARTO",
-      "category": "En Tránsito",
+      "lastEventDate": "23/10/2026 15:55",
+      "status": "ENTREGADA",
+      "category": "Finalizado",
       "orderType": "B2C",
       "order_type": "B2C",
-      "signedBy": "",
-      "signedByRaw": "",
-      "shipmentState": "With delivery courier",
+      "signedBy": "Martha Zurita",
+      "signedByRaw": "Martha Zurita",
+      "shipmentState": "Shipment delivered ok",
       "originalStatus": "",
       "originalComment": "",
       "warehouseStatus": "Shipped",
-      "transportStatus": "En reparto",
+      "transportStatus": "Entregada",
       "transportHandover": {
         "confirmed": false,
         "mode": "",
         "source": "",
         "message": ""
       },
-      "deliveryConfirmed": false,
-      "deliveryDate": "",
+      "deliveryConfirmed": true,
+      "deliveryDate": "2026-10-23T15:55:00-03:00",
       "incidents": [],
-      "lastEventLabel": "EN REPARTO",
-      "lastEventDescription": "With delivery courier"
+      "lastEventLabel": "ENTREGADA",
+      "lastEventDescription": "Shipment delivered ok"
     },
     {
       "order": "LT000000000000109941",
@@ -39983,29 +39983,29 @@
     {
       "order": "LT000000000000110477",
       "waybill": "1835384681",
-      "lastEventDate": "23/10/2026 10:22",
-      "status": "EN REPARTO",
-      "category": "En Tránsito",
+      "lastEventDate": "23/10/2026 16:10",
+      "status": "ENTREGADA",
+      "category": "Finalizado",
       "orderType": "B2C",
       "order_type": "B2C",
-      "signedBy": "",
-      "signedByRaw": "",
-      "shipmentState": "With delivery courier",
+      "signedBy": "Jos Morales, conserje",
+      "signedByRaw": "Jos Morales, conserje",
+      "shipmentState": "Shipment delivered ok",
       "originalStatus": "",
       "originalComment": "",
       "warehouseStatus": "Shipped",
-      "transportStatus": "En reparto",
+      "transportStatus": "Entregada",
       "transportHandover": {
         "confirmed": false,
         "mode": "",
         "source": "",
         "message": ""
       },
-      "deliveryConfirmed": false,
-      "deliveryDate": "",
+      "deliveryConfirmed": true,
+      "deliveryDate": "2026-10-23T16:10:00-03:00",
       "incidents": [],
-      "lastEventLabel": "EN REPARTO",
-      "lastEventDescription": "With delivery courier"
+      "lastEventLabel": "ENTREGADA",
+      "lastEventDescription": "Shipment delivered ok"
     },
     {
       "order": "LT000000000000110500",
@@ -40151,18 +40151,18 @@
     {
       "order": "LT000000000000110669",
       "waybill": "6424943696",
-      "lastEventDate": "23/10/2026 09:42",
-      "status": "RECOLECTADO",
+      "lastEventDate": "24/10/2026 13:05",
+      "status": "EN RUTA",
       "category": "En Tránsito",
       "orderType": "B2C",
       "order_type": "B2C",
       "signedBy": "",
       "signedByRaw": "",
-      "shipmentState": "Shipment picked up",
-      "originalStatus": "",
-      "originalComment": "",
+      "shipmentState": "Departed Facility",
+      "originalStatus": "El envío se encuentra en camino hacia su destino final.",
+      "originalComment": "Por favor continúe monitoreando el progreso del envío en línea. Si usted es el destinatario puede cambiar las preferencias de entrega visitando https://delivery.dhl.com",
       "warehouseStatus": "Shipped",
-      "transportStatus": "Recolección",
+      "transportStatus": "En tránsito",
       "transportHandover": {
         "confirmed": false,
         "mode": "",
@@ -40172,8 +40172,8 @@
       "deliveryConfirmed": false,
       "deliveryDate": "",
       "incidents": [],
-      "lastEventLabel": "RECOLECTADO",
-      "lastEventDescription": "Shipment picked up"
+      "lastEventLabel": "EN RUTA",
+      "lastEventDescription": "Departed Facility"
     },
     {
       "order": "LT000000000000110695",
