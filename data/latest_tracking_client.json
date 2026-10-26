@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.2.0",
-  "generatedAt": "2026-10-26T14:10:54",
+  "generatedAt": "2026-10-26T15:10:42",
   "source": {
     "platform": "Polaris",
     "module": "Tracking",
@@ -8,7 +8,7 @@
   },
   "summary": {
     "totalShipments": 1506,
-    "delivered": 1129,
+    "delivered": 1131,
     "inTransit": 4,
     "scheduled": 3,
     "retry": 0,
@@ -16,8 +16,8 @@
     "returns": 1,
     "incidents": 13,
     "critical": 1,
-    "signedByCaptured": 1135,
-    "signedByResolved": 1135,
+    "signedByCaptured": 1137,
+    "signedByResolved": 1137,
     "deliveredWithoutSignedBy": 0
   },
   "inventoryHealth": {
@@ -30,14 +30,14 @@
   },
   "inventoryThermometer": {
     "available": false,
-    "generatedAt": "2026-10-26T14:10:54",
+    "generatedAt": "2026-10-26T15:10:42",
     "totalAuditOrders": 0,
     "totalNoFillOrders": 0,
     "topCriticalItems": []
   },
   "supplyAudit": {
     "available": false,
-    "generatedAt": "2026-10-26T14:10:54",
+    "generatedAt": "2026-10-26T15:10:42",
     "summary": {
       "totalOrders": 0,
       "fullFill": 0,
@@ -39821,29 +39821,29 @@
     {
       "order": "LT000000000000110388",
       "waybill": "4248638166",
-      "lastEventDate": "26/10/2026 10:53",
-      "status": "EN REPARTO",
-      "category": "En Tránsito",
+      "lastEventDate": "26/10/2026 14:02",
+      "status": "ENTREGADA",
+      "category": "Finalizado",
       "orderType": "B2C",
       "order_type": "B2C",
-      "signedBy": "",
-      "signedByRaw": "",
-      "shipmentState": "With delivery courier",
+      "signedBy": "JOCELIN ELIANA ALVARADO",
+      "signedByRaw": "JOCELIN ELIANA ALVARADO",
+      "shipmentState": "Shipment delivered ok",
       "originalStatus": "",
       "originalComment": "",
       "warehouseStatus": "Shipped",
-      "transportStatus": "En reparto",
+      "transportStatus": "Entregada",
       "transportHandover": {
         "confirmed": false,
         "mode": "",
         "source": "",
         "message": ""
       },
-      "deliveryConfirmed": false,
-      "deliveryDate": "",
+      "deliveryConfirmed": true,
+      "deliveryDate": "2026-10-26T14:02:00-03:00",
       "incidents": [],
-      "lastEventLabel": "EN REPARTO",
-      "lastEventDescription": "With delivery courier"
+      "lastEventLabel": "ENTREGADA",
+      "lastEventDescription": "Shipment delivered ok"
     },
     {
       "order": "LT000000000000110390",
@@ -39902,29 +39902,29 @@
     {
       "order": "LT000000000000110433",
       "waybill": "1835388973",
-      "lastEventDate": "26/10/2026 11:49",
-      "status": "EN REPARTO",
-      "category": "En Tránsito",
+      "lastEventDate": "26/10/2026 14:16",
+      "status": "ENTREGADA",
+      "category": "Finalizado",
       "orderType": "B2C",
       "order_type": "B2C",
-      "signedBy": "",
-      "signedByRaw": "",
-      "shipmentState": "With delivery courier",
+      "signedBy": "Gerson Carrasco",
+      "signedByRaw": "Gerson Carrasco",
+      "shipmentState": "Shipment delivered ok",
       "originalStatus": "",
       "originalComment": "",
       "warehouseStatus": "Shipped",
-      "transportStatus": "En reparto",
+      "transportStatus": "Entregada",
       "transportHandover": {
         "confirmed": false,
         "mode": "",
         "source": "",
         "message": ""
       },
-      "deliveryConfirmed": false,
-      "deliveryDate": "",
+      "deliveryConfirmed": true,
+      "deliveryDate": "2026-10-26T14:16:00-03:00",
       "incidents": [],
-      "lastEventLabel": "EN REPARTO",
-      "lastEventDescription": "With delivery courier"
+      "lastEventLabel": "ENTREGADA",
+      "lastEventDescription": "Shipment delivered ok"
     },
     {
       "order": "LT000000000000110434",
