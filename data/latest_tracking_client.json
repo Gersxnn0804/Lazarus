@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.2.0",
-  "generatedAt": "2026-10-26T08:47:18",
+  "generatedAt": "2026-10-26T09:10:39",
   "source": {
     "platform": "Polaris",
     "module": "Tracking",
@@ -14,7 +14,7 @@
     "retry": 1,
     "wrongAddress": 0,
     "returns": 1,
-    "incidents": 16,
+    "incidents": 17,
     "critical": 1,
     "signedByCaptured": 1134,
     "signedByResolved": 1134,
@@ -30,14 +30,14 @@
   },
   "inventoryThermometer": {
     "available": false,
-    "generatedAt": "2026-10-26T08:47:18",
+    "generatedAt": "2026-10-26T09:10:39",
     "totalAuditOrders": 0,
     "totalNoFillOrders": 0,
     "topCriticalItems": []
   },
   "supplyAudit": {
     "available": false,
-    "generatedAt": "2026-10-26T08:47:18",
+    "generatedAt": "2026-10-26T09:10:39",
     "summary": {
       "totalOrders": 0,
       "fullFill": 0,
@@ -36950,15 +36950,15 @@
     },
     {
       "order": "LT000000000000108956",
-      "waybill": "",
-      "lastEventDate": "",
-      "status": "Shipped",
+      "waybill": "1662035852",
+      "lastEventDate": "25/10/2026 21:24",
+      "status": "PENDIENTE DE RECOLECCION",
       "category": "Pendiente",
       "orderType": "B2C",
       "order_type": "B2C",
       "signedBy": "",
       "signedByRaw": "",
-      "shipmentState": "",
+      "shipmentState": "Shipment Data Received",
       "originalStatus": "",
       "originalComment": "",
       "warehouseStatus": "Shipped",
@@ -36971,9 +36971,11 @@
       },
       "deliveryConfirmed": false,
       "deliveryDate": "",
-      "incidents": [],
-      "lastEventLabel": "Shipped",
-      "lastEventDescription": ""
+      "incidents": [
+        "PENDIENTE DE RECOLECCION"
+      ],
+      "lastEventLabel": "PENDIENTE DE RECOLECCION",
+      "lastEventDescription": "Shipment Data Received"
     },
     {
       "order": "LT000000000000108958",
@@ -37277,7 +37279,7 @@
     {
       "order": "LT000000000000109023",
       "waybill": "8268067931",
-      "lastEventDate": "23/10/2026 06:52",
+      "lastEventDate": "26/10/2026 06:55",
       "status": "EN RUTA",
       "category": "En Tránsito",
       "orderType": "B2C",
