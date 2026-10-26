@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.2.0",
-  "generatedAt": "2026-10-26T13:10:35",
+  "generatedAt": "2026-10-26T14:10:54",
   "source": {
     "platform": "Polaris",
     "module": "Tracking",
@@ -8,7 +8,7 @@
   },
   "summary": {
     "totalShipments": 1506,
-    "delivered": 1128,
+    "delivered": 1129,
     "inTransit": 4,
     "scheduled": 3,
     "retry": 0,
@@ -16,8 +16,8 @@
     "returns": 1,
     "incidents": 13,
     "critical": 1,
-    "signedByCaptured": 1134,
-    "signedByResolved": 1134,
+    "signedByCaptured": 1135,
+    "signedByResolved": 1135,
     "deliveredWithoutSignedBy": 0
   },
   "inventoryHealth": {
@@ -30,14 +30,14 @@
   },
   "inventoryThermometer": {
     "available": false,
-    "generatedAt": "2026-10-26T13:10:35",
+    "generatedAt": "2026-10-26T14:10:54",
     "totalAuditOrders": 0,
     "totalNoFillOrders": 0,
     "topCriticalItems": []
   },
   "supplyAudit": {
     "available": false,
-    "generatedAt": "2026-10-26T13:10:35",
+    "generatedAt": "2026-10-26T14:10:54",
     "summary": {
       "totalOrders": 0,
       "fullFill": 0,
@@ -39767,29 +39767,29 @@
     {
       "order": "LT000000000000110385",
       "waybill": "1835317923",
-      "lastEventDate": "26/10/2026 10:19",
-      "status": "EN REPARTO",
-      "category": "En Tránsito",
+      "lastEventDate": "26/10/2026 12:52",
+      "status": "ENTREGADA",
+      "category": "Finalizado",
       "orderType": "B2C",
       "order_type": "B2C",
-      "signedBy": "",
-      "signedByRaw": "",
-      "shipmentState": "With delivery courier",
+      "signedBy": "Carmen GONZALEZ",
+      "signedByRaw": "Carmen GONZALEZ",
+      "shipmentState": "Shipment delivered ok",
       "originalStatus": "",
       "originalComment": "",
       "warehouseStatus": "Shipped",
-      "transportStatus": "En reparto",
+      "transportStatus": "Entregada",
       "transportHandover": {
         "confirmed": false,
         "mode": "",
         "source": "",
         "message": ""
       },
-      "deliveryConfirmed": false,
-      "deliveryDate": "",
+      "deliveryConfirmed": true,
+      "deliveryDate": "2026-10-26T12:52:00-03:00",
       "incidents": [],
-      "lastEventLabel": "EN REPARTO",
-      "lastEventDescription": "With delivery courier"
+      "lastEventLabel": "ENTREGADA",
+      "lastEventDescription": "Shipment delivered ok"
     },
     {
       "order": "LT000000000000110386",
