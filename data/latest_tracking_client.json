@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.2.0",
-  "generatedAt": "2026-10-27T14:10:37",
+  "generatedAt": "2026-10-27T15:10:34",
   "source": {
     "platform": "Polaris",
     "module": "Tracking",
@@ -8,16 +8,16 @@
   },
   "summary": {
     "totalShipments": 1528,
-    "delivered": 1132,
+    "delivered": 1134,
     "inTransit": 15,
     "scheduled": 1,
     "retry": 0,
     "wrongAddress": 0,
     "returns": 1,
-    "incidents": 14,
+    "incidents": 13,
     "critical": 1,
-    "signedByCaptured": 1138,
-    "signedByResolved": 1138,
+    "signedByCaptured": 1140,
+    "signedByResolved": 1140,
     "deliveredWithoutSignedBy": 0
   },
   "inventoryHealth": {
@@ -30,14 +30,14 @@
   },
   "inventoryThermometer": {
     "available": false,
-    "generatedAt": "2026-10-27T14:10:37",
+    "generatedAt": "2026-10-27T15:10:34",
     "totalAuditOrders": 0,
     "totalNoFillOrders": 0,
     "topCriticalItems": []
   },
   "supplyAudit": {
     "available": false,
-    "generatedAt": "2026-10-27T14:10:37",
+    "generatedAt": "2026-10-27T15:10:34",
     "summary": {
       "totalOrders": 0,
       "fullFill": 0,
@@ -37279,29 +37279,29 @@
     {
       "order": "LT000000000000109023",
       "waybill": "8268067931",
-      "lastEventDate": "27/10/2026 10:34",
-      "status": "EN REPARTO",
-      "category": "En Tránsito",
+      "lastEventDate": "27/10/2026 14:47",
+      "status": "ENTREGADA",
+      "category": "Finalizado",
       "orderType": "B2C",
       "order_type": "B2C",
-      "signedBy": "",
-      "signedByRaw": "",
-      "shipmentState": "With delivery courier",
+      "signedBy": "Rosa Zapata casa 1874",
+      "signedByRaw": "Rosa Zapata casa 1874",
+      "shipmentState": "Shipment delivered ok",
       "originalStatus": "",
       "originalComment": "",
       "warehouseStatus": "Shipped",
-      "transportStatus": "En reparto",
+      "transportStatus": "Entregada",
       "transportHandover": {
         "confirmed": false,
         "mode": "",
         "source": "",
         "message": ""
       },
-      "deliveryConfirmed": false,
-      "deliveryDate": "",
+      "deliveryConfirmed": true,
+      "deliveryDate": "2026-10-27T14:47:00-03:00",
       "incidents": [],
-      "lastEventLabel": "EN REPARTO",
-      "lastEventDescription": "With delivery courier"
+      "lastEventLabel": "ENTREGADA",
+      "lastEventDescription": "Shipment delivered ok"
     },
     {
       "order": "LT000000000000109025",
@@ -40226,31 +40226,29 @@
     {
       "order": "LT000000000000110718",
       "waybill": "7177233593",
-      "lastEventDate": "27/10/2026 10:34",
-      "status": "EN REPARTO",
-      "category": "En Tránsito",
+      "lastEventDate": "27/10/2026 14:20",
+      "status": "ENTREGADA",
+      "category": "Finalizado",
       "orderType": "B2C",
       "order_type": "B2C",
-      "signedBy": "",
-      "signedByRaw": "",
-      "shipmentState": "With delivery courier",
-      "originalStatus": "Envío en ruta  para su entrega.",
-      "originalComment": "Espera la entrega hoy",
+      "signedBy": "DANIEL OSVALDO DIAZ",
+      "signedByRaw": "DANIEL OSVALDO DIAZ",
+      "shipmentState": "Shipment delivered ok",
+      "originalStatus": "",
+      "originalComment": "",
       "warehouseStatus": "Shipped",
-      "transportStatus": "En reparto",
+      "transportStatus": "Entregada",
       "transportHandover": {
         "confirmed": false,
         "mode": "",
         "source": "",
         "message": ""
       },
-      "deliveryConfirmed": false,
-      "deliveryDate": "",
-      "incidents": [
-        "STATUS_DICTIONARY_CONFLICT"
-      ],
-      "lastEventLabel": "EN REPARTO",
-      "lastEventDescription": "With delivery courier"
+      "deliveryConfirmed": true,
+      "deliveryDate": "2026-10-27T14:20:00-03:00",
+      "incidents": [],
+      "lastEventLabel": "ENTREGADA",
+      "lastEventDescription": "Shipment delivered ok"
     },
     {
       "order": "LT000000000000110719",
