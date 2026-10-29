@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.2.0",
-  "generatedAt": "2026-10-29T14:10:28",
+  "generatedAt": "2026-10-29T15:10:50",
   "source": {
     "platform": "Polaris",
     "module": "Tracking",
@@ -8,16 +8,16 @@
   },
   "summary": {
     "totalShipments": 1560,
-    "delivered": 1162,
+    "delivered": 1164,
     "inTransit": 14,
     "scheduled": 0,
     "retry": 0,
     "wrongAddress": 0,
     "returns": 1,
-    "incidents": 16,
+    "incidents": 15,
     "critical": 1,
-    "signedByCaptured": 1168,
-    "signedByResolved": 1168,
+    "signedByCaptured": 1170,
+    "signedByResolved": 1170,
     "deliveredWithoutSignedBy": 0
   },
   "inventoryHealth": {
@@ -30,14 +30,14 @@
   },
   "inventoryThermometer": {
     "available": false,
-    "generatedAt": "2026-10-29T14:10:28",
+    "generatedAt": "2026-10-29T15:10:50",
     "totalAuditOrders": 0,
     "totalNoFillOrders": 0,
     "topCriticalItems": []
   },
   "supplyAudit": {
     "available": false,
-    "generatedAt": "2026-10-29T14:10:28",
+    "generatedAt": "2026-10-29T15:10:50",
     "summary": {
       "totalOrders": 0,
       "fullFill": 0,
@@ -41150,31 +41150,29 @@
     {
       "order": "LT000000000000111262",
       "waybill": "3390281495",
-      "lastEventDate": "29/10/2026 10:56",
-      "status": "EN REPARTO",
-      "category": "En Tránsito",
+      "lastEventDate": "29/10/2026 14:24",
+      "status": "ENTREGADA",
+      "category": "Finalizado",
       "orderType": "B2C",
       "order_type": "B2C",
-      "signedBy": "",
-      "signedByRaw": "",
-      "shipmentState": "With delivery courier",
-      "originalStatus": "Envío en ruta  para su entrega.",
-      "originalComment": "Espera la entrega hoy",
+      "signedBy": "TOMAS ALESSANDRO OLGUIN",
+      "signedByRaw": "TOMAS ALESSANDRO OLGUIN",
+      "shipmentState": "Shipment delivered ok",
+      "originalStatus": "",
+      "originalComment": "",
       "warehouseStatus": "Shipped",
-      "transportStatus": "En reparto",
+      "transportStatus": "Entregada",
       "transportHandover": {
         "confirmed": false,
         "mode": "",
         "source": "",
         "message": ""
       },
-      "deliveryConfirmed": false,
-      "deliveryDate": "",
-      "incidents": [
-        "STATUS_DICTIONARY_CONFLICT"
-      ],
-      "lastEventLabel": "EN REPARTO",
-      "lastEventDescription": "With delivery courier"
+      "deliveryConfirmed": true,
+      "deliveryDate": "2026-10-29T14:24:00-03:00",
+      "incidents": [],
+      "lastEventLabel": "ENTREGADA",
+      "lastEventDescription": "Shipment delivered ok"
     },
     {
       "order": "LT000000000000111266",
@@ -41260,29 +41258,29 @@
     {
       "order": "LT000000000000111285",
       "waybill": "2878172006",
-      "lastEventDate": "29/10/2026 10:00",
-      "status": "EN REPARTO",
-      "category": "En Tránsito",
+      "lastEventDate": "29/10/2026 14:19",
+      "status": "ENTREGADA",
+      "category": "Finalizado",
       "orderType": "B2C",
       "order_type": "B2C",
-      "signedBy": "",
-      "signedByRaw": "",
-      "shipmentState": "With delivery courier",
+      "signedBy": "Jeremiaa Zuiga",
+      "signedByRaw": "Jeremiaa Zuiga",
+      "shipmentState": "Shipment delivered ok",
       "originalStatus": "",
       "originalComment": "",
       "warehouseStatus": "Shipped",
-      "transportStatus": "En reparto",
+      "transportStatus": "Entregada",
       "transportHandover": {
         "confirmed": false,
         "mode": "",
         "source": "",
         "message": ""
       },
-      "deliveryConfirmed": false,
-      "deliveryDate": "",
+      "deliveryConfirmed": true,
+      "deliveryDate": "2026-10-29T14:19:00-03:00",
       "incidents": [],
-      "lastEventLabel": "EN REPARTO",
-      "lastEventDescription": "With delivery courier"
+      "lastEventLabel": "ENTREGADA",
+      "lastEventDescription": "Shipment delivered ok"
     },
     {
       "order": "LT000000000000111286",
