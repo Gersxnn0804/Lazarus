@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.2.0",
-  "generatedAt": "2026-10-29T10:10:50",
+  "generatedAt": "2026-10-29T11:10:28",
   "source": {
     "platform": "Polaris",
     "module": "Tracking",
@@ -8,16 +8,16 @@
   },
   "summary": {
     "totalShipments": 1546,
-    "delivered": 1152,
-    "inTransit": 20,
+    "delivered": 1153,
+    "inTransit": 13,
     "scheduled": 0,
-    "retry": 1,
+    "retry": 0,
     "wrongAddress": 0,
     "returns": 1,
-    "incidents": 14,
+    "incidents": 16,
     "critical": 1,
-    "signedByCaptured": 1158,
-    "signedByResolved": 1158,
+    "signedByCaptured": 1159,
+    "signedByResolved": 1159,
     "deliveredWithoutSignedBy": 0
   },
   "inventoryHealth": {
@@ -30,14 +30,14 @@
   },
   "inventoryThermometer": {
     "available": false,
-    "generatedAt": "2026-10-29T10:10:50",
+    "generatedAt": "2026-10-29T11:10:28",
     "totalAuditOrders": 0,
     "totalNoFillOrders": 0,
     "topCriticalItems": []
   },
   "supplyAudit": {
     "available": false,
-    "generatedAt": "2026-10-29T10:10:50",
+    "generatedAt": "2026-10-29T11:10:28",
     "summary": {
       "totalOrders": 0,
       "fullFill": 0,
@@ -40359,18 +40359,18 @@
     {
       "order": "LT000000000000110834",
       "waybill": "3390298774",
-      "lastEventDate": "28/10/2026 13:10",
-      "status": "EN RUTA",
+      "lastEventDate": "29/10/2026 10:32",
+      "status": "EN REPARTO",
       "category": "En Tránsito",
       "orderType": "B2C",
       "order_type": "B2C",
       "signedBy": "",
       "signedByRaw": "",
-      "shipmentState": "In transit",
-      "originalStatus": "",
-      "originalComment": "",
+      "shipmentState": "With delivery courier",
+      "originalStatus": "Envío en ruta  para su entrega.",
+      "originalComment": "Espera la entrega hoy",
       "warehouseStatus": "Shipped",
-      "transportStatus": "En tránsito",
+      "transportStatus": "En reparto",
       "transportHandover": {
         "confirmed": false,
         "mode": "",
@@ -40379,9 +40379,11 @@
       },
       "deliveryConfirmed": false,
       "deliveryDate": "",
-      "incidents": [],
-      "lastEventLabel": "EN RUTA",
-      "lastEventDescription": "In transit"
+      "incidents": [
+        "STATUS_DICTIONARY_CONFLICT"
+      ],
+      "lastEventLabel": "EN REPARTO",
+      "lastEventDescription": "With delivery courier"
     },
     {
       "order": "LT000000000000110841",
@@ -40818,16 +40820,16 @@
     {
       "order": "LT000000000000111063",
       "waybill": "7601320764",
-      "lastEventDate": "28/10/2026 15:57",
-      "status": "REINTENTO",
-      "category": "Incidencia",
+      "lastEventDate": "29/10/2026 10:11",
+      "status": "EN REPARTO",
+      "category": "En Tránsito",
       "orderType": "B2C",
       "order_type": "B2C",
       "signedBy": "",
       "signedByRaw": "",
-      "shipmentState": "Delivery attempted. Recipient not home",
-      "originalStatus": "El mensajero no fue atendido en el domicilio al momento de intentar la entrega.",
-      "originalComment": "Si usted es el  destinatario y desea cambiar sus preferencias de entrega por favor visite https://delivery.dhl.com",
+      "shipmentState": "With delivery courier",
+      "originalStatus": "",
+      "originalComment": "",
       "warehouseStatus": "Shipped",
       "transportStatus": "En reparto",
       "transportHandover": {
@@ -40838,11 +40840,9 @@
       },
       "deliveryConfirmed": false,
       "deliveryDate": "",
-      "incidents": [
-        "REINTENTO"
-      ],
-      "lastEventLabel": "REINTENTO",
-      "lastEventDescription": "Delivery attempted. Recipient not home"
+      "incidents": [],
+      "lastEventLabel": "EN REPARTO",
+      "lastEventDescription": "With delivery courier"
     },
     {
       "order": "LT000000000000111087",
@@ -40928,18 +40928,18 @@
     {
       "order": "LT000000000000111188",
       "waybill": "1699653594",
-      "lastEventDate": "28/10/2026 13:11",
-      "status": "EN RUTA",
+      "lastEventDate": "29/10/2026 10:41",
+      "status": "EN REPARTO",
       "category": "En Tránsito",
       "orderType": "B2C",
       "order_type": "B2C",
       "signedBy": "",
       "signedByRaw": "",
-      "shipmentState": "In transit",
-      "originalStatus": "",
-      "originalComment": "",
+      "shipmentState": "With delivery courier",
+      "originalStatus": "Envío en ruta  para su entrega.",
+      "originalComment": "Espera la entrega hoy",
       "warehouseStatus": "Shipped",
-      "transportStatus": "En tránsito",
+      "transportStatus": "En reparto",
       "transportHandover": {
         "confirmed": false,
         "mode": "",
@@ -40948,9 +40948,11 @@
       },
       "deliveryConfirmed": false,
       "deliveryDate": "",
-      "incidents": [],
-      "lastEventLabel": "EN RUTA",
-      "lastEventDescription": "In transit"
+      "incidents": [
+        "STATUS_DICTIONARY_CONFLICT"
+      ],
+      "lastEventLabel": "EN REPARTO",
+      "lastEventDescription": "With delivery courier"
     },
     {
       "order": "LT000000000000111189",
@@ -40982,18 +40984,18 @@
     {
       "order": "LT000000000000111197",
       "waybill": "9507008512",
-      "lastEventDate": "28/10/2026 13:11",
-      "status": "EN RUTA",
+      "lastEventDate": "29/10/2026 10:04",
+      "status": "EN REPARTO",
       "category": "En Tránsito",
       "orderType": "B2C",
       "order_type": "B2C",
       "signedBy": "",
       "signedByRaw": "",
-      "shipmentState": "In transit",
+      "shipmentState": "With delivery courier",
       "originalStatus": "",
       "originalComment": "",
       "warehouseStatus": "Shipped",
-      "transportStatus": "En tránsito",
+      "transportStatus": "En reparto",
       "transportHandover": {
         "confirmed": false,
         "mode": "",
@@ -41003,8 +41005,8 @@
       "deliveryConfirmed": false,
       "deliveryDate": "",
       "incidents": [],
-      "lastEventLabel": "EN RUTA",
-      "lastEventDescription": "In transit"
+      "lastEventLabel": "EN REPARTO",
+      "lastEventDescription": "With delivery courier"
     },
     {
       "order": "LT000000000000111207",
@@ -41090,18 +41092,18 @@
     {
       "order": "LT000000000000111266",
       "waybill": "9506994674",
-      "lastEventDate": "28/10/2026 13:11",
-      "status": "EN RUTA",
+      "lastEventDate": "29/10/2026 10:47",
+      "status": "EN REPARTO",
       "category": "En Tránsito",
       "orderType": "B2C",
       "order_type": "B2C",
       "signedBy": "",
       "signedByRaw": "",
-      "shipmentState": "In transit",
-      "originalStatus": "",
-      "originalComment": "",
+      "shipmentState": "With delivery courier",
+      "originalStatus": "Envío en ruta  para su entrega.",
+      "originalComment": "Espera la entrega hoy",
       "warehouseStatus": "Shipped",
-      "transportStatus": "En tránsito",
+      "transportStatus": "En reparto",
       "transportHandover": {
         "confirmed": false,
         "mode": "",
@@ -41110,9 +41112,11 @@
       },
       "deliveryConfirmed": false,
       "deliveryDate": "",
-      "incidents": [],
-      "lastEventLabel": "EN RUTA",
-      "lastEventDescription": "In transit"
+      "incidents": [
+        "STATUS_DICTIONARY_CONFLICT"
+      ],
+      "lastEventLabel": "EN REPARTO",
+      "lastEventDescription": "With delivery courier"
     },
     {
       "order": "LT000000000000111268",
@@ -41144,45 +41148,45 @@
     {
       "order": "LT000000000000111274",
       "waybill": "9507011732",
-      "lastEventDate": "28/10/2026 13:12",
-      "status": "EN RUTA",
-      "category": "En Tránsito",
+      "lastEventDate": "29/10/2026 10:35",
+      "status": "ENTREGADA",
+      "category": "Finalizado",
       "orderType": "B2C",
       "order_type": "B2C",
-      "signedBy": "",
-      "signedByRaw": "",
-      "shipmentState": "In transit",
+      "signedBy": "Mnica Carreo",
+      "signedByRaw": "Mnica Carreo",
+      "shipmentState": "Shipment delivered ok",
       "originalStatus": "",
       "originalComment": "",
       "warehouseStatus": "Shipped",
-      "transportStatus": "En tránsito",
+      "transportStatus": "Entregada",
       "transportHandover": {
         "confirmed": false,
         "mode": "",
         "source": "",
         "message": ""
       },
-      "deliveryConfirmed": false,
-      "deliveryDate": "",
+      "deliveryConfirmed": true,
+      "deliveryDate": "2026-10-29T10:35:00-03:00",
       "incidents": [],
-      "lastEventLabel": "EN RUTA",
-      "lastEventDescription": "In transit"
+      "lastEventLabel": "ENTREGADA",
+      "lastEventDescription": "Shipment delivered ok"
     },
     {
       "order": "LT000000000000111285",
       "waybill": "2878172006",
-      "lastEventDate": "28/10/2026 13:11",
-      "status": "EN RUTA",
+      "lastEventDate": "29/10/2026 10:00",
+      "status": "EN REPARTO",
       "category": "En Tránsito",
       "orderType": "B2C",
       "order_type": "B2C",
       "signedBy": "",
       "signedByRaw": "",
-      "shipmentState": "In transit",
+      "shipmentState": "With delivery courier",
       "originalStatus": "",
       "originalComment": "",
       "warehouseStatus": "Shipped",
-      "transportStatus": "En tránsito",
+      "transportStatus": "En reparto",
       "transportHandover": {
         "confirmed": false,
         "mode": "",
@@ -41192,8 +41196,8 @@
       "deliveryConfirmed": false,
       "deliveryDate": "",
       "incidents": [],
-      "lastEventLabel": "EN RUTA",
-      "lastEventDescription": "In transit"
+      "lastEventLabel": "EN REPARTO",
+      "lastEventDescription": "With delivery courier"
     },
     {
       "order": "LT000000000000111286",
@@ -41414,18 +41418,18 @@
     {
       "order": "LT000000000000111373",
       "waybill": "3390319575",
-      "lastEventDate": "28/10/2026 13:10",
-      "status": "EN RUTA",
+      "lastEventDate": "29/10/2026 10:04",
+      "status": "EN REPARTO",
       "category": "En Tránsito",
       "orderType": "B2C",
       "order_type": "B2C",
       "signedBy": "",
       "signedByRaw": "",
-      "shipmentState": "In transit",
+      "shipmentState": "With delivery courier",
       "originalStatus": "",
       "originalComment": "",
       "warehouseStatus": "Shipped",
-      "transportStatus": "En tránsito",
+      "transportStatus": "En reparto",
       "transportHandover": {
         "confirmed": false,
         "mode": "",
@@ -41435,8 +41439,8 @@
       "deliveryConfirmed": false,
       "deliveryDate": "",
       "incidents": [],
-      "lastEventLabel": "EN RUTA",
-      "lastEventDescription": "In transit"
+      "lastEventLabel": "EN REPARTO",
+      "lastEventDescription": "With delivery courier"
     },
     {
       "order": "LT000000000000111382",
