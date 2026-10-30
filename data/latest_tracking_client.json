@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.2.0",
-  "generatedAt": "2026-10-29T16:10:24",
+  "generatedAt": "2026-10-30T08:10:25",
   "source": {
     "platform": "Polaris",
     "module": "Tracking",
@@ -30,14 +30,14 @@
   },
   "inventoryThermometer": {
     "available": false,
-    "generatedAt": "2026-10-29T16:10:24",
+    "generatedAt": "2026-10-30T08:10:25",
     "totalAuditOrders": 0,
     "totalNoFillOrders": 0,
     "topCriticalItems": []
   },
   "supplyAudit": {
     "available": false,
-    "generatedAt": "2026-10-29T16:10:24",
+    "generatedAt": "2026-10-30T08:10:25",
     "summary": {
       "totalOrders": 0,
       "fullFill": 0,
@@ -41902,7 +41902,6 @@
       "deliveryConfirmed": false,
       "deliveryDate": "",
       "incidents": [
-        "FECHA_INVALIDA",
         "PENDIENTE DE RECOLECCION",
         "WAREHOUSE_TRANSPORT_SYNC"
       ],
@@ -41933,7 +41932,6 @@
       "deliveryConfirmed": false,
       "deliveryDate": "",
       "incidents": [
-        "FECHA_INVALIDA",
         "PENDIENTE DE RECOLECCION",
         "WAREHOUSE_TRANSPORT_SYNC"
       ],
@@ -42153,7 +42151,6 @@
       "deliveryConfirmed": false,
       "deliveryDate": "",
       "incidents": [
-        "FECHA_INVALIDA",
         "PENDIENTE DE RECOLECCION",
         "WAREHOUSE_TRANSPORT_SYNC"
       ],
