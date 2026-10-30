@@ -1,23 +1,23 @@
 {
   "schemaVersion": "1.2.0",
-  "generatedAt": "2026-10-30T13:10:25",
+  "generatedAt": "2026-10-30T14:10:25",
   "source": {
     "platform": "Polaris",
     "module": "Tracking",
     "company": "LATAM Uniformes"
   },
   "summary": {
-    "totalShipments": 1577,
-    "delivered": 1173,
+    "totalShipments": 1578,
+    "delivered": 1175,
     "inTransit": 14,
     "scheduled": 2,
     "retry": 0,
     "wrongAddress": 0,
     "returns": 1,
-    "incidents": 16,
+    "incidents": 15,
     "critical": 1,
-    "signedByCaptured": 1179,
-    "signedByResolved": 1179,
+    "signedByCaptured": 1181,
+    "signedByResolved": 1181,
     "deliveredWithoutSignedBy": 0
   },
   "inventoryHealth": {
@@ -30,14 +30,14 @@
   },
   "inventoryThermometer": {
     "available": false,
-    "generatedAt": "2026-10-30T13:10:25",
+    "generatedAt": "2026-10-30T14:10:25",
     "totalAuditOrders": 0,
     "totalNoFillOrders": 0,
     "topCriticalItems": []
   },
   "supplyAudit": {
     "available": false,
-    "generatedAt": "2026-10-30T13:10:25",
+    "generatedAt": "2026-10-30T14:10:25",
     "summary": {
       "totalOrders": 0,
       "fullFill": 0,
@@ -40845,29 +40845,29 @@
     {
       "order": "LT000000000000111043",
       "waybill": "3390323145",
-      "lastEventDate": "30/10/2026 11:40",
-      "status": "EN REPARTO",
-      "category": "En Tránsito",
+      "lastEventDate": "30/10/2026 13:44",
+      "status": "ENTREGADA",
+      "category": "Finalizado",
       "orderType": "B2C",
       "order_type": "B2C",
-      "signedBy": "",
-      "signedByRaw": "",
-      "shipmentState": "With delivery courier",
+      "signedBy": "Justin Beltran",
+      "signedByRaw": "Justin Beltran",
+      "shipmentState": "Shipment delivered ok",
       "originalStatus": "",
       "originalComment": "",
       "warehouseStatus": "Shipped",
-      "transportStatus": "En reparto",
+      "transportStatus": "Entregada",
       "transportHandover": {
         "confirmed": false,
         "mode": "",
         "source": "",
         "message": ""
       },
-      "deliveryConfirmed": false,
-      "deliveryDate": "",
+      "deliveryConfirmed": true,
+      "deliveryDate": "2026-10-30T13:44:00-03:00",
       "incidents": [],
-      "lastEventLabel": "EN REPARTO",
-      "lastEventDescription": "With delivery courier"
+      "lastEventLabel": "ENTREGADA",
+      "lastEventDescription": "Shipment delivered ok"
     },
     {
       "order": "LT000000000000111061",
@@ -41827,31 +41827,29 @@
     {
       "order": "LT000000000000111519",
       "waybill": "7898411916",
-      "lastEventDate": "30/10/2026 10:18",
-      "status": "EN REPARTO",
-      "category": "En Tránsito",
+      "lastEventDate": "30/10/2026 12:53",
+      "status": "ENTREGADA",
+      "category": "Finalizado",
       "orderType": "B2C",
       "order_type": "B2C",
-      "signedBy": "",
-      "signedByRaw": "",
-      "shipmentState": "With delivery courier",
-      "originalStatus": "Envío en ruta  para su entrega.",
-      "originalComment": "Espera la entrega hoy",
+      "signedBy": "bismel mascareno CJ",
+      "signedByRaw": "bismel mascareno CJ",
+      "shipmentState": "Shipment delivered ok",
+      "originalStatus": "",
+      "originalComment": "",
       "warehouseStatus": "Shipped",
-      "transportStatus": "En reparto",
+      "transportStatus": "Entregada",
       "transportHandover": {
         "confirmed": false,
         "mode": "",
         "source": "",
         "message": ""
       },
-      "deliveryConfirmed": false,
-      "deliveryDate": "",
-      "incidents": [
-        "STATUS_DICTIONARY_CONFLICT"
-      ],
-      "lastEventLabel": "EN REPARTO",
-      "lastEventDescription": "With delivery courier"
+      "deliveryConfirmed": true,
+      "deliveryDate": "2026-10-30T12:53:00-03:00",
+      "incidents": [],
+      "lastEventLabel": "ENTREGADA",
+      "lastEventDescription": "Shipment delivered ok"
     },
     {
       "order": "LT000000000000111549",
@@ -42688,6 +42686,33 @@
       "deliveryDate": "",
       "incidents": [],
       "lastEventLabel": "Allocated",
+      "lastEventDescription": ""
+    },
+    {
+      "order": "LT000000000000112052",
+      "waybill": "",
+      "lastEventDate": "",
+      "status": "Released",
+      "category": "Pendiente",
+      "orderType": "B2C",
+      "order_type": "B2C",
+      "signedBy": "",
+      "signedByRaw": "",
+      "shipmentState": "",
+      "originalStatus": "",
+      "originalComment": "",
+      "warehouseStatus": "Released",
+      "transportStatus": "",
+      "transportHandover": {
+        "confirmed": false,
+        "mode": "",
+        "source": "",
+        "message": ""
+      },
+      "deliveryConfirmed": false,
+      "deliveryDate": "",
+      "incidents": [],
+      "lastEventLabel": "Released",
       "lastEventDescription": ""
     }
   ]
