@@ -1,23 +1,23 @@
 {
   "schemaVersion": "1.2.0",
-  "generatedAt": "2026-11-03T12:10:33",
+  "generatedAt": "2026-11-03T13:10:17",
   "source": {
     "platform": "Polaris",
     "module": "Tracking",
     "company": "LATAM Uniformes"
   },
   "summary": {
-    "totalShipments": 1601,
-    "delivered": 1199,
+    "totalShipments": 1602,
+    "delivered": 1200,
     "inTransit": 23,
     "scheduled": 2,
     "retry": 0,
     "wrongAddress": 0,
     "returns": 1,
-    "incidents": 22,
+    "incidents": 21,
     "critical": 1,
-    "signedByCaptured": 1205,
-    "signedByResolved": 1205,
+    "signedByCaptured": 1206,
+    "signedByResolved": 1206,
     "deliveredWithoutSignedBy": 0
   },
   "inventoryHealth": {
@@ -30,14 +30,14 @@
   },
   "inventoryThermometer": {
     "available": false,
-    "generatedAt": "2026-11-03T12:10:33",
+    "generatedAt": "2026-11-03T13:10:17",
     "totalAuditOrders": 0,
     "totalNoFillOrders": 0,
     "topCriticalItems": []
   },
   "supplyAudit": {
     "available": false,
-    "generatedAt": "2026-11-03T12:10:33",
+    "generatedAt": "2026-11-03T13:10:17",
     "summary": {
       "totalOrders": 0,
       "fullFill": 0,
@@ -40893,7 +40893,6 @@
       "deliveryConfirmed": false,
       "deliveryDate": "",
       "incidents": [
-        "FECHA_INVALIDA",
         "PENDIENTE DE RECOLECCION",
         "WAREHOUSE_TRANSPORT_SYNC"
       ],
@@ -40978,7 +40977,6 @@
       "deliveryConfirmed": false,
       "deliveryDate": "",
       "incidents": [
-        "FECHA_INVALIDA",
         "PENDIENTE DE RECOLECCION",
         "WAREHOUSE_TRANSPORT_SYNC"
       ],
@@ -41036,7 +41034,6 @@
       "deliveryConfirmed": false,
       "deliveryDate": "",
       "incidents": [
-        "FECHA_INVALIDA",
         "PENDIENTE DE RECOLECCION",
         "WAREHOUSE_TRANSPORT_SYNC"
       ],
@@ -41094,7 +41091,6 @@
       "deliveryConfirmed": false,
       "deliveryDate": "",
       "incidents": [
-        "FECHA_INVALIDA",
         "PENDIENTE DE RECOLECCION",
         "WAREHOUSE_TRANSPORT_SYNC"
       ],
@@ -41152,7 +41148,6 @@
       "deliveryConfirmed": false,
       "deliveryDate": "",
       "incidents": [
-        "FECHA_INVALIDA",
         "PENDIENTE DE RECOLECCION",
         "WAREHOUSE_TRANSPORT_SYNC"
       ],
@@ -42489,45 +42484,43 @@
     {
       "order": "LT000000000000111846",
       "waybill": "2111760486",
-      "lastEventDate": "03/11/2026 10:31",
-      "status": "EN REPARTO",
-      "category": "En Tránsito",
+      "lastEventDate": "03/11/2026 12:08",
+      "status": "ENTREGADA",
+      "category": "Finalizado",
       "orderType": "B2C",
       "order_type": "B2C",
-      "signedBy": "",
-      "signedByRaw": "",
-      "shipmentState": "With delivery courier",
-      "originalStatus": "Envío en ruta  para su entrega.",
-      "originalComment": "Espera la entrega hoy",
+      "signedBy": "MARIANNE ILSE JERIA",
+      "signedByRaw": "MARIANNE ILSE JERIA",
+      "shipmentState": "Shipment delivered ok",
+      "originalStatus": "",
+      "originalComment": "",
       "warehouseStatus": "Shipped",
-      "transportStatus": "En reparto",
+      "transportStatus": "Entregada",
       "transportHandover": {
         "confirmed": false,
         "mode": "",
         "source": "",
         "message": ""
       },
-      "deliveryConfirmed": false,
-      "deliveryDate": "",
-      "incidents": [
-        "STATUS_DICTIONARY_CONFLICT"
-      ],
-      "lastEventLabel": "EN REPARTO",
-      "lastEventDescription": "With delivery courier"
+      "deliveryConfirmed": true,
+      "deliveryDate": "2026-11-03T12:08:00-03:00",
+      "incidents": [],
+      "lastEventLabel": "ENTREGADA",
+      "lastEventDescription": "Shipment delivered ok"
     },
     {
       "order": "LT000000000000111847",
       "waybill": "2111730902",
-      "lastEventDate": "03/11/2026 07:38",
+      "lastEventDate": "03/11/2026 12:14",
       "status": "EN RUTA",
       "category": "En Tránsito",
       "orderType": "B2C",
       "order_type": "B2C",
       "signedBy": "",
       "signedByRaw": "",
-      "shipmentState": "Processed at DHL Location",
-      "originalStatus": "",
-      "originalComment": "",
+      "shipmentState": "Departed Facility",
+      "originalStatus": "El envío se encuentra en camino hacia su destino final.",
+      "originalComment": "Por favor continúe monitoreando el progreso del envío en línea. Si usted es el destinatario puede cambiar las preferencias de entrega visitando https://delivery.dhl.com",
       "warehouseStatus": "Shipped",
       "transportStatus": "En tránsito",
       "transportHandover": {
@@ -42540,7 +42533,7 @@
       "deliveryDate": "",
       "incidents": [],
       "lastEventLabel": "EN RUTA",
-      "lastEventDescription": "Processed at DHL Location"
+      "lastEventDescription": "Departed Facility"
     },
     {
       "order": "LT000000000000111849",
@@ -42713,16 +42706,16 @@
     {
       "order": "LT000000000000111975",
       "waybill": "1451526274",
-      "lastEventDate": "03/11/2026 11:23",
+      "lastEventDate": "03/11/2026 12:14",
       "status": "EN RUTA",
       "category": "En Tránsito",
       "orderType": "B2C",
       "order_type": "B2C",
       "signedBy": "",
       "signedByRaw": "",
-      "shipmentState": "Processed at DHL Location",
-      "originalStatus": "",
-      "originalComment": "",
+      "shipmentState": "Departed Facility",
+      "originalStatus": "El envío se encuentra en camino hacia su destino final.",
+      "originalComment": "Por favor continúe monitoreando el progreso del envío en línea. Si usted es el destinatario puede cambiar las preferencias de entrega visitando https://delivery.dhl.com",
       "warehouseStatus": "Shipped",
       "transportStatus": "En tránsito",
       "transportHandover": {
@@ -42735,7 +42728,7 @@
       "deliveryDate": "",
       "incidents": [],
       "lastEventLabel": "EN RUTA",
-      "lastEventDescription": "Processed at DHL Location"
+      "lastEventDescription": "Departed Facility"
     },
     {
       "order": "LT000000000000111983",
@@ -43147,16 +43140,16 @@
     {
       "order": "LT000000000000112365",
       "waybill": "2790552682",
-      "lastEventDate": "03/11/2026 11:23",
+      "lastEventDate": "03/11/2026 12:01",
       "status": "EN RUTA",
       "category": "En Tránsito",
       "orderType": "B2C",
       "order_type": "B2C",
       "signedBy": "",
       "signedByRaw": "",
-      "shipmentState": "Processed at DHL Location",
-      "originalStatus": "",
-      "originalComment": "",
+      "shipmentState": "Departed Facility",
+      "originalStatus": "El envío se encuentra en camino hacia su destino final.",
+      "originalComment": "Por favor continúe monitoreando el progreso del envío en línea. Si usted es el destinatario puede cambiar las preferencias de entrega visitando https://delivery.dhl.com",
       "warehouseStatus": "Shipped",
       "transportStatus": "En tránsito",
       "transportHandover": {
@@ -43169,7 +43162,7 @@
       "deliveryDate": "",
       "incidents": [],
       "lastEventLabel": "EN RUTA",
-      "lastEventDescription": "Processed at DHL Location"
+      "lastEventDescription": "Departed Facility"
     },
     {
       "order": "LT000000000000112382",
@@ -43228,16 +43221,16 @@
     {
       "order": "LT000000000000112411",
       "waybill": "7017941092",
-      "lastEventDate": "03/11/2026 11:24",
+      "lastEventDate": "03/11/2026 12:01",
       "status": "EN RUTA",
       "category": "En Tránsito",
       "orderType": "B2C",
       "order_type": "B2C",
       "signedBy": "",
       "signedByRaw": "",
-      "shipmentState": "Processed at DHL Location",
-      "originalStatus": "",
-      "originalComment": "",
+      "shipmentState": "Departed Facility",
+      "originalStatus": "El envío se encuentra en camino hacia su destino final.",
+      "originalComment": "Por favor continúe monitoreando el progreso del envío en línea. Si usted es el destinatario puede cambiar las preferencias de entrega visitando https://delivery.dhl.com",
       "warehouseStatus": "Shipped",
       "transportStatus": "En tránsito",
       "transportHandover": {
@@ -43250,7 +43243,7 @@
       "deliveryDate": "",
       "incidents": [],
       "lastEventLabel": "EN RUTA",
-      "lastEventDescription": "Processed at DHL Location"
+      "lastEventDescription": "Departed Facility"
     },
     {
       "order": "LT000000000000112413",
@@ -43282,16 +43275,16 @@
     {
       "order": "LT000000000000112430",
       "waybill": "6869738116",
-      "lastEventDate": "03/11/2026 11:51",
+      "lastEventDate": "03/11/2026 12:03",
       "status": "EN RUTA",
       "category": "En Tránsito",
       "orderType": "B2C",
       "order_type": "B2C",
       "signedBy": "",
       "signedByRaw": "",
-      "shipmentState": "Processed at DHL Location",
-      "originalStatus": "",
-      "originalComment": "",
+      "shipmentState": "Departed Facility",
+      "originalStatus": "El envío se encuentra en camino hacia su destino final.",
+      "originalComment": "Por favor continúe monitoreando el progreso del envío en línea. Si usted es el destinatario puede cambiar las preferencias de entrega visitando https://delivery.dhl.com",
       "warehouseStatus": "Shipped",
       "transportStatus": "En tránsito",
       "transportHandover": {
@@ -43304,21 +43297,21 @@
       "deliveryDate": "",
       "incidents": [],
       "lastEventLabel": "EN RUTA",
-      "lastEventDescription": "Processed at DHL Location"
+      "lastEventDescription": "Departed Facility"
     },
     {
       "order": "LT000000000000112431",
       "waybill": "9947781104",
-      "lastEventDate": "03/11/2026 11:51",
+      "lastEventDate": "03/11/2026 12:03",
       "status": "EN RUTA",
       "category": "En Tránsito",
       "orderType": "B2C",
       "order_type": "B2C",
       "signedBy": "",
       "signedByRaw": "",
-      "shipmentState": "Processed at DHL Location",
-      "originalStatus": "",
-      "originalComment": "",
+      "shipmentState": "Departed Facility",
+      "originalStatus": "El envío se encuentra en camino hacia su destino final.",
+      "originalComment": "Por favor continúe monitoreando el progreso del envío en línea. Si usted es el destinatario puede cambiar las preferencias de entrega visitando https://delivery.dhl.com",
       "warehouseStatus": "Shipped",
       "transportStatus": "En tránsito",
       "transportHandover": {
@@ -43331,21 +43324,21 @@
       "deliveryDate": "",
       "incidents": [],
       "lastEventLabel": "EN RUTA",
-      "lastEventDescription": "Processed at DHL Location"
+      "lastEventDescription": "Departed Facility"
     },
     {
       "order": "LT000000000000112432",
       "waybill": "6869764451",
-      "lastEventDate": "03/11/2026 11:51",
+      "lastEventDate": "03/11/2026 12:03",
       "status": "EN RUTA",
       "category": "En Tránsito",
       "orderType": "B2C",
       "order_type": "B2C",
       "signedBy": "",
       "signedByRaw": "",
-      "shipmentState": "Processed at DHL Location",
-      "originalStatus": "",
-      "originalComment": "",
+      "shipmentState": "Departed Facility",
+      "originalStatus": "El envío se encuentra en camino hacia su destino final.",
+      "originalComment": "Por favor continúe monitoreando el progreso del envío en línea. Si usted es el destinatario puede cambiar las preferencias de entrega visitando https://delivery.dhl.com",
       "warehouseStatus": "Shipped",
       "transportStatus": "En tránsito",
       "transportHandover": {
@@ -43358,7 +43351,34 @@
       "deliveryDate": "",
       "incidents": [],
       "lastEventLabel": "EN RUTA",
-      "lastEventDescription": "Processed at DHL Location"
+      "lastEventDescription": "Departed Facility"
+    },
+    {
+      "order": "LT000000000000112436",
+      "waybill": "",
+      "lastEventDate": "",
+      "status": "Released",
+      "category": "Pendiente",
+      "orderType": "B2C",
+      "order_type": "B2C",
+      "signedBy": "",
+      "signedByRaw": "",
+      "shipmentState": "",
+      "originalStatus": "",
+      "originalComment": "",
+      "warehouseStatus": "Released",
+      "transportStatus": "",
+      "transportHandover": {
+        "confirmed": false,
+        "mode": "",
+        "source": "",
+        "message": ""
+      },
+      "deliveryConfirmed": false,
+      "deliveryDate": "",
+      "incidents": [],
+      "lastEventLabel": "Released",
+      "lastEventDescription": ""
     }
   ]
 }
