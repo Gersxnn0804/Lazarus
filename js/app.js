@@ -47,7 +47,6 @@ const el = {
   categoryFilter: $("categoryFilter"),
   channelFilter: $("channelFilter"),
   dateFilter: $("dateFilter"),
-  timeGranularity: $("timeGranularity"),
   periodMode: $("periodMode"), periodDay: $("periodDay"), periodMonth: $("periodMonth"),
   periodYear: $("periodYear"), periodFrom: $("periodFrom"), periodTo: $("periodTo"),
   allDates: $("allDates"), activePeriod: $("activePeriod"), periodError: $("periodError"),
@@ -65,9 +64,6 @@ const el = {
   donutChart: $("donutChart"),
   donutLegend: $("donutLegend"),
   statusDistribution: $("statusDistribution"),
-  temporalChart: $("temporalChart"),
-  temporalDescription: $("temporalDescription"),
-  temporalMeta: $("temporalMeta"),
 
   kpiTotal: $("kpiTotal"),
   kpiDelivered: $("kpiDelivered"),
@@ -249,7 +245,6 @@ function renderEmptyDetail() {
 }
 
 
-
 function resetDashboard(message = "No hay una publicación válida disponible.") {
   state.raw = null; state.shipments = []; state.filtered = []; state.selectedShipmentId = null; state.page = 1;
   el.sourceStatus.textContent = "Sin datos"; el.sourceMeta.textContent = message;
@@ -266,7 +261,6 @@ function resetDashboard(message = "No hay una publicación válida disponible.")
   });
   el.donutLegend.innerHTML = ""; el.statusLegend.innerHTML = ""; el.statusDistribution.innerHTML = "";
   el.sourceDistribution.innerHTML = ""; el.periodDiagnostics.textContent = "Sin publicación válida para analizar.";
-  el.temporalChart.innerHTML = ""; el.temporalMeta.textContent = "";
   clearFilterOptions(); el.searchInput.value = ""; renderTable(); renderEmptyDetail();
 }
 
@@ -415,7 +409,6 @@ function renderFilters() {
 }
 
 
-
 function normalizeSearchText(value) {
   return String(value || "")
     .normalize("NFD")
@@ -423,7 +416,6 @@ function normalizeSearchText(value) {
     .toLowerCase()
     .trim();
 }
-
 
 
 function isDeliveredShipment(item) { return item.deliveryConfirmed === true; }
@@ -539,78 +531,8 @@ function renderStatusDistribution() {
   }).join("");
 }
 
-function renderTemporalChart() {
-  if (!el.temporalChart) return;
 
-  const granularity = el.timeGranularity?.value || "day";
-  const names = { day: "día", month: "mes", year: "año" };
-  const series = LazarusTracking.buildTemporalSeries(getOperationalScope(), granularity);
-  const maxValue = Math.max(...series.points.map(point => point.total), 1);
-
-  el.temporalDescription.textContent = `Último evento operacional (lastEventDate) agrupado por ${names[granularity]}. La serie verde es un subconjunto de la cohorte, no entregas por fecha de entrega.`;
-  el.temporalMeta.textContent = `${formatNumber(series.dated)} órdenes con fecha · ${formatNumber(series.undated)} sin fecha válida · ${state.periodLabel}`;
-  el.temporalChart.setAttribute("aria-label", `Órdenes por ${names[granularity]}: ${series.dated} con fecha y ${series.undated} sin fecha válida`);
-
-  if (!series.points.length) {
-    el.temporalChart.innerHTML = `
-      <div class="status-empty-card temporal-empty">
-        <strong>${getOperationalScope().length ? "Sin fechas disponibles" : "Sin datos para el período"}</strong>
-        <span>No hay registros filtrados con una fecha operacional válida.</span>
-      </div>
-    `;
-    return;
-  }
-
-  el.temporalChart.innerHTML = `<div class="temporal-plot" style="--period-count:${series.points.length}">${series.points.map(point => {
-    const totalHeight = Math.max(percent(point.total, maxValue), 4);
-    const deliveredHeight = point.delivered ? Math.max(percent(point.delivered, maxValue), 3) : 0;
-    const accessibleLabel = `${point.label}: ${point.total} órdenes, ${point.delivered} entregas confirmadas`;
-    return `
-      <div class="temporal-column" aria-label="${escapeHtml(accessibleLabel)}">
-        <div class="temporal-values"><strong>${formatNumber(point.total)}</strong><small>${formatNumber(point.delivered)} entregadas</small></div>
-        <div class="temporal-bars" aria-hidden="true">
-          <i class="temporal-bar total" style="height:${totalHeight}%"></i>
-          <i class="temporal-bar delivered" style="height:${deliveredHeight}%"></i>
-        </div>
-        <span class="temporal-label">${escapeHtml(point.label)}</span>
-      </div>
-    `;
-  }).join("")}</div>`;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function renderAnalytics() { renderCompliance(); renderStatusDistribution(); renderSourceDistribution(); renderTemporalChart(); }
+function renderAnalytics() { renderCompliance(); renderStatusDistribution(); renderSourceDistribution(); }
 
 function applyFilters({ preservePage = false } = {}) {
   if (!state.raw) return;
@@ -624,7 +546,7 @@ function applyFilters({ preservePage = false } = {}) {
       search: el.searchInput.value, status: el.statusFilter.value, category: el.categoryFilter.value,
       channel: el.channelFilter.value, date: el.dateFilter.value });
     state.filtered = scope.rows;
-    el.periodDiagnostics.textContent = `${formatNumber(scope.undated)} órdenes sin fecha operacional válida entre ${formatNumber(scope.matching)} que coinciden con los demás filtros. ${period ? "Excluidas de este período." : "Incluidas en el snapshot; excluidas del gráfico temporal."} Las entregas confirmadas requieren evidencia y deliveryDate válida; no se usa esa fecha para seleccionar esta cohorte.`;
+    el.periodDiagnostics.textContent = `${formatNumber(scope.undated)} órdenes sin fecha operacional válida entre ${formatNumber(scope.matching)} que coinciden con los demás filtros. ${period ? "Excluidas de este período." : "Incluidas en el snapshot sin restricción temporal."} Las entregas confirmadas requieren evidencia y deliveryDate válida; no se usa esa fecha para seleccionar este período.`;
   } catch (exception) {
     if (!(exception instanceof RangeError)) throw exception;
     error = exception.message;
@@ -800,7 +722,6 @@ function bindDashboardEvents() {
   el.categoryFilter.addEventListener("change", applyFilters);
   if (el.channelFilter) el.channelFilter.addEventListener("change", applyFilters);
   el.dateFilter.addEventListener("change", applyFilters);
-  if (el.timeGranularity) el.timeGranularity.addEventListener("change", renderTemporalChart);
   el.periodMode.querySelectorAll("button").forEach(button => button.addEventListener("click", () => {
     state.temporal.mode = button.dataset.periodMode;
     state.temporal.allDates = false;
