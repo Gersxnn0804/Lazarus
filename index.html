@@ -162,28 +162,6 @@
           <div id="statusDistribution" class="status-distribution"></div>
         </article>
         <article class="panel"><div class="panel-header"><div><h3>Warehouse y Transporte</h3><p>Cada fuente distribuye las mismas órdenes; no se suman entre sí.</p></div></div><div id="sourceDistribution" class="source-distribution"></div></article>
-
-        <article class="panel temporal-panel">
-          <div class="panel-header">
-            <div>
-              <h3>ordenes por fecha de último evento</h3>
-              <p id="temporalDescription">Último evento operacional agrupado por día.</p>
-            </div>
-            <div class="temporal-legend" aria-label="Series del gráfico">
-              <span><i class="total"></i>Órdenes</span>
-              <span><i class="delivered"></i>Con entrega confirmada</span>
-            </div>
-          </div>
-          <label class="temporal-control" for="timeGranularity">
-            <span>Agrupar gráfico por</span>
-            <select id="timeGranularity" aria-describedby="groupingHelp">
-              <option value="day">Día</option><option value="month">Mes</option><option value="year">Año</option>
-            </select>
-          </label>
-          <p id="groupingHelp" class="period-note">Agrupa las barras del período activo; no cambia el filtro global ni los KPI.</p>
-          <div id="temporalChart" class="temporal-chart" role="img" aria-label="Órdenes por período"></div>
-          <p id="temporalMeta" class="temporal-meta"></p>
-        </article>
       </section>
 
       <section class="workspace" id="orders">
