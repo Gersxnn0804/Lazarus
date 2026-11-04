@@ -196,6 +196,32 @@
       insufficient: count(unknown), ownTransport: count(row => row.transportHandover.confirmed),
       cancelled, thirdParty: transportAvailable || !rows.length ? count(row => row.status === "TERCERIZADA") : null };
   }
+  function buildTemporalSeries(rows, granularity = "day") {
+    if (!Array.isArray(rows)) throw new TypeError("La serie temporal requiere una lista de órdenes.");
+    if (!["day", "month", "year"].includes(granularity)) throw new RangeError("Granularidad temporal no compatible.");
+
+    const groups = new Map();
+    let undated = 0;
+
+    rows.forEach(row => {
+      const date = parseDate(row?.lastEventDate);
+      if (!date) { undated++; return; }
+
+      const month = String(date.month).padStart(2, "0");
+      const day = String(date.day).padStart(2, "0");
+      const key = granularity === "day" ? `${date.year}-${month}-${day}`
+        : granularity === "month" ? `${date.year}-${month}` : String(date.year);
+      const label = granularity === "day" ? `${day}-${month}-${date.year}`
+        : granularity === "month" ? `${month}-${date.year}` : String(date.year);
+      const current = groups.get(key) || { key, label, total: 0, delivered: 0 };
+      current.total++;
+      if (row.deliveryConfirmed === true) current.delivered++;
+      groups.set(key, current);
+    });
+
+    const points = [...groups.values()].sort((a, b) => a.key.localeCompare(b.key));
+    return { granularity, points, dated: points.reduce((total, point) => total + point.total, 0), undated };
+  }
   function csv(rows) {
     const columns = ["order", "waybill", "orderType", "status", "warehouseStatus", "transportStatus", "lastEventDate", "deliveryDate", "signedBy", "originalStatus", "originalComment"];
     const cell = value => {
@@ -205,5 +231,5 @@
     };
     return "\ufeff" + [columns.join(","), ...rows.map(row => columns.map(column => cell(row[column])).join(","))].join("\r\n");
   }
-  return { VERSIONS, WAREHOUSE, TRANSPORT, CATALOG, parseDate, family, normalizePayload, buildSummary, csv };
+  return { VERSIONS, WAREHOUSE, TRANSPORT, CATALOG, parseDate, family, normalizePayload, buildSummary, buildTemporalSeries, csv };
 });
