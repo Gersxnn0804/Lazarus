@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.2.0",
-  "generatedAt": "2026-11-04T08:10:35",
+  "generatedAt": "2026-11-04T09:10:39",
   "source": {
     "platform": "Polaris",
     "module": "Tracking",
@@ -8,16 +8,16 @@
   },
   "summary": {
     "totalShipments": 1613,
-    "delivered": 1205,
+    "delivered": 1207,
     "inTransit": 23,
     "scheduled": 2,
-    "retry": 0,
+    "retry": 1,
     "wrongAddress": 0,
     "returns": 1,
-    "incidents": 26,
+    "incidents": 28,
     "critical": 1,
-    "signedByCaptured": 1211,
-    "signedByResolved": 1211,
+    "signedByCaptured": 1213,
+    "signedByResolved": 1213,
     "deliveredWithoutSignedBy": 0
   },
   "inventoryHealth": {
@@ -30,14 +30,14 @@
   },
   "inventoryThermometer": {
     "available": false,
-    "generatedAt": "2026-11-04T08:10:35",
+    "generatedAt": "2026-11-04T09:10:39",
     "totalAuditOrders": 0,
     "totalNoFillOrders": 0,
     "topCriticalItems": []
   },
   "supplyAudit": {
     "available": false,
-    "generatedAt": "2026-11-04T08:10:35",
+    "generatedAt": "2026-11-04T09:10:39",
     "summary": {
       "totalOrders": 0,
       "fullFill": 0,
@@ -42266,31 +42266,29 @@
     {
       "order": "LT000000000000111762",
       "waybill": "8402661013",
-      "lastEventDate": "03/11/2026 10:43",
-      "status": "EN REPARTO",
-      "category": "En Tránsito",
+      "lastEventDate": "03/11/2026 16:31",
+      "status": "ENTREGADA",
+      "category": "Finalizado",
       "orderType": "B2C",
       "order_type": "B2C",
-      "signedBy": "",
-      "signedByRaw": "",
-      "shipmentState": "With delivery courier",
-      "originalStatus": "Envío en ruta  para su entrega.",
-      "originalComment": "Espera la entrega hoy",
+      "signedBy": "Gisele",
+      "signedByRaw": "Gisele",
+      "shipmentState": "Shipment delivered ok",
+      "originalStatus": "",
+      "originalComment": "",
       "warehouseStatus": "Shipped",
-      "transportStatus": "En reparto",
+      "transportStatus": "Entregada",
       "transportHandover": {
         "confirmed": false,
         "mode": "",
         "source": "",
         "message": ""
       },
-      "deliveryConfirmed": false,
-      "deliveryDate": "",
-      "incidents": [
-        "STATUS_DICTIONARY_CONFLICT"
-      ],
-      "lastEventLabel": "EN REPARTO",
-      "lastEventDescription": "With delivery courier"
+      "deliveryConfirmed": true,
+      "deliveryDate": "2026-11-03T16:31:00-03:00",
+      "incidents": [],
+      "lastEventLabel": "ENTREGADA",
+      "lastEventDescription": "Shipment delivered ok"
     },
     {
       "order": "LT000000000000111766",
@@ -42756,16 +42754,16 @@
     {
       "order": "LT000000000000111990",
       "waybill": "2111753560",
-      "lastEventDate": "03/11/2026 10:17",
-      "status": "EN REPARTO",
-      "category": "En Tránsito",
+      "lastEventDate": "03/11/2026 16:10",
+      "status": "REINTENTO",
+      "category": "Incidencia",
       "orderType": "B2C",
       "order_type": "B2C",
       "signedBy": "",
       "signedByRaw": "",
-      "shipmentState": "With delivery courier",
-      "originalStatus": "",
-      "originalComment": "",
+      "shipmentState": "Delivery attempted. Recipient not home",
+      "originalStatus": "El mensajero no fue atendido en el domicilio al momento de intentar la entrega.",
+      "originalComment": "Si usted es el  destinatario y desea cambiar sus preferencias de entrega por favor visite https://delivery.dhl.com",
       "warehouseStatus": "Shipped",
       "transportStatus": "En reparto",
       "transportHandover": {
@@ -42776,9 +42774,11 @@
       },
       "deliveryConfirmed": false,
       "deliveryDate": "",
-      "incidents": [],
-      "lastEventLabel": "EN REPARTO",
-      "lastEventDescription": "With delivery courier"
+      "incidents": [
+        "REINTENTO"
+      ],
+      "lastEventLabel": "REINTENTO",
+      "lastEventDescription": "Delivery attempted. Recipient not home"
     },
     {
       "order": "LT000000000000112002",
@@ -42810,29 +42810,29 @@
     {
       "order": "LT000000000000112007",
       "waybill": "2440691330",
-      "lastEventDate": "03/11/2026 10:48",
-      "status": "EN REPARTO",
-      "category": "En Tránsito",
+      "lastEventDate": "03/11/2026 17:26",
+      "status": "ENTREGADA",
+      "category": "Finalizado",
       "orderType": "B2C",
       "order_type": "B2C",
-      "signedBy": "",
-      "signedByRaw": "",
-      "shipmentState": "With delivery courier",
+      "signedBy": "Tamara Molina",
+      "signedByRaw": "Tamara Molina",
+      "shipmentState": "Shipment delivered ok",
       "originalStatus": "",
       "originalComment": "",
       "warehouseStatus": "Shipped",
-      "transportStatus": "En reparto",
+      "transportStatus": "Entregada",
       "transportHandover": {
         "confirmed": false,
         "mode": "",
         "source": "",
         "message": ""
       },
-      "deliveryConfirmed": false,
-      "deliveryDate": "",
+      "deliveryConfirmed": true,
+      "deliveryDate": "2026-11-03T17:26:00-03:00",
       "incidents": [],
-      "lastEventLabel": "EN REPARTO",
-      "lastEventDescription": "With delivery courier"
+      "lastEventLabel": "ENTREGADA",
+      "lastEventDescription": "Shipment delivered ok"
     },
     {
       "order": "LT000000000000112052",
@@ -43376,18 +43376,18 @@
     },
     {
       "order": "LT000000000000112436",
-      "waybill": "",
-      "lastEventDate": "",
-      "status": "Allocated",
+      "waybill": "4867883440",
+      "lastEventDate": "04/11/2026 11:38",
+      "status": "PENDIENTE DE RECOLECCION",
       "category": "Pendiente",
       "orderType": "B2C",
       "order_type": "B2C",
       "signedBy": "",
       "signedByRaw": "",
-      "shipmentState": "",
+      "shipmentState": "Shipment Data Received",
       "originalStatus": "",
       "originalComment": "",
-      "warehouseStatus": "Allocated",
+      "warehouseStatus": "Manifested",
       "transportStatus": "",
       "transportHandover": {
         "confirmed": false,
@@ -43397,9 +43397,13 @@
       },
       "deliveryConfirmed": false,
       "deliveryDate": "",
-      "incidents": [],
-      "lastEventLabel": "Allocated",
-      "lastEventDescription": ""
+      "incidents": [
+        "FECHA_INVALIDA",
+        "PENDIENTE DE RECOLECCION",
+        "WAREHOUSE_TRANSPORT_SYNC"
+      ],
+      "lastEventLabel": "PENDIENTE DE RECOLECCION",
+      "lastEventDescription": "Shipment Data Received"
     },
     {
       "order": "LT000000000000112462",
@@ -43463,18 +43467,18 @@
     },
     {
       "order": "LT000000000000112491",
-      "waybill": "",
-      "lastEventDate": "",
-      "status": "Allocated",
+      "waybill": "3245841270",
+      "lastEventDate": "03/11/2026 18:52",
+      "status": "PENDIENTE DE RECOLECCION",
       "category": "Pendiente",
       "orderType": "B2C",
       "order_type": "B2C",
       "signedBy": "",
       "signedByRaw": "",
-      "shipmentState": "",
+      "shipmentState": "Shipment Data Received",
       "originalStatus": "",
       "originalComment": "",
-      "warehouseStatus": "Allocated",
+      "warehouseStatus": "Manifested",
       "transportStatus": "",
       "transportHandover": {
         "confirmed": false,
@@ -43484,9 +43488,12 @@
       },
       "deliveryConfirmed": false,
       "deliveryDate": "",
-      "incidents": [],
-      "lastEventLabel": "Allocated",
-      "lastEventDescription": ""
+      "incidents": [
+        "PENDIENTE DE RECOLECCION",
+        "WAREHOUSE_TRANSPORT_SYNC"
+      ],
+      "lastEventLabel": "PENDIENTE DE RECOLECCION",
+      "lastEventDescription": "Shipment Data Received"
     },
     {
       "order": "LT000000000000112500",
