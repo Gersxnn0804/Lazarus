@@ -109,6 +109,14 @@
 <article class="kpi-card"><div class="kpi-card-header"><span>Información insuficiente</span></div><strong id="kpiInsufficient">N/D</strong><small>Órdenes en revisión</small></article></section>
 
       <section class="dashboard-actions" aria-label="Acciones del dashboard">
+        <label class="temporal-control" for="timeGranularity">
+          <span>Agrupar gráfico por</span>
+          <select id="timeGranularity">
+            <option value="day">Día</option>
+            <option value="month">Mes</option>
+            <option value="year">Año</option>
+          </select>
+        </label>
         <button id="reloadBtn" class="primary-btn"><span>↻</span>Actualizar datos</button>
         <button id="exportBtn" class="ghost-btn"><span>⇩</span>Exportar CSV</button>
         <button id="clearFiltersBtn" class="ghost-btn"><span>⌫</span>Limpiar filtros</button>
@@ -145,6 +153,21 @@
             </div>
           </div>
           <div id="statusDistribution" class="status-distribution"></div>
+        </article>
+
+        <article class="panel temporal-panel">
+          <div class="panel-header">
+            <div>
+              <h3>Órdenes por período</h3>
+              <p id="temporalDescription">Último evento operacional agrupado por día.</p>
+            </div>
+            <div class="temporal-legend" aria-label="Series del gráfico">
+              <span><i class="total"></i>Órdenes</span>
+              <span><i class="delivered"></i>Entregas confirmadas</span>
+            </div>
+          </div>
+          <div id="temporalChart" class="temporal-chart" role="img" aria-label="Órdenes por período"></div>
+          <p id="temporalMeta" class="temporal-meta"></p>
         </article>
       </section>
 

@@ -45,6 +45,7 @@ const el = {
   categoryFilter: $("categoryFilter"),
   channelFilter: $("channelFilter"),
   dateFilter: $("dateFilter"),
+  timeGranularity: $("timeGranularity"),
 
 
   recordCounter: $("recordCounter"),
@@ -57,6 +58,9 @@ const el = {
   donutChart: $("donutChart"),
   donutLegend: $("donutLegend"),
   statusDistribution: $("statusDistribution"),
+  temporalChart: $("temporalChart"),
+  temporalDescription: $("temporalDescription"),
+  temporalMeta: $("temporalMeta"),
 
   kpiTotal: $("kpiTotal"),
   kpiDelivered: $("kpiDelivered"),
@@ -245,6 +249,7 @@ function resetDashboard(message = "No hay una publicación válida disponible.")
   el.donutChart.className = "donut empty-donut"; el.donutChart.style.setProperty("--value", 0);
   el.donutChart.innerHTML = "<span>N/D<small>Entregas confirmadas</small></span>";
   el.donutLegend.innerHTML = ""; el.statusDistribution.innerHTML = "";
+  el.temporalChart.innerHTML = ""; el.temporalMeta.textContent = "";
   clearFilterOptions(); el.searchInput.value = ""; renderTable(); renderEmptyDetail();
 }
 
@@ -481,6 +486,44 @@ function renderStatusDistribution() {
   }).join("");
 }
 
+function renderTemporalChart() {
+  if (!el.temporalChart) return;
+
+  const granularity = el.timeGranularity?.value || "day";
+  const names = { day: "día", month: "mes", year: "año" };
+  const series = LazarusTracking.buildTemporalSeries(getOperationalScope(), granularity);
+  const maxValue = Math.max(...series.points.map(point => point.total), 1);
+
+  el.temporalDescription.textContent = `Último evento operacional (lastEventDate) agrupado por ${names[granularity]}.`;
+  el.temporalMeta.textContent = `${formatNumber(series.dated)} órdenes con fecha · ${formatNumber(series.undated)} sin fecha válida`;
+  el.temporalChart.setAttribute("aria-label", `Órdenes por ${names[granularity]}: ${series.dated} con fecha y ${series.undated} sin fecha válida`);
+
+  if (!series.points.length) {
+    el.temporalChart.innerHTML = `
+      <div class="status-empty-card temporal-empty">
+        <strong>Sin fechas disponibles</strong>
+        <span>No hay registros filtrados con una fecha operacional válida.</span>
+      </div>
+    `;
+    return;
+  }
+
+  el.temporalChart.innerHTML = `<div class="temporal-plot" style="--period-count:${series.points.length}">${series.points.map(point => {
+    const totalHeight = Math.max(percent(point.total, maxValue), 4);
+    const deliveredHeight = point.delivered ? Math.max(percent(point.delivered, maxValue), 3) : 0;
+    const accessibleLabel = `${point.label}: ${point.total} órdenes, ${point.delivered} entregas confirmadas`;
+    return `
+      <div class="temporal-column" aria-label="${escapeHtml(accessibleLabel)}">
+        <div class="temporal-values"><strong>${formatNumber(point.total)}</strong><small>${formatNumber(point.delivered)} entregadas</small></div>
+        <div class="temporal-bars" aria-hidden="true">
+          <i class="temporal-bar total" style="height:${totalHeight}%"></i>
+          <i class="temporal-bar delivered" style="height:${deliveredHeight}%"></i>
+        </div>
+        <span class="temporal-label">${escapeHtml(point.label)}</span>
+      </div>
+    `;
+  }).join("")}</div>`;
+}
 
 
 
@@ -513,7 +556,8 @@ function renderStatusDistribution() {
 
 
 
-function renderAnalytics() { renderCompliance(); renderStatusDistribution(); }
+
+function renderAnalytics() { renderCompliance(); renderStatusDistribution(); renderTemporalChart(); }
 
 function applyFilters({ preservePage = false } = {}) {
   const previousPage = state.page;
@@ -563,6 +607,7 @@ function applyFilters({ preservePage = false } = {}) {
   renderSummary();
   renderCompliance();
   renderStatusDistribution();
+  renderTemporalChart();
 }
 
 
@@ -684,6 +729,7 @@ function bindDashboardEvents() {
   el.categoryFilter.addEventListener("change", applyFilters);
   if (el.channelFilter) el.channelFilter.addEventListener("change", applyFilters);
   el.dateFilter.addEventListener("change", applyFilters);
+  if (el.timeGranularity) el.timeGranularity.addEventListener("change", renderTemporalChart);
 
   if (el.exportStockBreaksBtn) el.exportStockBreaksBtn.addEventListener("click", exportStockBreaks);
 

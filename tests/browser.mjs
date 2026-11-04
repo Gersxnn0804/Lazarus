@@ -56,6 +56,16 @@ try {
     assert.equal(await page.locator('#kpiTotal').innerText(), '22');
     assert.equal(await page.locator('#channelFilter').inputValue(), '');
     assert.equal(await page.locator('#ordersTable tr').count(), 22);
+    assert.equal(await page.locator('#timeGranularity').inputValue(), 'day');
+    assert.ok((await page.locator('#temporalDescription').innerText()).includes('lastEventDate'));
+    assert.equal(await page.locator('.temporal-column').count(), 1);
+    assert.ok((await page.locator('#temporalMeta').innerText()).includes('15 órdenes con fecha · 7 sin fecha válida'));
+    await page.locator('#timeGranularity').selectOption('month');
+    assert.ok((await page.locator('#temporalDescription').innerText()).includes('por mes'));
+    await page.locator('#timeGranularity').selectOption('year');
+    assert.equal(await page.locator('.temporal-label').innerText(), '2026');
+    assert.equal(await page.locator('.temporal-values strong').innerText(), '15');
+    await page.locator('#timeGranularity').selectOption('day');
     assert.equal(await page.locator('#stock-breaks').count(), 0);
     assert.equal(await page.getByText('Termómetro de quiebres de stock', { exact: true }).count(), 0);
     assert.equal(await page.evaluate(() => getComputedStyle(document.documentElement).fontSize), '16px');
@@ -63,6 +73,8 @@ try {
     await page.locator('#channelFilter').selectOption('B2B');
     assert.equal(await page.locator('#ordersTable tr').count(), 1);
     assert.equal(await page.locator('#kpiOwn').innerText(), '1');
+    assert.equal(await page.locator('.temporal-column').count(), 0);
+    assert.ok((await page.locator('#temporalMeta').innerText()).includes('0 órdenes con fecha · 1 sin fecha válida'));
     await page.locator('.order-select').click();
     await page.getByText('Entregada a transporte propio. No confirma recepción del destinatario.').waitFor();
     await page.locator('#channelFilter').selectOption('');
@@ -78,7 +90,7 @@ try {
     await page.locator('#clearFiltersBtn').click();
     if (output) await page.screenshot({ path: path.join(output, `lazarus-${width}.png`), fullPage: true });
     assert.deepEqual(errors, []);
-    logs.push({ width, height, login: 'PASS', scopes: 'PASS', ownTransport: 'PASS', emptySignedBy: 'PASS', comments: 'PASS', overflow: 'PASS' });
+    logs.push({ width, height, login: 'PASS', scopes: 'PASS', temporalGranularity: 'PASS', temporalFilters: 'PASS', ownTransport: 'PASS', emptySignedBy: 'PASS', comments: 'PASS', overflow: 'PASS' });
     await context.close();
   }
   const context = await browser.newContext();const page = await context.newPage();

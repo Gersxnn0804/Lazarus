@@ -31,6 +31,38 @@ test('Las fechas ISO conservan mes/día y no aceptan fechas imposibles', () => {
   assert.equal(C.parseDate('10/08/2026').month, 8);
   for (const value of ['2026-31-07', '2026-02-30', '2026-08-01 25:00:00', 'garbage']) assert.equal(C.parseDate(value), null);
 });
+test('Agrupa lastEventDate por día, mes y año sin desplazar la fecha operacional', () => {
+  const rows = [
+    { lastEventDate: '2025-12-31T23:30:00-03:00', deliveryConfirmed: true },
+    { lastEventDate: '2026-01-01T01:00:00+14:00', deliveryConfirmed: false },
+    { lastEventDate: '02/01/2026 10:00:00', deliveryConfirmed: true },
+    { lastEventDate: '2026-02-15', deliveryConfirmed: false },
+    { lastEventDate: '', deliveryConfirmed: false }
+  ];
+  const day = C.buildTemporalSeries(rows, 'day');
+  assert.deepEqual(day.points.map(point => [point.label, point.total, point.delivered]), [
+    ['31-12-2025', 1, 1], ['01-01-2026', 1, 0], ['02-01-2026', 1, 1], ['15-02-2026', 1, 0]
+  ]);
+  assert.deepEqual(C.buildTemporalSeries(rows, 'month').points.map(point => [point.label, point.total]), [
+    ['12-2025', 1], ['01-2026', 2], ['02-2026', 1]
+  ]);
+  assert.deepEqual(C.buildTemporalSeries(rows, 'year').points.map(point => [point.label, point.total]), [
+    ['2025', 1], ['2026', 3]
+  ]);
+  for (const granularity of ['day', 'month', 'year']) {
+    const series = C.buildTemporalSeries(rows, granularity);
+    assert.equal(series.dated, 4);
+    assert.equal(series.undated, 1);
+    assert.equal(series.points.reduce((total, point) => total + point.total, 0), 4);
+  }
+});
+test('La serie temporal soporta vacío, un registro y rechaza contratos inválidos', () => {
+  assert.deepEqual(C.buildTemporalSeries([], 'day'), { granularity: 'day', points: [], dated: 0, undated: 0 });
+  assert.deepEqual(C.buildTemporalSeries([{ lastEventDate: '2026-10-04', deliveryConfirmed: true }], 'year').points,
+    [{ key: '2026', label: '2026', total: 1, delivered: 1 }]);
+  assert.throws(() => C.buildTemporalSeries([], 'week'), /Granularidad/);
+  assert.throws(() => C.buildTemporalSeries(null, 'day'), /lista/);
+});
 test('Todos los estados Warehouse y Cancelled mantienen su terminal alternativo', () => {
   for (const status of C.WAREHOUSE) {
     const row = normalize(wrap(legacyRow({ status, warehouseStatus: status }))).shipments[0];
