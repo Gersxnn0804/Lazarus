@@ -13,6 +13,8 @@ const state = {
   requestVersion: 0,
   shipments: [],
   filtered: [],
+  temporal: null,
+  periodLabel: "Todo el snapshot · sin restricción temporal",
   selectedShipmentId: null,
   started: false,
   page: 1,
@@ -46,6 +48,11 @@ const el = {
   channelFilter: $("channelFilter"),
   dateFilter: $("dateFilter"),
   timeGranularity: $("timeGranularity"),
+  periodMode: $("periodMode"), periodDay: $("periodDay"), periodMonth: $("periodMonth"),
+  periodYear: $("periodYear"), periodFrom: $("periodFrom"), periodTo: $("periodTo"),
+  allDates: $("allDates"), activePeriod: $("activePeriod"), periodError: $("periodError"),
+  periodDiagnostics: $("periodDiagnostics"), statusDonut: $("statusDonut"), statusLegend: $("statusLegend"),
+  sourceDistribution: $("sourceDistribution"),
 
 
   recordCounter: $("recordCounter"),
@@ -84,6 +91,10 @@ function formatPercent(value) {
     minimumFractionDigits: numeric % 1 === 0 ? 0 : 1,
     maximumFractionDigits: 1
   });
+}
+
+function formatRate(value, total) {
+  return !total || value === null ? "N/D" : `${formatPercent(percent(value, total))}%`;
 }
 
 function padDatePart(value) {
@@ -243,12 +254,18 @@ function resetDashboard(message = "No hay una publicación válida disponible.")
   state.raw = null; state.shipments = []; state.filtered = []; state.selectedShipmentId = null; state.page = 1;
   el.sourceStatus.textContent = "Sin datos"; el.sourceMeta.textContent = message;
   el.emptyState.classList.remove("hidden");
+  el.emptyState.querySelector("h3").textContent = "No hay datos cargados";
+  el.emptyState.querySelector("p").textContent = message;
   [el.kpiTotal, el.kpiDelivered, el.kpiTransit, el.kpiPending, el.kpiCritical, el.kpiReturns,
     el.kpiActive, el.kpiWarehouse, el.kpiShipped, el.kpiOutForDelivery, el.kpiInsufficient, el.kpiOwn].forEach(node => node.textContent = "N/D");
   el.kpiDeliveredRate.textContent = "Sin datos"; el.kpiGenerated.textContent = "Sin publicación válida";
-  el.donutChart.className = "donut empty-donut"; el.donutChart.style.setProperty("--value", 0);
-  el.donutChart.innerHTML = "<span>N/D<small>Entregas confirmadas</small></span>";
-  el.donutLegend.innerHTML = ""; el.statusDistribution.innerHTML = "";
+  [el.donutChart, el.statusDonut].forEach(chart => {
+    chart.className = "donut empty-donut"; chart.style.background = "";
+    chart.setAttribute("aria-label", "Sin publicación válida"); delete chart.dataset.segments;
+    chart.replaceChildren(); chart.textContent = "N/D";
+  });
+  el.donutLegend.innerHTML = ""; el.statusLegend.innerHTML = ""; el.statusDistribution.innerHTML = "";
+  el.sourceDistribution.innerHTML = ""; el.periodDiagnostics.textContent = "Sin publicación válida para analizar.";
   el.temporalChart.innerHTML = ""; el.temporalMeta.textContent = "";
   clearFilterOptions(); el.searchInput.value = ""; renderTable(); renderEmptyDetail();
 }
@@ -298,8 +315,10 @@ function setSelectValueIfExists(selectElement, value) {
     return true;
   }
 
-  selectElement.value = "";
-  return false;
+  // Keep an active filter even when the next snapshot has no matching orders.
+  selectElement.add(new Option(value, value));
+  selectElement.value = value;
+  return true;
 }
 
 function restoreCurrentViewState(viewState) {
@@ -330,7 +349,6 @@ async function loadData({ silent = false } = {}) {
     const viewState = getCurrentViewState();
     const preserve = Boolean(state.raw);
     state.raw = data; state.shipments = data.shipments;
-    el.emptyState.classList.toggle("hidden", data.shipments.length > 0);
     el.sourceStatus.textContent = data.freshness === "stale" ? "Datos desactualizados" : data.freshness === "unknown" ? "Fecha no verificable" : "Datos cargados";
     const notices = [data.diagnostics.rejected.length ? `${data.diagnostics.rejected.length} registro(s) inválidos omitidos` : "",
       data.diagnostics.duplicates ? `${data.diagnostics.duplicates} duplicado(s) consolidados` : "",
@@ -380,7 +398,8 @@ function renderFilters() {
 
   const statuses = [...new Set(state.shipments.map(item => getRawStatus(item)).filter(Boolean))].sort((a, b) => String(a).localeCompare(String(b), "es", { numeric: true }));
   const categories = [...new Set(state.shipments.map(item => getRawCategory(item)).filter(Boolean))].sort((a, b) => String(a).localeCompare(String(b), "es", { numeric: true }));
-  const dates = [...new Set(state.shipments.map(item => formatShipmentDate(item.lastEventDate)).filter(date => date && date !== "Sin fecha"))].sort((a, b) => getShipmentDateSortKey(b).localeCompare(getShipmentDateSortKey(a)));
+  const dates = [...new Set(state.shipments.map(item => LazarusTracking.operationalDateKey(item.lastEventDate)).filter(Boolean))]
+    .sort().reverse().map(date => date.split("-").reverse().join("-"));
   
   statuses.forEach(status => {
     el.statusFilter.insertAdjacentHTML("beforeend", `<option value="${escapeHtml(status)}">${escapeHtml(status)}</option>`);
@@ -418,32 +437,69 @@ function renderSummary() {
     warehouseOrders: el.kpiWarehouse, shipped: el.kpiShipped, outForDelivery: el.kpiOutForDelivery,
     insufficient: el.kpiInsufficient, ownTransport: el.kpiOwn };
   Object.entries(bindings).forEach(([key, node]) => { node.textContent = formatNumber(summary[key]); });
-  el.kpiDeliveredRate.textContent = summary.delivered === null ? "Sin evidencia disponible" : `${formatPercent(percent(summary.delivered, summary.totalShipments))}% de las órdenes filtradas`;
-  el.kpiGenerated.textContent = "Órdenes únicas · filtros activos";
+  el.kpiDeliveredRate.textContent = summary.delivered === null ? "Sin evidencia disponible"
+    : summary.totalShipments ? `${formatRate(summary.delivered, summary.totalShipments)} de ${formatNumber(summary.totalShipments)} órdenes filtradas`
+    : "N/D · sin órdenes en el período";
+  el.kpiGenerated.textContent = summary.totalShipments ? "Órdenes únicas · período y filtros activos" : "Sin datos para el período";
 }
 
-function renderDonutLegend(items) {
-  el.donutLegend.innerHTML = items.map((item) => `
-    <div class="legend-row ${item.className || ""}">
-      <span><i></i>${escapeHtml(item.label)}</span>
-      <strong>${item.value === null ? "N/D" : `${formatNumber(item.value)} (${formatPercent(item.rate)}%)`}</strong>
-    </div>
-  `).join("");
+function renderDonut(chart, legend, items) {
+  const total = items.reduce((sum, item) => sum + item.value, 0);
+  let cumulative = 0;
+  const segments = items.filter(item => item.value > 0).map(item => {
+    const start = cumulative / total * 100;
+    cumulative += item.value;
+    return `${item.color} ${start}% ${cumulative / total * 100}%`;
+  });
+  chart.classList.toggle("empty-donut", total === 0);
+  const background = total ? `conic-gradient(${segments.join(",")})` : "";
+  const changed = chart.dataset.segments !== background;
+  chart.dataset.segments = background;
+  chart.style.background = background;
+  if (changed && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    chart.getAnimations().forEach(animation => animation.cancel());
+    chart.animate([{ opacity: .55 }, { opacity: 1 }], { duration: 220, easing: "ease-out" });
+  }
+  chart.setAttribute("role", "img");
+  chart.setAttribute("aria-label", `${state.periodLabel}: ${total} órdenes. ${items.map(item => `${item.label}: ${item.value}`).join(". ")}`);
+  if (!chart.querySelector("span")) chart.innerHTML = "<span><b></b><small></small></span>";
+  chart.querySelector("span").innerHTML = `<b>${formatNumber(total)}</b><small>${total ? "Órdenes de la cohorte" : "Sin datos para el período"}</small>`;
+  legend.innerHTML = items.map(item => `<div class="legend-row" data-count="${item.value}" data-percent="${total ? percent(item.value, total) : ""}">
+    <span><i style="background:${item.color}"></i>${escapeHtml(item.label)}</span>
+    <strong>${formatNumber(item.value)} · ${formatRate(item.value, total)}</strong></div>`).join("")
+    || '<p class="period-note">Sin datos para el período</p>';
+}
+
+function statusColor(status) {
+  const colors = { ENTREGADA: "#34d399", "PENDIENTE DE RECOLECCION": "#fbbf24", PROGRAMADO: "#fde68a",
+    "POR RECOGER": "#d97706", DEVOLUCION: "#f87171", "ENTREGA PARCIAL": "#fb7185", REINTENTO: "#fda4af",
+    "DIRECCION ERRONEA": "#e11d48", TERCERIZADA: "#a78bfa", "INFORMACIÓN INSUFICIENTE": "#cbd5e1",
+    "SIN CLASIFICAR": "#94a3b8", "EN RUTA": "#38bdf8", "EN REPARTO": "#818cf8",
+    "EN SUCURSAL DE DESTINO": "#67e8f9", RECOLECTADO: "#2dd4bf", "EN ADUANA": "#c084fc",
+    Cancelled: "#f87171", Released: "#cbd5e1", Allocated: "#94a3b8", Packed: "#60a5fa", Manifested: "#a5b4fc", Shipped: "#22d3ee" };
+  return colors[status] || "#94a3b8";
 }
 
 function renderCompliance() {
-  const summary = LazarusTracking.buildSummary(getOperationalScope());
-  const rate = summary.delivered === null ? null : percent(summary.delivered, summary.totalShipments);
-  el.donutChart.className = rate === null ? "donut empty-donut" : "donut";
-  el.donutChart.style.setProperty("--value", rate || 0);
-  el.donutChart.innerHTML = `<span>${rate === null ? "N/D" : formatPercent(rate) + "%"}<small>Entrega confirmada</small></span>`;
-  renderDonutLegend([
-    { label: "Entregas confirmadas", value: summary.delivered, rate: rate || 0, className: "green" },
-    { label: "Activas", value: summary.active, rate: percent(summary.active, summary.totalShipments), className: "blue" },
-    { label: "Transporte propio", value: summary.ownTransport, rate: percent(summary.ownTransport, summary.totalShipments), className: "violet" },
-    { label: "Canceladas", value: summary.cancelled, rate: percent(summary.cancelled, summary.totalShipments), className: "amber" },
-    { label: "Devoluciones", value: summary.returns, rate: percent(summary.returns, summary.totalShipments), className: "red" }
-  ]);
+  const rows = getOperationalScope();
+  renderDonut(el.donutChart, el.donutLegend, LazarusTracking.buildDeliveryDistribution(rows));
+  const counts = countBy(rows, "status");
+  // Keep zero categories visible and colors stable when navigating between periods.
+  const statuses = [...new Set(state.shipments.map(row => row.status))].sort((a, b) => a.localeCompare(b, "es"));
+  renderDonut(el.statusDonut, el.statusLegend, statuses.map(label => ({ label, value: counts[label] || 0, color: statusColor(label) })));
+  document.querySelectorAll(".chart-period").forEach(node => { node.textContent = state.periodLabel; });
+}
+
+function renderSourceDistribution() {
+  const rows = getOperationalScope();
+  el.sourceDistribution.innerHTML = [["Warehouse", "warehouseStatus", LazarusTracking.WAREHOUSE],
+    ["Transporte", "transportStatus", LazarusTracking.TRANSPORT]].map(([title, field, labels]) => {
+    const counts = countBy(rows, field);
+    return `<section><h4>${title}</h4>${[...labels, "Sin información"].map(label => {
+      const count = counts[label] || 0;
+      return `<div class="source-row"><span>${escapeHtml(label)}</span><strong>${formatNumber(count)} · ${formatRate(count, rows.length)}</strong></div>`;
+    }).join("")}</section>`;
+  }).join("");
 }
 
 function renderStatusDistribution() {
@@ -458,17 +514,14 @@ function renderStatusDistribution() {
   if (!entries.length) {
     el.statusDistribution.innerHTML = `
       <div class="status-empty-card">
-        <strong>Sin estados disponibles</strong>
+        <strong>Sin datos para el período</strong>
         <span>No hay registros suficientes para calcular la distribución.</span>
       </div>
     `;
     return;
   }
 
-  const maxValue = Math.max(...entries.map(([, value]) => value), 1);
-
   el.statusDistribution.innerHTML = entries.map(([label, value]) => {
-    const width = percent(value, maxValue);
     const rate = percent(value, total);
     const className = getStatusClass(label);
 
@@ -479,7 +532,7 @@ function renderStatusDistribution() {
           <strong>${formatNumber(value)} · ${formatPercent(rate)}%</strong>
         </div>
         <div class="status-distribution-track">
-          <div class="status-distribution-fill ${className}" style="width:${Math.max(Math.min(width, 100), 2)}%"></div>
+          <div class="status-distribution-fill ${className}" style="width:${rate}%"></div>
         </div>
       </div>
     `;
@@ -494,14 +547,14 @@ function renderTemporalChart() {
   const series = LazarusTracking.buildTemporalSeries(getOperationalScope(), granularity);
   const maxValue = Math.max(...series.points.map(point => point.total), 1);
 
-  el.temporalDescription.textContent = `Último evento operacional (lastEventDate) agrupado por ${names[granularity]}.`;
-  el.temporalMeta.textContent = `${formatNumber(series.dated)} órdenes con fecha · ${formatNumber(series.undated)} sin fecha válida`;
+  el.temporalDescription.textContent = `Último evento operacional (lastEventDate) agrupado por ${names[granularity]}. La serie verde es un subconjunto de la cohorte, no entregas por fecha de entrega.`;
+  el.temporalMeta.textContent = `${formatNumber(series.dated)} órdenes con fecha · ${formatNumber(series.undated)} sin fecha válida · ${state.periodLabel}`;
   el.temporalChart.setAttribute("aria-label", `Órdenes por ${names[granularity]}: ${series.dated} con fecha y ${series.undated} sin fecha válida`);
 
   if (!series.points.length) {
     el.temporalChart.innerHTML = `
       <div class="status-empty-card temporal-empty">
-        <strong>Sin fechas disponibles</strong>
+        <strong>${getOperationalScope().length ? "Sin fechas disponibles" : "Sin datos para el período"}</strong>
         <span>No hay registros filtrados con una fecha operacional válida.</span>
       </div>
     `;
@@ -557,43 +610,35 @@ function renderTemporalChart() {
 
 
 
-function renderAnalytics() { renderCompliance(); renderStatusDistribution(); renderTemporalChart(); }
+function renderAnalytics() { renderCompliance(); renderStatusDistribution(); renderSourceDistribution(); renderTemporalChart(); }
 
 function applyFilters({ preservePage = false } = {}) {
+  if (!state.raw) return;
   const previousPage = state.page;
-  const search = normalizeSearchText(el.searchInput.value);
-  const status = el.statusFilter.value;
-  const category = el.categoryFilter.value;
-  const channel = el.channelFilter?.value || "";
-  const date = el.dateFilter.value;
-
-  state.filtered = state.shipments.filter(item => {
-    const rawStatus = getRawStatus(item);
-    const rawCategory = getRawCategory(item);
-    const signedBy = getSignedByValue(item);
-    const itemDate = formatShipmentDate(item.lastEventDate);
-
-  const matchesSearch = !search || [
-    item.order,
-    item.waybill,
-    itemDate,
-    rawStatus,
-    rawCategory,
-    signedBy,
-    item.lastEventLabel,
-    item.lastEventDescription,
-    item.customer,
-    item.client,
-    item.destination,
-    item.destino
-  ].some(value => normalizeSearchText(value).includes(search));
-
-    return matchesSearch
-      && (!status || rawStatus === status)
-      && (!category || rawCategory === category)
-      && (!channel || getOrderSegment(item) === channel)
-      && (!date || itemDate === date);
-  });
+  let error = "";
+  try {
+    const period = state.temporal.allDates ? null : LazarusTracking.buildPeriod(state.temporal.mode, state.temporal);
+    state.periodLabel = period ? `${formatShipmentDate(period.from)} al ${formatShipmentDate(period.to)} · America/Santiago`
+      : "Todo el snapshot · sin restricción temporal";
+    const scope = LazarusTracking.selectDashboardRows(state.shipments, { period,
+      search: el.searchInput.value, status: el.statusFilter.value, category: el.categoryFilter.value,
+      channel: el.channelFilter.value, date: el.dateFilter.value });
+    state.filtered = scope.rows;
+    el.periodDiagnostics.textContent = `${formatNumber(scope.undated)} órdenes sin fecha operacional válida entre ${formatNumber(scope.matching)} que coinciden con los demás filtros. ${period ? "Excluidas de este período." : "Incluidas en el snapshot; excluidas del gráfico temporal."} Las entregas confirmadas requieren evidencia y deliveryDate válida; no se usa esa fecha para seleccionar esta cohorte.`;
+  } catch (exception) {
+    if (!(exception instanceof RangeError)) throw exception;
+    error = exception.message;
+    state.filtered = [];
+    state.periodLabel = "Período inválido · corrige las fechas para consultar";
+    el.periodDiagnostics.textContent = "No se calculan resultados hasta completar un período válido.";
+  }
+  el.activePeriod.textContent = state.periodLabel;
+  el.periodError.textContent = error;
+  el.periodError.classList.toggle("hidden", !error);
+  document.querySelectorAll("[data-period] input").forEach(input => input.setAttribute("aria-invalid", String(Boolean(error))));
+  el.emptyState.classList.toggle("hidden", state.filtered.length > 0);
+  el.emptyState.querySelector("h3").textContent = error ? "Período inválido" : "Sin datos para el período";
+  el.emptyState.querySelector("p").textContent = error || "No hay órdenes que coincidan con el período y los filtros seleccionados.";
 
   sortFiltered(false);
 
@@ -605,9 +650,31 @@ function applyFilters({ preservePage = false } = {}) {
 
   renderTable();
   renderSummary();
-  renderCompliance();
-  renderStatusDistribution();
-  renderTemporalChart();
+  renderAnalytics();
+}
+
+function updatePeriodControls() {
+  const { mode, allDates } = state.temporal;
+  el.allDates.checked = allDates;
+  document.querySelectorAll("[data-period]").forEach(node => node.classList.toggle("hidden", node.dataset.period !== mode));
+  el.periodMode.querySelectorAll("button").forEach(button => button.setAttribute("aria-pressed", String(!allDates && button.dataset.periodMode === mode)));
+}
+
+function initializePeriod() {
+  const today = LazarusTracking.operationalDateKey(new Date().toISOString());
+  state.temporal = { mode: "day", allDates: true, day: today, month: today.slice(0, 7), year: today.slice(0, 4), from: today, to: today };
+  el.periodDay.value = today; el.periodMonth.value = today.slice(0, 7); el.periodYear.value = today.slice(0, 4);
+  el.periodFrom.value = today; el.periodTo.value = today;
+  updatePeriodControls();
+}
+
+function updateNavigation() {
+  const target = window.location.hash || "#overview";
+  document.querySelectorAll(".top-nav a").forEach(link => {
+    const active = link.getAttribute("href") === target;
+    link.classList.toggle("active", active);
+    if (active) link.setAttribute("aria-current", "location"); else link.removeAttribute("aria-current");
+  });
 }
 
 
@@ -692,6 +759,7 @@ function clearFilters() {
   el.categoryFilter.value = "";
   if (el.channelFilter) el.channelFilter.value = "";
   el.dateFilter.value = "";
+  initializePeriod();
   state.selectedShipmentId = null;
 
   applyFilters();
@@ -720,6 +788,9 @@ function renderProgress(steps, title) {
 }
 
 function bindDashboardEvents() {
+  initializePeriod();
+  updateNavigation();
+  window.addEventListener("hashchange", updateNavigation);
   el.reloadBtn.addEventListener("click", () => loadData());
   el.exportBtn.addEventListener("click", exportCsv);
   el.clearFiltersBtn.addEventListener("click", clearFilters);
@@ -730,6 +801,26 @@ function bindDashboardEvents() {
   if (el.channelFilter) el.channelFilter.addEventListener("change", applyFilters);
   el.dateFilter.addEventListener("change", applyFilters);
   if (el.timeGranularity) el.timeGranularity.addEventListener("change", renderTemporalChart);
+  el.periodMode.querySelectorAll("button").forEach(button => button.addEventListener("click", () => {
+    state.temporal.mode = button.dataset.periodMode;
+    state.temporal.allDates = false;
+    updatePeriodControls();
+    applyFilters();
+  }));
+  Object.entries({ day: el.periodDay, month: el.periodMonth, year: el.periodYear, from: el.periodFrom, to: el.periodTo }).forEach(([key, input]) => {
+    input.setAttribute("aria-describedby", "periodError");
+    input.addEventListener("input", () => {
+      state.temporal[key] = input.value;
+      state.temporal.allDates = false;
+      updatePeriodControls();
+      applyFilters();
+    });
+  });
+  el.allDates.addEventListener("change", () => {
+    state.temporal.allDates = el.allDates.checked;
+    updatePeriodControls();
+    applyFilters();
+  });
 
   if (el.exportStockBreaksBtn) el.exportStockBreaksBtn.addEventListener("click", exportStockBreaks);
 
