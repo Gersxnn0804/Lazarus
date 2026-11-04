@@ -44,6 +44,37 @@ async function login(page, prefix) {
   await page.getByRole('button', { name: 'Entrar al dashboard' }).click();
   await page.locator('#sourceStatus').filter({ hasText: 'Datos cargados' }).waitFor();
 }
+
+function temporalFixture() {
+  const active = fixture.shipments.find(row => row.status === 'RECOLECTADO');
+  const delivered = fixture.shipments.find(row => row.deliveryConfirmed);
+  const dates = ['2024-02-28', '2024-02-29', '2025-12-31T23:59:59-03:00',
+    '2026-01-01T00:00:00-03:00', '2026-01-01T23:59:59-03:00', '2026-01-02T02:59:59Z',
+    '2026-01-02T03:00:00Z', '2026-04-30', '2026-05-01', '', 'invalid'];
+  const shipments = dates.map((lastEventDate, i) => ({ ...(i === 1 || i === 2 || i === 4 ? delivered : active),
+    order: `LT800${i}`, orderType: i === 3 ? 'B2B' : 'B2C', lastEventDate,
+    deliveryDate: i === 1 ? '2024-02-29' : i === 2 ? '2025-12-31' : i === 4 ? '2026-01-01' : '' }));
+  return { ...fixture, generatedAt: '', shipments: [...shipments, { ...shipments[4] }] };
+}
+
+async function assertCohort(page, total, delivered) {
+  assert.equal(await page.locator('#kpiTotal').innerText(), String(total));
+  assert.equal(await page.locator('#kpiDelivered').innerText(), String(delivered));
+  for (const [chart, legend] of [['#donutChart', '#donutLegend'], ['#statusDonut', '#statusLegend']]) {
+    assert.equal(await page.locator(`${chart} b`).innerText(), String(total));
+    const counts = await page.locator(`${legend} .legend-row`).evaluateAll(nodes => nodes.map(node => ({
+      count: Number(node.dataset.count), rate: Number(node.dataset.percent)
+    })));
+    assert.equal(counts.reduce((sum, item) => sum + item.count, 0), total);
+    for (const item of counts) assert.equal(item.rate, total ? Math.round(item.count / total * 1000) / 10 : 0);
+    const segments = await page.locator(chart).evaluate(node => node.style.background);
+    assert.equal(segments.includes('conic-gradient'), total > 0);
+  }
+  assert.equal(Number(await page.locator('#donutLegend .legend-row').first().getAttribute('data-count')), delivered);
+  const bars = await page.locator('.temporal-values strong').allTextContents();
+  assert.equal(bars.reduce((sum, value) => sum + Number(value), 0), total);
+}
+
 try {
   for (const [width, height] of [[1920,1080], [1366,768], [768,1024], [390,844]]) {
     source = { ...fixture, generatedAt: '' };fault = '';
@@ -88,9 +119,98 @@ try {
     const signed = page.locator('.detail-row').filter({ has: page.getByText('Signed By', { exact: true }) }).locator('strong');
     assert.equal(await signed.innerText(), '');
     await page.locator('#clearFiltersBtn').click();
-    if (output) await page.screenshot({ path: path.join(output, `lazarus-${width}.png`), fullPage: true });
+    const layout = await page.evaluate(() => {
+      const selectors = '.period-panel, .kpi-card, .analytics-grid .panel, .legend-row, .source-row, .status-distribution-row';
+      const clipped = [...document.querySelectorAll(selectors)].filter(node => node.scrollWidth > node.clientWidth + 1).map(node => node.className);
+      const circles = [...document.querySelectorAll('.donut')].map(node => {
+        const outer = node.getBoundingClientRect(), inner = node.querySelector('span').getBoundingClientRect();
+        return Math.abs(outer.width - outer.height) < 1 && Math.abs((outer.left + outer.right - inner.left - inner.right) / 2) < 1
+          && Math.abs((outer.top + outer.bottom - inner.top - inner.bottom) / 2) < 1;
+      });
+      return { clipped, circles };
+    });
+    assert.deepEqual(layout.clipped, []); assert.ok(layout.circles.every(Boolean));
+    if (output) {
+      await page.screenshot({ path: path.join(output, `lazarus-${width}.png`), fullPage: true, style: '#toast { visibility: hidden; }' });
+      await page.locator('#analytics').screenshot({ path: path.join(output, `donuts-${width}.png`), style: '#toast { visibility: hidden; }' });
+    }
     assert.deepEqual(errors, []);
     logs.push({ width, height, login: 'PASS', scopes: 'PASS', temporalGranularity: 'PASS', temporalFilters: 'PASS', ownTransport: 'PASS', emptySignedBy: 'PASS', comments: 'PASS', overflow: 'PASS' });
+    await context.close();
+  }
+  for (const timezoneId of ['America/Santiago', 'UTC', 'Asia/Tokyo']) {
+    source = temporalFixture(); fault = '';
+    const context = await browser.newContext({ viewport: { width: 1366, height: 768 }, timezoneId });
+    const page = await context.newPage();
+    await page.clock.install();
+    const errors = []; page.on('pageerror', error => errors.push(error.message));
+    await login(page, '/Lazarus/');
+    assert.equal(await page.locator('#kpiTotal').innerText(), '11');
+    await page.locator('#periodDay').fill('2026-01-01');
+    await assertCohort(page, 3, 1);
+    assert.ok((await page.locator('#periodDiagnostics').innerText()).includes('2 órdenes sin fecha'));
+    const before = await page.locator('#donutChart').evaluate(node => { window.testDonut = node; return node.style.background; });
+    await page.locator('#periodDay').fill('2025-12-31');
+    await assertCohort(page, 1, 1);
+    assert.notEqual(await page.locator('#donutChart').evaluate(node => node.style.background), before);
+    assert.equal(await page.locator('#donutChart').evaluate(node => node === window.testDonut), true);
+    await page.locator('#periodMode').selectOption('month');
+    await page.locator('#periodMonth').fill('2026-01');
+    await assertCohort(page, 4, 1);
+    await page.locator('#periodMonth').fill('2024-02');
+    await assertCohort(page, 2, 1);
+    assert.ok((await page.locator('#activePeriod').innerText()).includes('29-02-2024'));
+    for (const [month, total, end] of [['2023-02', 0, '28-02-2023'], ['2026-04', 1, '30-04-2026'], ['2026-05', 1, '31-05-2026']]) {
+      await page.locator('#periodMonth').fill(month); await assertCohort(page, total, 0);
+      assert.ok((await page.locator('#activePeriod').innerText()).includes(end));
+    }
+    await page.locator('#periodMode').selectOption('year');
+    await page.locator('#periodYear').fill('2026'); await page.locator('#periodYear').press('Tab');
+    await assertCohort(page, 6, 1);
+    await page.locator('#periodMode').selectOption('calendar');
+    await page.locator('#periodFrom').fill('2025-12-31'); await page.locator('#periodTo').fill('2026-01-01');
+    await assertCohort(page, 4, 2);
+    await page.locator('#periodFrom').fill('2026-01-01');
+    await assertCohort(page, 3, 1);
+    await page.locator('#periodFrom').fill('2026-02-01');
+    assert.ok((await page.locator('#periodError').innerText()).includes('posterior'));
+    await assertCohort(page, 0, 0);
+    await page.locator('#periodFrom').fill('2026-01-01');
+    await page.locator('#channelFilter').selectOption('B2C');
+    await page.locator('#statusFilter').selectOption('ENTREGADA');
+    await page.locator('#searchInput').fill('lt8004');
+    await page.locator('#dateFilter').selectOption('01-01-2026');
+    await assertCohort(page, 1, 1);
+    const periodLabel = await page.locator('#activePeriod').innerText();
+    await page.locator('#reloadBtn').click();
+    await page.locator('#sourceStatus').filter({ hasText: 'Datos cargados' }).waitFor();
+    await assertCohort(page, 1, 1);
+    assert.equal(await page.locator('#activePeriod').innerText(), periodLabel);
+    source = { ...source, shipments: source.shipments.filter(row => row.order !== 'LT8004') };
+    const refreshed = page.waitForResponse(response => response.url().includes('latest_tracking_client.json'));
+    await page.clock.fastForward(60001); await refreshed;
+    await page.waitForFunction(() => document.getElementById('kpiTotal').textContent === '0');
+    await assertCohort(page, 0, 0);
+    assert.equal(await page.locator('#activePeriod').innerText(), periodLabel);
+    assert.equal(await page.locator('#statusFilter').inputValue(), 'ENTREGADA');
+    assert.equal(await page.locator('#searchInput').inputValue(), 'lt8004');
+    assert.equal(await page.locator('#channelFilter').inputValue(), 'B2C');
+    assert.equal(await page.locator('#dateFilter').inputValue(), '01-01-2026');
+    source = { ...source, shipments: source.shipments.filter(row => !row.deliveryConfirmed) };
+    await page.locator('#reloadBtn').click();
+    await page.locator('#sourceStatus').filter({ hasText: 'Datos cargados' }).waitFor();
+    assert.equal(await page.locator('#statusFilter').inputValue(), 'ENTREGADA');
+    await assertCohort(page, 0, 0);
+    await page.locator('#clearFiltersBtn').click();
+    assert.equal(await page.locator('#allDates').isChecked(), true);
+    assert.equal(await page.locator('#kpiTotal').innerText(), '8');
+    source = { ...source, shipments: [] }; await page.locator('#reloadBtn').click();
+    await page.waitForFunction(() => document.getElementById('kpiTotal').textContent === '0');
+    await assertCohort(page, 0, 0);
+    await page.getByRole('heading', { name: 'Sin datos para el período', exact: true }).waitFor();
+    assert.deepEqual(errors, []);
+    logs.push({ timezoneId, temporalSelection: 'PASS', dynamicKpisAndSegments: 'PASS', inclusiveLimits: 'PASS',
+      leapYear: 'PASS', combinedFilters: 'PASS', duplicateLT: 'PASS', invalidRange: 'PASS', empty: 'PASS', refreshPeriod: 'PASS' });
     await context.close();
   }
   const context = await browser.newContext();const page = await context.newPage();

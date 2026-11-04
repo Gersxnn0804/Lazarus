@@ -7,7 +7,7 @@
   <title>Lazarus | Tracking Intelligence</title>
   <link rel="icon" type="image/png" href="assets/branding/lazarus.png" />
   <link rel="stylesheet" href="css/styles.css?v=vnext-001" />
-  <link rel="stylesheet" href="css/tracking-vnext.css?v=vnext-001" />
+  <link rel="stylesheet" href="css/tracking-vnext.css?v=vnext-002" />
 </head>
 <body>
   <section id="loginScreen" class="login-screen">
@@ -95,6 +95,22 @@
     </aside>
 
     <main class="main-content" id="overview">
+      <section class="panel period-panel" aria-labelledby="periodTitle">
+        <div class="panel-header"><div><h2 id="periodTitle">Período operacional</h2><p>Zona horaria America/Santiago · fechas inicial y final incluidas.</p></div></div>
+        <div class="period-controls">
+          <label class="filter-control"><span>Consultar por</span><select id="periodMode"><option value="day">Día</option><option value="month">Mes</option><option value="year">Año</option><option value="calendar">Calendario</option></select></label>
+          <label class="filter-control" data-period="day"><span>Día</span><input id="periodDay" type="date" min="1900-01-01" max="9999-12-31" /></label>
+          <label class="filter-control hidden" data-period="month"><span>Mes y año</span><input id="periodMonth" type="month" min="1900-01" max="9999-12" /></label>
+          <label class="filter-control hidden" data-period="year"><span>Año</span><input id="periodYear" type="number" min="1900" max="9999" step="1" /></label>
+          <label class="filter-control hidden" data-period="calendar"><span>Desde</span><input id="periodFrom" type="date" min="1900-01-01" max="9999-12-31" /></label>
+          <label class="filter-control hidden" data-period="calendar"><span>Hasta</span><input id="periodTo" type="date" min="1900-01-01" max="9999-12-31" /></label>
+          <label class="snapshot-toggle"><input id="allDates" type="checkbox" checked />Todo el snapshot</label>
+        </div>
+        <p id="periodError" class="period-error hidden" role="alert"></p>
+        <p id="activePeriod" class="active-period" role="status" aria-live="polite">Todo el snapshot · sin restricción temporal</p>
+        <p class="period-note">Referencia: último evento operacional (<code>lastEventDate</code>). Se muestran estados del snapshot actual para las órdenes seleccionadas, no el estado histórico de la operación. La actualización de la orden y la publicación del JSON no sustituyen la fecha del evento.</p>
+        <p id="periodDiagnostics" class="period-note"></p>
+      </section>
       <section class="kpi-grid kpi-topbar" id="kpiGrid" aria-label="Indicadores principales"><article class="kpi-card"><div class="kpi-card-header"><span>Total de órdenes</span></div><strong id="kpiTotal">N/D</strong><small id="kpiGenerated">Órdenes únicas</small></article>
 <article class="kpi-card"><div class="kpi-card-header"><span>Entregas confirmadas</span></div><strong id="kpiDelivered">N/D</strong><small id="kpiDeliveredRate">Recepción del destinatario</small></article>
 <article class="kpi-card"><div class="kpi-card-header"><span>Órdenes activas</span></div><strong id="kpiActive">N/D</strong><small>Seguimiento pendiente</small></article>
@@ -133,18 +149,27 @@
           <div class="panel-header">
             <div>
               <h3>Entregas confirmadas</h3>
-              <p>Recepción confirmada del destinatario; no equivale al KPI SLA de Polaris.</p>
+              <p>Recepción confirmada dentro de la cohorte seleccionada. No mide entregas ocurridas en el período ni el SLA de Polaris.</p>
             </div>
           </div>
 
           <div class="donut-layout">
             <div id="donutChart" class="donut empty-donut" style="--value:0">
-              <span>0%<small>Entregados</small></span>
+              <span>0<small>Órdenes de la cohorte</small></span>
             </div>
             <div id="donutLegend" class="donut-legend advanced-legend"></div>
           </div>
+          <p class="chart-period period-note"></p>
         </article>
 
+        <article class="panel status-donut-panel">
+          <div class="panel-header"><div><h3>Estados de la cohorte</h3><p>Un estado publicado por LT. Todas las categorías suman el total seleccionado.</p></div></div>
+          <div class="donut-layout"><div id="statusDonut" class="donut empty-donut"><span>0<small>Órdenes de la cohorte</small></span></div><div id="statusLegend" class="donut-legend advanced-legend"></div></div>
+          <p class="chart-period period-note"></p>
+        </article>
+      </section>
+
+      <section class="charts-grid operational-grid" aria-label="Distribución operacional">
         <article class="panel status-panel">
           <div class="panel-header">
             <div>
@@ -154,16 +179,17 @@
           </div>
           <div id="statusDistribution" class="status-distribution"></div>
         </article>
+        <article class="panel"><div class="panel-header"><div><h3>Warehouse y Transporte</h3><p>Cada fuente distribuye las mismas órdenes; no se suman entre sí.</p></div></div><div id="sourceDistribution" class="source-distribution"></div></article>
 
         <article class="panel temporal-panel">
           <div class="panel-header">
             <div>
-              <h3>Órdenes por período</h3>
+              <h3>Cohorte por fecha de último evento</h3>
               <p id="temporalDescription">Último evento operacional agrupado por día.</p>
             </div>
             <div class="temporal-legend" aria-label="Series del gráfico">
               <span><i class="total"></i>Órdenes</span>
-              <span><i class="delivered"></i>Entregas confirmadas</span>
+              <span><i class="delivered"></i>Con entrega confirmada</span>
             </div>
           </div>
           <div id="temporalChart" class="temporal-chart" role="img" aria-label="Órdenes por período"></div>
@@ -261,7 +287,7 @@
   </div>
 
   <div id="toast" class="toast hidden" role="status" aria-live="polite"></div>
-  <script src="js/tracking-contract.js?v=vnext-001"></script>
-  <script src="js/app.js?v=vnext-001"></script>
+  <script src="js/tracking-contract.js?v=vnext-002"></script>
+  <script src="js/app.js?v=vnext-002"></script>
 </body>
 </html>

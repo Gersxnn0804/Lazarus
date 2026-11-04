@@ -31,7 +31,7 @@ test('Las fechas ISO conservan mes/día y no aceptan fechas imposibles', () => {
   assert.equal(C.parseDate('10/08/2026').month, 8);
   for (const value of ['2026-31-07', '2026-02-30', '2026-08-01 25:00:00', 'garbage']) assert.equal(C.parseDate(value), null);
 });
-test('Agrupa lastEventDate por día, mes y año sin desplazar la fecha operacional', () => {
+test('Agrupa lastEventDate por día, mes y año en America/Santiago', () => {
   const rows = [
     { lastEventDate: '2025-12-31T23:30:00-03:00', deliveryConfirmed: true },
     { lastEventDate: '2026-01-01T01:00:00+14:00', deliveryConfirmed: false },
@@ -41,13 +41,13 @@ test('Agrupa lastEventDate por día, mes y año sin desplazar la fecha operacion
   ];
   const day = C.buildTemporalSeries(rows, 'day');
   assert.deepEqual(day.points.map(point => [point.label, point.total, point.delivered]), [
-    ['31-12-2025', 1, 1], ['01-01-2026', 1, 0], ['02-01-2026', 1, 1], ['15-02-2026', 1, 0]
+    ['31-12-2025', 2, 1], ['02-01-2026', 1, 1], ['15-02-2026', 1, 0]
   ]);
   assert.deepEqual(C.buildTemporalSeries(rows, 'month').points.map(point => [point.label, point.total]), [
-    ['12-2025', 1], ['01-2026', 2], ['02-2026', 1]
+    ['12-2025', 2], ['01-2026', 1], ['02-2026', 1]
   ]);
   assert.deepEqual(C.buildTemporalSeries(rows, 'year').points.map(point => [point.label, point.total]), [
-    ['2025', 1], ['2026', 3]
+    ['2025', 2], ['2026', 2]
   ]);
   for (const granularity of ['day', 'month', 'year']) {
     const series = C.buildTemporalSeries(rows, granularity);
@@ -141,4 +141,68 @@ test('Los receptores ficticios heredados no se presentan como Signed By', () => 
     const row = normalize(wrap(legacyRow({ shipmentState: 'Shipment delivered ok', lastEventDate: '2026-10-01', signedBy }))).shipments[0];
     assert.equal(row.signedBy, '');
   }
+});
+
+test('Períodos inclusivos: día completo, meses 28/29/30/31, año y calendario entre años', () => {
+  for (const [month, end] of [['2023-02', '28'], ['2024-02', '29'], ['2026-04', '30'], ['2026-01', '31']]) {
+    assert.deepEqual(C.buildPeriod('month', { month }), { from: `${month}-01`, to: `${month}-${end}` });
+  }
+  assert.deepEqual(C.buildPeriod('year', { year: '2024' }), { from: '2024-01-01', to: '2024-12-31' });
+  const dates = ['2025-12-30', '2025-12-31T00:00:00-03:00', '2025-12-31T23:59:59-03:00', '2026-01-01', '2026-02-01', '2026-02-02'];
+  const rows = dates.map((lastEventDate, i) => ({ order: `LT${i}`, lastEventDate }));
+  const selected = period => C.selectDashboardRows(rows, { period }).rows.map(row => row.order);
+  assert.deepEqual(selected(C.buildPeriod('day', { day: '2025-12-31' })), ['LT1', 'LT2']);
+  assert.deepEqual(selected(C.buildPeriod('calendar', { from: '2025-12-31', to: '2025-12-31' })), ['LT1', 'LT2']);
+  assert.deepEqual(selected(C.buildPeriod('calendar', { from: '2025-12-31', to: '2026-02-01' })), ['LT1', 'LT2', 'LT3', 'LT4']);
+  for (const [mode, values] of [['calendar', { from: '2026-02-01', to: '2025-12-31' }], ['calendar', { from: '2026-01-01' }],
+    ['day', { day: '2026-02-29' }], ['month', { month: '2026-13' }], ['year', { year: '1899' }], ['year', { year: '2026.5' }]]) {
+    assert.throws(() => C.buildPeriod(mode, values), RangeError);
+  }
+});
+
+test('La fecha operacional convierte instantes UTC y conserva fechas civiles, incluyendo cambio de horario', () => {
+  const values = [
+    ['2026-01-01T02:59:59Z', '2025-12-31'], ['2026-01-01T03:00:00Z', '2026-01-01'],
+    ['2026-07-01T03:59:59Z', '2026-06-30'], ['2026-07-01T04:00:00Z', '2026-07-01'],
+    ['2026-09-06', '2026-09-06'], ['06/09/2026 00:30', '2026-09-06'], ['2026-09-06T04:00:00Z', '2026-09-06']
+  ];
+  for (const [value, expected] of values) assert.equal(C.operationalDateKey(value), expected);
+  for (const value of ['', 'invalid', '2026-02-30', '2026-10-01T25:00:00Z']) assert.equal(C.operationalDateKey(value), null);
+});
+
+test('Una cohorte deduplicada alimenta KPIs, porcentajes y series con filtros combinados', () => {
+  const payload = fixture('2.0.0');
+  payload.shipments.push(payload.shipments.find(row => row.order === 'LT000101'));
+  const rows = normalize(payload).shipments;
+  const target = rows.find(row => row.order === 'LT000101');
+  const period = C.buildPeriod('day', { day: C.operationalDateKey(target.lastEventDate) });
+  const scope = C.selectDashboardRows(rows, { period, search: target.order.toLowerCase(), status: target.status,
+    channel: target.orderSegment, category: target.category });
+  assert.equal(scope.rows.length, 1);
+  const summary = C.buildSummary(scope.rows), distribution = C.buildDeliveryDistribution(scope.rows);
+  assert.equal(summary.totalShipments, 1); assert.equal(summary.delivered, 1);
+  assert.equal(distribution.reduce((sum, item) => sum + item.value, 0), summary.totalShipments);
+  assert.equal(C.buildTemporalSeries(scope.rows).dated, summary.totalShipments);
+  assert.equal(C.selectDashboardRows([...rows, target], { period, search: target.order }).rows.length, 1);
+  assert.equal(C.selectDashboardRows(rows, { period, channel: 'not-a-segment' }).rows.length, 0);
+});
+
+test('Sin fechas no se sustituye el evento por publicación, actualización o entrega; vacío no divide por cero', () => {
+  const rows = [{ order: 'LT1', lastEventDate: '', deliveryDate: '2026-01-01', lastUpdatedAt: '2026-01-01', generatedAt: '2026-01-01' },
+    { order: 'LT2', lastEventDate: 'invalid' }];
+  const scope = C.selectDashboardRows(rows, { period: C.buildPeriod('year', { year: '2026' }) });
+  assert.equal(scope.undated, 2); assert.deepEqual(scope.rows, []);
+  assert.equal(C.selectDashboardRows(rows).rows.length, 2);
+  assert.deepEqual(C.selectDashboardRows([]), { rows: [], undated: 0, matching: 0 });
+  assert.equal(C.buildSummary(scope.rows).totalShipments, 0);
+  assert.ok(C.buildDeliveryDistribution(scope.rows).every(item => item.value === 0));
+});
+
+test('La confirmación en la cohorte no se reinterpreta como entrega ocurrida durante el período', () => {
+  const row = normalize(fixture('2.0.0')).shipments.find(row => row.deliveryConfirmed);
+  const scope = C.selectDashboardRows([{ ...row, lastEventDate: '2026-10-20', deliveryDate: '2026-10-01' }], {
+    period: C.buildPeriod('day', { day: '2026-10-20' })
+  });
+  assert.equal(C.buildSummary(scope.rows).delivered, 1);
+  assert.equal(C.buildDeliveryDistribution(scope.rows)[0].value, 1);
 });

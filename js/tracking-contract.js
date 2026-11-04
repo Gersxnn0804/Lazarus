@@ -24,6 +24,62 @@
   const text = value => typeof value === "string" ? value : "";
   const clean = value => text(value).normalize("NFKC").trim();
   const key = value => clean(value).toLowerCase();
+  const OPERATIONAL_ZONE = "America/Santiago";
+  const operationalFormatter = new Intl.DateTimeFormat("en-CA", { timeZone: OPERATIONAL_ZONE, year: "numeric", month: "2-digit", day: "2-digit" });
+  const dateKey = (year, month, day) => `${year}-${String(month).padStart(2, "0")}-${String(day).padStart(2, "0")}`;
+  function operationalDateKey(value) {
+    const date = parseDate(value);
+    if (!date) return null;
+    if (/(Z|[+-]\d{2}:\d{2})$/.test(clean(value))) {
+      const parts = Object.fromEntries(operationalFormatter.formatToParts(date.timestamp).map(part => [part.type, part.value]));
+      return `${parts.year}-${parts.month}-${parts.day}`;
+    }
+    // Dates without an offset are operational civil dates, never browser-local instants.
+    return dateKey(date.year, date.month, date.day);
+  }
+  function buildPeriod(mode, values = {}) {
+    const validDay = value => /^\d{4}-\d{2}-\d{2}$/.test(value || "") && parseDate(value);
+    let from, to;
+    if (mode === "day") from = to = values.day;
+    else if (mode === "month") {
+      if (!/^\d{4}-\d{2}$/.test(values.month || "")) throw new RangeError("Selecciona un mes y año válidos.");
+      from = `${values.month}-01`;
+      const date = parseDate(from);
+      if (!date) throw new RangeError("Selecciona un mes y año válidos.");
+      to = dateKey(date.year, date.month, new Date(Date.UTC(date.year, date.month, 0)).getUTCDate());
+    } else if (mode === "year") {
+      if (!/^\d{4}$/.test(String(values.year || ""))) throw new RangeError("Selecciona un año válido (1900–9999).");
+      from = `${values.year}-01-01`; to = `${values.year}-12-31`;
+    } else if (mode === "calendar") { from = values.from; to = values.to; }
+    else throw new RangeError("Período no compatible.");
+    if (!validDay(from) || !validDay(to)) throw new RangeError("Completa las fechas con valores válidos (1900–9999).");
+    if (from > to) throw new RangeError("DESDE no puede ser posterior a HASTA.");
+    return { from, to };
+  }
+  const searchKey = value => String(value || "").normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().trim();
+  function selectDashboardRows(rows, { period = null, search = "", status = "", category = "", channel = "", date = "" } = {}) {
+    const query = searchKey(search);
+    // The publication adapter resolves conflicting sources before temporal selection.
+    const unique = [...new Map(rows.map(row => [row.order, row])).values()];
+    let undated = 0, matching = 0;
+    const selected = unique.filter(row => {
+      const reference = operationalDateKey(row.lastEventDate);
+      const displayDate = reference ? reference.split("-").reverse().join("-") : "Sin fecha";
+      if ((status && row.status !== status) || (category && row.category !== category)
+        || (channel && row.orderSegment !== channel) || (date && displayDate !== date)
+        || (query && ![row.order, row.waybill, displayDate, row.status, row.category, row.signedBy,
+          row.lastEventLabel, row.lastEventDescription].some(value => searchKey(value).includes(query)))) return false;
+      matching++;
+      if (!reference) undated++;
+      return !period || Boolean(reference && reference >= period.from && reference <= period.to);
+    });
+    return { rows: selected, undated, matching };
+  }
+  function buildDeliveryDistribution(rows) {
+    const delivered = rows.filter(row => row.deliveryConfirmed).length;
+    return [{ label: "Entrega confirmada", value: delivered, color: "#34d399" },
+      { label: "Sin entrega confirmada", value: rows.length - delivered, color: "#94a3b8" }];
+  }
   function family(value) {
     const normalized = clean(value).toUpperCase();
     return normalized === "B2C" ? "B2C" : /^B2B[A-Z0-9]*$/.test(normalized) ? "B2B" : "Sin tipo";
@@ -204,8 +260,9 @@
     let undated = 0;
 
     rows.forEach(row => {
-      const date = parseDate(row?.lastEventDate);
-      if (!date) { undated++; return; }
+      const reference = operationalDateKey(row?.lastEventDate);
+      if (!reference) { undated++; return; }
+      const date = parseDate(reference);
 
       const month = String(date.month).padStart(2, "0");
       const day = String(date.day).padStart(2, "0");
@@ -231,5 +288,6 @@
     };
     return "\ufeff" + [columns.join(","), ...rows.map(row => columns.map(column => cell(row[column])).join(","))].join("\r\n");
   }
-  return { VERSIONS, WAREHOUSE, TRANSPORT, CATALOG, parseDate, family, normalizePayload, buildSummary, buildTemporalSeries, csv };
+  return { VERSIONS, WAREHOUSE, TRANSPORT, CATALOG, OPERATIONAL_ZONE, operationalDateKey, buildPeriod,
+    selectDashboardRows, buildDeliveryDistribution, parseDate, family, normalizePayload, buildSummary, buildTemporalSeries, csv };
 });
