@@ -1,4 +1,35 @@
 /* Tracking additions preserve Lazarus typography, branding and layout scale. */
+.topbar { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 24px; padding: 12px 22px; border-bottom: 1px solid var(--line); background: #0b1626; }
+.topbar-brand { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; color: var(--text); }
+.topbar-brand img { width: 48px; height: 48px; object-fit: contain; }
+.topbar-brand strong { display: block; font-size: 20px; }
+.topbar-brand small { display: block; font-size: 11px; color: var(--muted); }
+.topbar .top-nav { flex: 1; justify-content: center; }
+.topbar .top-nav a { min-height: 42px; padding: 0 12px; gap: 6px; border-radius: 12px; font-size: 13px; }
+.topbar .logout-btn { min-height: 42px; padding: 0 16px; border-radius: 12px; }
+.topbar-source { flex-basis: 100%; display: flex; flex-wrap: wrap; gap: 6px 14px; align-items: baseline; padding-top: 10px; border-top: 1px solid var(--line); }
+.topbar-source strong { color: #a5f3fc; font-size: 12px; }
+.topbar-source small { color: var(--muted); font-size: 12px; line-height: 1.5; overflow-wrap: anywhere; }
+.topbar a:focus-visible, .topbar button:focus-visible, .period-modes button:focus-visible { outline: 2px solid var(--cyan); outline-offset: 3px; }
+.period-modes { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 22px 18px; }
+.period-modes button { padding: 10px 18px; min-height: 44px; border: 1px solid var(--line); border-radius: 10px; color: var(--soft); background: #0f172a; }
+.period-modes button[aria-pressed="true"] { color: #a5f3fc; border-color: var(--cyan); background: rgba(34,211,238,.12); }
+.temporal-panel > .temporal-control { width: fit-content; margin: 0 20px; }
+@media(max-width:820px) {
+  .topbar { padding: 12px 14px; gap: 12px; }
+  .topbar .top-nav { order: 3; flex-basis: 100%; justify-content: flex-start; }
+  .topbar-source { order: 4; }
+  .topbar .logout-btn { margin-left: auto; }
+}
+@media(max-width:480px) {
+  .topbar .top-nav { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px; }
+  .topbar .top-nav a { padding: 8px; font-size: 12px; }
+  .topbar .top-nav a span { width: 16px; }
+  .topbar-brand small { font-size: 10px; }
+  .topbar .logout-btn { padding-inline: 10px; font-size: 12px; }
+  .period-modes { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); margin-inline: 16px; }
+  .period-modes button { padding-inline: 8px; }
+}
 .kpi-topbar { grid-template-columns: repeat(4, minmax(0, 1fr)); }
 .kpi-card { min-width: 0; }
 .charts-grid.analytics-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }

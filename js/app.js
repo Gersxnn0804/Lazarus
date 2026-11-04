@@ -13,6 +13,7 @@ const state = {
   requestVersion: 0,
   shipments: [],
   filtered: [],
+  temporal: null,
   periodLabel: "Todo el snapshot · sin restricción temporal",
   selectedShipmentId: null,
   started: false,
@@ -90,6 +91,10 @@ function formatPercent(value) {
     minimumFractionDigits: numeric % 1 === 0 ? 0 : 1,
     maximumFractionDigits: 1
   });
+}
+
+function formatRate(value, total) {
+  return !total || value === null ? "N/D" : `${formatPercent(percent(value, total))}%`;
 }
 
 function padDatePart(value) {
@@ -432,8 +437,10 @@ function renderSummary() {
     warehouseOrders: el.kpiWarehouse, shipped: el.kpiShipped, outForDelivery: el.kpiOutForDelivery,
     insufficient: el.kpiInsufficient, ownTransport: el.kpiOwn };
   Object.entries(bindings).forEach(([key, node]) => { node.textContent = formatNumber(summary[key]); });
-  el.kpiDeliveredRate.textContent = summary.delivered === null ? "Sin evidencia disponible" : `${formatPercent(percent(summary.delivered, summary.totalShipments))}% de las órdenes filtradas`;
-  el.kpiGenerated.textContent = "Órdenes únicas · filtros activos";
+  el.kpiDeliveredRate.textContent = summary.delivered === null ? "Sin evidencia disponible"
+    : summary.totalShipments ? `${formatRate(summary.delivered, summary.totalShipments)} de ${formatNumber(summary.totalShipments)} órdenes filtradas`
+    : "N/D · sin órdenes en el período";
+  el.kpiGenerated.textContent = summary.totalShipments ? "Órdenes únicas · período y filtros activos" : "Sin datos para el período";
 }
 
 function renderDonut(chart, legend, items) {
@@ -457,9 +464,9 @@ function renderDonut(chart, legend, items) {
   chart.setAttribute("aria-label", `${state.periodLabel}: ${total} órdenes. ${items.map(item => `${item.label}: ${item.value}`).join(". ")}`);
   if (!chart.querySelector("span")) chart.innerHTML = "<span><b></b><small></small></span>";
   chart.querySelector("span").innerHTML = `<b>${formatNumber(total)}</b><small>${total ? "Órdenes de la cohorte" : "Sin datos para el período"}</small>`;
-  legend.innerHTML = items.map(item => `<div class="legend-row" data-count="${item.value}" data-percent="${percent(item.value, total)}">
+  legend.innerHTML = items.map(item => `<div class="legend-row" data-count="${item.value}" data-percent="${total ? percent(item.value, total) : ""}">
     <span><i style="background:${item.color}"></i>${escapeHtml(item.label)}</span>
-    <strong>${formatNumber(item.value)} · ${formatPercent(percent(item.value, total))}%</strong></div>`).join("")
+    <strong>${formatNumber(item.value)} · ${formatRate(item.value, total)}</strong></div>`).join("")
     || '<p class="period-note">Sin datos para el período</p>';
 }
 
@@ -490,7 +497,7 @@ function renderSourceDistribution() {
     const counts = countBy(rows, field);
     return `<section><h4>${title}</h4>${[...labels, "Sin información"].map(label => {
       const count = counts[label] || 0;
-      return `<div class="source-row"><span>${escapeHtml(label)}</span><strong>${formatNumber(count)} · ${formatPercent(percent(count, rows.length))}%</strong></div>`;
+      return `<div class="source-row"><span>${escapeHtml(label)}</span><strong>${formatNumber(count)} · ${formatRate(count, rows.length)}</strong></div>`;
     }).join("")}</section>`;
   }).join("");
 }
@@ -507,7 +514,7 @@ function renderStatusDistribution() {
   if (!entries.length) {
     el.statusDistribution.innerHTML = `
       <div class="status-empty-card">
-        <strong>Sin estados disponibles</strong>
+        <strong>Sin datos para el período</strong>
         <span>No hay registros suficientes para calcular la distribución.</span>
       </div>
     `;
@@ -547,7 +554,7 @@ function renderTemporalChart() {
   if (!series.points.length) {
     el.temporalChart.innerHTML = `
       <div class="status-empty-card temporal-empty">
-        <strong>Sin fechas disponibles</strong>
+        <strong>${getOperationalScope().length ? "Sin fechas disponibles" : "Sin datos para el período"}</strong>
         <span>No hay registros filtrados con una fecha operacional válida.</span>
       </div>
     `;
@@ -610,10 +617,7 @@ function applyFilters({ preservePage = false } = {}) {
   const previousPage = state.page;
   let error = "";
   try {
-    const period = el.allDates.checked ? null : LazarusTracking.buildPeriod(el.periodMode.value, {
-      day: el.periodDay.value, month: el.periodMonth.value, year: el.periodYear.value,
-      from: el.periodFrom.value, to: el.periodTo.value
-    });
+    const period = state.temporal.allDates ? null : LazarusTracking.buildPeriod(state.temporal.mode, state.temporal);
     state.periodLabel = period ? `${formatShipmentDate(period.from)} al ${formatShipmentDate(period.to)} · America/Santiago`
       : "Todo el snapshot · sin restricción temporal";
     const scope = LazarusTracking.selectDashboardRows(state.shipments, { period,
@@ -650,15 +654,27 @@ function applyFilters({ preservePage = false } = {}) {
 }
 
 function updatePeriodControls() {
-  document.querySelectorAll("[data-period]").forEach(node => node.classList.toggle("hidden", node.dataset.period !== el.periodMode.value));
+  const { mode, allDates } = state.temporal;
+  el.allDates.checked = allDates;
+  document.querySelectorAll("[data-period]").forEach(node => node.classList.toggle("hidden", node.dataset.period !== mode));
+  el.periodMode.querySelectorAll("button").forEach(button => button.setAttribute("aria-pressed", String(!allDates && button.dataset.periodMode === mode)));
 }
 
 function initializePeriod() {
   const today = LazarusTracking.operationalDateKey(new Date().toISOString());
+  state.temporal = { mode: "day", allDates: true, day: today, month: today.slice(0, 7), year: today.slice(0, 4), from: today, to: today };
   el.periodDay.value = today; el.periodMonth.value = today.slice(0, 7); el.periodYear.value = today.slice(0, 4);
   el.periodFrom.value = today; el.periodTo.value = today;
-  el.periodMode.value = "day"; el.allDates.checked = true;
   updatePeriodControls();
+}
+
+function updateNavigation() {
+  const target = window.location.hash || "#overview";
+  document.querySelectorAll(".top-nav a").forEach(link => {
+    const active = link.getAttribute("href") === target;
+    link.classList.toggle("active", active);
+    if (active) link.setAttribute("aria-current", "location"); else link.removeAttribute("aria-current");
+  });
 }
 
 
@@ -773,6 +789,8 @@ function renderProgress(steps, title) {
 
 function bindDashboardEvents() {
   initializePeriod();
+  updateNavigation();
+  window.addEventListener("hashchange", updateNavigation);
   el.reloadBtn.addEventListener("click", () => loadData());
   el.exportBtn.addEventListener("click", exportCsv);
   el.clearFiltersBtn.addEventListener("click", clearFilters);
@@ -783,14 +801,26 @@ function bindDashboardEvents() {
   if (el.channelFilter) el.channelFilter.addEventListener("change", applyFilters);
   el.dateFilter.addEventListener("change", applyFilters);
   if (el.timeGranularity) el.timeGranularity.addEventListener("change", renderTemporalChart);
-  [el.periodMode, el.periodDay, el.periodMonth, el.periodYear, el.periodFrom, el.periodTo].forEach(input => {
-    input.addEventListener("change", () => {
-      el.allDates.checked = false;
+  el.periodMode.querySelectorAll("button").forEach(button => button.addEventListener("click", () => {
+    state.temporal.mode = button.dataset.periodMode;
+    state.temporal.allDates = false;
+    updatePeriodControls();
+    applyFilters();
+  }));
+  Object.entries({ day: el.periodDay, month: el.periodMonth, year: el.periodYear, from: el.periodFrom, to: el.periodTo }).forEach(([key, input]) => {
+    input.setAttribute("aria-describedby", "periodError");
+    input.addEventListener("input", () => {
+      state.temporal[key] = input.value;
+      state.temporal.allDates = false;
       updatePeriodControls();
       applyFilters();
     });
   });
-  el.allDates.addEventListener("change", applyFilters);
+  el.allDates.addEventListener("change", () => {
+    state.temporal.allDates = el.allDates.checked;
+    updatePeriodControls();
+    applyFilters();
+  });
 
   if (el.exportStockBreaksBtn) el.exportStockBreaksBtn.addEventListener("click", exportStockBreaks);
 

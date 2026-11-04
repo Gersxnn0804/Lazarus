@@ -6,8 +6,8 @@
   <meta name="theme-color" content="#07111f" />
   <title>Lazarus | Tracking Intelligence</title>
   <link rel="icon" type="image/png" href="assets/branding/lazarus.png" />
-  <link rel="stylesheet" href="css/styles.css?v=vnext-001" />
-  <link rel="stylesheet" href="css/tracking-vnext.css?v=vnext-002" />
+  <link rel="stylesheet" href="css/styles.css?v=vnext-003" />
+  <link rel="stylesheet" href="css/tracking-vnext.css?v=vnext-003" />
 </head>
 <body>
   <section id="loginScreen" class="login-screen">
@@ -60,45 +60,35 @@
   </section>
 
   <div id="appShell" class="app-shell hidden">
-    <aside class="sidebar">
-      <div class="brand">
-        <div class="brand-logo">
-          <img src="assets/branding/lazarus.png" alt="Lazarus icon" />
-        </div>
-        <div class="brand-text">
-          <h1>Lazarus</h1>
-          <p>Tracking Intelligence</p>
-        </div>
-      </div>
-
-      <nav class="side-nav" aria-label="Navegación principal">
-        <a class="active" href="#overview"><span>▦</span>Resumen Ejecutivo</a>
+    <header class="topbar">
+      <a class="topbar-brand" href="#overview" aria-label="Lazarus · Resumen Ejecutivo">
+        <img src="assets/branding/lazarus.png" alt="" />
+        <span><strong>Lazarus</strong><small>Tracking Intelligence</small></span>
+      </a>
+      <nav class="top-nav" aria-label="Navegación principal">
+        <a class="active" href="#overview" aria-current="location"><span>▦</span>Resumen Ejecutivo</a>
         <a href="#analytics"><span>⌁</span>Analítica</a>
         <a href="#orders"><span>▱</span>Envíos</a>
         <a href="#detail"><span>☷</span>Detalle</a>
       </nav>
 
-      <div class="sidebar-footer">
-        <div class="data-card">
-          <div class="data-card-title">
-            <span class="data-icon">◉</span>
-            <div>
-              <span>Estado de lectura</span>
-              <strong id="sourceStatus" role="status" aria-live="polite">Sin validar</strong>
-            </div>
-          </div>
-          <small id="sourceMeta">Esperando actualización...</small>
-        </div>
-
-        <button id="logoutBtn" class="logout-btn"><span>↩</span>Cerrar sesión</button>
+      <button id="logoutBtn" class="logout-btn"><span>↩</span>Cerrar sesión</button>
+      <div class="topbar-source" aria-label="Estado de actualización de datos">
+        <strong id="sourceStatus" role="status" aria-live="polite">Sin validar</strong>
+        <small id="sourceMeta">Esperando actualización...</small>
       </div>
-    </aside>
+    </header>
 
     <main class="main-content" id="overview">
       <section class="panel period-panel" aria-labelledby="periodTitle">
-        <div class="panel-header"><div><h2 id="periodTitle">Período operacional</h2><p>Zona horaria America/Santiago · fechas inicial y final incluidas.</p></div></div>
+        <div class="panel-header"><div><h2 id="periodTitle">Período operacional · filtro global</h2><p>Actualiza los 12 KPI, gráficos y envíos. America/Santiago · ambos extremos incluidos.</p></div></div>
+        <div id="periodMode" class="period-modes" role="group" aria-label="Modo del filtro temporal">
+          <button type="button" data-period-mode="day" aria-pressed="false">Día</button>
+          <button type="button" data-period-mode="month" aria-pressed="false">Mes</button>
+          <button type="button" data-period-mode="year" aria-pressed="false">Año</button>
+          <button type="button" data-period-mode="calendar" aria-pressed="false">Rango personalizado</button>
+        </div>
         <div class="period-controls">
-          <label class="filter-control"><span>Consultar por</span><select id="periodMode"><option value="day">Día</option><option value="month">Mes</option><option value="year">Año</option><option value="calendar">Calendario</option></select></label>
           <label class="filter-control" data-period="day"><span>Día</span><input id="periodDay" type="date" min="1900-01-01" max="9999-12-31" /></label>
           <label class="filter-control hidden" data-period="month"><span>Mes y año</span><input id="periodMonth" type="month" min="1900-01" max="9999-12" /></label>
           <label class="filter-control hidden" data-period="year"><span>Año</span><input id="periodYear" type="number" min="1900" max="9999" step="1" /></label>
@@ -125,14 +115,6 @@
 <article class="kpi-card"><div class="kpi-card-header"><span>Información insuficiente</span></div><strong id="kpiInsufficient">N/D</strong><small>Órdenes en revisión</small></article></section>
 
       <section class="dashboard-actions" aria-label="Acciones del dashboard">
-        <label class="temporal-control" for="timeGranularity">
-          <span>Agrupar gráfico por</span>
-          <select id="timeGranularity">
-            <option value="day">Día</option>
-            <option value="month">Mes</option>
-            <option value="year">Año</option>
-          </select>
-        </label>
         <button id="reloadBtn" class="primary-btn"><span>↻</span>Actualizar datos</button>
         <button id="exportBtn" class="ghost-btn"><span>⇩</span>Exportar CSV</button>
         <button id="clearFiltersBtn" class="ghost-btn"><span>⌫</span>Limpiar filtros</button>
@@ -192,6 +174,13 @@
               <span><i class="delivered"></i>Con entrega confirmada</span>
             </div>
           </div>
+          <label class="temporal-control" for="timeGranularity">
+            <span>Agrupar gráfico por</span>
+            <select id="timeGranularity" aria-describedby="groupingHelp">
+              <option value="day">Día</option><option value="month">Mes</option><option value="year">Año</option>
+            </select>
+          </label>
+          <p id="groupingHelp" class="period-note">Agrupa las barras del período activo; no cambia el filtro global ni los KPI.</p>
           <div id="temporalChart" class="temporal-chart" role="img" aria-label="Órdenes por período"></div>
           <p id="temporalMeta" class="temporal-meta"></p>
         </article>
@@ -288,6 +277,6 @@
 
   <div id="toast" class="toast hidden" role="status" aria-live="polite"></div>
   <script src="js/tracking-contract.js?v=vnext-002"></script>
-  <script src="js/app.js?v=vnext-002"></script>
+  <script src="js/app.js?v=vnext-003"></script>
 </body>
 </html>
