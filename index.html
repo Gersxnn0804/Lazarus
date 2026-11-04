@@ -131,13 +131,13 @@
           <div class="panel-header">
             <div>
               <h3>Entregas confirmadas</h3>
-              <p>Recepción confirmada dentro de la cohorte seleccionada. No mide entregas ocurridas en el período ni el SLA de Polaris.</p>
+              <p>Recepción confirmada dentro de la orden seleccionada. No mide entregas ocurridas en el período ni el SLA de Polaris.</p>
             </div>
           </div>
 
           <div class="donut-layout">
             <div id="donutChart" class="donut empty-donut" style="--value:0">
-              <span>0<small>Órdenes de la cohorte</small></span>
+              <span>0<small>Estado de ordenes</small></span>
             </div>
             <div id="donutLegend" class="donut-legend advanced-legend"></div>
           </div>
@@ -145,8 +145,8 @@
         </article>
 
         <article class="panel status-donut-panel">
-          <div class="panel-header"><div><h3>Estados de la cohorte</h3><p>Un estado publicado por LT. Todas las categorías suman el total seleccionado.</p></div></div>
-          <div class="donut-layout"><div id="statusDonut" class="donut empty-donut"><span>0<small>Órdenes de la cohorte</small></span></div><div id="statusLegend" class="donut-legend advanced-legend"></div></div>
+          <div class="panel-header"><div><h3>Estados de ordenes</h3><p>Un estado publicado por LT. Todas las categorías suman el total seleccionado.</p></div></div>
+          <div class="donut-layout"><div id="statusDonut" class="donut empty-donut"><span>0<small>Estados de las ordenes</small></span></div><div id="statusLegend" class="donut-legend advanced-legend"></div></div>
           <p class="chart-period period-note"></p>
         </article>
       </section>
@@ -166,7 +166,7 @@
         <article class="panel temporal-panel">
           <div class="panel-header">
             <div>
-              <h3>Cohorte por fecha de último evento</h3>
+              <h3>ordenes por fecha de último evento</h3>
               <p id="temporalDescription">Último evento operacional agrupado por día.</p>
             </div>
             <div class="temporal-legend" aria-label="Series del gráfico">
