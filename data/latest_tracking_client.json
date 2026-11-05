@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.2.0",
-  "generatedAt": "2026-11-04T19:10:26",
+  "generatedAt": "2026-11-05T08:33:46",
   "source": {
     "platform": "Polaris",
     "module": "Tracking",
@@ -30,14 +30,14 @@
   },
   "inventoryThermometer": {
     "available": false,
-    "generatedAt": "2026-11-04T19:10:26",
+    "generatedAt": "2026-11-05T08:33:46",
     "totalAuditOrders": 0,
     "totalNoFillOrders": 0,
     "topCriticalItems": []
   },
   "supplyAudit": {
     "available": false,
-    "generatedAt": "2026-11-04T19:10:26",
+    "generatedAt": "2026-11-05T08:33:46",
     "summary": {
       "totalOrders": 0,
       "fullFill": 0,
@@ -43706,7 +43706,6 @@
       "deliveryConfirmed": false,
       "deliveryDate": "",
       "incidents": [
-        "FECHA_INVALIDA",
         "PENDIENTE DE RECOLECCION",
         "WAREHOUSE_TRANSPORT_SYNC"
       ],
@@ -43824,7 +43823,6 @@
       "deliveryConfirmed": false,
       "deliveryDate": "",
       "incidents": [
-        "FECHA_INVALIDA",
         "PENDIENTE DE RECOLECCION",
         "WAREHOUSE_TRANSPORT_SYNC"
       ],
@@ -44023,7 +44021,6 @@
       "deliveryConfirmed": false,
       "deliveryDate": "",
       "incidents": [
-        "FECHA_INVALIDA",
         "PENDIENTE DE RECOLECCION",
         "WAREHOUSE_TRANSPORT_SYNC"
       ],
@@ -44114,7 +44111,6 @@
       "deliveryConfirmed": false,
       "deliveryDate": "",
       "incidents": [
-        "FECHA_INVALIDA",
         "PENDIENTE DE RECOLECCION",
         "WAREHOUSE_TRANSPORT_SYNC"
       ],
@@ -44232,7 +44228,6 @@
       "deliveryConfirmed": false,
       "deliveryDate": "",
       "incidents": [
-        "FECHA_INVALIDA",
         "PENDIENTE DE RECOLECCION",
         "WAREHOUSE_TRANSPORT_SYNC"
       ],
