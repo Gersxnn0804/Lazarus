@@ -23,3 +23,23 @@ Portal estático de Tracking publicado mediante GitHub Pages: Polaris → JSON �
 El portal no requiere bundler ni backend. Servir esta carpeta mediante HTTP y probar tanto `/` como `/Lazarus/`. No abrir el HTML mediante file://.
 
 Para revisar el hotfix temporal, cambiar el período en el control superior y comprobar KPI, segmentos, leyendas y barras; combinar búsqueda/estado/tipo, usar un rango invertido y uno sin resultados, y actualizar los datos. La suite de navegador usa exclusivamente fixtures y verifica períodos entre años, meses de 28/29/30/31 días, vacíos, deduplicación, preservación durante refresco y resultados idénticos desde Chile/UTC/Tokio, además de tamaños escritorio/tablet/móvil. `LAZARUS_BROWSER_OUTPUT` permite guardar capturas y resultados fuera de los archivos publicados.
+
+## KPI SLA B2C · extensión pública 1.0.0
+
+Los contratos de Tracking `1.2.0` y `2.0.0` admiten la extensión opcional `slaKpis`, con `version: "1.0.0"`. La versión base no cambia: es una extensión aditiva. Si falta, es desconocida o no supera la validación, las tres tarjetas muestran N/D y los indicadores anteriores siguen funcionando.
+
+Polaris genera `slaKpis` desde el mismo resultado de `OrderService.summary()` que alimenta la publicación. Reutiliza el SLA de la matriz/calendario y las decisiones manuales del snapshot, sin escribir persistencia ni alterar cumplimiento ácido/neto. Exige Delivery Date explícita en evidencia confirmada de la misma guía; el fallback histórico desde Last Event Date no habilita estos KPI. Para incumplimientos entregados o pendientes vencidos aplica la política de validez de mitigación del motor: estado Mitigado, causal informada y elegible neta; Retrasada no es válida para esta tarjeta. Las sugerencias automáticas no se consideran decisiones aplicadas.
+
+La extensión contiene solamente `version`, `available`, `timeBasis: "lastEventDate"`, `timezone: "America/Santiago"`, `semantics: "currentSnapshot"`, `scope: "B2C"`, `days`, `undated` y `total`. Cada día incluye `date`; cada bloque de conteos contiene `b2cOrders`, `eligible`, `notEvaluable`, `excluded`, `onTime`, `mitigated`, `unmitigated` y `withinDeadline`. No incluye identidades, causales, observaciones, usuarios ni credenciales. Los conteos cumplen:
+
+- `b2cOrders = eligible + notEvaluable + excluded`.
+- `eligible = onTime + mitigated + unmitigated + withinDeadline`.
+- `total = suma(days) + undated` para cada contador.
+
+Día, Mes, Año y Rango suman buckets inclusivos por último evento en Chile. Todo el snapshot incorpora también `undated`. La ausencia de un día equivale a cero dentro del snapshot actual validado; no certifica cobertura de órdenes que ya no estén en la fuente. No hay reconstrucción histórica. Si una selección contiene B2C no evaluables, se muestra N/D y su cantidad, evitando presentar un total incompleto como definitivo. Un período sin B2C muestra cero con descripción explícita.
+
+Los agregados permiten el período global y el filtro B2C. Búsqueda, estado, categoría, fecha del listado u otro tipo de orden muestran N/D en estas tres tarjetas con una indicación para limpiar filtros; no se atribuyen agregados globales a subconjuntos no disponibles. Los 12 KPI anteriores conservan su comportamiento.
+
+Validar desde este repositorio con `node --test tests/*.test.cjs` y `node tests/browser.mjs`. La suite de navegador usa servidor local y fixtures; no sustituye `data/latest_tracking_client.json`. Lazarus es estático y no requiere build. Las convenciones obligatorias de workspace están en [AGENTS.md](AGENTS.md).
+
+Las herramientas Playwright existentes en `.runtime/browser-tools/` se detectan automáticamente; también se admite la instalación normal de `playwright` o `LAZARUS_PLAYWRIGHT_MODULE`. Guardar capturas dentro de este repositorio, por ejemplo con `$env:LAZARUS_BROWSER_OUTPUT = '.runtime/validation'`. No se requiere otro clon para ejecutar o validar Lazarus.
