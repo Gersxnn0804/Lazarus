@@ -247,6 +247,7 @@ function renderEmptyDetail() {
 
 function resetDashboard(message = "No hay una publicación válida disponible.") {
   state.raw = null; state.shipments = []; state.filtered = []; state.selectedShipmentId = null; state.page = 1;
+  renderSlaKpis();
   el.sourceStatus.textContent = "Sin datos"; el.sourceMeta.textContent = message;
   el.emptyState.classList.remove("hidden");
   el.emptyState.querySelector("h3").textContent = "No hay datos cargados";
@@ -423,6 +424,7 @@ function isDeliveredShipment(item) { return item.deliveryConfirmed === true; }
 function getSignedByValue(item) { return item.signedBy; }
 
 function renderSummary() {
+  renderSlaKpis();
   const summary = LazarusTracking.buildSummary(getOperationalScope());
   const bindings = { totalShipments: el.kpiTotal, delivered: el.kpiDelivered, inTransit: el.kpiTransit,
     pendingCollection: el.kpiPending, thirdParty: el.kpiCritical, returns: el.kpiReturns, active: el.kpiActive,
@@ -433,6 +435,19 @@ function renderSummary() {
     : summary.totalShipments ? `${formatRate(summary.delivered, summary.totalShipments)} de ${formatNumber(summary.totalShipments)} órdenes filtradas`
     : "N/D · sin órdenes en el período";
   el.kpiGenerated.textContent = summary.totalShipments ? "Órdenes únicas · período y filtros activos" : "Sin datos para el período";
+}
+
+function renderSlaKpis() {
+  let period = null, invalidPeriod = false;
+  try { period = state.temporal.allDates ? null : LazarusTracking.buildPeriod(state.temporal.mode, state.temporal); }
+  catch (error) { if (!(error instanceof RangeError)) throw error; invalidPeriod = true; }
+  const unsupportedFilters = Boolean(el.searchInput.value.trim() || el.statusFilter.value || el.categoryFilter.value
+    || el.dateFilter.value || (el.channelFilter.value && el.channelFilter.value !== "B2C"));
+  const result = LazarusTracking.selectSlaKpis(state.raw?.slaKpis, { period, invalidPeriod, unsupportedFilters });
+  for (const [key, id] of [["onTime", "kpiOnTime"], ["mitigated", "kpiMitigated"], ["unmitigated", "kpiUnmitigated"]]) {
+    $(id).textContent = formatNumber(result[key]);
+    $(id + "Status").textContent = result.reason;
+  }
 }
 
 function renderDonut(chart, legend, items) {

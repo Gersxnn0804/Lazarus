@@ -30,7 +30,12 @@
   .period-modes { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); margin-inline: 16px; }
   .period-modes button { padding-inline: 8px; }
 }
-.kpi-topbar { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.kpi-topbar { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+.sla-on-time > strong { color: #6ee7b7; }
+.sla-mitigated > strong { color: #67e8f9; }
+.sla-unmitigated > strong { color: #fda4af; }
+.kpi-topbar .kpi-card > strong { overflow-wrap: anywhere; font-size: clamp(24px, 2.5vw, 36px); }
+.kpi-topbar .kpi-card > small { display: block; overflow-wrap: anywhere; }
 .kpi-card { min-width: 0; }
 .charts-grid.analytics-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 .temporal-panel { grid-column: 1 / -1; min-width: 0; }
@@ -137,6 +142,7 @@
   .charts-grid.analytics-grid, .operational-grid { grid-template-columns: minmax(0, 1fr); }
 }
 @media (max-width: 480px) {
+  .kpi-topbar { grid-template-columns: minmax(0, 1fr); }
   .operational-grid .status-distribution { grid-template-columns: minmax(0, 1fr); }
   .period-controls { padding-inline: 16px; }
   .period-controls .filter-control { max-width: none; }

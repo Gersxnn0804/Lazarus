@@ -81,7 +81,7 @@
 
     <main class="main-content" id="overview">
       <section class="panel period-panel" aria-labelledby="periodTitle">
-        <div class="panel-header"><div><h2 id="periodTitle">Período operacional · filtro global</h2><p>Actualiza los 12 KPI, gráficos y envíos. America/Santiago · ambos extremos incluidos.</p></div></div>
+        <div class="panel-header"><div><h2 id="periodTitle">Período operacional · filtro global</h2><p>Actualiza los KPI, gráficos y envíos. America/Santiago · ambos extremos incluidos.</p></div></div>
         <div id="periodMode" class="period-modes" role="group" aria-label="Modo del filtro temporal">
           <button type="button" data-period-mode="day" aria-pressed="false">Día</button>
           <button type="button" data-period-mode="month" aria-pressed="false">Mes</button>
@@ -112,7 +112,10 @@
 <article class="kpi-card"><div class="kpi-card-header"><span>Transporte propio</span></div><strong id="kpiOwn">N/D</strong><small>Entrega de Warehouse</small></article>
 <article class="kpi-card"><div class="kpi-card-header"><span>Tercerizadas</span></div><strong id="kpiCritical">N/D</strong><small>Gestión por tercero</small></article>
 <article class="kpi-card"><div class="kpi-card-header"><span>Devoluciones</span></div><strong id="kpiReturns">N/D</strong><small>Retorno informado</small></article>
-<article class="kpi-card"><div class="kpi-card-header"><span>Información insuficiente</span></div><strong id="kpiInsufficient">N/D</strong><small>Órdenes en revisión</small></article></section>
+<article class="kpi-card"><div class="kpi-card-header"><span>Información insuficiente</span></div><strong id="kpiInsufficient">N/D</strong><small>Órdenes en revisión</small></article>
+<article class="kpi-card sla-on-time"><div class="kpi-card-header"><span>Entregadas a tiempo</span></div><strong id="kpiOnTime">N/D</strong><small>B2C con entrega confirmada dentro del SLA</small><small id="kpiOnTimeStatus">Sin datos SLA publicados por Polaris</small></article>
+<article class="kpi-card sla-mitigated"><div class="kpi-card-header"><span>Mitigadas</span></div><strong id="kpiMitigated">N/D</strong><small>B2C incumplidas con mitigación válida aplicada</small><small id="kpiMitigatedStatus">Sin datos SLA publicados por Polaris</small></article>
+<article class="kpi-card sla-unmitigated"><div class="kpi-card-header"><span>No mitigadas</span></div><strong id="kpiUnmitigated">N/D</strong><small>B2C fuera de SLA sin mitigación válida</small><small id="kpiUnmitigatedStatus">Sin datos SLA publicados por Polaris</small></article></section>
 
       <section class="dashboard-actions" aria-label="Acciones del dashboard">
         <button id="reloadBtn" class="primary-btn"><span>↻</span>Actualizar datos</button>

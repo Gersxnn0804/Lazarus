@@ -1,10 +1,13 @@
 import assert from 'node:assert/strict';
+import { existsSync } from 'node:fs';
 import { createServer } from 'node:http';
 import { readFile, mkdir, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
-const { chromium } = await import(process.env.LAZARUS_PLAYWRIGHT_MODULE ? pathToFileURL(process.env.LAZARUS_PLAYWRIGHT_MODULE).href : 'playwright');
+const localPlaywright = path.join(root, '.runtime/browser-tools/node_modules/playwright/index.mjs');
+const playwrightModule = process.env.LAZARUS_PLAYWRIGHT_MODULE || (existsSync(localPlaywright) ? localPlaywright : null);
+const { chromium } = await import(playwrightModule ? pathToFileURL(path.resolve(root, playwrightModule)).href : 'playwright');
 const fixture = JSON.parse(await readFile(path.join(root, 'tests/fixtures/polaris-2.0.0.json'), 'utf8'));
 let source = fixture, fault = '';
 const logs = [];
@@ -57,6 +60,26 @@ function temporalFixture() {
   return { ...fixture, generatedAt: '', shipments: [...shipments, { ...shipments[4] }] };
 }
 
+function slaFixture() {
+  const bucket = (onTime, mitigated, unmitigated) => ({ b2cOrders: onTime + mitigated + unmitigated,
+    eligible: onTime + mitigated + unmitigated, notEvaluable: 0, excluded: 0, onTime, mitigated, unmitigated, withinDeadline: 0 });
+  const days = [{ date: '2025-12-31', ...bucket(1, 0, 0) }, { date: '2026-01-01', ...bucket(0, 2, 1) },
+    { date: '2026-02-01', ...bucket(3, 0, 2) }];
+  const template = fixture.shipments.find(row => row.status === 'RECOLECTADO');
+  const delivered = fixture.shipments.find(row => row.deliveryConfirmed);
+  const shipments = days.flatMap((day, index) => Array.from({ length: day.b2cOrders }, (_, i) => ({ ...(i < day.onTime ? delivered : template),
+    order: `LT700${index}${i}`, orderType: 'B2C', lastEventDate: day.date, deliveryDate: i < day.onTime ? day.date : '' })));
+  shipments.push({ ...template, order: 'LT70099', orderType: 'B2C', lastEventDate: '' });
+  return { ...fixture, generatedAt: '', shipments, slaKpis: { version: '1.0.0', available: true,
+    timeBasis: 'lastEventDate', timezone: 'America/Santiago', semantics: 'currentSnapshot', scope: 'B2C',
+    days, undated: bucket(0, 1, 0), total: bucket(4, 3, 3) } };
+}
+
+async function assertSla(page, expected) {
+  for (const [i, id] of ['kpiOnTime', 'kpiMitigated', 'kpiUnmitigated'].entries())
+    assert.equal(await page.locator(`#${id}`).innerText(), String(expected[i]));
+}
+
 async function assertCohort(page, total, delivered) {
   assert.equal(await page.locator('#kpiTotal').innerText(), String(total));
   assert.equal(await page.locator('#kpiDelivered').innerText(), String(delivered));
@@ -78,7 +101,7 @@ async function assertCohort(page, total, delivered) {
     assert.ok((await page.locator('#sourceDistribution').innerText()).includes('N/D'));
     assert.equal(await page.locator('#donutLegend').getByText(/0%/).count(), 0);
     const kpis = await page.locator('#kpiGrid .kpi-card > strong').allTextContents();
-    assert.deepEqual(kpis, Array(12).fill('0'));
+    assert.deepEqual(kpis, [...Array(12).fill('0'), ...Array(3).fill('N/D')]);
   }
 }
 
@@ -308,6 +331,39 @@ try {
     await assertCohort(page, 0, 0);
     assert.equal(await page.locator('#periodError').isVisible(), true);
     logs.push({ width, all12KpisChange: 'PASS', scopedCsvContents: 'PASS', groupingIndependent: 'PASS', rangeAndReset: 'PASS' });
+    await context.close();
+  }
+  for (const width of [1920, 1366, 768, 390, 320]) {
+    source = slaFixture(); fault = '';
+    const context = await browser.newContext({ viewport: { width, height: 900 } });
+    const page = await context.newPage(); await page.clock.install();
+    await page.route('https://fonts.googleapis.com/**', route => route.abort());
+    await login(page, '/Lazarus/'); await assertSla(page, [4, 3, 3]);
+    await choosePeriod(page, 'day'); await page.locator('#periodDay').fill('2026-01-01');
+    await assertSla(page, [0, 2, 1]);
+    await choosePeriod(page, 'month'); await page.locator('#periodMonth').fill('2026-02');
+    await assertSla(page, [3, 0, 2]);
+    await choosePeriod(page, 'year'); await page.locator('#periodYear').fill('2026');
+    await assertSla(page, [3, 2, 3]);
+    await choosePeriod(page, 'calendar'); await page.locator('#periodFrom').fill('2025-12-31');
+    await page.locator('#periodTo').fill('2026-01-01'); await assertSla(page, [1, 2, 1]);
+    source.slaKpis.days[1].mitigated--; source.slaKpis.days[1].unmitigated++;
+    source.slaKpis.total.mitigated--; source.slaKpis.total.unmitigated++;
+    await page.clock.fastForward(60001);
+    await page.waitForFunction(() => document.getElementById('kpiMitigated').textContent === '1');
+    await assertSla(page, [1, 1, 2]);
+    assert.equal(await page.locator('#periodFrom').inputValue(), '2025-12-31');
+    await page.locator('#searchInput').fill('LT700'); await assertSla(page, ['N/D', 'N/D', 'N/D']);
+    await page.locator('#clearFiltersBtn').click(); await assertSla(page, [4, 2, 4]);
+    assert.ok(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1));
+    const clipped = await page.locator('.kpi-card, .kpi-card > strong, .kpi-card > small').evaluateAll(nodes =>
+      nodes.filter(node => node.scrollWidth > node.clientWidth + 1).map(node => node.id || node.className));
+    assert.deepEqual(clipped, []);
+    if (output) await page.locator('#kpiGrid').screenshot({ path: path.join(output, `sla-kpis-${width}.png`) });
+    delete source.slaKpis; await page.locator('#reloadBtn').click();
+    await page.waitForFunction(() => document.getElementById('kpiOnTime').textContent === 'N/D');
+    await assertSla(page, ['N/D', 'N/D', 'N/D']);
+    logs.push({ width, slaPeriods: 'PASS', slaAutomaticRefresh: 'PASS', slaOldJson: 'PASS', slaResponsive: 'PASS' });
     await context.close();
   }
   const context = await browser.newContext();const page = await context.newPage();

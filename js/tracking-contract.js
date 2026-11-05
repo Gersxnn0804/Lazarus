@@ -230,9 +230,37 @@
     const generated = parseDate(input.generatedAt);
     const now = options.now ?? Date.now();
     return { schemaVersion: input.schemaVersion, generatedAt: text(input.generatedAt), shipments,
+      slaKpis: normalizeSlaKpis(input.slaKpis),
       summary: buildSummary(shipments), diagnostics: { rejected, duplicates: input.shipments.length - rejected.length - shipments.length,
         warnings: shipments.filter(row => row.warnings.length).length },
       freshness: !generated || generated.timestamp > now + 300000 ? "unknown" : now - generated.timestamp > 6 * 3600000 ? "stale" : "current" };
+  }
+  const SLA_COUNTS = ["b2cOrders", "eligible", "notEvaluable", "excluded", "onTime", "mitigated", "unmitigated", "withinDeadline"];
+  function normalizeSlaKpis(raw) {
+    if (!record(raw) || raw.version !== "1.0.0" || raw.available !== true || raw.timeBasis !== "lastEventDate"
+      || raw.timezone !== OPERATIONAL_ZONE || raw.semantics !== "currentSnapshot" || raw.scope !== "B2C" || !Array.isArray(raw.days)) return null;
+    const counts = row => record(row) && SLA_COUNTS.every(key => Number.isSafeInteger(row[key]) && row[key] >= 0)
+      && row.b2cOrders === row.eligible + row.notEvaluable + row.excluded
+      && row.eligible === row.onTime + row.mitigated + row.unmitigated + row.withinDeadline;
+    if (!counts(raw.total) || !counts(raw.undated)) return null;
+    const dates = new Set();
+    for (const row of raw.days) {
+      if (!counts(row) || !/^\d{4}-\d{2}-\d{2}$/.test(row.date) || operationalDateKey(row.date) !== row.date || dates.has(row.date)) return null;
+      dates.add(row.date);
+    }
+    if (!SLA_COUNTS.every(key => raw.total[key] === raw.undated[key] + raw.days.reduce((sum, day) => sum + day[key], 0))) return null;
+    const copy = row => Object.fromEntries(SLA_COUNTS.map(key => [key, row[key]]));
+    return { total: copy(raw.total), undated: copy(raw.undated), days: raw.days.map(row => ({ date: row.date, ...copy(row) })) };
+  }
+  function selectSlaKpis(data, { period = null, unsupportedFilters = false, invalidPeriod = false } = {}) {
+    const unavailable = reason => ({ onTime: null, mitigated: null, unmitigated: null, reason });
+    if (invalidPeriod) return unavailable("Corrige el período seleccionado");
+    if (!data) return unavailable("Sin datos SLA publicados por Polaris");
+    if (unsupportedFilters) return unavailable("Disponible por período; limpia los filtros de detalle");
+    const selected = period ? data.days.filter(row => row.date >= period.from && row.date <= period.to) : [data.total];
+    const counts = Object.fromEntries(SLA_COUNTS.map(key => [key, selected.reduce((sum, row) => sum + row[key], 0)]));
+    if (counts.notEvaluable) return unavailable(`${counts.notEvaluable} B2C no evaluables en la selección`);
+    return { ...counts, reason: counts.b2cOrders ? "B2C · estado actual del período" : "Sin órdenes B2C en el período" };
   }
   function buildSummary(rows) {
     const count = predicate => rows.filter(predicate).length;
@@ -289,5 +317,5 @@
     return "\ufeff" + [columns.join(","), ...rows.map(row => columns.map(column => cell(row[column])).join(","))].join("\r\n");
   }
   return { VERSIONS, WAREHOUSE, TRANSPORT, CATALOG, OPERATIONAL_ZONE, operationalDateKey, buildPeriod,
-    selectDashboardRows, buildDeliveryDistribution, parseDate, family, normalizePayload, buildSummary, buildTemporalSeries, csv };
+    selectDashboardRows, buildDeliveryDistribution, parseDate, family, normalizePayload, normalizeSlaKpis, selectSlaKpis, buildSummary, buildTemporalSeries, csv };
 });
