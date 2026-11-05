@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.2.0",
-  "generatedAt": "2026-11-05T11:10:23",
+  "generatedAt": "2026-11-05T12:10:43",
   "source": {
     "platform": "Polaris",
     "module": "Tracking",
@@ -9,12 +9,12 @@
   "summary": {
     "totalShipments": 1664,
     "delivered": 1232,
-    "inTransit": 6,
+    "inTransit": 2,
     "scheduled": 1,
     "retry": 0,
     "wrongAddress": 0,
     "returns": 1,
-    "incidents": 18,
+    "incidents": 19,
     "critical": 1,
     "signedByCaptured": 1238,
     "signedByResolved": 1238,
@@ -30,14 +30,14 @@
   },
   "inventoryThermometer": {
     "available": false,
-    "generatedAt": "2026-11-05T11:10:23",
+    "generatedAt": "2026-11-05T12:10:43",
     "totalAuditOrders": 0,
     "totalNoFillOrders": 0,
     "topCriticalItems": []
   },
   "supplyAudit": {
     "available": false,
-    "generatedAt": "2026-11-05T11:10:23",
+    "generatedAt": "2026-11-05T12:10:43",
     "summary": {
       "totalOrders": 0,
       "fullFill": 0,
@@ -41061,18 +41061,18 @@
     {
       "order": "LT000000000000111118",
       "waybill": "8370083901",
-      "lastEventDate": "05/11/2026 06:16",
-      "status": "EN SUCURSAL DE DESTINO",
+      "lastEventDate": "05/11/2026 11:45",
+      "status": "EN REPARTO",
       "category": "En Tránsito",
       "orderType": "B2C",
       "order_type": "B2C",
       "signedBy": "",
       "signedByRaw": "",
-      "shipmentState": "Arrived at Delivery Facility",
-      "originalStatus": "",
-      "originalComment": "",
+      "shipmentState": "With delivery courier",
+      "originalStatus": "Envío en ruta  para su entrega.",
+      "originalComment": "Espera la entrega hoy",
       "warehouseStatus": "Shipped",
-      "transportStatus": "En tránsito",
+      "transportStatus": "En reparto",
       "transportHandover": {
         "confirmed": false,
         "mode": "",
@@ -41081,9 +41081,11 @@
       },
       "deliveryConfirmed": false,
       "deliveryDate": "",
-      "incidents": [],
-      "lastEventLabel": "EN SUCURSAL DE DESTINO",
-      "lastEventDescription": "Arrived at Delivery Facility"
+      "incidents": [
+        "STATUS_DICTIONARY_CONFLICT"
+      ],
+      "lastEventLabel": "EN REPARTO",
+      "lastEventDescription": "With delivery courier"
     },
     {
       "order": "LT000000000000111133",
@@ -41278,7 +41280,7 @@
       "order": "LT000000000000111254",
       "waybill": "",
       "lastEventDate": "",
-      "status": "Released",
+      "status": "Cancelled",
       "category": "Pendiente",
       "orderType": "B2C",
       "order_type": "B2C",
@@ -41287,7 +41289,7 @@
       "shipmentState": "",
       "originalStatus": "",
       "originalComment": "",
-      "warehouseStatus": "Released",
+      "warehouseStatus": "Cancelled",
       "transportStatus": "",
       "transportHandover": {
         "confirmed": false,
@@ -41298,7 +41300,7 @@
       "deliveryConfirmed": false,
       "deliveryDate": "",
       "incidents": [],
-      "lastEventLabel": "Released",
+      "lastEventLabel": "Cancelled",
       "lastEventDescription": ""
     },
     {
@@ -41359,7 +41361,7 @@
       "order": "LT000000000000111267",
       "waybill": "",
       "lastEventDate": "",
-      "status": "Released",
+      "status": "Cancelled",
       "category": "Pendiente",
       "orderType": "B2C",
       "order_type": "B2C",
@@ -41368,7 +41370,7 @@
       "shipmentState": "",
       "originalStatus": "",
       "originalComment": "",
-      "warehouseStatus": "Released",
+      "warehouseStatus": "Cancelled",
       "transportStatus": "",
       "transportHandover": {
         "confirmed": false,
@@ -41379,7 +41381,7 @@
       "deliveryConfirmed": false,
       "deliveryDate": "",
       "incidents": [],
-      "lastEventLabel": "Released",
+      "lastEventLabel": "Cancelled",
       "lastEventDescription": ""
     },
     {
@@ -43088,16 +43090,16 @@
     {
       "order": "LT000000000000112227",
       "waybill": "8162991303",
-      "lastEventDate": "05/11/2026 06:16",
-      "status": "EN SUCURSAL DE DESTINO",
-      "category": "En Tránsito",
+      "lastEventDate": "05/11/2026 10:56",
+      "status": "TERCERIZADA",
+      "category": "Incidencia",
       "orderType": "B2C",
       "order_type": "B2C",
       "signedBy": "",
       "signedByRaw": "",
-      "shipmentState": "Arrived at Delivery Facility",
-      "originalStatus": "",
-      "originalComment": "",
+      "shipmentState": "Forwarded for delivery – details expected",
+      "originalStatus": "El envío se ha entregado a un tercero o subcontratista para su entrega.",
+      "originalComment": "El envío saldrá a ruta para su entrega en el siguiente ciclo programado una vez que el envío llegue a las instalaciones de nuestro tercero o subcontratista. Por favor continúe monitoreando el progreso del envío en línea",
       "warehouseStatus": "Shipped",
       "transportStatus": "En tránsito",
       "transportHandover": {
@@ -43108,9 +43110,11 @@
       },
       "deliveryConfirmed": false,
       "deliveryDate": "",
-      "incidents": [],
-      "lastEventLabel": "EN SUCURSAL DE DESTINO",
-      "lastEventDescription": "Arrived at Delivery Facility"
+      "incidents": [
+        "TERCERIZADA"
+      ],
+      "lastEventLabel": "TERCERIZADA",
+      "lastEventDescription": "Forwarded for delivery – details expected"
     },
     {
       "order": "LT000000000000112233",
@@ -43690,18 +43694,18 @@
     {
       "order": "LT000000000000112609",
       "waybill": "3245817293",
-      "lastEventDate": "05/11/2026 06:16",
-      "status": "EN SUCURSAL DE DESTINO",
+      "lastEventDate": "05/11/2026 11:23",
+      "status": "EN REPARTO",
       "category": "En Tránsito",
       "orderType": "B2C",
       "order_type": "B2C",
       "signedBy": "",
       "signedByRaw": "",
-      "shipmentState": "Arrived at Delivery Facility",
-      "originalStatus": "",
-      "originalComment": "",
+      "shipmentState": "With delivery courier",
+      "originalStatus": "Envío en ruta  para su entrega.",
+      "originalComment": "Espera la entrega hoy",
       "warehouseStatus": "Shipped",
-      "transportStatus": "En tránsito",
+      "transportStatus": "En reparto",
       "transportHandover": {
         "confirmed": false,
         "mode": "",
@@ -43710,25 +43714,27 @@
       },
       "deliveryConfirmed": false,
       "deliveryDate": "",
-      "incidents": [],
-      "lastEventLabel": "EN SUCURSAL DE DESTINO",
-      "lastEventDescription": "Arrived at Delivery Facility"
+      "incidents": [
+        "STATUS_DICTIONARY_CONFLICT"
+      ],
+      "lastEventLabel": "EN REPARTO",
+      "lastEventDescription": "With delivery courier"
     },
     {
       "order": "LT000000000000112614",
       "waybill": "7438081722",
-      "lastEventDate": "05/11/2026 06:16",
-      "status": "EN SUCURSAL DE DESTINO",
+      "lastEventDate": "05/11/2026 11:23",
+      "status": "EN REPARTO",
       "category": "En Tránsito",
       "orderType": "B2C",
       "order_type": "B2C",
       "signedBy": "",
       "signedByRaw": "",
-      "shipmentState": "Arrived at Delivery Facility",
-      "originalStatus": "",
-      "originalComment": "",
+      "shipmentState": "With delivery courier",
+      "originalStatus": "Envío en ruta  para su entrega.",
+      "originalComment": "Espera la entrega hoy",
       "warehouseStatus": "Shipped",
-      "transportStatus": "En tránsito",
+      "transportStatus": "En reparto",
       "transportHandover": {
         "confirmed": false,
         "mode": "",
@@ -43737,9 +43743,11 @@
       },
       "deliveryConfirmed": false,
       "deliveryDate": "",
-      "incidents": [],
-      "lastEventLabel": "EN SUCURSAL DE DESTINO",
-      "lastEventDescription": "Arrived at Delivery Facility"
+      "incidents": [
+        "STATUS_DICTIONARY_CONFLICT"
+      ],
+      "lastEventLabel": "EN REPARTO",
+      "lastEventDescription": "With delivery courier"
     },
     {
       "order": "LT000000000000112635",
@@ -43926,9 +43934,7 @@
       },
       "deliveryConfirmed": false,
       "deliveryDate": "",
-      "incidents": [
-        "FECHA_INVALIDA"
-      ],
+      "incidents": [],
       "lastEventLabel": "PENDIENTE DE RECOLECCION",
       "lastEventDescription": "Shipment Data Received"
     },
@@ -43982,9 +43988,7 @@
       },
       "deliveryConfirmed": false,
       "deliveryDate": "",
-      "incidents": [
-        "FECHA_INVALIDA"
-      ],
+      "incidents": [],
       "lastEventLabel": "PENDIENTE DE RECOLECCION",
       "lastEventDescription": "Shipment Data Received"
     },
@@ -44038,9 +44042,7 @@
       },
       "deliveryConfirmed": false,
       "deliveryDate": "",
-      "incidents": [
-        "FECHA_INVALIDA"
-      ],
+      "incidents": [],
       "lastEventLabel": "PENDIENTE DE RECOLECCION",
       "lastEventDescription": "Shipment Data Received"
     },
